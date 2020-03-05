@@ -1,0 +1,615 @@
+<?php
+include('../config/config.php');
+unset($_SESSION['sysErr']);
+unset($_SESSION['sysData']);
+$flg = false;
+$p = $_GET['p'];//get page reference to execute the related condition
+
+
+if($p == "upload_product_images"){
+	$enc_id = $_POST['id'];
+	$id = dec_password($enc_id);
+	$_SESSION['sysErr']['msg'] = "There is some problem try again";
+
+	if($id>0 and isset($_FILES['img']['name'])){
+		if(count($_FILES['img']['name'])>0){  /// Add product images
+			$product_images = get_records($tblproduct_images,"product_id='".$id."' and main='1'");
+			$main = (count($product_images)>0)?0:1;
+			foreach ($_FILES['img']['name'] as $key => $value) {
+				if($value){
+					$files_arr = array();
+					$files_arr['img']['name'] = $_FILES['img']['name'][$key];
+					$files_arr['img']['tmp_name'] = $_FILES['img']['tmp_name'][$key];
+					$files_arr['img']['size'] = $_FILES['img']['size'][$key];
+					
+					$imgname = "";
+					$img_name = upload_img($files_arr,$dir_site_uploads,$imgname);
+					if($img_name){
+						$_SESSION['sysErr']['msg'] = "Images uploaded successfully";
+						$data = array();
+						$data['product_id'] = $id;
+						$data['img'] = $img_name;
+						$data['main'] = $main;
+						$result = insert_record($tblproduct_images,$data);
+						$main = 0;
+					}
+				}
+			}
+
+		}
+	}
+
+	header("location:index.php?p=product_images&id=".$enc_id);
+	exit;
+}
+if($p == "delproduct_image")
+{
+	$enc_id = $_GET['product_id'];
+	$id = dec_password($_GET['id']);
+	$id = (int)$id;
+	
+	$data = array();
+	$data['trash'] = '1';
+	$condition = array();
+	$condition['id'] = $id;
+	$result = update_record($tblproduct_images,$data,$condition);
+	if($result){
+		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
+	}
+	header("location:index.php?p=product_images&id=".$enc_id);
+	exit;
+}
+
+if($p == "addeditproduct")
+{
+	foreach ($_POST as $k => $v )
+	{
+		$$k = addslashes($v);
+		$_SESSION['sysData'][$k] = $v;
+	}
+ 	$enc_id = $id;
+	if($id){
+		$id = dec_password($id);
+	}
+	if(!$title){
+		$_SESSION['sysErr']['title'] = "Please enter product title";
+		$flg = true;
+	}
+	if(!($price>0)){
+		$_SESSION['sysErr']['price'] = "Please enter price";
+		$flg = true;
+	}
+	if($flg){
+		header("location:index.php?p=addeditproduct&id=".$enc_id);
+		exit;
+	}
+	if( $id > 0 )
+	{
+		$data = array();
+		$data['category_id'] = $category_id;
+		$data['subcategory_id'] = $subcategory_id;
+		$data['user_id'] = $user_id;
+		$data['title'] = $title;
+		$data['price'] = $price;
+		$data['description'] = $description;
+		$data['status'] = $status;
+		$data['featured'] = $featured;
+		$data['location'] = $location;
+		$data['type'] = $type;
+		$data['model'] = $model;
+		$data['brand'] = $brand;
+		$data['year_registration'] = $year_registration;
+		$data['driven'] = $driven;
+		$data['fuel_type'] = $fuel_type;
+		$data['gearbox'] = $gearbox;
+		$data['features'] = $features;
+		$condition = array();
+		$condition['id'] = $id;
+		$result = update_record($tblproducts,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	else
+	{
+		$data = array();
+		$data['category_id'] = $category_id;
+		$data['subcategory_id'] = $subcategory_id;
+		$data['title'] = $title;
+		$data['price'] = $price;
+		$data['description'] = $description;
+		$data['status'] = $status;
+		$data['featured'] = $featured;
+		$data['user_id'] = $user_id;
+		$data['location'] = $location;
+		$data['type'] = $type;
+		$data['model'] = $model;
+		$data['brand'] = $brand;
+		$data['year_registration'] = $year_registration;
+		$data['driven'] = $driven;
+		$data['fuel_type'] = $fuel_type;
+		$data['gearbox'] = $gearbox;
+		$data['features'] = $features;
+		
+		$id = insert_record($tblproducts,$data);
+		if($id>0)
+		{
+			$_SESSION['sysErr']['msg'] = "Record added successfully";
+		}
+	}
+	
+	header("location:index.php?p=products");
+	exit;
+}
+if($p == "delproduct")
+{
+	$id = dec_password($_GET['id']);
+	$id = (int)$id;
+	$data = array();
+	$data['trash'] = '1';
+	$condition = array();
+	$condition['id'] = $id;
+	$result = update_record($tblproducts,$data,$condition);
+	if($result){
+		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
+	}
+	header("location:index.php?p=products");
+	exit;
+}
+if($p == "addeditpackages")
+{
+	foreach ($_POST as $k => $v )
+	{
+		$$k = addslashes($v);
+		$_SESSION['sysData'][$k] = $v;
+	}
+ 	$enc_id = $id;
+	if($id){
+		$id = dec_password($id);
+	}
+	if(!$title){
+		$_SESSION['sysErr']['title'] = "Please enter packages title";
+		$flg = true;
+	}
+	if(!($price>0)){
+		$_SESSION['sysErr']['price'] = "Please enter price";
+		$flg = true;
+	}
+	if($flg){
+		header("location:index.php?p=addeditpackages&id=".$enc_id);
+		exit;
+	}
+	if( $id > 0 )
+	{
+		$data = array();
+		$data['title'] = $title;
+		$data['price'] = $price;
+		$data['post_ads'] = $post_ads;
+		$data['bump_up'] = $bump_up;
+		$data['status'] = $status;
+		$condition = array();
+		$condition['id'] = $id;
+		$result = update_record($tblpackages,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	else
+	{
+		$data = array();
+		$data['title'] = $title;
+		$data['price'] = $price;
+		$data['post_ads'] = $post_ads;
+		$data['bump_up'] = $bump_up;
+		$data['status'] = $status;
+		$id = insert_record($tblpackages,$data);
+		if($id>0)
+		{
+			$_SESSION['sysErr']['msg'] = "Record added successfully";
+		}
+	}
+	
+	header("location:index.php?p=packages");
+	exit;
+}
+if($p == "delpackages")
+{
+	$id = dec_password($_GET['id']);
+	$id = (int)$id;
+	$data = array();
+	$data['trash'] = '1';
+	$condition = array();
+	$condition['id'] = $id;
+	$result = update_record($tblpackages,$data,$condition);
+	if($result){
+		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
+	}
+	header("location:index.php?p=packages");
+	exit;
+}
+
+if($p == "addeditcategory")
+{
+	foreach ($_POST as $k => $v )
+	{
+		$$k = addslashes($v);
+		$_SESSION['sysData'][$k] = $v;
+	}
+ 	$enc_id = $id;
+	if($id){
+		$id = dec_password($id);
+	}
+	if(!$title){
+		$_SESSION['sysErr']['msg'] = "Please enter category title";
+		$flg = true;
+	}
+	if($flg){
+		header("location:index.php?p=addeditcategory&id=".$enc_id);
+		exit;
+	}
+	if( $id > 0 )
+	{
+		$data = array();
+		$data['pid'] = $pid;
+		$data['title'] = $title;
+		$data['description'] = $description;
+		$data['status'] = $status;
+		$condition = array();
+		$condition['id'] = $id;
+		$result = update_record($tblcategories,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	else
+	{
+		$data = array();
+		$data['pid'] = $pid;
+		$data['title'] = $title;
+		$data['description'] = $description;
+		$data['status'] = $status;
+		$id = insert_record($tblcategories,$data);
+		if($id>0)
+		{
+			$_SESSION['sysErr']['msg'] = "Record added successfully";
+		}
+	}
+	
+	header("location:index.php?p=categories");
+	exit;
+}
+if($p == "delcategory")
+{
+	$id = dec_password($_GET['id']);
+	$id = (int)$id;
+	$data = array();
+	$data['trash'] = '1';
+	$condition = array();
+	$condition['id'] = $id;
+	$result = update_record($tblcategories,$data,$condition);
+	if($result){
+		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
+	}
+	header("location:index.php?p=categories");
+	exit;
+}
+
+if($p == "addedituser")
+{
+	foreach ($_POST as $k => $v )
+	{
+		if(is_array($v)){
+			$v = implode(",",$v);
+			$$k = $v;
+		} else {
+			$$k = addslashes($v);
+		}
+		$_SESSION['sysData'][$k] = $v;
+	}
+ 	$enc_id = $id;
+	if($id){
+		$id = dec_password($id);
+	}  
+	
+	if( $id > 0 )
+	{
+		$data = array();
+		$data['name'] = $name;
+		$data['email'] = $email;
+		$data['password'] = $password;
+		$data['phone'] = $phone;
+		$data['zip'] = $zip;
+		$data['state'] = $state;
+		$data['city'] = $city;
+		$data['address'] = $address;
+		$data['status'] = $status;
+		$condition = array();
+		$condition['id'] = $id;
+		$result = update_record($tblusers,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	else
+	{
+		$data = array();
+		$data['name'] = $name;
+		$data['email'] = $email;
+		$data['password'] = $password;
+		$data['phone'] = $phone;
+		$data['zip'] = $zip;
+		$data['state'] = $state;
+		$data['city'] = $city;
+		$data['address'] = $address;
+		$data['status'] = $status;
+		$id = insert_record($tblusers,$data);
+		if($id>0)
+		{
+			$_SESSION['sysErr']['msg'] = "Record added successfully";
+		}
+	}
+	
+	header("location:index.php?p=users");
+	exit;
+}
+
+if($p == "delusers")
+{
+	$id = dec_password($_GET['id']);
+	$id = (int)$id;
+	$data = array();
+	$data['trash'] = '1';
+	$condition = array();
+	$condition['id'] = $id;
+	$result = update_record($tblusers,$data,$condition);
+	if($result){
+		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
+	}
+	header("location:index.php?p=users");
+	exit;
+}
+
+if($p == "addeditcms")
+{
+	foreach ($_POST as $k => $v )
+	{
+		$$k = addslashes($v);
+		$_SESSION['sysData'][$k] = $v;
+	}
+ 	
+	if( $type )
+	{
+		$data = array();
+		
+		$data['content'] = $content;
+		$condition = array();
+		$condition['type'] = $type;
+		$result = update_record($tblcms,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	
+	header("location:index.php?p=cms");
+	exit;
+}
+
+if($p == "addeditfaq")
+{
+	foreach ($_POST as $k => $v )
+	{
+		if(is_array($v)){
+			$v = implode(",",$v);
+			$$k = $v;
+		} else {
+			$$k = addslashes($v);
+		}
+		$_SESSION['sysData'][$k] = $v;
+	}
+ 	$enc_id = $id;
+	if($id){
+		$id = dec_password($id);
+	}  
+	
+	if( $id > 0 )
+	{
+		$data = array();
+		
+		$data['title'] = $title;
+		$data['description'] = $description;
+		$data['status'] = $faq_status;
+		$condition = array();
+		$condition['id'] = $id;
+		$result = update_record($tblfaq,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	else
+	{
+		$data = array();
+		
+		$data['title'] = $title;
+		$data['description'] = $description;
+		$data['status'] = $status;
+		$id = insert_record($tblfaq,$data);
+		if($id>0)
+		{
+			$_SESSION['sysErr']['msg'] = "Record added successfully";
+		}
+	}
+	
+	header("location:index.php?p=faqs");
+	exit;
+}
+
+
+if($p == "delfaqs")
+{
+	$id = dec_password($_GET['id']);
+	$id = (int)$id;
+	$data = array();
+	$data['trash'] = '1';
+	$condition = array();
+	$condition['id'] = $id;
+	$result = update_record($tblfaq,$data,$condition);
+	if($result){
+		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
+	}
+	header("location:index.php?p=faqs");
+	exit;
+}
+
+if($p == "addeditsetting")
+{
+	foreach ($_POST as $k => $v )
+	{
+		$$k = addslashes(htmlspecialchars($v));
+		$_SESSION['sysData'][$k] = $v;
+	}
+	$enc_id = $id;
+	if($id){
+		$id = dec_password($id);
+	}
+	$flg = false;
+	
+	if(!$value_name)
+	{
+		$_SESSION['sysErr']['value_name'] = "Please Enter Value";
+		$flg = true;
+	}
+	if($flg)
+	{
+		header("location:index.php?p=addeditsetting&id=".$enc_id);exit;
+	}
+	if( $id > 0 )
+	{
+		$data = array();
+		$data['option_name'] = $option_name;
+		$data['value_name'] = $value_name;
+		$condition = array();
+		$condition['id'] = $id;
+		$result = update_record($tblsettings,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	else
+	{
+		$data = array();
+		$data['option_name'] = $option_name;
+		$data['value_name'] = $value_name;
+		$id = insert_record($tblsettings,$data);
+		if($id>0)
+		{
+			$_SESSION['sysErr']['msg'] = "Record added successfully";
+		}
+	}
+	
+	header("location:index.php?p=setting");
+	exit;
+} 
+
+if($p == "addeditnews")
+{
+	foreach ($_POST as $k => $v )
+	{
+		if(is_array($v)){
+			$v = implode(",",$v);
+			$$k = $v;
+		} else {
+			$$k = addslashes($v);
+		}
+		$_SESSION['sysData'][$k] = $v;
+	}
+	$enc_id = $id;
+	if($id){
+		$id = dec_password($id);
+	}
+	$flg = false;
+	
+	if(!$title)
+	{
+		$_SESSION['sysErr']['title'] = "Please enter name";
+		$flg = true;
+	}
+	
+	/*if(!$slug)
+	{
+		$_SESSION['sysErr']['slug'] = "Please enter slug";
+		$flg = true;
+	}
+	
+	if($flg)
+	{
+		header("location:index.php?p=addeditnews&id=".$enc_id);exit;
+	} */
+	
+	if( $id > 0 )
+	{
+		$data = array();
+		$data['title'] = $title;
+		//$data['slug'] = $slug;
+		$data['description'] = $description;
+		$data['status'] = $status;
+		$condition = array();
+		$condition['id'] = $id;
+		$result = update_record($tblnews,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	else
+	{
+		$data = array();
+		$data['title'] = $title;
+		//$data['slug'] = $slug;
+		$data['description'] = $description;
+		$data['status'] = $status;
+		$id = insert_record($tblnews,$data);
+		if($id>0)
+		{
+			$_SESSION['sysErr']['msg'] = "Record added successfully";
+		}
+	}
+	if(isset($_FILES['img']['name']) and $_FILES['img']['name']){
+		$file['img'] = $_FILES['img'];
+		$img_name = upload_img($file,$dir_site_news,$slug);
+		if($img_name){
+			///resize_img($img_name,$dir_site_news);
+			$data = array();
+			$data['img'] = $img_name;
+			$condition = array();
+			$condition['id'] = $id;
+			update_record($tblnews,$data,$condition);
+		}
+	}
+	///echo $sql;exit;
+	header("location:index.php?p=news");
+	exit;
+}
+if($p == "delnews")
+{
+	$id = dec_password($_GET['id']);
+	$id = (int)$id;
+	$data = array();
+	$data['trash'] = '1';
+	$condition = array();
+	$condition['id'] = $id;
+	$result = update_record($tblnews,$data,$condition);
+	if($result){
+		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
+	}
+	header("location:index.php?p=news");
+	exit;
+}
+
+?>

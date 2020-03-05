@@ -1,0 +1,128 @@
+body{
+	font-size: 14px;
+	color: #333;
+}
+.fa-trash { color: #f00; }
+.navbar { padding: 0px; }
+.navbar .nav-item { padding: 0px 10px; }
+a:hover { text-decoration: none; }
+
+a.btn { color: #fff; }
+
+.nopadding { padding: 0px; }
+.pl0 { padding-left: 0px; }
+.pr0 { padding-right: 0px; }
+
+.brl { border-radius: 5px 0px 0px 5px; }
+.brr { border-radius: 0px 5px 5px 0px; }
+
+.pt10 { padding-top: 10px }
+.pt20 { padding-top: 20px }
+.pt30 { padding-top: 30px }
+.pt40 { padding-top: 40px }
+.pt50 { padding-top: 50px }
+
+.pb10 { padding-bottom: 10px }
+.pb20 { padding-bottom: 20px }
+.pb30 { padding-bottom: 30px }
+.pb40 { padding-bottom: 40px }
+.pb50 { padding-bottom: 50px }
+
+.mt10 { margin-top: 10px }
+.mt20 { margin-top: 20px }
+.mt30 { margin-top: 30px }
+.mt40 { margin-top: 40px }
+.mt50 { margin-top: 50px }
+
+.mb10 { margin-bottom: 10px }
+.mb20 { margin-bottom: 20px }
+.mb30 { margin-bottom: 30px }
+.mb40 { margin-bottom: 40px }
+.mb50 { margin-bottom: 50px }
+
+.section_spacer { padding-top: 30px; padding-bottom: 50px; }
+.inner_banner {
+	width:100%;
+    height: 500px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    background-size: cover;
+}
+.bg_image { background-image: url(images/banner2.png); background-color: #031542; }
+.header { height: 100px; padding-top: 30px; }
+.header .header_menu { float: right; }
+.header a {  color: #fff; font-size: 16px; }
+.menu_bar { background-color: #1d3c72; color: #fff; font-size: 16px; opacity: .8; border-bottom: 1px solid #5d5d5d; height: 50px; line-height: 50px; text-align: center; }
+.menu_bar a {  color: #fff; font-size: 16px; padding: 10px 20px; }
+
+.top_banner_section { padding: 100px 0px; text-align: center; }
+.banner_caption { font-size: 36px; font-weight: bold; color: #fff; font-family: 'Roboto Slab', sans-serif; text-transform: uppercase; padding-bottom: 40px; }
+.banner_search_btn { margin-top: 30px; }
+
+.search_fields { border-radius: 0px; height: 40px; line-height: 40px; }
+.full_width { width: 100%; }
+
+.btn-success { background-image: linear-gradient(to bottom, #8E52A4, #704181 49%, #704181 51%,
+#4B2B56); background-repeat: repeat-x; border:0px; border-radius:40px; padding:12px 30px; font-size:20px; }
+
+.center { text-align: center; }
+.err_div { width: 100%; background-color: #ddd; border:1px solid #ccc; padding: 10px; text-align: center; }
+.err, .err_msg { color: #f00; }
+.heading { color: #031542; font-size: 30px; font-weight: bold; }
+.heading2 { color: #DC2328; font-size: 20px; font-weight: bold; }
+.heading3 { font-size: 16px; font-weight: bold; }
+.small_text { font-size: 12px; }
+.bold { font-weight: bold; }
+.footer_heading { color: #4885ed; text-transform: uppercase; font-size: 15px; font-weight: bold; }
+
+.bgcolor { background-color: #F6FAFD; }
+.like { position: absolute; top: 10px; left: 25px; color: #fff; text-shadow: 0px 0px 5px #000; }
+.like:hover {  color: #f00; text-shadow: 0px 0px 5px #fff; }
+.liked { position: absolute; top: 10px; left: 25px; color: #f00; text-shadow: 0px 0px 5px #fff; }
+
+.mybox { border: 1px solid #CDD6E1; min-height: 234px; margin:50px 0 20px; padding:40px 20px 20px; text-align: center; }
+.mybox:hover { background-color: #fff; border: #e22029 solid 1px; }
+.mybox .fa { position: absolute; top: -50px; left: calc(50% - 25px); width: 50px; background-color: #031542; color: #fff; padding: 10px;  }
+.mybox:hover .fa { background-color: #e22029;;  }
+.mybox .title { color: #031542; font-size: 18px; font-weight: bold; text-transform: uppercase; padding-bottom: 25px; }
+.mybox a { font-size: 16px; font-weight: 400; color: #888; }
+
+.mybox2 { background-color: #fff; padding: 20px 0px; box-shadow: 0px 0px 5px #ccc; margin: 1px; }
+.mybox2 .title { color: #031542; font-size: 18px; font-weight: bold; text-transform: uppercase; padding-bottom: 15px; }
+.mybox2 .btn { margin-top: 20px; }
+
+.imgdiv, .imgdiv2 { height: 160px; text-align: center; overflow: hidden; }
+.imgdiv2 { height: 200px; }
+.imgdiv2 img, .imgdiv img { height: 100%; }
+
+.mybox3 { background-color: #fff; box-shadow: 0px 0px 5px #ccc; margin: 1px; border: 1px solid #8898AA; }
+.mybox3 .title { background-color: #031542; color: #fff; width: 100%; padding: 10px 20px; font-size: 18px; font-weight: bold; text-transform: uppercase; }
+.mybox3 .listing { width: 100%; padding: 10px; }
+.mybox3 .listing div { padding: 0px; line-height: 40px; border-bottom: 1px solid #8898AA; }
+.mybox3 .listing div.last { border-bottom: 0px; }
+.mybox3 .listing a { font-size: 16px; color: #B098AA; }
+
+.mybox_news { background-color: #fff; padding: 20px 0px; box-shadow: 0px 0px 5px #ccc; margin: 1px; }
+.mybox_news .title { color: #031542; font-size: 18px; font-weight: bold; text-transform: uppercase; padding-bottom: 15px; }
+.mybox_news .btn { margin-top: 20px; }
+
+.search_box { border: 1px solid #E0E0E0; padding: 10px; }
+.search_box .border_bottom { border-bottom: 1px solid #E0E0E0; padding-bottom: 20px; margin-bottom: 20px; }
+.border_bottom { border-bottom: 1px solid #E0E0E0; padding-bottom: 10px; margin-bottom: 20px; }
+
+.user_icon { width: 50px; border-radius: 50px; }
+
+.chat_box { position: relative; width: 100%; height: 100%; max-height: 400px; overflow: auto; border: 1px solid #eee; padding: 10px; border-radius: 10px 10px 0 0; }
+.chat_msg { position: relative; float: left; width: 100%; overflow: hidden; }
+.chat_msg1 { position: relative; float: left; padding: 10px; margin: 5px 0; background-color: #031542; color: #fff; border-radius: 10px 10px 10px 0; }
+.chat_msg2 { position: relative; float: right; padding: 10px; margin: 5px 0; background-color: #E22029; color: #fff; border-radius: 10px 10px 0px 10px; text-align: right; }
+.chat_send { background-color: #eee; padding: 10px; }
+.chat_send .btn { width: 100%; height: 100%; }
+
+.packages { border: 1px solid #ccc; border-radius: 10px; line-height: 40px; margin: 1px; padding-bottom: 15px; font-size: 20px; }
+.packages div { border-bottom: 1px solid #ccc; }
+.packages div:first-child { font-weight: bold; }
+.packages div.last { border-bottom: 0px; padding-top: 10px; }
+
+.footer { background-color: #031543; color: #fff; }
+.footer a { color: #fff; }
