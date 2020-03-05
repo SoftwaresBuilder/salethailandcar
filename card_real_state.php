@@ -5,6 +5,7 @@ $imgs = get_product_imgs($product['id'],'1');
 	<div class="col-12">
 		<div class="imgdiv">
 			<img src="<?php echo $imgs[0];?>">
+			
 			<?php include("like.php");?>
 		</div>
 	</div>
