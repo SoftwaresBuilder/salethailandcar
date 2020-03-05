@@ -47,7 +47,7 @@ if($p=="chat_send"){
 	exit;
 }
 
-if($p=="updat_subcategories"){
+if($p=="update_subcategories"){
 	$id = $_POST['id'];
 	$subcategory = get_records($tblcategories,"pid='".$id."' and status='1' and trash='0'","title ASC");
 	$html = '<option value="">Select Subcategory</option>';
