@@ -222,4 +222,30 @@ if($p=="get_price_sort"){
 
 		exit;
 }	
+if($p=="change_product_status"){    
+    $p_id = $_GET['id'];
+ 	$status =$_GET['status'];
+
+ 	$data = array();
+	$data['status'] = $status;
+	$condition = array();
+	$condition['id'] = $p_id;
+	$result = update_record($tblproducts,$data,$condition);
+
+    if($status!=1){
+    ?>
+        <a href ="javascript:void(0);" onclick="update_status(1,<?php echo $p_id; ?>);">Activate</a>
+    <?php
+    } if($status!=2){
+    ?>
+        <a href ="javascript:void(0);" onclick="update_status(2,<?php echo $p_id; ?>);">Sold</a>
+    <?php
+    } if($status!=3){
+    ?>
+        <a href="javascript:void(0);" onclick="update_status(3,<?php echo $p_id; ?>);">Expired</a>
+    <?php
+    }
+    
+	exit;
+}	
 ?>

@@ -585,11 +585,22 @@ function sort_by_price()
             success: function(data){
               $('#serach_results').html('');
                $('#serach_results').html(data);
-
-               
-
+             } 
+        });
+}
+function update_status(status,id)
+{
+  var status = status;
+   $.ajax({
+            type: "GET",
+            url: "ajaxphp.php",
+             dataType: 'html',  
+            data: {id:id,status:status,p:'change_product_status'},
+           success: function(data){
+              $('#action_'+id).html(data);
             } 
         });
+             
 }
 </script>
 
