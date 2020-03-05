@@ -3,9 +3,33 @@
 if(!isset($_SESSION['sysData']['name'])) {
     $_SESSION['sysData'] = table_fields($tblusers);
 }
+$user_details = get_records($tblusers,'id ='.$_SESSION['user_record']['id']);
+$query ='SELECT COUNT(id) FROM ' .$tblproducts. ' WHERE user_id = ' .$user_details[0]['id'];
+$query_pending_approvals ='SELECT COUNT(id) FROM ' .$tblproducts. ' WHERE user_id = ' .$user_details[0]['id']. ' AND status = 0';
+$query_favourites ='SELECT COUNT(id) FROM ' .$tblproduct_favorites. ' WHERE user_id = ' .$user_details[0]['id'];
+
+$count_ads = sql($query);
+$count_pending_ads = sql($query_pending_approvals);
+$count_favourites = sql($query_favourites);
+
 ?>
 
 <div class="container">
+    <div class="row">
+        <div style="background-color: #e6e9ed; margin-bottom: 20px;" class="col-md-4">
+            <img width="80px" height="80px" style="border-radius: 50px; margin-top: 10px" src="images/user.jpg">
+            <span style="margin-left: 20px"></span>
+            <?php echo $user_details[0]['name']; ?>
+
+          </div>
+         <div style="background-color: #e6e9ed; margin-bottom: 20px;" class="col-md-4">Total Ads <?php echo $count_ads[0]['COUNT(id)'] ?> </div>
+         <div style="background-color: #e6e9ed; margin-bottom: 20px;" class="col-md-4">Favourite ads <?php echo $count_favourites[0]['COUNT(id)'] ?></div>
+    </div>
+    <div class="row">
+          <div style="background-color: #e6e9ed" class="col-md-4">Remaings Bids <?php echo $user_details[0]['post_ads']; ?></div>
+         <div style="background-color: #e6e9ed" class="col-md-4">Remaing bumps up <?php echo $user_details[0]['bump_up']; ?></div>
+         <div style="background-color: #e6e9ed" class="col-md-4">Pending approvals <?php echo $count_pending_ads[0]['COUNT(id)'] ?></div>
+    </div>
     <div class="row">
         <div class="col-12 heading">My Profile</div>
     </div>
