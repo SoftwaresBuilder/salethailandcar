@@ -26,20 +26,78 @@ $category = get_records($tblcategories,"pid='0' and status='1' and trash='0'","t
 $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and status='1' and trash='0'","title ASC");
 
 ?>
+<script type="text/javascript">
+    function cat_div_show(){
+        $("#select_Category_div").show("slow");
+    }
+    function hide_div(){
+        $("#select_Category_div").hide("slow");
+    }
+</script>
+<style type="text/css">
+    .form_fields{
+        margin-bottom: 20px;
+    }
+ #select_Category_div{
+    display: none; 
+    z-index: 2;
+    position: fixed;
+    top: 25px;
+    bottom: 10px;
+    left: 20%;
+    height: 85%;
+    width: 60%;
+    overflow: auto;
+</style>
 
 <div class="container">
-    <div class="section_spacer">
-        <?php show_errors();?>
-        <div class="row">
-            <div class="col-12 heading">Save Product</div>
-        </div>
-        <form action="process.php?p=add_product" enctype="multipart/form-data" method="post">
+    <div class="row">
+        <div class="col-md-9">
+        <div class="section_spacer">
             <?php show_errors();?>
             <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                        <label>Category <span class="err">*</span></label>
-                         <select required class="form-control" id="category_id" name="category_id" onchange="updat_subcategories(this.value);">
+                <div class="col-12 heading">Post a Free Classified Ad</div>
+            </div>
+            <form action="process.php?p=add_product" enctype="multipart/form-data" method="post">
+                <?php show_errors();?>
+               
+                    <div class="row form_fields">
+                        <div class="col-md-3">Ad Type</div>
+                        <div class="col-md-3">
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="ad_type" id="inlineRadio1" value="Private"> <span class="light-text-1">Private</span>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="ad_type" id="inlineRadio2" value="Business"> <span class="light-text-1">Business</span>
+                            </label>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row form_fields">
+                        <div class="col-md-3">Add Title</div>
+                        <div class="col-md-8">
+                        <div class="form-group">
+                           
+                            <input type="text" required class="form-control" id="title" name="title" placeholder="" value="<?= $_SESSION['sysData']['title'];?>">
+                        </div>
+                        </div>
+                    </div>
+                     <div class="row form_fields">
+                        <div class="col-md-3">Ad Description</div>
+                        <div class="col-md-8">
+                        <div class="form-group">
+                            
+                            <textarea class="form-control" rows="3" id="description" name="description" placeholder=""><?= $_SESSION['sysData']['description'];?></textarea>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row form_fields">
+                        <div class="col-md-3">Category</div>
+                        <div class="col-md-8">
+                        <select required class="form-control" id="category_id" name="category_id" onchange="update_subcategories(this.value);">
                             <option value="">Select Category</option>
                             <?php
                             if(count($category)>0){
@@ -50,12 +108,12 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                                 }
                             }
                             ?>
-                         </select>
+                        </select>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                        <label>SubCategory <span class="err">*</span></label>
+                    <div class="row form_fields">
+                        <div class="col-md-3">SubCategory</div>
+                        <div class="col-md-8">
                         <select required class="form-control" id="subcategory_id" name="subcategory_id">
                             <option value="">Select SubCategory</option>
                             <?php
@@ -68,127 +126,73 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                             }
                             ?>
                         </select>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                        <label>Product Name</label>
-                        <input type="text" required class="form-control" id="title" name="title" placeholder="Enter product name" value="<?= $_SESSION['sysData']['title'];?>">
+                    <div class="row form_fields">
+                        <div class="col-md-3">For</div>
+                        <div class="col-md-8">
+                            <select required class="form-control" id="type" name="type">
+                                <option value="">Select Type</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                        <label>Price</label>
-                        <input type="number" min="0" required class="form-control" id="price" name="price" placeholder="Price" value="<?= $_SESSION['sysData']['price'];?>">
+                    <div class="row form_fields">
+                        <div class="col-md-3">Price</div>
+                        <div class="col-md-8">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-adon1"><?php echo $cons_currency;?></span>
+                                <input type="text" required class="form-control" id="price" name="price" placeholder="Price" value="">
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                        <label>Location</label>
-                        <input type="text" class="form-control" id="location" name="location" placeholder="Location" value="<?= $_SESSION['sysData']['location'];?>">
+                    <div class="row form_fields">
+                        <div class="col-md-3">Picture</div>
+                        <div class="col-md-8">
+                            <div style="background-color:#dcdee6;height: 300px; width: 100%;">
+                            <img id="blah" onclick="" alt="" width="100%" height="300px" /></div>
+                            <input type="file"  onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                        <label>Type</label>
-                        <input type="text" class="form-control" id="type" name="type" placeholder="Type" value="<?= $_SESSION['sysData']['type'];?>">
+                     <div class="row form_fields">
+                        <div class="col-md-3">Address</div>
+                        <div class="col-md-8">
+                             <input type="text" required class="form-control" id="title" name="title" placeholder="" value="<?= $_SESSION['sysData']['title'];?>">
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                        <label>Model</label>
-                        <input type="text" class="form-control" id="model" name="model" placeholder="Model" value="<?= $_SESSION['sysData']['model'];?>">
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                        <label>Brand</label>
-                        <input type="text" class="form-control" id="brand" name="brand" placeholder="Brand" value="<?= $_SESSION['sysData']['brand'];?>">
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                        <label>Registration Year</label>
-                        <input type="text" class="form-control" id="year_registration" name="year_registration" placeholder="year_registration" value="<?= $_SESSION['sysData']['year_registration'];?>">
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                        <label>Driven (Km)</label>
-                        <input type="number" class="form-control" id="driven" name="driven" min="0" value="<?= $_SESSION['sysData']['driven'];?>">
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                        <label>Fuel Type</label>
-                        <input type="text" class="form-control" id="fuel_type" name="fuel_type" placeholder="Fuel Type" value="<?= $_SESSION['sysData']['fuel_type'];?>">
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                        <label>Gear Box</label>
-                        <input type="text" class="form-control" id="gearbox" name="gearbox" placeholder="Gear Box" value="<?= $_SESSION['sysData']['gearbox'];?>">
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="form-group">
-                        <label>Features</label>
-                        <input type="text" class="form-control" id="features" name="features" placeholder="Features" value="<?= $_SESSION['sysData']['features'];?>">
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label>Description</label>
-                        <textarea class="form-control" rows="3" id="description" name="description" placeholder="Description"><?= $_SESSION['sysData']['description'];?></textarea>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="row">
-                      <div class="col-12" id="uploaded_images">
-                          <label>Product Images</label>
-                          <a href="javascript:;" class="pull-right" onclick="add_image();">Add Another Image</a>
-                          <?php
-                          if(isset($_SESSION['sysData']['id'])){
-                            echo '<div class="row">';
-                            $product_images = get_records($tblproduct_images,"product_id='".$_SESSION['sysData']['id']."' AND trash='0'");
-                            if(count($product_images)>0){
-                              foreach ($product_images as $v) {
-                                $product_img = get_upload_img($v['img']);
-                              ?>
-                                <div class="col-12 col-md-3">
-                                  <img src="<?php echo $product_img;?>" class="img-fluid"><br>
-                                  <a href="process.php?p=delproduct_img&id=<?php echo enc_password($v['id']);?>" title="Delete Image"><i class="fa fa-trash"></i></a>
-                                </div>
-                              <?php
-                              }
-                            }
-                            echo '</div>';
-                          }
-                          ?>
-                      </div>
-                      <div class="col-12 mb20">
-                          <div class="row" id="upload_images">
-                            <div class="col-12 col-md-3"><input type="file" name="img[]"></div>
-                          </div>
-                      </div>
-                      <script type="text/javascript">
-                        function add_image(){
-                          var html = '<div class="col-12 col-md-3"><input type="file" name="img[]"></div>';
-                          $("#upload_images").append(html)
-                        }
-                      </script>
-                    </div>
-                </div>
-                <div class="col-md-12"><?php include("gmap.php");?></div>
+             <div class="col-md-12"><?php include("gmap.php");?></div>
+     
+            </form>
+        </div>
+    </div>
+    <div class="col-md-3" style="margin-top: 30px;">
+          
+          <div class="col-12 heading">Post a Free Classified  </div>
+          
+                <p class="light-text-0">
+                    Post your free online classified ads with us. Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit.            </p>
+                
 
-                <div class="col-md-12">
-                    <input type="hidden" name="id" value="<?php echo dec_password($id);?>">
-                    <button type="submit" class="btn btn-primary" name="Submit">Save Product</button>
+                <div class="card bg-transparent mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title light-text-1 mt-3">
+                            How to sell quickly?
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li class="text-secondary list-item"> <i class="fa fa-check"></i> Use a brief title and description of the item </li>
+                            <li class="text-secondary list-item"> <i class="fa fa-check"></i>  Make sure you post in the correct category</li>
+                            <li class="text-secondary list-item"> <i class="fa fa-check"></i>  Add nice photos to your ad</li>
+                            <li class="text-secondary list-item"> <i class="fa fa-check"></i>  Put a reasonable price</li>
+                            <li class="text-secondary list-item"> <i class="fa fa-check"></i>  Check the item before publish</li>
+
+                        </ul>
+                        <a href="" class="btn btn-primary" style="margin-top: 10px">View Details</a>
+                    
                 </div>
             </div>
-          <div class="clearfix"></div>
-        </form>
-    </div> 
+    </div>
+</div> 
+   
 </div>
 
 <?php include'footer.php';?>

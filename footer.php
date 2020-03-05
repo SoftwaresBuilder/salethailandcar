@@ -507,7 +507,7 @@ function delete_record(url,modal_msg="",modal_tlt=""){
 </script>
 
 <script type="text/javascript">
-function updat_subcategories(id){
+function update_subcategories(id){
   $(".hide_class").hide();
   
   if($("#category_id option:selected").text()==="Vehicle"){
@@ -516,11 +516,23 @@ function updat_subcategories(id){
   $("#subcategory_id").html('<option value="">Loading...</option>');
   $.ajax({
     method: "POST",
-    url: "ajaxphp.php?p=updat_subcategories",
+    url: "ajaxphp.php?p=update_subcategories",
     data: { id: id }
   })
   .done(function( msg ) {
     $("#subcategory_id").html(msg);
+  });
+  update_ad_type(id);
+}
+function update_ad_type(id){
+  $("#type").html('<option value="">Loading...</option>');
+  $.ajax({
+    method: "POST",
+    url: "ajaxphp.php?p=update_ad_type",
+    data: { id: id }
+  })
+  .done(function( msg ) {
+    $("#type").html(msg);
   });
 }
 function show_radio_val(str){
