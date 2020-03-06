@@ -85,7 +85,7 @@ function insert_record($table,$data,$show="")
 	if($result){
 		$id = mysqli_insert_id($conn);
 	}
-	
+	//echo $sql;
 	return $id;
 }
 
@@ -114,6 +114,7 @@ function update_record($table,$data=array(),$condition=array(),$show="")
 		echo "SQL: ".$sql;
 	}
 	$result = mysqli_query($conn,$sql);
+	//echo $sql;
 	return $result;
 }
 function table_fields($table)
