@@ -19,7 +19,7 @@ if(isset($_GET['id'])){
 	</div>
 	<div class="col-12 border_bottom">
 		<select class="form-control" id="price_sort" onchange="sort_by_price();">
-			<option value="">Sort By</option>
+			<option value="default">Sort By</option>
 
                                 
           <option value="low_to_high">Price Low to High</option>

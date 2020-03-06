@@ -639,6 +639,7 @@ if($p=="logout"){
 }
 
 if($p=="subscribed"){
+	
 	foreach ($_POST as $k => $v )
 	{
 		$$k = addslashes($v);
