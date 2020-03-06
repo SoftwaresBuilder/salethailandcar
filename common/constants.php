@@ -2,5 +2,9 @@
 $cons_sitetitle = getsettings("site title");
 $max_results = getsettings("show records");
 
-$cons_currency = '$';
+$thai_rate = '31.41';
+$usd_rate = '1';
+
+$cons_thai = "฿";
+$cons_usd = "$";
 ?>
