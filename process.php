@@ -355,6 +355,42 @@ if($p=="add_product"){
 	header("location:add_product_detail.php?id=".enc_password($id));
 	exit;
 }
+if($p=="add_product_detail"){
+	foreach ($_POST as $k => $v )
+	{
+		if(!is_array($v)){
+			$$k = addslashes($v);
+			$_SESSION['sysData'][$k] = $v;
+		}
+	}
+	
+	if($flg)
+	{
+		header("location:".$_SESSION['page_url']);
+		exit;
+	}
+
+	if( $id > 0 )
+	{
+		$data = array();
+		$data['brand'] = $brand;
+		$data['year_registration'] = $year_registration;
+		$data['driven'] = $driven;
+		$data['fuel_type'] = $fuel_type;
+		$data['gearbox'] = $gearbox;
+		$data['features'] = $features;
+		$condition = array();
+		$condition['id'] = $id;
+		$result = update_record($tblproducts ,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	
+	header("location:dashboard.php");
+	exit;
+}
 
 if($p=="login"){
 	foreach ($_POST as $k => $v )
