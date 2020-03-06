@@ -44,12 +44,20 @@ function submitUserForm_signup() {
         </div>
       </div>
       <div class="col-12 col-md-3">
-        <div class="row">
-          <div class="col-12 footer_heading mb10">Subscribe To Us</div>
-          <div class="col-12 mb10">Subscribe to our newsletter and stay updated to our latest news.</div>
-          <div class="col-9 pr0"><input type="text" class="form-control brl" placeholder="Enter your email"></div>
-          <div class="col-3 pl0"><button class="btn btn-primary full_width brr"><i class="fa fa-paper-plane"></i></button></div>
-        </div>
+          <div class="row">
+              <div class="col-12 footer_heading mb10">Subscribe To Us</div>
+              <div class="col-12 mb10">Subscribe to our newsletter and stay updated to our latest news.</div>
+              <form action="process.php?p=subscribed" method="post">
+                  <div class="row">
+                  <div class="col-9 pr0"><input type="email" required class="form-control brl" name="email" id="email" placeholder="Enter your email">
+                  </div>
+                  <div class="col-3 pl0"><button type="submit" class="btn btn-primary full_width brr">
+                   <i class="fa fa-paper-plane"></i>
+                  </button></div>
+                  </div>
+              </form>
+              
+          </div>
       </div>
       <div class="col-12 col-md-2">
         <div class="row">
@@ -637,6 +645,26 @@ function update_status(status,id)
             } 
         });
              
+}
+function bump_up(id)
+{
+    $.ajax({
+    type: "GET",
+    url: "ajaxphp.php",
+    dataType: 'html',
+    data: {
+        id: id,
+        p: 'bump_up_product'
+    },
+    success: function(data) {
+        if(data=='yes')
+            {$('#bump_up_' + id).html('Product is Bumped up');
+                }
+        else
+            {$('#bump_up_' + id).html('You have 0 bump up');
+                }
+        }
+     });
 }
 </script>
 

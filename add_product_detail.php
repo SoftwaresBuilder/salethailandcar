@@ -140,7 +140,8 @@ $subcategory = get_records($tblcategories,"id='".$product[0]['subcategory_id']."
                 </div>
                 <div class="col-md-12">&nbsp;</div>
                 <div class="col-md-12">
-                    <input type="submit" name="submit" class="btn btn-primary" value="SAVE AND NEXT">
+                    <input type="hidden" name="id" value="<?php echo enc_password($id);?>">
+                    <input type="submit" name="submit" class="btn btn-primary" value="SUBMIT MY AD NOW">
                 </div>
             </form>
         </div>
