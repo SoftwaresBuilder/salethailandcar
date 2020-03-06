@@ -133,13 +133,14 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                         <div class="col-md-8">
                             <select required class="form-control" id="type" name="type">
                                 <option value="">Select Type</option>
+                               
                             </select>
                         </div>
                     </div>
                     <div class="row form_fields" id="submodel_div" style="display: none;">
                         <div class="col-md-3">SubModel</div>
                         <div class="col-md-8">
-                            <select required class="form-control" id="submodel" name="submodel">
+                            <select class="form-control" id="submodel" name="submodel">s
                                 <option value="">Select SubModel</option>
                             </select>
                         </div>
@@ -147,7 +148,7 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                     <div class="row form_fields" id="model_div" style="display: none;">
                         <div class="col-md-3">Model</div>
                         <div class="col-md-8">
-                            <select required class="form-control" id="model" name="model">
+                            <select class="form-control" id="model" name="model">
                                 <option value="">Select Model</option>
                             </select>
                         </div>

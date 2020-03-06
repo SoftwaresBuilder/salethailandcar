@@ -19,5 +19,5 @@ $tblorders = $tblprefix."orders";
 $tblchat = $tblprefix."chat";
 $tblvendor_packages = $tblprefix."vendor_packages";
 $tblbidding = $tblprefix."bidding";
-
+$tblproduct_features = $tblprefix."category_features";
 ?>

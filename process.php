@@ -7,8 +7,8 @@ if(isset($_SESSION['user_record'])){
 	$user_id = $_SESSION['user_record']['id'];
 }
 $flg = false;
-echo $_GET['p'];
-echo $p = $_GET['p'];//get page reference to execute the related condition
+ $_GET['p'];
+ $p = $_GET['p'];//get page reference to execute the related condition
 
 
 if($p=="get_package"){
@@ -245,6 +245,7 @@ if($p=="delproduct_img"){
 	exit;
 }
 if($p=="add_product"){
+		
 	foreach ($_POST as $k => $v )
 	{
 		if(!is_array($v)){
@@ -320,7 +321,9 @@ if($p=="add_product"){
 		$data['gearbox'] = $gearbox;
 		$data['features'] = $features;
 		/**/
+		
 		$id = insert_record($tblproducts,$data);
+		
 		if($id>0)
 		{
 			$user = get_records($tblusers ,"id='".$user_id."'");
@@ -364,6 +367,7 @@ if($p=="add_product"){
 	exit;
 }
 if($p=="add_product_detail"){
+	
 	foreach ($_POST as $k => $v )
 	{
 		if(!is_array($v)){
@@ -372,14 +376,6 @@ if($p=="add_product_detail"){
 		}
 	}
 	
-	if($flg)
-	{
-		header("location:".$_SESSION['page_url']);
-		exit;
-	}
-
-	if( $id > 0 )
-	{
 		$data = array();
 		$data['brand'] = $brand;
 		$data['year_registration'] = $year_registration;
@@ -390,11 +386,20 @@ if($p=="add_product_detail"){
 		$condition = array();
 		$condition['id'] = $id;
 		$result = update_record($tblproducts ,$data,$condition);
+		//update vendor detail
+		$data2 = array();
+		$data2['name'] = $name;
+		$data2['phone'] = $phone;
+		$data2['email'] = $email;
+		
+		$condition2 = array();
+		$condition2['id'] = dec_password($user_id);
+		$result2 = update_record($tblusers ,$data2,$condition2); 
 		if($result)
 		{
 			$_SESSION['sysErr']['msg'] = "Record updated successfully";
 		}
-	}
+	
 	
 	header("location:dashboard.php");
 	exit;

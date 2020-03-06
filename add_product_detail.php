@@ -16,7 +16,8 @@ if(isset($_GET['id'])){
 
 $category = get_records($tblcategories,"id='".$product[0]['category_id']."'");
 $subcategory = get_records($tblcategories,"id='".$product[0]['subcategory_id']."'");
-
+$user_detail = get_records($tblusers,"id = ".$product[0]['user_id']);
+$p_features = get_records($tblproduct_features);
 ?>
 <script type="text/javascript">
     function cat_div_show(){
@@ -98,7 +99,13 @@ $subcategory = get_records($tblcategories,"id='".$product[0]['subcategory_id']."
                         <div class="col-md-3">Features</div>
                         <div class="col-md-8">
                         <div class="form-group">
-                            
+                            <?php 
+                                foreach ($p_features as $key => $f) { ?>
+                                    <div class="col-md-8">
+                                    <input type="Checkbox" name="features[]" value="<?php echo $f['id'] ?>"> <?php echo $f['title'] ?>
+                                </div>
+                              <?php }
+                            ?>
                         </div>
                         </div>
                     </div>
@@ -106,7 +113,21 @@ $subcategory = get_records($tblcategories,"id='".$product[0]['subcategory_id']."
                         <div class="col-md-3">Fuel Type</div>
                         <div class="col-md-8">
                         <div class="form-group">
-                            
+                             <div class="col-md-8">
+                                    <input type="Checkbox" name="fuel_type[]" value="1"> Petrol
+                                     </div>
+                                <div class="col-md-8">
+                                     <input type="Checkbox" name="fuel_type[]" value="2"> Diesel
+                                      </div>
+                                <div class="col-md-8">
+                                    <input type="Checkbox" name="fuel_type[]" value="3"> LPG
+                                    </div>
+                                <div class="col-md-8">
+                                    <input type="Checkbox" name="fuel_type[]" value="4"> CNG
+                                    </div>
+                                <div class="col-md-8">
+                                 <input type="Checkbox" name="fuel_type[]" value="5"> Electric
+                                </div>
                         </div>
                         </div>
                     </div>
@@ -118,7 +139,7 @@ $subcategory = get_records($tblcategories,"id='".$product[0]['subcategory_id']."
                     <div class="col-md-3">Name</div>
                     <div class="col-md-8">
                     <div class="form-group">
-                        <input type="text" required class="form-control" id="brand" name="brand" placeholder="" value="<?= $_SESSION['sysData']['brand'];?>">
+                        <input type="text" required class="form-control" id="name" name="name" placeholder="" value="<?php echo $user_detail[0]['name'];?>">
                     </div>
                     </div>
                 </div>
@@ -126,7 +147,7 @@ $subcategory = get_records($tblcategories,"id='".$product[0]['subcategory_id']."
                     <div class="col-md-3">Mobile Number</div>
                     <div class="col-md-8">
                     <div class="form-group">
-                        <input type="text" required class="form-control" id="brand" name="brand" placeholder="" value="<?= $_SESSION['sysData']['brand'];?>">
+                        <input type="text" required class="form-control" id="phone" name="phone" placeholder="" value="<?php echo $user_detail[0]['phone'];?>">
                     </div>
                     </div>
                 </div>
@@ -134,13 +155,14 @@ $subcategory = get_records($tblcategories,"id='".$product[0]['subcategory_id']."
                     <div class="col-md-3">Email</div>
                     <div class="col-md-8">
                     <div class="form-group">
-                        <input type="text" required class="form-control" id="brand" name="brand" placeholder="" value="<?= $_SESSION['sysData']['brand'];?>">
+                        <input type="text" required class="form-control" id="Email" name="email" placeholder="" value="<?php echo $user_detail[0]['email'];?>">
                     </div>
                     </div>
                 </div>
                 <div class="col-md-12">&nbsp;</div>
                 <div class="col-md-12">
                     <input type="hidden" name="id" value="<?php echo enc_password($id);?>">
+                    <input type="hidden" name="user_id" value="<?php echo enc_password($user_detail[0]['id']);?>">
                     <input type="submit" name="submit" class="btn btn-primary" value="SUBMIT MY AD NOW">
                 </div>
             </form>
