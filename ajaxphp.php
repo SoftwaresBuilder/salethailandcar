@@ -245,6 +245,9 @@ if($p=="get_price_sort"){
 		else if($sort_by=="high_to_low"){
 			$order_by .= " price desc ";
 		}
+		else if($sort_by=="default"){
+			$order_by .= " sort_date ASC ";
+		}
 		
 		 $condition; 
 	 	 $products = get_records($tblproducts,$condition,$order_by,"");
@@ -265,7 +268,7 @@ if($p=="get_price_sort"){
 }	
 if($p=="change_product_status"){    
     $p_id = $_GET['id'];
- 	$status =$_GET['status'];
+ 	$status = $_GET['status'];
 
  	$data = array();
 	$data['status'] = $status;
@@ -287,6 +290,27 @@ if($p=="change_product_status"){
     <?php
     }
     
+	exit;
+}	
+if($p=="bump_up_product"){    
+    $p_id = $_GET['id'];
+    $results = get_records($tblusers,'id = '.$_SESSION['user_record']['id']);
+    if($results[0]['bump_up']>0){
+    	$data = array();
+		$data['bump_up'] = $results[0]['bump_up']-1;
+		$condition = array();
+		$condition['id'] = $results[0]['id'];
+		$result = update_record($tblusers,$data,$condition);
+		$data2 = array();
+		$data2['sort_date'] = date('Y-m-d H:i:s');
+		$condition2 = array();
+		$condition2['id'] = $p_id;
+		$result2 = update_record($tblproducts,$data2,$condition2);
+		echo 'yes';
+    }
+    else {
+    	echo 'no';
+    }
 	exit;
 }	
 ?>
