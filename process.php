@@ -270,13 +270,17 @@ if($p=="add_product"){
 		$data['latitude'] = $latitude;
 		$data['location'] = $location;
 		$data['type'] = $type;
+		$data['ad_type'] = $ad_type;
+		$data['submodel'] = $submodel;
 		$data['model'] = $model;
+		/**
 		$data['brand'] = $brand;
 		$data['year_registration'] = $year_registration;
 		$data['driven'] = $driven;
 		$data['fuel_type'] = $fuel_type;
 		$data['gearbox'] = $gearbox;
 		$data['features'] = $features;
+		/**/
 		$condition = array();
 		$condition['id'] = $id;
 		$result = update_record($tblproducts ,$data,$condition);
@@ -298,13 +302,16 @@ if($p=="add_product"){
 		$data['latitude'] = $latitude;
 		$data['location'] = $location;
 		$data['type'] = $type;
+		$data['submodel'] = $submodel;
 		$data['model'] = $model;
+		/**
 		$data['brand'] = $brand;
 		$data['year_registration'] = $year_registration;
 		$data['driven'] = $driven;
 		$data['fuel_type'] = $fuel_type;
 		$data['gearbox'] = $gearbox;
 		$data['features'] = $features;
+		/**/
 		$id = insert_record($tblproducts,$data);
 		if($id>0)
 		{
@@ -345,7 +352,7 @@ if($p=="add_product"){
 		}
 	}
 
-	header("location:dashboard.php");
+	header("location:add_product_detail.php?id=".enc_password($id));
 	exit;
 }
 
