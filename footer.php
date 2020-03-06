@@ -522,7 +522,9 @@ function update_subcategories(id){
   .done(function( msg ) {
     $("#subcategory_id").html(msg);
   });
-  update_ad_type(id);
+
+  $("#submodel_div").hide();
+  $("#model_div").hide();
 }
 function update_ad_type(id){
   $("#type").html('<option value="">Loading...</option>');
@@ -533,6 +535,40 @@ function update_ad_type(id){
   })
   .done(function( msg ) {
     $("#type").html(msg);
+  });
+  update_models(id);
+  update_submodels(id);
+}
+function update_models(id){
+  $("#type").html('<option value="">Loading...</option>');
+  $.ajax({
+    method: "POST",
+    url: "ajaxphp.php?p=update_models",
+    data: { id: id }
+  })
+  .done(function( msg ) {
+    if(msg=="no"){
+      $("#model_div").hide();
+    } else {
+      $("#model_div").show();
+      $("#model").html(msg);
+    }
+  });
+}
+function update_submodels(id){
+  $("#type").html('<option value="">Loading...</option>');
+  $.ajax({
+    method: "POST",
+    url: "ajaxphp.php?p=update_submodels",
+    data: { id: id }
+  })
+  .done(function( msg ) {
+    if(msg=="no"){
+      $("#submodel_div").hide();
+    } else {
+      $("#submodel_div").show();
+      $("#submodel").html(msg);
+    }
   });
 }
 function show_radio_val(str){

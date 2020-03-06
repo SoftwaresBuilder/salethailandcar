@@ -47,18 +47,59 @@ if($p=="chat_send"){
 	exit;
 }
 
+if($p=="update_ad_type"){
+	$id = $_POST['id'];
+	$types = get_records($tblcategory_types,"category_id='".$id."'","title ASC");
+	$html = '<option value="">Select Type</option>';
+	if(count($types)>0){
+		foreach ($types as $v) {
+			$html .= '<option value="'.$v['title'].'">'.$v['title'].'</option>';
+		}
+	}
+	echo $html;
+	exit;
+}
+if($p=="update_models"){
+	$id = $_POST['id'];
+	$models = get_records($tblcategory_models,"category_id='".$id."'","title ASC");
+	$html = '<option value="">Select Submodels</option>';
+	if(count($models)>0){
+		foreach ($models as $v) {
+			$html .= '<option value="'.$v['title'].'">'.$v['title'].'</option>';
+		}
+	} else {
+		$html = "no";
+	}
+	echo $html;
+	exit;
+}
+if($p=="update_submodels"){
+	$id = $_POST['id'];
+	$submodels = get_records($tblcategory_submodels,"category_id='".$id."'","title ASC");
+	$html = '<option value="">Select Submodels</option>';
+	if(count($submodels)>0){
+		foreach ($submodels as $v) {
+			$html .= '<option value="'.$v['title'].'">'.$v['title'].'</option>';
+		}
+	} else {
+		$html = "no";
+	}
+	echo $html;
+	exit;
+}
 if($p=="update_subcategories"){
 	$id = $_POST['id'];
-	$subcategory = get_records($tblcategories,"pid='".$id."' and status='1' and trash='0'","title ASC");
+	$category = get_records($tblcategories,"pid='".$id."' and status='1' and trash='0'","title ASC");
 	$html = '<option value="">Select Subcategory</option>';
-	if(count($subcategory)>0){
-		foreach ($subcategory as $v) {
+	if(count($category)>0){
+		foreach ($category as $v) {
 			$html .= '<option value="'.$v['id'].'">'.$v['title'].'</option>';
 		}
 	}
 	echo $html;
 	exit;
 }
+
 if($p=="add_bidd"){
 	
 	if(isset($_GET['bid_amount'])){

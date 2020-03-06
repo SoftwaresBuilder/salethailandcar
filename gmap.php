@@ -6,7 +6,6 @@
 </style>
 
 <div id="map"></div>
-<input id="search_box" class="form-control" style="margin-top:9px!important; max-width:300px;" type="text" placeholder="Search Box">
 <input type="hidden" name="latitude" id="latitude" value="">
 <input type="hidden" name="longitude" id="longitude" value="">
 
@@ -28,9 +27,9 @@
 	addMarker(myLatlng,map);
 	
         // Create the search box and link it to the UI element.
-        var input = document.getElementById('search_box');
+        var input = document.getElementById('location');
         var searchBox = new google.maps.places.SearchBox(input);
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+        ///map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
         // Bias the SearchBox results towards current map's viewport.
         map.addListener('bounds_changed', function() {
@@ -47,7 +46,6 @@
         // more details for that place.
         searchBox.addListener('places_changed', function() {
           var places = searchBox.getPlaces();
-
           if (places.length == 0) {
             return;
           }

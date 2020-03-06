@@ -3,7 +3,7 @@
 $id = 0;
 if(isset($_GET['id'])){
     $enc_id = $_GET['id'];
-    $id = enc_password($enc_id);
+    $id = dec_password($enc_id);
     $product = get_records($tblproducts,"id='".$id."'");
     if(count($product)>0){
         foreach ($product as $k=>$v) {
@@ -114,7 +114,7 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                     <div class="row form_fields">
                         <div class="col-md-3">SubCategory</div>
                         <div class="col-md-8">
-                        <select required class="form-control" id="subcategory_id" name="subcategory_id">
+                        <select required class="form-control" id="subcategory_id" name="subcategory_id" onchange="update_ad_type(this.value);">
                             <option value="">Select SubCategory</option>
                             <?php
                             if(count($subcategory)>0){
@@ -136,6 +136,22 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                             </select>
                         </div>
                     </div>
+                    <div class="row form_fields" id="submodel_div" style="display: none;">
+                        <div class="col-md-3">SubModel</div>
+                        <div class="col-md-8">
+                            <select required class="form-control" id="submodel" name="submodel">
+                                <option value="">Select SubModel</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form_fields" id="model_div" style="display: none;">
+                        <div class="col-md-3">Model</div>
+                        <div class="col-md-8">
+                            <select required class="form-control" id="model" name="model">
+                                <option value="">Select Model</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="row form_fields">
                         <div class="col-md-3">Price</div>
                         <div class="col-md-8">
@@ -153,14 +169,17 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                             <input type="file"  onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
                         </div>
                     </div>
-                     <div class="row form_fields">
+                    <div class="row form_fields">
                         <div class="col-md-3">Address</div>
                         <div class="col-md-8">
-                             <input type="text" required class="form-control" id="title" name="title" placeholder="" value="<?= $_SESSION['sysData']['title'];?>">
+                             <input type="text" required class="form-control" id="location" name="location" placeholder="Enter Location" value="<?= $_SESSION['sysData']['location'];?>">
                         </div>
                     </div>
-             <div class="col-md-12"><?php include("gmap.php");?></div>
-     
+                    <div class="col-md-12"><?php include("gmap.php");?></div>
+                    <div class="col-md-12">&nbsp;</div>
+                    <div class="col-md-12">
+                        <input type="submit" name="submit" class="btn btn-primary" value="SAVE AND NEXT">
+                    </div>
             </form>
         </div>
     </div>
