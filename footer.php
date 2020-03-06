@@ -646,6 +646,7 @@ function update_status(status,id)
         });
              
 }
+function test(){}
 function bump_up(id)
 {
     $.ajax({
