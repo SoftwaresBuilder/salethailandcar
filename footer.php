@@ -667,6 +667,22 @@ function bump_up(id)
         }
      });
 }
+function myFunction(){
+       $('#description_th').val('translating....');
+    }
+    function translate_into_thai(str){
+       var description = str;
+         $.ajax({
+            type: "GET",
+            url: "ajaxphp.php",
+             dataType: 'html',  
+            data: {description:description,p:'translate_into_thai'},
+            success: function(data){
+              $('#description_th').val(data);
+               
+             } 
+        });
+    }
 </script>
 
 <?php

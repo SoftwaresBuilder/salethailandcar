@@ -313,4 +313,12 @@ if($p=="bump_up_product"){
     }
 	exit;
 }	
+if($p=="translate_into_thai"){    
+    $description = $_GET['description'];
+    if($description)
+    {
+    	echo $result = translate_into_thai($description);
+    }
+	exit;
+}	
 ?>
