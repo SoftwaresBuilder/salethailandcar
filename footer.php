@@ -411,8 +411,8 @@ function show_forgot_password_form(){
             </div>
             <div class="col-md-8">
                 <div class="form-group">
-                    <label><?php echo translate("Brand");?>Zipcode</label>
-                    <input type="text" required class="form-control" id="zip" name="zip" placeholder="<?php echo translate("Brand");?>Enter Your Zip code" value="<?= $_SESSION['sysData']['zip'];?>">
+                    <label><?php echo translate("Zipcode");?></label>
+                    <input type="text" required class="form-control" id="zip" name="zip" placeholder="<?php echo translate("Enter Your Zip code");?>" value="<?= $_SESSION['sysData']['zip'];?>">
                 </div>
             </div>
            
@@ -433,10 +433,10 @@ function show_forgot_password_form(){
                                         </div>
 
                                         <div class="col-md-8">
-                <button type="submit" class="btn btn-primary" name="Submit"><?php echo translate("Brand");?>Submit</button>
+                <button type="submit" class="btn btn-primary" name="Submit"><?php echo translate("Submit");?></button>
             </div>
                                         <div class="signin-foot text-center">
-                                            <p><?php echo translate("Brand");?>Already have an account? <a href="#" onclick="show_login_div();"><?php echo translate("Brand");?>Sign In</a></p>
+                                            <p><?php echo translate("Already have an account?");?> <a href="#" onclick="show_login_div();"><?php echo translate("Sign In");?></a></p>
                                         </div>
                                     </form>
                                 </div>
@@ -460,14 +460,14 @@ function show_forgot_password_form(){
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" id="modal_tlt"><?php echo translate("Brand");?>My Form</h4>
+        <h4 class="modal-title" id="modal_tlt"><?php echo translate("My Form");?></h4>
       </div>
       <div class="modal-body">
-        <p class="text-danger" id="modal_msg"><?php echo translate("Brand");?>Put your form here</p>
+        <p class="text-danger" id="modal_msg"><?php echo translate("Put your form here");?></p>
       </div>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo translate("Brand");?>Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo translate("Close");?></button>
       </div>
     </div>
   </div>
@@ -489,15 +489,15 @@ function form_popup(modal_tlt="",modal_msg=""){
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" id="modal_tlt"><?php echo translate("Brand");?>Delete</h4>
+        <h4 class="modal-title" id="modal_tlt"><?php echo translate("Delete");?></h4>
       </div>
       <div class="modal-body">
-        <p class="text-danger" id="modal_msg"><?php echo translate("Brand");?>Are you sure you want to perform delete operation?</p>
+        <p class="text-danger" id="modal_msg"><?php echo translate("Are you sure you want to perform delete operation?");?></p>
       </div>
       
       <div class="modal-footer">
-      <a class="btn btn-danger" id="delete_client_button" href="" ><?php echo translate("Brand");?>Yes</a>
-        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo translate("Brand");?>No</button>
+      <a class="btn btn-danger" id="delete_client_button" href="" ><?php echo translate("Yes");?></a>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo translate("No");?></button>
       </div>
     </div>
   </div>

@@ -19,5 +19,5 @@ $imgs = get_product_imgs($product['id'],'1');
 	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;N/A</div>
 	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;N/A</div>
 
-	<div class="col-12"><a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>" class="btn btn-primary full_width">View Detail</a></div>
+	<div class="col-12"><a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>" class="btn btn-primary full_width"><?php echo translate("View Detail");?></a></div>
 </div>

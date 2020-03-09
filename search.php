@@ -46,7 +46,7 @@ $cat_id = dec_password($_GET['id']);
             } else {
             ?>
                             <div class="col-12">
-                                <div class="err err_div">No record found</div>
+                                <div class="err err_div"><?php echo translate("No record found");?></div>
                             </div>
                             <?php
             }

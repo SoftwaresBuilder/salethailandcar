@@ -37,14 +37,14 @@ switch($tab){
         <div class="row mt10">
           <div class="col-12 col-md-4 col-lg-3">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link <?php echo $tab_personal;?>" id="v-pills-menu2-tab" data-toggle="pill" href="#v-pills-menu2" role="tab" aria-controls="v-pills-menu2" aria-selected="false">Personal Home</a>
-              <a class="nav-link <?php echo $tab_ads;?>" id="v-pills-menu1-tab" data-toggle="pill" href="#v-pills-menu1" role="tab" aria-controls="v-pills-menu1" aria-selected="true">My Ads</a>
+              <a class="nav-link <?php echo $tab_personal;?>" id="v-pills-menu2-tab" data-toggle="pill" href="#v-pills-menu2" role="tab" aria-controls="v-pills-menu2" aria-selected="false"><?php echo translate("Personal Home");?></a>
+              <a class="nav-link <?php echo $tab_ads;?>" id="v-pills-menu1-tab" data-toggle="pill" href="#v-pills-menu1" role="tab" aria-controls="v-pills-menu1" aria-selected="true"><?php echo translate("My Ads");?></a>
               
-              <a class="nav-link <?php echo $tab_favorites;?>" id="v-pills-menu3-tab" data-toggle="pill" href="#v-pills-menu3" role="tab" aria-controls="v-pills-menu3" aria-selected="false">Favourite ads</a>
-              <a class="nav-link <?php echo $tab_pending;?>" id="v-pills-menu4-tab" data-toggle="pill" href="#v-pills-menu4" role="tab" aria-controls="v-pills-menu4" aria-selected="false">Pending Approvals</a>
-              <a class="nav-link <?php echo $tab_chat;?>" id="v-pills-menu5-tab" data-toggle="pill" href="#v-pills-menu5" role="tab" aria-controls="v-pills-menu5" aria-selected="false">Chat</a>
-              <a class="nav-link <?php echo $tab_packages;?>" id="v-pills-menu6-tab" data-toggle="pill" href="#v-pills-menu6" role="tab" aria-controls="v-pills-menu6" aria-selected="false">Packages</a>
-              <a class="nav-link <?php echo $tab_bids;?>" id="v-pills-menu7-tab" data-toggle="pill" href="#v-pills-menu7" role="tab" aria-controls="v-pills-menu7" aria-selected="false">My Bids</a>
+              <a class="nav-link <?php echo $tab_favorites;?>" id="v-pills-menu3-tab" data-toggle="pill" href="#v-pills-menu3" role="tab" aria-controls="v-pills-menu3" aria-selected="false"><?php echo translate("Favourite ads");?></a>
+              <a class="nav-link <?php echo $tab_pending;?>" id="v-pills-menu4-tab" data-toggle="pill" href="#v-pills-menu4" role="tab" aria-controls="v-pills-menu4" aria-selected="false"><?php echo translate("Pending Approvals");?></a>
+              <a class="nav-link <?php echo $tab_chat;?>" id="v-pills-menu5-tab" data-toggle="pill" href="#v-pills-menu5" role="tab" aria-controls="v-pills-menu5" aria-selected="false"><?php echo translate("Chat");?></a>
+              <a class="nav-link <?php echo $tab_packages;?>" id="v-pills-menu6-tab" data-toggle="pill" href="#v-pills-menu6" role="tab" aria-controls="v-pills-menu6" aria-selected="false"><?php echo translate("Packages");?></a>
+              <a class="nav-link <?php echo $tab_bids;?>" id="v-pills-menu7-tab" data-toggle="pill" href="#v-pills-menu7" role="tab" aria-controls="v-pills-menu7" aria-selected="false"><?php echo translate("My Bids");?></a>
             </div>
           </div>
           <div class="col-12 col-md-8 col-lg-9">
