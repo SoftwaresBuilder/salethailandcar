@@ -10,20 +10,20 @@ if(isset($_GET['id'])){
 ?>
 <div class="row search_box">
 	
-	<div <?php if($flag_for_location){?> style="display: none;" <?php } ?> class="col-12 border_bottom pt10"><input type="text" class="form-control" placeholder="Location" name=""></div>
+	<div <?php if($flag_for_location){?> style="display: none;" <?php } ?> class="col-12 border_bottom pt10"><input type="text" class="form-control" placeholder="<?php echo translate("Location");?>" name=""></div>
 	<div class="col-12 border_bottom">
 		
 		<select class="form-control">
-			<option value="">Near By (Km)</option>
+			<option value=""><?php echo translate("Near By (Km)");?></option>
 		</select>
 	</div>
 	<div class="col-12 border_bottom">
 		<select class="form-control" id="price_sort" onchange="sort_by_price();">
-			<option value="default">Sort By</option>
+			<option value="default"><?php echo translate("Sort By");?></option>
 
                                 
-          <option value="low_to_high">Price Low to High</option>
-          <option value="high_to_low">Price High to Low</option>
+          <option value="low_to_high"><?php echo translate("Price Low to High");?></option>
+          <option value="high_to_low"><?php echo translate("Price High to Low");?></option>
 		</select>
 	</div>
 	<div class="col-12 heading2"><?php echo $category[0]['title'];?></div>
@@ -36,4 +36,3 @@ if(isset($_GET['id'])){
 		<?php }}
 		?>
 	</div>
-

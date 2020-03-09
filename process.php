@@ -273,7 +273,8 @@ if($p=="add_product"){
 		$data['subcategory_id'] = $subcategory_id;
 		$data['user_id'] = $user_id;
 		$data['title'] = $title;
-		$data['description'] = $description;
+		$data['description_en'] = $description_en;
+		$data['description_th'] = $description_th;
 		$data['price'] = save_price($price);
 		$data['longitude'] = $longitude;
 		$data['latitude'] = $latitude;
@@ -305,7 +306,8 @@ if($p=="add_product"){
 		$data['subcategory_id'] = $subcategory_id;
 		$data['user_id'] = $user_id;
 		$data['title'] = $title;
-		$data['description'] = $description;
+		$data['description_en'] = $description_en;
+		$data['description_th'] = $description_th;
 		$data['price'] = save_price($price);
 		$data['longitude'] = $longitude;
 		$data['latitude'] = $latitude;

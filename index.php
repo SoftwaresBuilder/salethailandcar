@@ -41,7 +41,7 @@ $home_news = get_records($tblnews,"status='1' and trash='0'","","3");
 
 <div class="container">
   <div class="row section_spacer">
-    <div class="col-12 heading center mb50">Featured Ads</div>
+    <div class="col-12 heading center mb50"><?php echo translate("Featured Ads");?></div>
     <?php
     if($featured_products){
       foreach ($featured_products as $v) {
@@ -58,7 +58,7 @@ $home_news = get_records($tblnews,"status='1' and trash='0'","","3");
 <div class="bgcolor">
   <div class="container">
     <div class="row section_spacer">
-      <div class="col-12 heading center mb50">Featured Cars</div>
+      <div class="col-12 heading center mb50"><?php echo translate("Featured Cars");?></div>
       <div class="col-12 col-md-3"><?php include("mybox3.php");?></div>
       <?php
       if($featured_car_products){
@@ -76,7 +76,7 @@ $home_news = get_records($tblnews,"status='1' and trash='0'","","3");
 
 <div class="container">
   <div class="row section_spacer">
-    <div class="col-12 heading center mb50">FROM THE BLOG</div>
+    <div class="col-12 heading center mb50"><?php echo translate("FROM THE BLOG");?></div>
     <?php
     if($home_news){
       foreach ($home_news as $v) {

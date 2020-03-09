@@ -61,7 +61,7 @@ $count_total_products = count($products);
           
       </div>
       <div class="col-12 col-md-6">
-        <a class="nav-link btn btn-primary" href="javascript:void(0);" onclick="openChat();">MESSAGE</a>
+        <a class="nav-link btn btn-primary" href="javascript:void(0);" onclick="openChat();"><?php echo translate("MESSAGE");?></a>
       </div>
     </div>
      
@@ -86,7 +86,7 @@ $count_total_products = count($products);
           }
         } else {
         ?>
-          <div class="col-12"><div class="err err_div">No record found</div></div>
+          <div class="col-12"><div class="err err_div"><?php echo translate("No record found");?></div></div>
         <?php
         }
         ?>

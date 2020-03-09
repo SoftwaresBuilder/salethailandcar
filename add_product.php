@@ -33,6 +33,7 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
     function hide_div(){
         $("#select_Category_div").hide("slow");
     }
+    
 </script>
 <style type="text/css">
     .form_fields{
@@ -90,7 +91,16 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                         <div class="col-md-8">
                         <div class="form-group">
                             
-                            <textarea class="form-control" rows="3" id="description" name="description" placeholder=""><?= $_SESSION['sysData']['description'];?></textarea>
+                            <textarea oninput="myFunction()" onfocusout="translate_into_thai($('#description_en').val())" class="form-control" rows="3" id="description_en" name="description_en" placeholder=""><?= $_SESSION['sysData']['description_en'];?></textarea>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row form_fields">
+                        <div class="col-md-3"><?php echo translate("Ad Description in thai");?> </div>
+                        <div class="col-md-8">
+                        <div class="form-group">
+                            
+                            <textarea class="form-control" rows="3" id="description_th" name="description_th" placeholder=""><?= $_SESSION['sysData']['description_th'];?></textarea>
                         </div>
                         </div>
                     </div>

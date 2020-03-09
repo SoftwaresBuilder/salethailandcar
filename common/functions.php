@@ -10,6 +10,15 @@ function translate($text){
 	$text = (isset($lang_data[$new_text]))?$lang_data[$new_text]:$text;
 	return $text;
 }
+function translate_into_thai($text)
+{
+	$from = 'en';
+	$to = 'th';
+    $api = 'trnsl.1.1.20190923T051659Z.b513b7808b41eae4.2f4d48620d30c4afa4dc4a7ca1154e27f39f9172'; // TODO: Get your key from https://tech.yandex.com/translate/
+    $url = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=' . $api . '&lang=' . $from . '-' . $to . '&text=' . urlencode($text));
+    $json = json_decode($url);
+    return $json->text[0];
+}
 
 function upload_img($file,$path="",$img_name="",$allowed_types=array('jpg','jpeg','png','gif')){
 	$type = @strtolower(end(explode('.',$file['img']['name']))); // partition before and after .
@@ -373,5 +382,8 @@ function splitlimit($string, $length = 50, $ellipsis = '...')
    if (strlen($string) > $length)return substr($string, 0, $length) . ' ' . $ellipsis;
    else return $string;
 }
+// function translate($text){
+// return $text;
+// }
 
 ?>

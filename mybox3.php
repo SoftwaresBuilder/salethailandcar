@@ -1,6 +1,6 @@
 
 <div class="row mybox3">
-	<div class="col-12 title">Recent Categories</div>
+	<div class="col-12 title"><?php echo translate("Recent Categories");?></div>
 	<div class="listing">
 		<?php
 		if(count($parent_categories)>0){

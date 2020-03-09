@@ -36,10 +36,10 @@ if(isset($_GET['chat_id'])){
             <div class="chat_send">
               <form onsubmit="return chat_send();" method="post">
                 <div class="row">
-                    <div class="col-9 col-md-10 pr0"><input type="text" class="form-control brl" id="msg" name="msg" placeholder="Write your message" /></div>
+                    <div class="col-9 col-md-10 pr0"><input type="text" class="form-control brl" id="msg" name="msg" placeholder="<?php echo translate("Write your message");?>" /></div>
                     <div class="col-3 col-md-2 pl0">
                         <input type="hidden" id="chat_id" name="chat_id" value="<?php echo $enc_chat_id;?>">
-                        <input type="submit" class="btn btn-primary brr" name="submit" value="Send">
+                        <input type="submit" class="btn btn-primary brr" name="submit" value="<?php echo translate("Send");?>">
                     </div>
                 </div>
               </form>

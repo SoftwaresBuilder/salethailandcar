@@ -4,7 +4,7 @@ $chat = get_records($tblchat,$where,"id DESC");
 ?>
 <div class="container">
 	<div class="row">
-		<div class="col-12 col-lg-12 heading">Chats</div>
+		<div class="col-12 col-lg-12 heading"><?php echo translate("Chats");?></div>
 	</div>
     <div class="section_spacer">
     	<div class="row">
@@ -12,9 +12,9 @@ $chat = get_records($tblchat,$where,"id DESC");
 	        <table class="table table-hover table-striped mytable">
                 <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>Date</th>
-                        <th>Action</th>
+                        <th><?php echo translate("Product");?></th>
+                        <th><?php echo translate("Date");?></th>
+                        <th><?php echo translate("Action");?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,7 +33,7 @@ $chat = get_records($tblchat,$where,"id DESC");
                             <?php
                         }
                     } else {
-                        echo '<tr><td class="err" colspan="3">No record found</td></tr>';
+                        echo '<tr><td class="err" colspan="3">'. translate("No record found"). '</td></tr>';
                     }
                     ?>
                 </tbody>
