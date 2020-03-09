@@ -314,6 +314,7 @@ if($p=="add_product"){
 		$data['location'] = $location;
 		$data['type'] = $type;
 		$data['submodel'] = $submodel;
+		
 		$data['model'] = $model;
 		/**
 		$data['brand'] = $brand;
