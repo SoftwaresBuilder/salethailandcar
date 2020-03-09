@@ -114,7 +114,7 @@ function update_record($table,$data=array(),$condition=array(),$show="")
 		echo "SQL: ".$sql;
 	}
 	$result = mysqli_query($conn,$sql);
-	//echo $sql;
+		//echo $sql;
 	return $result;
 }
 function table_fields($table)

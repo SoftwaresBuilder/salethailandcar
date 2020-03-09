@@ -154,7 +154,7 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                         </div>
                     </div>
                     <div class="row form_fields">
-                        <div class="col-md-3">Price</div>
+                        <div class="col-md-3"><?php echo translate("Price");?></div>
                         <div class="col-md-8">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-adon1"><?php echo $cons_currency;?></span>
@@ -167,7 +167,7 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                         <div class="col-md-8">
                             <div style="background-color:#dcdee6;height: 300px; width: 100%;">
                             <img id="blah" onclick="" alt="" width="100%" height="300px" /></div>
-                            <input type="file"  onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                            <input type="file" name="img"  onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
                         </div>
                     </div>
                     <div class="row form_fields">
