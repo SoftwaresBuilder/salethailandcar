@@ -1,7 +1,16 @@
 <?php
 include("config/config.php");
 
-$lang = (isset($_SESSION['lang']))?$_SESSION['lang']:"en";
+///$lang = (isset($_SESSION['lang']))?$_SESSION['lang']:"en";
+$_SESSION['lang'] = (isset($_SESSION['lang']))?$_SESSION['lang']:'en';
+if($_SESSION['lang']=="en"){
+  $_SESSION['price_rate'] = $usd_rate; /// Assigning currency exchange rate (default USD=1)
+  $_SESSION['cons_currency'] = $cons_usd; /// Assigning which currency will show on site
+} else {
+  $_SESSION['price_rate'] = $thai_rate;
+  $_SESSION['cons_currency'] = $cons_thai;
+}
+
 
 $user_id = 0;
 if(isset($_SESSION['user_record'])){
@@ -9,7 +18,6 @@ if(isset($_SESSION['user_record'])){
   $_SESSION['user_record'] = $login_user[0];
   $user_id = $_SESSION['user_record']['id'];
 }
-
 
 $p = getpagename();
 $without_login_pages = array('index','login','forgot_password','register','about','contact','cms','search','product_detail','vendor_profile');

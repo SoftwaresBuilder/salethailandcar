@@ -86,11 +86,47 @@ function dates_duration($dated,$type='ago')
 	}
 }
 
-function show_price($price)
+function currency_converter($price,$convertfrom="thai",$convertin="usd")
 {
-	global $cons_currency;
-	return $cons_currency.$price;
+	global $thai_rate;
+	$new_price = 0;
+	$convertfrom = strtolower($convertfrom);
+	$convertin = strtolower($convertin);
+	
+	if($convertfrom == "thai" and $convertin == "usd")
+	{
+		$new_price = $price/$thai_rate;
+	}
+	else if($convertfrom == "usd" and $convertin == "thai")
+	{
+		$new_price = $price*$thai_rate;
+	}
+	else
+	{
+		$new_price = $price;
+	}
+	return $new_price;
 }
+function save_price($price)
+{
+	$price_rate = $_SESSION['price_rate'];
+	$price = $price/$price_rate;
+	return $price;
+}
+function show_price($price,$hide="",$show_format="")
+{
+	$cons_currency = $_SESSION['cons_currency'];
+	$price_rate = $_SESSION['price_rate'];
+	$price = $price*$price_rate;
+	if($show_format)
+	{
+		$price = numberFormat($price);
+	}
+	$price = ($hide)?$price:$cons_currency.$price;
+	return $price;
+}
+
+
 function get_product_imgs($id,$limit='')
 {
 	global $tblproduct_images, $web_site_uploads;

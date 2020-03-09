@@ -66,7 +66,15 @@ if($p=="like_product"){
 	exit;
 }
 if($p=="select_lang"){
-	$_SESSION['lang'] = $_GET['lang'];
+	$lang = $_GET['lang'];
+	$_SESSION['lang'] = ($lang)?$lang:'en';
+	if($_SESSION['lang']=="en"){
+		$_SESSION['price_rate'] = $usd_rate; /// Assigning currency exchange rate (default USD=1)
+		$_SESSION['cons_currency'] = $cons_usd; /// Assigning which currency will show on site
+	} else {
+		$_SESSION['price_rate'] = $thai_rate;
+		$_SESSION['cons_currency'] = $cons_thai;
+	}
 	header("location:".$_SESSION['page_url']);
 	exit;
 }
@@ -266,7 +274,7 @@ if($p=="add_product"){
 		$data['user_id'] = $user_id;
 		$data['title'] = $title;
 		$data['description'] = $description;
-		$data['price'] = $price;
+		$data['price'] = save_price($price);
 		$data['longitude'] = $longitude;
 		$data['latitude'] = $latitude;
 		$data['location'] = $location;
@@ -298,7 +306,7 @@ if($p=="add_product"){
 		$data['user_id'] = $user_id;
 		$data['title'] = $title;
 		$data['description'] = $description;
-		$data['price'] = $price;
+		$data['price'] = save_price($price);
 		$data['longitude'] = $longitude;
 		$data['latitude'] = $latitude;
 		$data['location'] = $location;
