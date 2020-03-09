@@ -1,4 +1,5 @@
 <?php
+
 function upload_img($file,$path="",$img_name="",$allowed_types=array('jpg','jpeg','png','gif')){
 	$type = @strtolower(end(explode('.',$file['img']['name']))); // partition before and after .
 	if( in_array($type,$allowed_types) ){

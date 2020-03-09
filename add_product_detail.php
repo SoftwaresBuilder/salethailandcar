@@ -17,7 +17,7 @@ if(isset($_GET['id'])){
 $category = get_records($tblcategories,"id='".$product[0]['category_id']."'");
 $subcategory = get_records($tblcategories,"id='".$product[0]['subcategory_id']."'");
 $user_detail = get_records($tblusers,"id = ".$product[0]['user_id']);
-$p_features = get_records($tblproduct_features);
+$p_features = get_records($tblproduct_features,'category_id = '.$product[0]['subcategory_id']);
 ?>
 <script type="text/javascript">
     function cat_div_show(){
@@ -114,7 +114,7 @@ $p_features = get_records($tblproduct_features);
                         <div class="col-md-8">
                         <div class="form-group">
                              <div class="col-md-8">
-                                    <input type="Checkbox" name="fuel_type[]" value="1"> Petrol
+                                    <input type="Checkbox" name="   []" value="1"> Petrol
                                      </div>
                                 <div class="col-md-8">
                                      <input type="Checkbox" name="fuel_type[]" value="2"> Diesel

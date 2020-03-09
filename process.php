@@ -328,7 +328,9 @@ if($p=="add_product"){
 			$_SESSION['sysErr']['msg'] = "Record added successfully";
 		}
 	}
+	
 	if($id>0 and isset($_FILES['img']['name'])){
+		
 		if(count($_FILES['img']['name'])>0){  /// Add product images
 			$product_images = get_records($tblproduct_images,"product_id='".$id."' and main='1'");
 			$main = (count($product_images)>0)?0:1;
@@ -340,7 +342,7 @@ if($p=="add_product"){
 					$files_arr['img']['size'] = $_FILES['img']['size'][$key];
 					
 					$imgname = "";
-					$img_name = upload_img($files_arr,$dir_site_uploads,$imgname);
+					echo $img_name = upload_img($files_arr,$dir_site_uploads,$imgname); 
 					if($img_name){
 						$data = array();
 						$data['product_id'] = $id;
@@ -360,6 +362,9 @@ if($p=="add_product"){
 }
 if($p=="add_product_detail"){
 	
+	$features_ids = implode('-', $_POST['features']);
+	$fuel_type_ids = implode('-', $_POST['fuel_type']);
+	
 	foreach ($_POST as $k => $v )
 	{
 		if(!is_array($v)){
@@ -372,11 +377,12 @@ if($p=="add_product_detail"){
 		$data['brand'] = $brand;
 		$data['year_registration'] = $year_registration;
 		$data['driven'] = $driven;
-		$data['fuel_type'] = $fuel_type;
-		$data['gearbox'] = $gearbox;
-		$data['features'] = $features;
+		$data['fuel_type'] = $fuel_type_ids;
+		// $data['gearbox'] = $gearbox;
+		$data['features'] = $features_ids;
+		pr($data);
 		$condition = array();
-		$condition['id'] = $id;
+		$condition['id'] = dec_password($id);
 		$result = update_record($tblproducts ,$data,$condition);
 		//update vendor detail
 		$data2 = array();
