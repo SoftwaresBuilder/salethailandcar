@@ -1,4 +1,15 @@
 <?php
+function translate($text){
+	global $lang_data;
+	$new_text = strtolower($text);
+	$new_text = str_replace(" ","_",$new_text);
+	$new_text = str_replace("?","",$new_text);
+	$new_text = str_replace("!","",$new_text);
+	$new_text = str_replace("'","",$new_text);
+	$new_text = str_replace(".","",$new_text);
+	$text = (isset($lang_data[$new_text]))?$lang_data[$new_text]:$text;
+	return $text;
+}
 
 function upload_img($file,$path="",$img_name="",$allowed_types=array('jpg','jpeg','png','gif')){
 	$type = @strtolower(end(explode('.',$file['img']['name']))); // partition before and after .
