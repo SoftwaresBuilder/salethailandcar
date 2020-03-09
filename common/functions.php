@@ -373,8 +373,5 @@ function splitlimit($string, $length = 50, $ellipsis = '...')
    if (strlen($string) > $length)return substr($string, 0, $length) . ' ' . $ellipsis;
    else return $string;
 }
-function translate($text){
-return $text;
-}
 
 ?>
