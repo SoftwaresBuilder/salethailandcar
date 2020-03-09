@@ -1,5 +1,4 @@
 <?php
-error_reporting(0);
 include("header.php");
 $id = 0;
 if(isset($_GET['id'])){
@@ -16,10 +15,8 @@ if(!(count($product)>0)){
 }
 $imgs = get_product_imgs($product[0]['id']);
 ?>
-<html>
-<head>
-  <link rel="stylesheet" type="text/css" href="css/custom.css">
 
+<link rel="stylesheet" type="text/css" href="css/custom.css">
 <script type="text/javascript">
 
     $(document).ready(function () {
@@ -33,9 +30,6 @@ $imgs = get_product_imgs($product[0]['id']);
             itemMargin: 13,
             asNavFor: '#product-gallery-slider'
         });
-
-       
-        
 
         // initiates responsive slide
         var settings = function () {
@@ -242,12 +236,8 @@ function fnAdd_bidd(){
     }
 
 }
-
-
 </script>
-</head>
 
-<body>
 <div class="container">
 <div class="row section_spacer">
   <div class="col-12 col-md-8">
@@ -323,7 +313,7 @@ function fnAdd_bidd(){
       <div class="col-12 border_bottom pt10">
         <?php
         $latitude = $product[0]['latitude'];
-        $$longitude = $product[0]['longitude'];
+        $longitude = $product[0]['longitude'];
         include("gmap2.php");
         ?>
         <div class="heading3"><?php echo $product[0]['title']; ?></div>
@@ -364,13 +354,21 @@ function fnAdd_bidd(){
                                                                         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#bidders" role="tab" aria-controls="nav-profile" aria-selected="false">Top Bidders</a>
                                 </div>
                             </nav>
-     <?php $where_condition="";
-      $get_product_bid =get_records($tblbidding,"product_id='".$product[0]['id']."' and bidder_id='".$_SESSION['user_record']['id']." and status='1' and trash='0'"); 
-             $where = "product_id=".$get_product_bid[0]['product_id']."";
-             
-            $max_bid_amount = sql("SELECT MAX(amount) as max_bid_amount FROM " . $tblbidding . " where " . $where);
-             $min_bid_amount = sql("SELECT MIN(amount) as min_bid_amount FROM " . $tblbidding . " where " . $where);
-             $total_bid_counts = sql("SELECT COUNT(*) as Num FROM " . $tblbidding . " where " . $where);
+      <?php
+      $where_condition="";
+      $bid_date = "";
+      $bid_amount = "";
+      $get_product_bid =get_records($tblbidding,"product_id='".$id."' and bidder_id='".$user_id." and status='1' and trash='0'");
+
+      if(count($get_product_bid)>0){
+        $bid_date = $get_product_bid[0]['created_date'];
+        $bid_amount = $get_product_bid[0]['amount'];
+      }
+      $where = "product_id=".$id."";
+       
+      $max_bid_amount = sql("SELECT MAX(amount) as max_bid_amount FROM " . $tblbidding . " where " . $where);
+      $min_bid_amount = sql("SELECT MIN(amount) as min_bid_amount FROM " . $tblbidding . " where " . $where);
+      $total_bid_counts = sql("SELECT COUNT(*) as Num FROM " . $tblbidding . " where " . $where);
                                     if(!empty($get_product_bid)){
                                       ?>
                                       <style type="text/css">#bidding_form{
@@ -380,12 +378,12 @@ function fnAdd_bidd(){
                                     <div class="tab-pane fade show active" id="bidding" role="tabpanel" aria-labelledby="nav-home-tab">
                                         <div id ="div_bid_amount" class="tab-content-field">
                                             <span class="field-left">Bid Amount</span>
-                                            <span class="field-right"><?php echo $get_product_bid[0]['amount'] ?></span>
+                                            <span class="field-right"><?php echo show_price($bid_amount);?></span>
                                         </div>
                                         
                                         <div id ="div_bid_date" class="tab-content-field">
                                             <span class="field-left">Bid Date</span>
-                                            <span class="field-right"><?php echo $get_product_bid[0]['created_date'] ?></span>
+                                            <span class="field-right"><?php echo $bid_date;?></span>
                                         </div>
                                     </div>
                                 <div class="tab-pane fade" id="bidders" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -395,11 +393,11 @@ function fnAdd_bidd(){
                                     </div>
                                     <div id="heighest_bid" class="tab-content-field">
                                         <span class="field-left">Highest Bids</span>
-                                        <span class="field-right">USD <?php echo $max_bid_amount[0]['max_bid_amount']; ?> </span>
+                                        <span class="field-right"><?php echo show_price($max_bid_amount[0]['max_bid_amount']);?> </span>
                                     </div>
                                     <div id="lowest_bid" class="tab-content-field">
                                         <span class="field-left">Lowest Bids</span>
-                                        <span class="field-right">USD <?php echo $min_bid_amount[0]['min_bid_amount']; ?> </span>
+                                        <span class="field-right"><?php echo show_price($min_bid_amount[0]['min_bid_amount']); ?> </span>
                                     </div>
                                 </div>
                             </div>
@@ -427,11 +425,11 @@ function fnAdd_bidd(){
                                     </div>
                                     <div id="heighest_bid" class="tab-content-field">
                                         <span class="field-left">Highest Bids</span>
-                                        <span class="field-right">USD </span>
+                                        <span class="field-right"><?php echo show_price('0');?></span>
                                     </div>
                                     <div id="lowest_bid" class="tab-content-field">
                                         <span class="field-left">Lowest Bids</span>
-                                        <span class="field-right">USD </span>
+                                        <span class="field-right"><?php echo show_price('0');?></span>
                                     </div>
                                 </div>
                             </div>

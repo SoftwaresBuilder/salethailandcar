@@ -1,16 +1,12 @@
 <?php
+$chat = array();
 if(isset($_GET['chat_id'])){
     $enc_chat_id = $_GET['chat_id'];
     $chat_id = dec_password($enc_chat_id);
     $chat = get_records($tblchat,"chat_id='".$chat_id."'","id ASC");
     $_SESSION['chat']['last_id'][$chat_id] = 0;
 }
-if(!(count($chat)>0)){
-    $_SESSION['sysErr']['msg'] = "Invalid chat";
-    redirect("dashboard"); exit;
-}
 
-$product = get_records($tblproducts,"id='".$chat[0]['product_id']."'");
 ?>
 <div id="ChatMsg" class="ChatBar ui-block" style="width: 30%;display: none;">
   <h3 class="light-text-0 ui-block-title" style="position: fixed;background-color: white;z-index: 999;width: inherit">

@@ -6,7 +6,7 @@ if(isset($_GET['id'])){
   $id = dec_password($_GET['id']);
 }
 
- $flag_for_location = false;
+$flag_for_location = false;
 $category = get_records($tblcategories,"id='".$id."' and status='1' and trash='0'");
 if(!(count($category)>0)){
   redirect("index");exit;
