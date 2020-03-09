@@ -217,49 +217,49 @@ function showGlobalLogin() {
                 $dashboard = ($_SESSION['user_record']['type'])?'dashboard':'account';
               ?>
                 <li class="nav-item d-none d-lg-block">
-                  <a class="nav-link btn btn-danger" href="<?php echo makepage_url($dashboard);?>">Dashboard</a>
+                  <a class="nav-link btn btn-danger" href="<?php echo makepage_url($dashboard);?>"><?php echo translate("Dashboard");?></a>
                 </li>
                 <?php
                 if($_SESSION['user_record']['type']){
                 ?>
                   <li class="nav-item d-none d-lg-block">
-                  <a class="nav-link btn btn-primary" href="<?php echo makepage_url("add_product");?>">Post Ads</a>
+                  <a class="nav-link btn btn-primary" href="<?php echo makepage_url("add_product");?>" ><?php echo translate("Post Ads");?> </a>
                 </li>
                 <?php
                 }
                 ?>
                 <li class="nav-item d-none d-lg-block">
-                  <a class="nav-link btn btn-danger" href="process.php?p=logout">Logout</a>
+                  <a class="nav-link btn btn-danger" href="process.php?p=logout"><?php echo translate("Logout");?></a>
                 </li>
                 <li class="nav-item d-block d-lg-none">
-                  <a class="nav-link" href="<?php echo makepage_url($dashboard);?>">Dashboard</a>
+                  <a class="nav-link" href="<?php echo makepage_url($dashboard);?>"><?php echo translate("Dashboard");?></a>
                 </li>
                 <?php
                 if($_SESSION['user_record']['type']){
                 ?>
                   <li class="nav-item d-block d-lg-none">
-                    <a class="nav-link" href="<?php echo makepage_url("add_product");?>">Post Ads</a>
+                    <a class="nav-link" href="<?php echo makepage_url("add_product");?>"><?php echo translate("Post Ads");?></a>
                   </li>
                 <?php
                 }
                 ?>
                 <li class="nav-item d-block d-lg-none">
-                  <a class="nav-link" href="process.php?p=logout">Logout</a>
+                  <a class="nav-link" href="process.php?p=logout"><?php echo translate("Logout");?></a>
                 </li>
               <?php
               } else {
               ?>
                 <li class="nav-item d-none d-lg-block">
-                  <a class="nav-link btn btn-danger" onclick="show_login_div();" href="javascript:void(0);">LOGIN</a>
+                  <a class="nav-link btn btn-danger" onclick="show_login_div();" href="javascript:void(0);"><?php echo translate("LOGIN");?></a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
-                  <a class="nav-link btn btn-primary" onclick="show_sign_up_div();" href="javascript:void(0);">SIGN UP</a>
+                  <a class="nav-link btn btn-primary" onclick="show_sign_up_div();" href="javascript:void(0);"><?php echo translate("SIGN UP");?></a>
                 </li>
                 <li class="nav-item d-block d-lg-none">
-                  <a class="nav-link" href="<?php echo makepage_url("login");?>">LOGIN</a>
+                  <a class="nav-link" href="<?php echo makepage_url("login");?>"><?php echo translate("LOGIN");?></a>
                 </li>
                 <li class="nav-item d-block d-lg-none">
-                  <a class="nav-link" href="<?php echo makepage_url("register");?>">SIGN UP</a>
+                  <a class="nav-link" href="<?php echo makepage_url("register");?>"><?php echo translate("SIGN UP");?></a>
                 </li>
               <?php
               }
@@ -304,15 +304,15 @@ function showGlobalLogin() {
   <div class="container">
     <?php if(isset($_POST['submit'])){
 $selected_val = $_POST['category'];  // Storing Selected Value In Variable
-echo "You have selected :" .$selected_val;  // Displaying Selected Value
+echo translate("You have selected :") .$selected_val;  // Displaying Selected Value
 }
 ?>
     <form action="<?php echo makepage_url("search","?id=".enc_password($v['id']));?>" method="post">
     <div class="row top_banner_section justify-content-center">
-      <div class="col-12 banner_caption">WHAT ARE YOU LOOKING FOR?</div>
+      <div class="col-12 banner_caption"><?php echo translate("WHAT ARE YOU LOOKING FOR?");?></div>
       <div class="col-12 col-md-8">
         <div class="row">
-          <div class="col-12 col-md-4 nopadding"><input type="text" class="form-control search_fields" name="" placeholder="Search by cars, houses etc." value=""></div>
+          <div class="col-12 col-md-4 nopadding"><input type="text" class="form-control search_fields" name="" placeholder="<?php echo translate("Search by cars, houses etc.");?>" value=""></div>
           <div class="col-12 col-md-4 nopadding">
             <select class="form-control search_fields" selected="selected" name="category">
               <?php
@@ -326,10 +326,10 @@ echo "You have selected :" .$selected_val;  // Displaying Selected Value
               ?>
             </select>
           </div>
-          <div class="col-12 col-md-4 nopadding"><input type="text" class="form-control search_fields" name="" placeholder="Enter location" value=""></div>
+          <div class="col-12 col-md-4 nopadding"><input type="text" class="form-control search_fields" name="" placeholder="<?php echo translate("Enter location");?>" value=""></div>
         </div>
       </div>
-      <div class="col-12 banner_search_btn"><input type="submit" class="btn btn-primary" name="" value="Search"></div>
+      <div class="col-12 banner_search_btn"><input type="submit" class="btn btn-primary" name="" value="<?php echo translate("Search");?>"></div>
     </div>
     </form>
   </div>

@@ -5,7 +5,7 @@
 function submitUserForm() {
     var response = grecaptcha.getResponse();
     if(response.length == 0) {
-        document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">Prove you are not robort.</span>';
+        document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;"><?php echo translate("Prove you are not robort.");?></span>';
         return false;
     }
     return true;
@@ -23,7 +23,7 @@ function submitUserForm() {
 function submitUserForm_signup() {
     var response = grecaptcha.getResponse();
     if(response.length == 0) {
-        document.getElementById('g-recaptcha-error_signup').innerHTML = '<span style="color:red;">Prove you are not robort.</span>';
+        document.getElementById('g-recaptcha-error_signup').innerHTML = '<span style="color:red;"><?php echo translate("Prove you are not robort.");?></span>';
         return false;
     }
     return true;
@@ -39,17 +39,17 @@ function submitUserForm_signup() {
       <div class="col-12 col-md-5">
         <div class="row">
           <div class="col-12 mb10"><img src="images/site-logo.png" class="img-fluid"></div>
-          <div class="col-12 mb10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley </div>
-          <div class="col-12"><input type="button" class="btn btn-primary" name="" value="READ MORE ABOUT US"></div>
+          <div class="col-12 mb10"><?php echo translate("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley");?> </div>
+          <div class="col-12"><input type="button" class="btn btn-primary" name="" value="<?php echo translate("READ MORE ABOUT US");?>"></div>
         </div>
       </div>
       <div class="col-12 col-md-3">
           <div class="row">
-              <div class="col-12 footer_heading mb10">Subscribe To Us</div>
-              <div class="col-12 mb10">Subscribe to our newsletter and stay updated to our latest news.</div>
+              <div class="col-12 footer_heading mb10"><?php echo translate("Subscribe To Us");?></div>
+              <div class="col-12 mb10"><?php echo translate("Subscribe to our newsletter and stay updated to our latest news.");?></div>
               <form action="process.php?p=subscribed" method="post">
                   <div class="row">
-                  <div class="col-9 pr0"><input type="email" required class="form-control brl" name="email" id="email" placeholder="Enter your email">
+                  <div class="col-9 pr0"><input type="email" required class="form-control brl" name="email" id="email" placeholder="<?php echo translate("Enter your email");?>">
                   </div>
                   <div class="col-3 pl0"><button type="submit" class="btn btn-primary full_width brr">
                    <i class="fa fa-paper-plane"></i>
@@ -61,20 +61,20 @@ function submitUserForm_signup() {
       </div>
       <div class="col-12 col-md-2">
         <div class="row">
-          <div class="col-12 footer_heading mb10">Social Media</div>
-          <div class="col-12 mb10"><a href=""><i class="fa fa-facebook"></i>&nbsp;facebook</a></div>
-          <div class="col-12 mb10"><a href=""><i class="fa fa-twitter"></i>&nbsp;Twitter</a></div>
-          <div class="col-12 mb10"><a href=""><i class="fa fa-instagram"></i>&nbsp;Instagram</a></div>
-          <div class="col-12 mb10"><a href=""><i class="fa fa-linkedin"></i>&nbsp;Linkedin</a></div>
+          <div class="col-12 footer_heading mb10"><?php echo translate("Social Media");?></div>
+          <div class="col-12 mb10"><a href=""><i class="fa fa-facebook"></i>&nbsp;<?php echo translate("facebook");?></a></div>
+          <div class="col-12 mb10"><a href=""><i class="fa fa-twitter"></i>&nbsp;<?php echo translate("Twitter");?></a></div>
+          <div class="col-12 mb10"><a href=""><i class="fa fa-instagram"></i>&nbsp;<?php echo translate("Instagram");?></a></div>
+          <div class="col-12 mb10"><a href=""><i class="fa fa-linkedin"></i>&nbsp;<?php echo translate("Linkedin");?></a></div>
         </div>
       </div>
       <div class="col-12 col-md-2">
         <div class="row">
-          <div class="col-12 footer_heading mb10">Other Media</div>
-          <div class="col-12 mb10"><a href="cms.php?type=aboutus">About Us</a></div>
-          <div class="col-12 mb10"><a href="">Contact Us</a></div>
-          <div class="col-12 mb10"><a href="cms.php?type=privacy_policy">Privacy Policy</a></div>
-          <div class="col-12 mb10"><a href="cms.php?type=terms_and_conditions">Terms & Conditions</a></div>
+          <div class="col-12 footer_heading mb10"><?php echo translate("Other Media");?></div>
+          <div class="col-12 mb10"><a href="cms.php?type=aboutus"><?php echo translate("About Us");?></a></div>
+          <div class="col-12 mb10"><a href=""><?php echo translate("Contact Us");?></a></div>
+          <div class="col-12 mb10"><a href="cms.php?type=privacy_policy"><?php echo translate("Privacy Policy");?></a></div>
+          <div class="col-12 mb10"><a href="cms.php?type=terms_and_conditions"><?php echo translate("Terms & Conditions");?></a></div>
         </div>
       </div>
     </div>
@@ -162,40 +162,40 @@ function show_forgot_password_form(){
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="modal_left_bx">
-                                    <h4>Register with us</h4>
+                                    <h4><?php echo translate("Register with us");?></h4>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_1.png">
                                         <div class="media-body">
-                                            <h5 class="mt-0">Receive And Send Bids</h5>
-                                            <p>Receive bids for your ads and increase your chances of closing sales.</p>
+                                            <h5 class="mt-0"><?php echo translate("Receive And Send Bids");?></h5>
+                                            <p<?php echo translate("Receive bids for your ads and increase your chances of closing sales.");?>></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_2.png">
                                         <div class="media-body">
-                                            <h5 class="mt-0">list features</h5>
-                                            <p>Create more value for your ads.</p>
+                                            <h5 class="mt-0"><?php echo translate("list features");?></h5>
+                                            <p><?php echo translate("Create more value for your ads.");?></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_3.png">
                                         <div class="media-body">
-                                            <h5 class="mt-0">Chat &amp; message</h5>
-                                            <p>Access your chat and account information from any device.</p>
+                                            <h5 class="mt-0"><?php echo translate("Chat");?> &amp; <?php echo translate("message");?></h5>
+                                            <p><?php echo translate("Access your chat and account information from any device.");?></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_4.png">
                                         <div class="media-body">
-                                            <h5 class="mt-0">User dashboard</h5>
-                                            <p>Collect the desired items by saving your favorites.</p>
+                                            <h5 class="mt-0"><?php echo translate("User dashboard");?></h5>
+                                            <p><?php echo translate("Collect the desired items by saving your favorites.");?></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_5.png">
                                         <div class="media-body">
-                                            <h5 class="mt-0">Track the status of your ad history</h5>
-                                            <p>Track the status of your ad history.</p>
+                                            <h5 class="mt-0"><?php echo translate("Track the status of your ad history");?></h5>
+                                            <p><?php echo translate("Track the status of your ad history.");?></p>
                                         </div>
                                     </div>
 
@@ -207,8 +207,8 @@ function show_forgot_password_form(){
                                     <div class="top_social">
                                       <div id="google_facebook">
                                         <div id="w2">                                        <div class="row">
-                                             <div class="col pr-2"><a class="custom-btn facebook auth-link" href="/site/auth?authclient=facebook" title="Facebook" data-popup-width="860" data-popup-height="480"><span><i class="icofont-facebook"></i> FACEBOOK</span> </a> </div>                                                 <div class="col pr-2"><a class="custom-btn google auth-link" href="/site/auth?authclient=google" title="Google"><span><i class="fa fa-google"></i> GOOGLE</span> </a> </div>                                                </div>                                        </div></div>
-                                        <span class="nw_orcls">Or</span>
+                                             <div class="col pr-2"><a class="custom-btn facebook auth-link" href="/site/auth?authclient=facebook" title="Facebook" data-popup-width="860" data-popup-height="480"><span><i class="icofont-facebook"></i> <?php echo translate("FACEBOOK");?></span> </a> </div>                                                 <div class="col pr-2"><a class="custom-btn google auth-link" href="/site/auth?authclient=google" title="Google"><span><i class="fa fa-google"></i><?php echo translate("GOOGLE");?> </span> </a> </div>                                                </div>                                        </div></div>
+                                        <span class="nw_orcls"><?php echo translate("Or");?></span>
                                     </div>
                                     <div id="login_form">
                                      <form onsubmit="return submitUserForm();" action="process.php?p=login" enctype="multipart/form-data" method="post">
@@ -216,14 +216,14 @@ function show_forgot_password_form(){
                                          <?php show_errors();?>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Email <span class="err">*</span></label>
-                            <input type="email" required class="form-control" id="email" name="email" placeholder="Email" value="">
+                            <label><?php echo translate("Email");?> <span class="err">*</span></label>
+                            <input type="email" required class="form-control" id="email" name="email" placeholder="<?php echo translate("Email");?>" value="">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Password <span class="err">*</span></label>
-                            <input type="password" required class="form-control" id="password" name="password" placeholder="Password" value="">
+                            <label><?php echo translate("Password");?> <span class="err">*</span></label>
+                            <input type="password" required class="form-control" id="password" name="password" placeholder="<?php echo translate("Password");?>" value="">
                         </div>
                     </div>
                     
@@ -241,14 +241,14 @@ function show_forgot_password_form(){
                                         </div>
                                         <div class="d-flex log_nw_bx justify-content-between mb-2">
 
-                                            <a href="#" onclick="show_forgot_password_form();" class="forget_pass">Forgot password ?</a>
+                                            <a href="#" onclick="show_forgot_password_form();" class="forget_pass"><?php echo translate("Forgot password ?");?></a>
                                         </div>
 
                                        <div class="col-md-12">
-                        <input type="submit" class="btn btn-primary" value="Login" name="Submit">
+                        <input type="submit" class="btn btn-primary" value="<?php echo translate("Login");?>" name="Submit">
                     </div>
                                         <div class="signin-foot text-center">
-                                            <p>Don't have an account? <a href="#" onclick="show_sign_up_div();">Sign Up</a></p>
+                                            <p><?php echo translate("Don't have an account?");?> <a href="#" onclick="show_sign_up_div();"><?php echo translate("Sign Up");?></a></p>
                                         </div>
                                     </form>
                                   </div>
@@ -258,8 +258,8 @@ function show_forgot_password_form(){
                                          <?php show_errors();?>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Email <span class="err">*</span></label>
-                            <input type="email" required class="form-control" id="email" name="email" placeholder="Email" value="">
+                            <label><?php echo translate("Email");?> <span class="err">*</span></label>
+                            <input type="email" required class="form-control" id="email" name="email" placeholder="<?php echo translate("Email");?>" value="">
                         </div>
                     </div>
               </div>
@@ -276,7 +276,7 @@ function show_forgot_password_form(){
                                       
 
                                        <div class="col-md-12">
-                        <input type="submit" class="btn btn-primary" value="Send Link" name="Submit">
+                        <input type="submit" class="btn btn-primary" value="<?php echo translate("Send Link");?>" name="Submit">
                     </div>
                                         
                                     </form>
@@ -305,47 +305,47 @@ function show_forgot_password_form(){
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="modal_left_bx">
-                                    <h4>Register with us</h4>
+                                    <h4><?php echo translate("Register with us");?></h4>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_6.png">
                                         <div class="media-body">
-                                            <h5 class="mt-0">Get Ads for free!</h5>
-                                            <p>Register and post your information for free!</p>
+                                            <h5 class="mt-0"><?php echo translate("Get Ads for free!");?></h5>
+                                            <p><?php echo translate("Register and post your information for free!");?></p>
                                         </div>
                                     </div>
                                    <div class="media">
                                         <img class="mr-3" src="images/side_icon_1.png">
                                         <div class="media-body">
-                                            <h5 class="mt-0">Receive And Send Bids</h5>
-                                            <p>Receive bids for your ads and increase your chances of closing sales.</p>
+                                            <h5 class="mt-0"><?php echo translate("Receive And Send Bids");?></h5>
+                                            <p><?php echo translate("Receive bids for your ads and increase your chances of closing sales.");?></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_2.png">
                                         <div class="media-body">
-                                            <h5 class="mt-0">list features</h5>
-                                            <p>Create more value for your ads.</p>
+                                            <h5 class="mt-0"><?php echo translate("list features");?></h5>
+                                            <p><?php echo translate("Create more value for your ads.");?></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_3.png">
                                         <div class="media-body">
-                                            <h5 class="mt-0">Chat &amp; message</h5>
-                                            <p>Access your chat and account information from any device.</p>
+                                            <h5 class="mt-0"><?php echo translate("Chat");?> &amp; <?php echo translate("message");?></h5>
+                                            <p><?php echo translate("Access your chat and account information from any device.");?></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_4.png">
                                         <div class="media-body">
-                                            <h5 class="mt-0">User dashboard</h5>
-                                            <p>Collect the desired items by saving your favorites.</p>
+                                            <h5 class="mt-0"><?php echo translate("User dashboard");?></h5>
+                                            <p><?php echo translate("Collect the desired items by saving your favorites.");?></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_5.png">
                                         <div class="media-body">
-                                            <h5 class="mt-0">Track the status of your ad history</h5>
-                                            <p>Track the status of your ad history.</p>
+                                            <h5 class="mt-0"><?php echo translate("Track the status of your ad history");?></h5>
+                                            <p><?php echo translate("Track the status of your ad history.");?></p>
                                         </div>
                                     </div>
 
@@ -356,7 +356,7 @@ function show_forgot_password_form(){
                                 <div class="log_sign_bx">
                                     <div class="top_social">
                                         <div id="w3">                                        <div class="row">
-                                             <div class="col pr-2"><a class="custom-btn facebook auth-link" href="/site/auth?authclient=facebook" title="Facebook" data-popup-width="860" data-popup-height="480"><span><i class="icofont-facebook"></i> FACEBOOK</span> </a> </div>                                                 <div class="col pr-2"><a class="custom-btn google auth-link" href="/site/auth?authclient=google" title="Google"><span><i class="fa fa-google"></i> GOOGLE</span> </a> </div>                                                </div>                                        </div>
+                                             <div class="col pr-2"><a class="custom-btn facebook auth-link" href="/site/auth?authclient=facebook" title="Facebook" data-popup-width="860" data-popup-height="480"><span><i class="icofont-facebook"></i> <?php echo translate("FACEBOOK");?></span> </a> </div>                                                 <div class="col pr-2"><a class="custom-btn google auth-link" href="/site/auth?authclient=google" title="Google"><span><i class="fa fa-google"></i> <?php echo translate("GOOGLE");?></span> </a> </div>                                                </div>                                        </div>
                                         <span class="nw_orcls">Or</span>
                                     </div>
                                     <form onsubmit="return submitUserForm_signup();" action="process.php?p=register" enctype="multipart/form-data" method="post">
@@ -368,51 +368,51 @@ function show_forgot_password_form(){
         <div class="row">
             <div class="col-md-8">
                 <div class="form-group">
-                    <label>Full Name <span class="err">*</span></label>
-                     <input type="text" required class="form-control" id="name" name="name" placeholder="Enter Your Name" value="<?= $_SESSION['sysData']['name'];?>">
+                    <label><?php echo translate("Full Name");?> <span class="err">*</span></label>
+                     <input type="text" required class="form-control" id="name" name="name" placeholder="<?php echo translate("Enter Your Name");?>" value="<?= $_SESSION['sysData']['name'];?>">
                 
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="form-group">
-                    <label>Email <span class="err">*</span></label>
-                    <input type="email" required class="form-control" id="email" name="email" placeholder="Email" value="<?= $_SESSION['sysData']['email'];?>">
+                    <label><?php echo translate("Email");?> <span class="err">*</span></label>
+                    <input type="email" required class="form-control" id="email" name="email" placeholder="<?php echo translate("Email");?>" value="<?= $_SESSION['sysData']['email'];?>">
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="form-group">
-                    <label>Password <span class="err">*</span></label>
-                    <input type="password" required class="form-control" id="password" name="password" placeholder="Password" value="">
+                    <label><?php echo translate("Password");?> <span class="err">*</span></label>
+                    <input type="password" required class="form-control" id="password" name="password" placeholder="<?php echo translate("Password");?>" value="">
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="form-group">
-                    <label>Confirm Password <span class="err">*</span></label>
-                    <input type="password" required class="form-control" id="cpassword" name="cpassword" placeholder="Confirm password" value="">
+                    <label><?php echo translate("Confirm Password");?> <span class="err">*</span></label>
+                    <input type="password" required class="form-control" id="cpassword" name="cpassword" placeholder="<?php echo translate("Confirm password");?>" value="">
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="form-group">
-                    <label>Address</label>
-                    <input type="text" required class="form-control" id="address" name="address" placeholder="Enter Your Address" value="<?= $_SESSION['sysData']['address'];?>">
+                    <label><?php echo translate("Address");?></label>
+                    <input type="text" required class="form-control" id="address" name="address" placeholder="<?php echo translate("Enter Your Address");?>" value="<?= $_SESSION['sysData']['address'];?>">
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="form-group">
-                    <label>City</label>
-                    <input type="text" required class="form-control" id="city" name="city" placeholder="Enter Your City" value="<?= $_SESSION['sysData']['city'];?>">
+                    <label><?php echo translate("City");?></label>
+                    <input type="text" required class="form-control" id="city" name="city" placeholder="<?php echo translate("Enter Your City");?>" value="<?= $_SESSION['sysData']['city'];?>">
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="form-group">
-                    <label>State</label>
-                    <input type="text" required class="form-control" id="state" name="state" placeholder="Enter Your State" value="<?= $_SESSION['sysData']['state'];?>">
+                    <label><?php echo translate("State");?></label>
+                    <input type="text" required class="form-control" id="state" name="state" placeholder="<?php echo translate("Enter Your State");?>" value="<?= $_SESSION['sysData']['state'];?>">
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="form-group">
-                    <label>Zipcode</label>
-                    <input type="text" required class="form-control" id="zip" name="zip" placeholder="Enter Your Zip code" value="<?= $_SESSION['sysData']['zip'];?>">
+                    <label><?php echo translate("Brand");?>Zipcode</label>
+                    <input type="text" required class="form-control" id="zip" name="zip" placeholder="<?php echo translate("Brand");?>Enter Your Zip code" value="<?= $_SESSION['sysData']['zip'];?>">
                 </div>
             </div>
            
@@ -433,10 +433,10 @@ function show_forgot_password_form(){
                                         </div>
 
                                         <div class="col-md-8">
-                <button type="submit" class="btn btn-primary" name="Submit">Submit</button>
+                <button type="submit" class="btn btn-primary" name="Submit"><?php echo translate("Brand");?>Submit</button>
             </div>
                                         <div class="signin-foot text-center">
-                                            <p>Already have an account? <a href="#" onclick="show_login_div();">Sign In</a></p>
+                                            <p><?php echo translate("Brand");?>Already have an account? <a href="#" onclick="show_login_div();"><?php echo translate("Brand");?>Sign In</a></p>
                                         </div>
                                     </form>
                                 </div>
@@ -460,14 +460,14 @@ function show_forgot_password_form(){
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" id="modal_tlt">My Form</h4>
+        <h4 class="modal-title" id="modal_tlt"><?php echo translate("Brand");?>My Form</h4>
       </div>
       <div class="modal-body">
-        <p class="text-danger" id="modal_msg">Put your form here</p>
+        <p class="text-danger" id="modal_msg"><?php echo translate("Brand");?>Put your form here</p>
       </div>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo translate("Brand");?>Close</button>
       </div>
     </div>
   </div>
@@ -489,15 +489,15 @@ function form_popup(modal_tlt="",modal_msg=""){
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" id="modal_tlt">Delete</h4>
+        <h4 class="modal-title" id="modal_tlt"><?php echo translate("Brand");?>Delete</h4>
       </div>
       <div class="modal-body">
-        <p class="text-danger" id="modal_msg">Are you sure you want to perform delete operation?</p>
+        <p class="text-danger" id="modal_msg"><?php echo translate("Brand");?>Are you sure you want to perform delete operation?</p>
       </div>
       
       <div class="modal-footer">
-      <a class="btn btn-danger" id="delete_client_button" href="" >Yes</a>
-        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+      <a class="btn btn-danger" id="delete_client_button" href="" ><?php echo translate("Brand");?>Yes</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo translate("Brand");?>No</button>
       </div>
     </div>
   </div>

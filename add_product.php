@@ -56,28 +56,28 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
         <div class="section_spacer">
             <?php show_errors();?>
             <div class="row">
-                <div class="col-12 heading">Post a Free Classified Ad</div>
+                <div class="col-12 heading"><?php echo translate("Post a Free Classified Ad");?></div>
             </div>
             <form action="process.php?p=add_product" enctype="multipart/form-data" method="post">
                 <?php show_errors();?>
                
                     <div class="row form_fields">
-                        <div class="col-md-3">Ad Type</div>
+                        <div class="col-md-3"><?php echo translate("Ad Type");?></div>
                         <div class="col-md-3">
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="ad_type" id="inlineRadio1" value="Private"> <span class="light-text-1">Private</span>
+                                <input class="form-check-input" type="radio" name="ad_type" id="inlineRadio1" value="Private"> <span class="light-text-1"><?php echo translate("Private");?></span>
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="ad_type" id="inlineRadio2" value="Business"> <span class="light-text-1">Business</span>
+                                <input class="form-check-input" type="radio" name="ad_type" id="inlineRadio2" value="Business"> <span class="light-text-1"><?php echo translate("Business");?></span>
                             </label>
                         </div>
                         </div>
                     </div>
                     <div class="row form_fields">
-                        <div class="col-md-3">Add Title</div>
+                        <div class="col-md-3"><?php echo translate("Ad Tittle");?></div>
                         <div class="col-md-8">
                         <div class="form-group">
                            
@@ -86,7 +86,7 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                         </div>
                     </div>
                      <div class="row form_fields">
-                        <div class="col-md-3">Ad Description</div>
+                        <div class="col-md-3"><?php echo translate("Ad Description");?> </div>
                         <div class="col-md-8">
                         <div class="form-group">
                             
@@ -95,10 +95,10 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                         </div>
                     </div>
                     <div class="row form_fields">
-                        <div class="col-md-3">Category</div>
+                        <div class="col-md-3"><?php echo translate("Category");?></div>
                         <div class="col-md-8">
                         <select required class="form-control" id="category_id" name="category_id" onchange="update_subcategories(this.value);">
-                            <option value="">Select Category</option>
+                            <option value=""><?php echo translate("Select Category");?></option>
                             <?php
                             if(count($category)>0){
                                 foreach ($category as $v) {
@@ -112,10 +112,10 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                         </div>
                     </div>
                     <div class="row form_fields">
-                        <div class="col-md-3">SubCategory</div>
+                        <div class="col-md-3"><?php echo translate("Sub Category");?></div>
                         <div class="col-md-8">
                         <select required class="form-control" id="subcategory_id" name="subcategory_id" onchange="update_ad_type(this.value);">
-                            <option value="">Select SubCategory</option>
+                            <option value=""><?php echo translate("Select Sub Category");?></option>
                             <?php
                             if(count($subcategory)>0){
                                 foreach ($subcategory as $v) {
@@ -129,27 +129,27 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                         </div>
                     </div>
                     <div class="row form_fields">
-                        <div class="col-md-3">For</div>
+                        <div class="col-md-3"><?php echo translate("For");?> </div>
                         <div class="col-md-8">
                             <select required class="form-control" id="type" name="type">
-                                <option value="">Select Type</option>
+                                <option value=""><?php echo translate("Select Type");?></option>
                                
                             </select>
                         </div>
                     </div>
                     <div class="row form_fields" id="submodel_div" style="display: none;">
-                        <div class="col-md-3">SubModel</div>
+                        <div class="col-md-3"><?php echo translate("SubModel");?></div>
                         <div class="col-md-8">
                             <select class="form-control" id="submodel" name="submodel">s
-                                <option value="">Select SubModel</option>
+                                <option value=""><?php echo translate("Select SubModel");?></option>
                             </select>
                         </div>
                     </div>
                     <div class="row form_fields" id="model_div" style="display: none;">
-                        <div class="col-md-3">Model</div>
+                        <div class="col-md-3"><?php echo translate("Model");?></div>
                         <div class="col-md-8">
                             <select class="form-control" id="model" name="model">
-                                <option value="">Select Model</option>
+                                <option value=""><?php echo translate("Select Model");?></option>
                             </select>
                         </div>
                     </div>
@@ -158,12 +158,12 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                         <div class="col-md-8">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-adon1"><?php echo $cons_currency;?></span>
-                                <input type="text" required class="form-control" id="price" name="price" placeholder="Price" value="">
+                                <input type="text" required class="form-control" id="price" name="price" placeholder="<?php echo translate("Price");?>" value="">
                             </div>
                         </div>
                     </div>
                     <div class="row form_fields">
-                        <div class="col-md-3">Picture</div>
+                        <div class="col-md-3"><?php echo translate("Picture");?></div>
                         <div class="col-md-8">
                             <div style="background-color:#dcdee6;height: 300px; width: 100%;">
                             <img id="blah" onclick="" alt="" width="100%" height="300px" /></div>
@@ -171,42 +171,43 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                         </div>
                     </div>
                     <div class="row form_fields">
-                        <div class="col-md-3">Address</div>
+                        <div class="col-md-3"><?php echo translate("Address");?></div>
                         <div class="col-md-8">
-                             <input type="text" required class="form-control" id="location" name="location" placeholder="Enter Location" value="<?= $_SESSION['sysData']['location'];?>">
+                             <input type="text" required class="form-control" id="location" name="location" placeholder="<?php echo translate("Enter Location");?>" value="<?= $_SESSION['sysData']['location'];?>">
                         </div>
                     </div>
                     <div class="col-md-12"><?php include("gmap.php");?></div>
                     <div class="col-md-12">&nbsp;</div>
                     <div class="col-md-12">
-                        <input type="submit" name="submit" class="btn btn-primary" value="SAVE AND NEXT">
+                        <input type="submit" name="submit" class="btn btn-primary" value="<?php echo translate("Save And Next");?>">
                     </div>
             </form>
         </div>
     </div>
     <div class="col-md-3" style="margin-top: 30px;">
           
-          <div class="col-12 heading">Post a Free Classified  </div>
+          <div class="col-12 heading"><?php echo translate("Post a free Classified Ad");?>  </div>
           
                 <p class="light-text-0">
-                    Post your free online classified ads with us. Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit.            </p>
+                    <?php echo translate(" Post your free online classified ads with us. Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit.");?>
+                               </p>
                 
 
                 <div class="card bg-transparent mt-3">
                     <div class="card-body">
                         <h5 class="card-title light-text-1 mt-3">
-                            How to sell quickly?
+                            <?php echo translate("How to sell quickly?");?>
                         </h5>
                         <ul class="list-unstyled">
-                            <li class="text-secondary list-item"> <i class="fa fa-check"></i> Use a brief title and description of the item </li>
-                            <li class="text-secondary list-item"> <i class="fa fa-check"></i>  Make sure you post in the correct category</li>
-                            <li class="text-secondary list-item"> <i class="fa fa-check"></i>  Add nice photos to your ad</li>
-                            <li class="text-secondary list-item"> <i class="fa fa-check"></i>  Put a reasonable price</li>
-                            <li class="text-secondary list-item"> <i class="fa fa-check"></i>  Check the item before publish</li>
+                            <li class="text-secondary list-item"> <i class="fa fa-check"></i><?php echo translate("Use a brief title and description of the item ");?> </li>
+                            <li class="text-secondary list-item"> <i class="fa fa-check"></i><?php echo translate("Make sure you post in the correct category");?>  </li>
+                            <li class="text-secondary list-item"> <i class="fa fa-check"></i><?php echo translate("Add nice photos to your ad");?>  </li>
+                            <li class="text-secondary list-item"> <i class="fa fa-check"></i><?php echo translate("Put a reasonable price");?>  </li>
+                            <li class="text-secondary list-item"> <i class="fa fa-check"></i><?php echo translate("Check the item before publish");?>  </li>
 
                         </ul>
-                        <a href="" class="btn btn-primary" style="margin-top: 10px">View Details</a>
+                        <a href="" class="btn btn-primary" style="margin-top: 10px"><?php echo translate("View Details");?></a>
                     
                 </div>
             </div>
