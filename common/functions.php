@@ -396,7 +396,4 @@ function splitlimit($string, $length = 50, $ellipsis = '...')
    else return $string;
 }
 // function translate($text){
-// return $text;
-// }
-
 ?>
