@@ -303,7 +303,7 @@ function fnAdd_bidd(){
       }
       ?>
       <div class="col-12 heading mt40 border_bottom">Description</div>
-      <div class="col-12"><?php echo $product[0]['description_'.$_SESSION['lang']];?></div>
+      <div class="col-12"><?php echo $product[0]['description_'.$lang];?></div>
       <div class="col-12 heading mt40 border_bottom">Similar Ads</div>
     </div>
   </div>
