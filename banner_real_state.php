@@ -6,8 +6,8 @@
             <section class="banner-area">
                 <div class="padding-none posi-search">
                     <div class="top-search-form">
-                        <h1 class="banner-caption"><?php echo translate("Thailand's Home for Real Estate");?></h1>
-                        <p class="small_para"><?php echo translate("Lorem ipsum dolor sit amet, consectetur adipiscing elit");?></p>
+                        <h1 class="banner-caption"><?php echo translate("lang_text13");?></h1>
+                        <p class="small_para"><?php echo translate("lang_text14");?></p>
                         <div class="search-sec inner">
                             <div class="header-job-search">
                                 <div class="header-job-search-1 clearfix"> 
@@ -21,10 +21,10 @@
                                     </div>
                                 </div>
                                 <div class="input-group">
-                                    <input name="location" type="text" pattern=".{3,}" onchange="get_val($('#tab2').val());" id="location" class="form-control" placeholder="<?php echo translate("Enter Location");?>" value="" autocomplete="off">
+                                    <input name="location" type="text" pattern=".{3,}" onchange="get_filter_products_type()" id="location" class="form-control" placeholder="<?php echo translate("Enter Location");?>" value="" autocomplete="off">
                                     <!--<input type="text" class="form-control" placeholder="Search by Region, Location or Project" aria-label="Username" aria-describedby="basic-addon1">-->
                                     <div class="input-group-append search_btn">
-                                        <button class="btn btn-outline-secondary" type="button" onclick="get_filter_products(document.getElementById('location').value);"><img src="images/search.png"></button>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="get_filter_products();"><img src="images/search.png"></button>
                                     </div>
                                 </div>
                             </div>

@@ -49,10 +49,10 @@ $p_features = get_records($tblproduct_features,'category_id = '.$product[0]['sub
         <div class="section_spacer">
             <?php show_errors();?>
             <div class="row">
-                <div class="col-12 heading"><?php echo translate("More Information About your ads");?></div>
+                <div class="col-12 heading"><?php echo translate("lang_text11");?></div>
             </div>
             <div class="row">
-                <div class="col-12 heading2"><?php echo translate("Step 2 of 2");?></div>
+                <div class="col-12 heading2"><?php echo translate("lang_text12");?></div>
             </div>
             <div class="row">
                 <div class="col-12 heading3"><?php echo $category[0]['title'];?>&nbsp;>&nbsp;<?php echo $subcategory[0]['title'];?></div>

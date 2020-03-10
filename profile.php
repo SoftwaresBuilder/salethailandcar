@@ -2,6 +2,7 @@
 if(!isset($_SESSION['sysData']['name'])) {
     $_SESSION['sysData'] = table_fields($tblusers);
 }
+
 $user_details = get_records($tblusers,'id ='.$_SESSION['user_record']['id']);
 $query ='SELECT COUNT(id) FROM ' .$tblproducts. ' WHERE user_id = ' .$user_details[0]['id'];
 $query_pending_approvals ='SELECT COUNT(id) FROM ' .$tblproducts. ' WHERE user_id = ' .$user_details[0]['id']. ' AND status = 0';
@@ -26,7 +27,15 @@ $count_favourites = sql($query_favourites);
 <div class="container">
     <div class="row">
         <div style="background-color: #e6e9ed; margin-bottom: 20px;" class="col-md-4 for_text">
-            <img width="80px" height="80px" style="border-radius: 50px; margin-top: 10px;margin-bottom: 10px" src="images/user.jpg">
+            <?php         
+                        $web_image_path = $web_site_uploads.$user_details[0]['img'];
+                        $dir_image_path = $dir_site_uploads.$user_details[0]['img'];
+              
+                                if(!file_exists($dir_image_path) || empty($v) )
+                                {
+                                     $web_image_path = $web_site_uploads.'user.jpg';
+                                } ?>
+            <img width="100px" height="100px" style="border-radius: 50px; margin-top: 10px;margin-bottom: 10px" src="<?php echo $web_image_path; ?>">
             <span class="" style="margin-left: 20px"> <?php echo $user_details[0]['name']; ?></span>
 
         </div>
@@ -54,20 +63,20 @@ $count_favourites = sql($query_favourites);
     <div class="section_spacer">
         <div class="row register">
             <div class="col-xs-12 col-md-6">
-                <form action="process.php?p=register" enctype="multipart/form-data" method="post">
+                <form action="process.php?p=my_account" enctype="multipart/form-data" method="post">
                     <?php show_errors();?>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label><?php echo translate("Full Name");?> <span class="err">*</span></label>
-                                <input type="text" required class="form-control" id="name" name="name" placeholder="<?php echo translate("Enter Your Name");?>" value="<?= $_SESSION['sysData']['name'];?>">
+                                <input type="text" required class="form-control" id="name" name="name" placeholder="<?php echo translate("Enter Your Name");?>" value="<?= $_SESSION['user_record']['name'];?>">
 
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label><?php echo translate("Email");?> <span class="err">*</span></label>
-                                <input type="email" required class="form-control" id="email" name="email" placeholder="<?php echo translate("Email");?>" value="<?= $_SESSION['sysData']['email'];?>">
+                                <input type="email" required class="form-control" id="email" name="email" placeholder="<?php echo translate("Email");?>" value="<?= $_SESSION['user_record']['email'];?>">
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -85,36 +94,39 @@ $count_favourites = sql($query_favourites);
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label><?php echo translate("Address");?></label>
-                                <input type="text" required class="form-control" id="address" name="address" placeholder="<?php echo translate("Enter Your Address");?>" value="<?= $_SESSION['sysData']['address'];?>">
+                                <input type="text" required class="form-control" id="address" name="address" placeholder="<?php echo translate("Enter Your Address");?>" value="<?= $_SESSION['user_record']['address'];?>">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label><?php echo translate("City");?></label>
-                                <input type="text" required class="form-control" id="city" name="city" placeholder="<?php echo translate("Enter Your City");?>" value="<?= $_SESSION['sysData']['city'];?>">
+                                <input type="text" required class="form-control" id="city" name="city" placeholder="<?php echo translate("Enter Your City");?>" value="<?= $_SESSION['user_record']['city'];?>">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label><?php echo translate("State");?></label>
-                                <input type="text" required class="form-control" id="state" name="state" placeholder="<?php echo translate("Enter Your State");?>" value="<?= $_SESSION['sysData']['state'];?>">
+                                <input type="text" required class="form-control" id="state" name="state" placeholder="<?php echo translate("Enter Your State");?>" value="<?= $_SESSION['user_record']['state'];?>">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label><?php echo translate("Zipcode");?></label>
-                                <input type="text" required class="form-control" id="zip" name="zip" placeholder="<?php echo translate("Enter Your Zip code");?>" value="<?= $_SESSION['sysData']['zip'];?>">
+                                <input type="text" required class="form-control" id="zip" name="zip" placeholder="<?php echo translate("Enter Your Zip code");?>" value="<?= $_SESSION['user_record']['zip'];?>">
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label><?php echo translate("Profile Image");?></label>
-                                    <input type="file" required class="form-control" id="profile_img" name="profile_img">
-                                </div>
+                                    <div style="background-color:#dcdee6;height: 300px; width: 100%;">
+                            <img src="<?php echo $web_image_path; ?>" id="blah" onclick="" alt="" width="100%" height="300px" /></div>
+                            <input type="file" name="img"  onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                                 </div>
                             </div>
+                           
                             <div class="col-md-12" style="margin-top: 10px;">
-                                <button type="submit" class="btn btn-primary" name="Submit"><?php echo translate("Update Profile");?></button>
+                            <button type="submit" class="btn btn-primary" name="Submit"><?php echo translate("Update Profile");?></button>
                             </div>
                         </div>
                         <div class="clearfix"></div>

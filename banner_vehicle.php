@@ -6,8 +6,8 @@
             <section class="banner-area">
                 <div class="padding-none posi-search">
                     <div class="top-search-form">
-                        <h1 class="banner-caption"><?php echo translate("Thailand's for Vehicles");?></h1>
-                        <p class="small_para"><?php echo translate("Lorem ipsum dolor sit amet, consectetur adipiscing elit");?></p>
+                        <h1 class="banner-caption"><?php echo translate("lang_text15");?></h1>
+                        <p class="small_para"><?php echo translate("lang_text14");?></p>
                         <div class="search-sec inner">
                             <div class="input-group">
                                 <input name="location" type="text" pattern=".{3,}" id="location" class="form-control" placeholder="<?php echo translate("Enter Location");?>" value="" autocomplete="off">

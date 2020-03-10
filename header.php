@@ -62,14 +62,10 @@ $parent_categories = get_records($tblcategories,"pid='0' and status='1' and tras
         filter();
     });
 
-    function get_filter_products(str){
-
-      //var location = str;
-
-     var location = $('#location').val();
-      var cat_val = $('#hidden_value').val();
-
-       var product_ids = [];
+    function get_filter_products(){
+    var location = $('#location').val();
+    var cat_val = $('#hidden_value').val();
+    var product_ids = [];
             $.each($("input[name='checklist']:checked"), function(){
                 product_ids.push($(this).val());
             });
@@ -309,10 +305,10 @@ echo translate("You have selected :") .$selected_val;  // Displaying Selected Va
 ?>
     <form action="<?php echo makepage_url("search","?id=".enc_password($v['id']));?>" method="post">
     <div class="row top_banner_section justify-content-center">
-      <div class="col-12 banner_caption"><?php echo translate("WHAT ARE YOU LOOKING FOR?");?></div>
+      <div class="col-12 banner_caption"><?php echo translate("lang_text1");?></div>
       <div class="col-12 col-md-8">
         <div class="row">
-          <div class="col-12 col-md-4 nopadding"><input type="text" class="form-control search_fields" name="" placeholder="<?php echo translate("Search by cars, houses etc.");?>" value=""></div>
+          <div class="col-12 col-md-4 nopadding"><input type="text" class="form-control search_fields" name="" placeholder="<?php echo translate("lang_text2.");?>" value=""></div>
           <div class="col-12 col-md-4 nopadding">
             <select class="form-control search_fields" selected="selected" name="category">
               <?php

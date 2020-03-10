@@ -14,7 +14,7 @@ if(isset($_GET['id'])){
 	<div class="col-12 border_bottom">
 		
 		<select class="form-control">
-			<option value=""><?php echo translate("Near By (Km)");?></option>
+			<option value=""><?php echo translate("lang_text32");?></option>
 		</select>
 	</div>
 	<div class="col-12 border_bottom">
