@@ -128,7 +128,7 @@ if($p=="add_bidd"){
 		$data['message'] = $bid_message;
 		
 		$id = insert_record($tblbidding,$data);
-		
+		sendmail_bidding($bidder_id,'post bid',$id);
 		$get_product_bid =get_records($tblbidding,"product_id='".$product_id."' and status='1' and trash='0' order by id desc limit 1"); 
 						$items = array();
                      if(!empty($get_product_bid))
@@ -184,12 +184,16 @@ if($p=="get_search_filter"){
 	
 }	
 if($p=="get_real_estate_type"){
-	 	 $type = $_GET['type'];
-	 	 $location = $GET['location'];
-	    $condition = " category_id=".$_GET['cat_val']; 
-		$condition .= " AND type = '$type'";
-		$condition .= " AND location Like '%".$location."%' ";
-		$products = get_records($tblproducts,$condition,"",""); 
+	 	 $radio_value = $_GET['radio_value'];
+	 	 $location = $_GET['location'];
+	     $condition = " category_id=".$_GET['cat_val']; 
+	     if($location)
+	     {
+			 $condition .= " AND type = '$radio_value'";
+			 $condition .= " AND location Like '%".$location."%' ";
+		 }
+		 
+		 $products = get_records($tblproducts,$condition,"",""); 
 
 				if(count($products)>0){
 		          foreach ($products as $product) {
@@ -207,12 +211,12 @@ if($p=="get_real_estate_type"){
 }	
 if($p=="get_jobs_filter"){
 	  
-     $job_title = $_GET['job_title'];
+    $job_title = $_GET['job_title'];
     $job_location = $_GET['job_location'];
     $job_sub_category = $_GET['job_sub_category'];
     $job_month_year = $_GET['job_month_year'];
     $job_min_price = $_GET['job_min_price'];
-   $job_max_price = $_GET['job_max_price'];
+    $job_max_price = $_GET['job_max_price'];
 	
 	 	 $condition = " category_id=".$_GET['cat_val'];
 		if($job_title){

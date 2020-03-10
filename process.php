@@ -245,7 +245,7 @@ if($p=="delproduct_img"){
 	exit;
 }
 if($p=="add_product"){
-		
+	//pr($_FILES); exit;	
 	foreach ($_POST as $k => $v )
 	{
 		if(!is_array($v)){
@@ -283,6 +283,7 @@ if($p=="add_product"){
 		$data['ad_type'] = $ad_type;
 		$data['submodel'] = $submodel;
 		$data['model'] = $model;
+		$data['trash'] = 1;
 		/**
 		$data['brand'] = $brand;
 		$data['year_registration'] = $year_registration;
@@ -391,6 +392,7 @@ if($p=="add_product_detail"){
 		$data['fuel_type'] = $fuel_type_ids;
 		// $data['gearbox'] = $gearbox;
 		$data['features'] = $features_ids;
+		$data['trash'] = 0;
 		pr($data);
 		$condition = array();
 		$condition['id'] = dec_password($id);
@@ -407,6 +409,7 @@ if($p=="add_product_detail"){
 		if($result)
 		{
 			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+			sendmail( dec_password($user_id),'add posted');
 		}
 	
 	
@@ -570,6 +573,11 @@ if($p=="my_account"){
 		$_SESSION['sysErr']['name'] = "Please enter name";
 		$flg = true;
 	}
+	if($password!=$cpassword)
+	{
+		$_SESSION['sysErr']['name'] = "New password and confirm password are not same";
+		$flg = true;
+	}
 	$user = get_records($tblusers,"email='".$email."' and id!='".$user_id."'");
 	if(count($user)>0)
 	{
@@ -580,17 +588,29 @@ if($p=="my_account"){
 	{
 		if( $user_id > 0 )
 		{
-			$data = array();
+			if($_FILES['img']['name']){  /// Add product images
+					$files_arr = array();
+					$files_arr['img']['name'] = $_FILES['img']['name'];
+					$files_arr['img']['tmp_name'] = $_FILES['img']['tmp_name'];
+					$files_arr['img']['size'] = $_FILES['img']['size'];
+					
+					$imgname = "";
+				  $img_name = upload_img($files_arr,$dir_site_uploads,$imgname);
+			}
+			$password = enc_password($password);
 			$data['name'] = $name;
-			$data['loved_one'] = $loved_one;
+			$data['img'] = $profile_img;
 			$data['address'] = $address;
 			$data['email'] = $email;
+			$data['password'] = $password;
 			$data['city'] = $city;
 			$data['state'] = $state;
 			$data['zip'] = $zip;
+			$data['img'] = $img_name;
 			$condition = array();
 			$condition['id'] = $user_id;
 			$result = update_record($tblusers,$data,$condition);
+			
 			if($result)
 			{
 				$_SESSION['sysErr']['msg'] = "Record updated successfully";
@@ -682,6 +702,7 @@ if($p=="change_password"){
 		{
 			$_SESSION['user_record']['password'] = $pass;
 			$_SESSION['sysErr']['msg'] = "Your password has been changed successfully";
+			sendmail($_SESSION['user_record']['id'],'change password');
 		}
 	}
 	header("location:".$_SESSION['page_url']);
@@ -723,7 +744,6 @@ if($p=="subscribed"){
 }
 
 if($p=="add_bidd"){
-	//pr($_POST); exit;
 	foreach ($_POST as $k => $v )
 	{
 		if(!is_array($v)){
@@ -731,8 +751,6 @@ if($p=="add_bidd"){
 			$_SESSION['sysData'][$k] = $v;
 		}
 	}
-	
-	
 		$data = array();
 		$data['user_id'] = $user_id;
 		$data['product_id'] = $product_id;
@@ -743,33 +761,31 @@ if($p=="add_bidd"){
 		if($id>0)
 		{
 			$_SESSION['sysErr']['msg'] = "Record added successfully";
+			
 		}
 		header("location:".$_SESSION['page_url']);
 		exit;
-	//}
+	
 }
 if($p=="forgot_password"){
 
- $get_email = $_POST['email'];
-$email_check = get_records($tblusers,"email='".$get_email."'");
-//pr($email_check); exit;
+		$get_email = $_POST['email'];
+		$email_check = get_records($tblusers,"email='".$get_email."'");
 
-
-foreach ($email_check as $r) {}
-     	$valid_email = $r['email'];
+		foreach ($email_check as $r) {}
+     	 $valid_email = $r['email'];
  		 $valid_id = $r['id'];
  		 $valid_passwoed = dec_password($r['password']);
-if($valid_email == $get_email){
-	
-	sendmail($valid_id,'forgot password');
-	
-	echo 'Link sent to your email address';
-	header("location: index.php");
-}
-else
-{
-	echo'email you entered does not exixst';
-}
-exit;
-}
+		if($valid_email == $get_email)
+			{
+				sendmail($valid_id,'forgot password');
+				echo 'Link sent to your email address';
+				header("location: index.php");
+			}
+		else
+			{
+				echo'email you entered does not exixst';
+			}
+		exit;
+		}
 ?>

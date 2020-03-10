@@ -309,6 +309,7 @@ function sendmail($userid,$type,$confirmationLink="")
 	
 	$where = "id='".$userid."'";
 	$user = get_records($tblusers,$where);
+	//pr($user); exit;
 	if(count($user)>0){
 		$user = $user[0];
 		$name = $user['name'];
@@ -325,10 +326,48 @@ function sendmail($userid,$type,$confirmationLink="")
 		
 		$headersuser = $headers.'From: '.$adminName.' <'.$adminEmail.'>' . "\r\n";
 		
-		$message = str_replace("{{Name}}",$fname,$body);
+		$message = str_replace("{{Name}}",$name,$body);
 		$message = str_replace("{{Email}}",$email,$message);
 		$message = str_replace("{{Password}}",$pass,$message);
 		$message = str_replace("{{ConfirmationLink}}",$confirmationLink,$message);
+		$message = nl2br($message);
+		
+		$mailsent = @mail($email,$subject,$message,$headersuser);
+	}
+}
+function sendmail_bidding($userid,$type,$bid_id)
+{
+	//echo $userid . ' / ' . $type . ' / ' . $bid_id; exit;
+
+	$headers  = 'MIME-Version: 1.0' . "\r\n";
+	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+	
+	$where = "id='".$userid."'";
+	$user = get_records($tblusers,$where);
+
+	$where = "id='".$bid_id."'";
+	$bidding_detail = get_records($tblbidding,$where);
+
+	$where = "id='".$bidding_detail[0]['product_id']."'";
+	$product_name = get_records($tblproducts,$where);
+	
+	if(count($user)>0){
+		$user = $user[0];
+		$name = $user['name'];
+
+		$where = "type='".$type."'";
+		$content = get_records($tblemails,$where);
+		$content = $content[0];
+		$adminName = $content['adminname'];
+		$adminEmail = $content['adminemail'];
+		$subject = $content['subject'];
+		$body = $content['body'];
+		
+		$headersuser = $headers.'From: '.$adminName.' <'.$adminEmail.'>' . "\r\n";
+		
+		$message = str_replace("{{Name}}",$name,$body);
+		$message = str_replace("{{bid_product}}",$product_name[0]['title'],$message);
+		$message = str_replace("{{bid_amount}}",$bidding_detail[0]['amount'],$message);
 		$message = nl2br($message);
 		
 		$mailsent = @mail($email,$subject,$message,$headersuser);

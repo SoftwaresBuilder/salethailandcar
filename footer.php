@@ -39,14 +39,14 @@ function submitUserForm_signup() {
       <div class="col-12 col-md-5">
         <div class="row">
           <div class="col-12 mb10"><img src="images/site-logo.png" class="img-fluid"></div>
-          <div class="col-12 mb10"><?php echo translate("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley");?> </div>
+          <div class="col-12 mb10"><?php echo translate("lang_text16");?> </div>
           <div class="col-12"><input type="button" class="btn btn-primary" name="" value="<?php echo translate("READ MORE ABOUT US");?>"></div>
         </div>
       </div>
       <div class="col-12 col-md-3">
           <div class="row">
               <div class="col-12 footer_heading mb10"><?php echo translate("Subscribe To Us");?></div>
-              <div class="col-12 mb10"><?php echo translate("Subscribe to our newsletter and stay updated to our latest news.");?></div>
+              <div class="col-12 mb10"><?php echo translate("lang_text17");?></div>
               <form action="process.php?p=subscribed" method="post">
                   <div class="row">
                   <div class="col-9 pr0"><input type="email" required class="form-control brl" name="email" id="email" placeholder="<?php echo translate("Enter your email");?>">
@@ -74,7 +74,7 @@ function submitUserForm_signup() {
           <div class="col-12 mb10"><a href="cms.php?type=aboutus"><?php echo translate("About Us");?></a></div>
           <div class="col-12 mb10"><a href=""><?php echo translate("Contact Us");?></a></div>
           <div class="col-12 mb10"><a href="cms.php?type=privacy_policy"><?php echo translate("Privacy Policy");?></a></div>
-          <div class="col-12 mb10"><a href="cms.php?type=terms_and_conditions"><?php echo translate("Terms & Conditions");?></a></div>
+          <div class="col-12 mb10"><a href="cms.php?type=terms_and_conditions"><?php echo translate("lang_text18");?></a></div>
         </div>
       </div>
     </div>
@@ -93,17 +93,17 @@ function submitUserForm_signup() {
   $(".overlay").toggle();   
 }
 function show_sign_up_div(){
-  $(".overlay").toggle(); 
+ 
   $("#login").hide();
-  $("#sign_up_div").slideDown("slow");
-    
+  $("#sign_up_div").slideDown(300);
+   $(".overlay").toggle();   
 }
 function hide_login(){
   
   //$('#login').show(500);
   $("#login").slideUp(1000);
   $("#sign_up_div").slideUp(1000);
-       $(".overlay").toggle();  
+  $(".overlay").toggle();  
 }
 function show_forgot_password_form(){
   $("#login_form").hide();
@@ -167,35 +167,35 @@ function show_forgot_password_form(){
                                         <img class="mr-3" src="images/side_icon_1.png">
                                         <div class="media-body">
                                             <h5 class="mt-0"><?php echo translate("Receive And Send Bids");?></h5>
-                                            <p<?php echo translate("Receive bids for your ads and increase your chances of closing sales.");?>></p>
+                                            <p<?php echo translate("lang_text19");?>></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_2.png">
                                         <div class="media-body">
                                             <h5 class="mt-0"><?php echo translate("list features");?></h5>
-                                            <p><?php echo translate("Create more value for your ads.");?></p>
+                                            <p><?php echo translate("lang_text20");?></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_3.png">
                                         <div class="media-body">
                                             <h5 class="mt-0"><?php echo translate("Chat");?> &amp; <?php echo translate("message");?></h5>
-                                            <p><?php echo translate("Access your chat and account information from any device.");?></p>
+                                            <p><?php echo translate("lang_text21");?></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_4.png">
                                         <div class="media-body">
                                             <h5 class="mt-0"><?php echo translate("User dashboard");?></h5>
-                                            <p><?php echo translate("Collect the desired items by saving your favorites.");?></p>
+                                            <p><?php echo translate("lang_text22");?></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_5.png">
                                         <div class="media-body">
-                                            <h5 class="mt-0"><?php echo translate("Track the status of your ad history");?></h5>
-                                            <p><?php echo translate("Track the status of your ad history.");?></p>
+                                            <h5 class="mt-0"><?php echo translate("lang_text23");?></h5>
+                                            <p><?php echo translate("lang_text23");?></p>
                                         </div>
                                     </div>
 
@@ -241,14 +241,14 @@ function show_forgot_password_form(){
                                         </div>
                                         <div class="d-flex log_nw_bx justify-content-between mb-2">
 
-                                            <a href="#" onclick="show_forgot_password_form();" class="forget_pass"><?php echo translate("Forgot password ?");?></a>
+                                            <a href="#" onclick="show_forgot_password_form();" class="forget_pass"><?php echo translate("lang_text25");?></a>
                                         </div>
 
                                        <div class="col-md-12">
                         <input type="submit" class="btn btn-primary" value="<?php echo translate("Login");?>" name="Submit">
                     </div>
                                         <div class="signin-foot text-center">
-                                            <p><?php echo translate("Don't have an account?");?> <a href="#" onclick="show_sign_up_div();"><?php echo translate("Sign Up");?></a></p>
+                                            <p><?php echo translate("lang_text26");?> <a href="#" onclick="show_sign_up_div();"><?php echo translate("Sign Up");?></a></p>
                                         </div>
                                     </form>
                                   </div>
@@ -309,43 +309,43 @@ function show_forgot_password_form(){
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_6.png">
                                         <div class="media-body">
-                                            <h5 class="mt-0"><?php echo translate("Get Ads for free!");?></h5>
-                                            <p><?php echo translate("Register and post your information for free!");?></p>
+                                            <h5 class="mt-0"><?php echo translate("lang_text27");?></h5>
+                                            <p><?php echo translate("lang_text28");?></p>
                                         </div>
                                     </div>
                                    <div class="media">
                                         <img class="mr-3" src="images/side_icon_1.png">
                                         <div class="media-body">
                                             <h5 class="mt-0"><?php echo translate("Receive And Send Bids");?></h5>
-                                            <p><?php echo translate("Receive bids for your ads and increase your chances of closing sales.");?></p>
+                                            <p><?php echo translate("lang_text19");?></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_2.png">
                                         <div class="media-body">
                                             <h5 class="mt-0"><?php echo translate("list features");?></h5>
-                                            <p><?php echo translate("Create more value for your ads.");?></p>
+                                            <p><?php echo translate("lang_text20");?></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_3.png">
                                         <div class="media-body">
                                             <h5 class="mt-0"><?php echo translate("Chat");?> &amp; <?php echo translate("message");?></h5>
-                                            <p><?php echo translate("Access your chat and account information from any device.");?></p>
+                                            <p><?php echo translate("lang_text21");?></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_4.png">
                                         <div class="media-body">
                                             <h5 class="mt-0"><?php echo translate("User dashboard");?></h5>
-                                            <p><?php echo translate("Collect the desired items by saving your favorites.");?></p>
+                                            <p><?php echo translate("lang_text22");?></p>
                                         </div>
                                     </div>
                                     <div class="media">
                                         <img class="mr-3" src="images/side_icon_5.png">
                                         <div class="media-body">
                                             <h5 class="mt-0"><?php echo translate("Track the status of your ad history");?></h5>
-                                            <p><?php echo translate("Track the status of your ad history.");?></p>
+                                            <p><?php echo translate("lang_text23");?></p>
                                         </div>
                                     </div>
 
@@ -436,7 +436,7 @@ function show_forgot_password_form(){
                 <button type="submit" class="btn btn-primary" name="Submit"><?php echo translate("Submit");?></button>
             </div>
                                         <div class="signin-foot text-center">
-                                            <p><?php echo translate("Already have an account?");?> <a href="#" onclick="show_login_div();"><?php echo translate("Sign In");?></a></p>
+                                            <p><?php echo translate("lang_text29");?> <a href="#" onclick="show_login_div();"><?php echo translate("Sign In");?></a></p>
                                         </div>
                                     </form>
                                 </div>
@@ -579,35 +579,36 @@ function update_submodels(id){
     }
   });
 }
-function show_radio_val(str){
-      var location = $('#location').val();
-      var cat_val = $('#hidden_value').val();
-      var type_filter = str;
-         $.ajax({
-            type: "GET",
-            url: "ajaxphp.php",
-             dataType: 'html',  
-            data: {location:location,type:type_filter,cat_val:cat_val,p:'get_real_estate_type'},
-            success: function(data){
-              $('#serach_results').html('');
-               $('#serach_results').html(data);
+function show_radio_val(){
 
-               document.getElementById('serach_results').scrollIntoView({block: 'start', behavior: 'smooth'});
+      // var location = $('#location').val();
+      // var cat_val = $('#hidden_value').val();
+      // var type_filter = str;
+      //    $.ajax({
+      //       type: "GET",
+      //       url: "ajaxphp.php",
+      //        dataType: 'html',  
+      //       data: {location:location,type:type_filter,cat_val:cat_val,p:'get_real_estate_type'},
+      //       success: function(data){
+      //         $('#serach_results').html('');
+      //          $('#serach_results').html(data);
 
-            } 
-        });
+      //          document.getElementById('serach_results').scrollIntoView({block: 'start', behavior: 'smooth'});
+
+      //       } 
+      //   });
    
 }
-function get_val(str){
+function get_filter_products_type(){
+    var radio_value = $("input[name='radioTabTest']:checked").val();
      var location = $('#location').val();
-      var cat_val = $('#hidden_value').val();
-      // alert(str+location+cat_val); return false;
-      var type_filter = str;
+     var cat_val = $('#hidden_value').val();
+       //alert(radioValue+' / '+ location+ ' / '+ cat_val); return false; 
          $.ajax({
             type: "GET",
             url: "ajaxphp.php",
              dataType: 'html',  
-            data: {location:location,type:type_filter,cat_val:cat_val,p:'get_real_estate_type'},
+            data: {location:location,radio_value:radio_value,cat_val:cat_val,p:'get_real_estate_type'},
             success: function(data){
               $('#serach_results').html('');
                $('#serach_results').html(data);

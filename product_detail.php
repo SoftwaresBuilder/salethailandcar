@@ -104,7 +104,6 @@ $imgs = get_product_imgs($product[0]['id']);
             newUpdate();
         }, 5000);
 
-
     }
     function sendmsg(id, ads)
     {
@@ -339,8 +338,7 @@ function fnAdd_bidd(){
       <div class="col-12 pb10">
         <div class="row">
           <div class="col-6"><a class="nav-link btn btn-primary" href="#"><i class="fa fa-phone"></i>xxxxxxxx</a></div>
-          <div class="col-6">
-            <a class="nav-link btn btn-primary" href="javascript:void(0);" onclick="openChat();">MESSAGE</a></div>
+          <div class="col-6"><a class="nav-link btn btn-primary" href="javascript:void(0);" onclick="openChat();">MESSAGE</a></div>
         </div>
       </div>
     </div>

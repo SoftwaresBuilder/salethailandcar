@@ -42,9 +42,10 @@
 	}
 	
     </script>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVmLHD_P8I-G2Ip-2nOG1tA1v5wK-qhH4&libraries=places&callback=initAutocomplete"
          async defer></script>
     
-    
+    <style type="text/css">.gm-svpc { z-index: -1; }</style>
   </body>
 </html>

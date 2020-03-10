@@ -34,6 +34,44 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
         $("#select_Category_div").hide("slow");
     }
     
+        window.onload = function () {
+            var fileUpload = document.getElementById("fileupload");
+            fileUpload.onchange = function () {
+                if (typeof (FileReader) != "undefined") {
+                    var dvPreview = document.getElementById("dvPreview");
+                    dvPreview.innerHTML = "";
+                    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+                    for (var i = 0; i < fileUpload.files.length; i++) {
+                        var file = fileUpload.files[i];
+                        if (regex.test(file.name.toLowerCase())) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                var img = document.createElement("IMG");
+                                img.style="margin:20px"
+                                if(fileUpload.files.length<=1){
+                                 img.height = 250/fileUpload.files.length;
+                                }
+                                else
+                                {
+                                    img.height = 250/fileUpload.files.length*2;
+                                }
+                                img.width = 400/fileUpload.files.length;
+                                img.src = e.target.result;
+                                dvPreview.appendChild(img);
+                            }
+                            reader.readAsDataURL(file);
+                        } else {
+                            alert(file.name + " is not a valid image file.");
+                            dvPreview.innerHTML = "";
+                            return false;
+                        }
+                    }
+                } else {
+                    alert("This browser does not support HTML5 FileReader.");
+                }
+            }
+        };
+   
 </script>
 <style type="text/css">
     .form_fields{
@@ -57,7 +95,7 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
         <div class="section_spacer">
             <?php show_errors();?>
             <div class="row">
-                <div class="col-12 heading"><?php echo translate("Post a Free Classified Ad");?></div>
+                <div class="col-12 heading"><?php echo translate("lang_text3");?></div>
             </div>
             <form action="process.php?p=add_product" enctype="multipart/form-data" method="post">
                 <?php show_errors();?>
@@ -167,7 +205,7 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                         <div class="col-md-3"><?php echo translate("Price");?></div>
                         <div class="col-md-8">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-adon1"><?php echo $cons_currency;?></span>
+                                <span class="input-group-text" id="basic-adon1"><?php echo $cons_thai;?></span>
                                 <input type="text" required class="form-control" id="price" name="price" placeholder="<?php echo translate("Price");?>" value="">
                             </div>
                         </div>
@@ -175,11 +213,11 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                     <div class="row form_fields">
                         <div class="col-md-3"><?php echo translate("Picture");?></div>
                         <div class="col-md-8">
-                            <div style="background-color:#dcdee6;height: 300px; width: 100%;">
-                            <img id="blah" onclick="" alt="" width="100%" height="300px" /></div>
-                            <input type="file" name="img"  onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
-                        </div>
+                            <div id="dvPreview" style="background-color:#dcdee6;height: 300px; width: 100%;">
+                            </div>
+                             <input id="fileupload" name="img[]" type="file" multiple="multiple" />
                     </div>
+                </div>
                     <div class="row form_fields">
                         <div class="col-md-3"><?php echo translate("Address");?></div>
                         <div class="col-md-8">
@@ -196,28 +234,27 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
     </div>
     <div class="col-md-3" style="margin-top: 30px;">
           
-          <div class="col-12 heading"><?php echo translate("Post a free Classified Ad");?>  </div>
+          <div class="col-12 heading"><?php echo translate("lang_text3");?>  </div>
           
                 <p class="light-text-0">
-                    <?php echo translate(" Post your free online classified ads with us. Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit.");?>
+                    <?php echo translate("lang_text4");?>
                                </p>
                 
 
                 <div class="card bg-transparent mt-3">
                     <div class="card-body">
                         <h5 class="card-title light-text-1 mt-3">
-                            <?php echo translate("How to sell quickly?");?>
+                            <?php echo translate("lang_text5");?>
                         </h5>
                         <ul class="list-unstyled">
-                            <li class="text-secondary list-item"> <i class="fa fa-check"></i><?php echo translate("Use a brief title and description of the item ");?> </li>
-                            <li class="text-secondary list-item"> <i class="fa fa-check"></i><?php echo translate("Make sure you post in the correct category");?>  </li>
-                            <li class="text-secondary list-item"> <i class="fa fa-check"></i><?php echo translate("Add nice photos to your ad");?>  </li>
-                            <li class="text-secondary list-item"> <i class="fa fa-check"></i><?php echo translate("Put a reasonable price");?>  </li>
-                            <li class="text-secondary list-item"> <i class="fa fa-check"></i><?php echo translate("Check the item before publish");?>  </li>
+                            <li class="text-secondary list-item"> <i class="fa fa-check"></i><?php echo translate("lang_text6");?> </li>
+                            <li class="text-secondary list-item"> <i class="fa fa-check"></i><?php echo translate("lang_text7");?>  </li>
+                            <li class="text-secondary list-item"> <i class="fa fa-check"></i><?php echo translate("lang_text8");?>  </li>
+                            <li class="text-secondary list-item"> <i class="fa fa-check"></i><?php echo translate("lang_text9");?>  </li>
+                            <li class="text-secondary list-item"> <i class="fa fa-check"></i><?php echo translate("lang_text10");?>  </li>
 
                         </ul>
-                        <a href="" class="btn btn-primary" style="margin-top: 10px"><?php echo translate("View Details");?></a>
+                        <a href="#" class="btn btn-primary" style="margin-top: 10px"><?php echo translate("View Details");?></a>
                     
                 </div>
             </div>
