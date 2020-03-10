@@ -25,13 +25,22 @@ if($p=="chat_update"){
 
 if($p=="chat_send"){
 	$chat_id = dec_password($_POST['chat_id']);
+	if(isset($_POST['product_id'])){
+		$product_id = $_POST['product_id'];
+	}
 	$msg = $_POST['msg'];
 
 	$chat = get_records($tblchat,"chat_id='".$chat_id."'","","1");
-	$touser_id = ($chat[0]['user_id']==$user_id)?$chat[0]['touser_id']:$chat[0]['user_id'];
+	if(!(count($chat)>0)){
+		$touser_id = ($chat[0]['user_id']==$user_id)?$chat[0]['touser_id']:$chat[0]['user_id'];
+		$product_id = $chat[0]['product_id'];
+	} else {
+		$product = get_records($tblproducts,"id='".$product_id."'");
+		$touser_id = $product[0]['user_id'];
+	}
 	$data = array();
 	$data['chat_id'] = $chat_id;
-	$data['product_id'] = $chat[0]['product_id'];
+	$data['product_id'] = $product_id;
 	$data['user_id'] = $user_id;
 	$data['touser_id'] = $touser_id;
 	$data['msg'] = $msg;
