@@ -337,4 +337,27 @@ if($p=="translate_into_thai"){
     }
 	exit;
 }	
+
+if($p == "getAllProduct"){
+		// echo "_asdf";exit();
+		$cid=$_GET['cid'];
+		// echo "__".$cid;exit();
+		$products=get_records($tblproducts,"category_id='".$cid."' and trash!=1");
+		$listing_area ='';
+        if(count($products)>0){
+		
+                               
+              foreach ($products as $product) { ?>
+              			
+                      <div><?php include('card_map.php');?></div>
+                       
+                        <?php
+                        
+              }
+            } 
+
+	
+	exit;
+
+}
 ?>

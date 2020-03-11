@@ -314,9 +314,12 @@ function showGlobalLogin() {
             $sep = "";
             foreach ($parent_categories as $v) {
               echo $sep;
+              if ($v['title_en']=='Jobs' || $v['title_en']=='Vehicle' || $v['title_en']=='Real Estate') {
             ?>
+            <a href="<?php echo makepage_url("search_by_map","?id=".enc_password($v['id']));?>"><?php echo $v['title_'.$lang];?></a>
+            <?php } else{ ?>
               <a href="<?php echo makepage_url("search","?id=".enc_password($v['id']));?>"><?php echo $v['title_'.$lang];?></a>
-            <?php
+            <?php }
               $sep = "&nbsp;|&nbsp;";
             }
           }
