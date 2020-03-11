@@ -236,6 +236,16 @@ function fnAdd_bidd(){
     }
 
 }
+function show_hide_num(val) {
+    if($("#show_hide_num").text() ==='xxxxxxx')
+        {
+           $("#show_hide_num").text(val);
+        }
+  else
+      {
+         $("#show_hide_num").text('xxxxxxx');
+      }
+}
 </script>
 
 <div class="container">
@@ -243,7 +253,7 @@ function fnAdd_bidd(){
   <div class="col-12 col-md-8">
     <div class="row">
       <div class="col-12">
-        <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+        <ul id="image-gallery" class="gallery list-unstyled cS-hidden myslider">
           <?php
           if(count($imgs)>0){
             foreach ($imgs as $v) {
@@ -303,7 +313,7 @@ function fnAdd_bidd(){
       }
       ?>
       <div class="col-12 heading mt40 border_bottom">Description</div>
-      <div class="col-12"><?php echo $product[0]['description_'.$_SESSION['lang']];?></div>
+      <div class="col-12"><?php echo $product[0]['description_'.$lang];?></div>
       <div class="col-12 heading mt40 border_bottom">Similar Ads</div>
     </div>
   </div>
@@ -321,8 +331,13 @@ function fnAdd_bidd(){
       </div>
       <div class="col-12 border_bottom">
         <div class="row">
-          <div class="col-2"><img src="images/user.jpg" class="user_icon"></div>
-          <div class="col-10">
+          <?php
+          $user_img = get_user_img($get_user_detail[0]['img']);
+          ?>
+          <div class="col-3">
+            <img width="80px" height="80px" style="border-radius: 50px;" src="<?php echo $user_img; ?>" class="">
+          </div>
+          <div class="col-9">
             By
             <a href="vendor_profile.php?id=<?=enc_password($get_user_detail[0]['id']);?>"><?php echo $get_user_detail[0]['name']; ?></a><br>
             <?php echo $product[0]['created_date']; ?> - Views <span class="bold">6</span></br>
@@ -337,7 +352,7 @@ function fnAdd_bidd(){
       </div>
       <div class="col-12 pb10">
         <div class="row">
-          <div class="col-6"><a class="nav-link btn btn-primary" href="#"><i class="fa fa-phone"></i>xxxxxxxx</a></div>
+          <div class="col-6"><a id="show_hide_num" class="nav-link btn btn-primary" href="javascript:void(0);" onclick="show_hide_num(<?php echo $get_user_detail[0]['phone'];?>)"><i class="fa fa-phone"></i>xxxxxxx</a></div>
           <div class="col-6"><a class="nav-link btn btn-primary" href="javascript:void(0);" onclick="openChat();">MESSAGE</a></div>
         </div>
       </div>
@@ -350,8 +365,8 @@ function fnAdd_bidd(){
           <div class="bidd-details-sec">
                             <nav>
                                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                                                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#bidding" role="tab" aria-controls="nav-home" aria-selected="true">Bidding Status</a>
-                                                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#bidders" role="tab" aria-controls="nav-profile" aria-selected="false">Top Bidders</a>
+                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#bidding" role="tab" aria-controls="nav-home" aria-selected="true">Bidding Status</a>
+                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#bidders" role="tab" aria-controls="nav-profile" aria-selected="false">Top Bidders</a>
                                 </div>
                             </nav>
       <?php

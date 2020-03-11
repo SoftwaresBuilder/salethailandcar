@@ -27,16 +27,11 @@ $count_favourites = sql($query_favourites);
 <div class="container">
     <div class="row">
         <div style="background-color: #e6e9ed; margin-bottom: 20px;" class="col-md-4 for_text">
-            <?php         
-                        $web_image_path = $web_site_uploads.$user_details[0]['img'];
-                        $dir_image_path = $dir_site_uploads.$user_details[0]['img'];
-              
-                                if(!file_exists($dir_image_path) || empty($v) )
-                                {
-                                     $web_image_path = $web_site_uploads.'user.jpg';
-                                } ?>
-            <img width="100px" height="100px" style="border-radius: 50px; margin-top: 10px;margin-bottom: 10px" src="<?php echo $web_image_path; ?>">
-            <span class="" style="margin-left: 20px"> <?php echo $user_details[0]['name']; ?></span>
+        <?php
+        $user_img = get_user_img($user_details[0]['img']);
+        ?>
+        <img width="100px" height="100px" style="border-radius: 50px; margin-top: 10px;margin-bottom: 10px" src="<?php echo $web_image_path; ?>">
+        <span class="" style="margin-left: 20px"> <?php echo $user_details[0]['name']; ?></span>
 
         </div>
         <div style="background-color: #e6e9ed; margin-bottom: 20px;" class="col-md-4 for_text"><?php echo translate("Total Ads");?>
@@ -65,6 +60,7 @@ $count_favourites = sql($query_favourites);
             <div class="col-xs-12 col-md-6">
                 <form action="process.php?p=my_account" enctype="multipart/form-data" method="post">
                     <?php show_errors();?>
+                    
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -116,21 +112,21 @@ $count_favourites = sql($query_favourites);
                             </div>
                         </div>
                         
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label><?php echo translate("Profile Image");?></label>
-                                    <div style="background-color:#dcdee6;height: 300px; width: 100%;">
-                            <img src="<?php echo $web_image_path; ?>" id="blah" onclick="" alt="" width="100%" height="300px" /></div>
-                            <input type="file" name="img"  onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
-                                 </div>
-                            </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label><?php echo translate("Profile Image");?></label>
+                                <div style="background-color:#dcdee6;height: 300px; width: 100%;">
+                                <img src="<?php echo $web_image_path; ?>" id="blah" onclick="" alt="" width="100%" height="300px" /></div>
+                                <input type="file" name="img"  onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                             </div>
+                        </div>
                            
-                            <div class="col-md-12" style="margin-top: 10px;">
+                        <div class="col-md-12" style="margin-top: 10px;">
                             <button type="submit" class="btn btn-primary" name="Submit"><?php echo translate("Update Profile");?></button>
-                            </div>
                         </div>
                         <div class="clearfix"></div>
                     </div>
+
                 </form>
             </div>
         </div>
