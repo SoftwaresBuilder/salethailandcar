@@ -7,13 +7,13 @@
 			<div class="col-12 col-md-3">
 				<div class="mybox">
 			  <div class="col-12"><i class="fa fa-cart-plus"></i></div>
-			  <div class="col-12 title"><?php echo $v['title'];?></div>
+			  <div class="col-12 title"><?php echo $v['title_'.$lang];?></div>
 			  <div class="col-12">
 			  	<?php
 			  	if(count($subcategories)>0){
 			  		foreach($subcategories as $v2){
 				  	?>
-				  		<a href="<?php echo makepage_url("search","?id=".enc_password($v2['id']));?>"><?php echo $v2['title'];?></a><br>
+				  		<a href="<?php echo makepage_url("search","?id=".enc_password($v2['id']));?>"><?php echo $v2['title_'.$lang];?></a><br>
 				  	<?php
 			  		}
 			  	}

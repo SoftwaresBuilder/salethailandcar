@@ -2,6 +2,22 @@ body{
 	font-size: 14px;
 	color: #333;
 }
+.ad_banner{
+    height: 150px;
+    width: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.top_offers{
+	background-color: #f4c150;
+	margin: 0;
+	font-size: 20px;
+    font-family: serif;
+    text-align: center;
+    vertical-align: middle;
+    height: 50px;
+    line-height: 50px;
+}
 .fa-trash { color: #f00; }
 .navbar { padding: 0px; }
 .navbar .nav-item { padding: 0px 10px; }
@@ -48,7 +64,7 @@ a.btn { color: #fff; }
     position: relative;
     background-size: cover;
 }
-.bg_image { background-image: url(images/banner2.png); background-color: #031542; }
+.bg_image { background-image: url(../images/banner2.png); background-color: #031542; }
 .header { height: 100px; padding-top: 30px; }
 .header .header_menu { float: right; }
 .header a {  color: #fff; font-size: 16px; }

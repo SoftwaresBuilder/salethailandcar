@@ -22,8 +22,8 @@ if(!isset($_SESSION['sysData']['title'])) {
     $_SESSION['sysData'] = table_fields($tblproducts);
 }
 
-$category = get_records($tblcategories,"pid='0' and status='1' and trash='0'","title ASC");
-$subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and status='1' and trash='0'","title ASC");
+$category = get_records($tblcategories,"pid='0' and status='1' and trash='0'","title_".$lang." ASC");
+$subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and status='1' and trash='0'","title_".$lang." ASC");
 
 ?>
 <script type="text/javascript">
@@ -70,8 +70,7 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                     alert("This browser does not support HTML5 FileReader.");
                 }
             }
-        };
-   
+
 </script>
 <style type="text/css">
     .form_fields{
@@ -129,7 +128,7 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                         <div class="col-md-8">
                         <div class="form-group">
                             
-                            <textarea oninput="myFunction()" onfocusout="translate_into_thai($('#description_en').val())" class="form-control" rows="3" id="description_en" name="description_en" placeholder=""><?= $_SESSION['sysData']['description_en'];?></textarea>
+                            <textarea required="" oninput="myFunction()" onfocusout="translate_into_thai($('#description_en').val())" class="form-control" rows="3" id="description_en" name="description_en" placeholder=""><?= $_SESSION['sysData']['description_en'];?></textarea>
                         </div>
                         </div>
                     </div>
@@ -145,13 +144,14 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                     <div class="row form_fields">
                         <div class="col-md-3"><?php echo translate("Category");?></div>
                         <div class="col-md-8">
-                        <select required class="form-control" id="category_id" name="category_id" onchange="update_subcategories(this.value);">
+                        <select required class="form-control" id="category_id" name="category_id"
+                         onchange="update_subcategories(this.value);">
                             <option value=""><?php echo translate("Select Category");?></option>
                             <?php
                             if(count($category)>0){
                                 foreach ($category as $v) {
                                 ?>
-                                    <option value="<?php echo $v['id'];?>"><?php echo $v['title'];?></option>
+                                    <option value="<?php echo $v['id'];?>"><?php echo $v['title_'.$lang];?></option>
                                 <?php
                                 }
                             }
@@ -168,7 +168,7 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                             if(count($subcategory)>0){
                                 foreach ($subcategory as $v) {
                                 ?>
-                                    <option value="<?php echo $v['id'];?>"><?php echo $v['title'];?></option>
+                                    <option value="<?php echo $v['id'];?>"><?php echo $v['title_'.$lang];?></option>
                                 <?php
                                 }
                             }

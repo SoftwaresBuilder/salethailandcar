@@ -37,7 +37,21 @@ function upload_img($file,$path="",$img_name="",$allowed_types=array('jpg','jpeg
 	}
 	return false;
 }
+function add_watermark($img)
+{
+	
+	$stamp = imagecreatefrompng('images/watermark.png');
+	$im = imagecreatefromjpeg($img);
 
+	$marge_right = 40;
+	$marge_bottom = 60;
+	$sx = imagesx($stamp);
+	$sy = imagesy($stamp);
+
+	imagecopy($im, $stamp, imagesx($im) - $sx - $marge_right, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($stamp), imagesy($stamp));
+	imagejpeg($im, $img);
+	imagedestroy($im);
+}
 function admin_login_check(){
 	if($_SESSION['adminrecord']['id']>0){
 		return true;
