@@ -355,7 +355,7 @@ if($p=="add_product"){
 					
 					$imgname = "";
 				    $img_name = upload_img($files_arr,$dir_site_uploads,$imgname);
-				  
+				  	add_watermark($dir_site_uploads.$img_name);
 					if($img_name){
 						$data = array();
 						$data['product_id'] = $id;
