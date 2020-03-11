@@ -145,6 +145,33 @@ function find_filter_jobs(){
     .demo{
       width: 800px;
     }
+    .btn-color{
+      background-color: #e22029;
+    }
+    .common-btn{
+      font-size: 12px;
+      font-family: 'Roboto Slab', sans-serif;
+      text-transform: uppercase;
+      font-weight: bold;
+      color:
+      #fff;
+      padding: 9px 25px;
+      border-radius: 4px;
+      display: inline-block;
+      -webkit-transition: 0.4s ease-in-out;
+      transition: 0.4s ease-in-out;
+    }
+    .homeBtn {
+          border: none;
+          padding: 15px 25px;
+          font-size: 16px;
+          font-weight: 700;
+          color: #fff !important;
+          background-color: #4885ED;
+          text-transform: uppercase;
+          display: block ruby;
+          margin-top:4px; 
+      }
     </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="src/js/lightslider.js"></script> 
@@ -196,7 +223,7 @@ function showGlobalLogin() {
 </head>
 <body>
 
-<div class="bg_image" style="background-image: url(images/banner2.png);"> <?php if($p!="index"){?> style="background-image: none;" <?php }?>>
+<div class="bg_image" style="background-image: url(images/banner2.png);"> <?php if($p!="index"){?><?php }?>
   <div class="container">
     <div class="row header">
       <div class="col-8 col-md-6"><a class="navbar-brand" href="<?php echo makepage_url("index");?>"><img src="images/site-logo.png" class="img-fluid"></a></div>
@@ -213,19 +240,19 @@ function showGlobalLogin() {
                 $dashboard = ($_SESSION['user_record']['type'])?'dashboard':'account';
               ?>
                 <li class="nav-item d-none d-lg-block">
-                  <a class="nav-link btn btn-danger" href="<?php echo makepage_url($dashboard);?>"><?php echo translate("Dashboard");?></a>
+                  <a class="common-btn btn-color" href="<?php echo makepage_url($dashboard);?>"><?php echo translate("Dashboard");?></a>
                 </li>
                 <?php
                 if($_SESSION['user_record']['type']){
                 ?>
                   <li class="nav-item d-none d-lg-block">
-                  <a class="nav-link btn btn-primary" href="<?php echo makepage_url("add_product");?>" ><?php echo translate("Post Ads");?> </a>
+                  <a class="homeBtn" href="<?php echo makepage_url("add_product");?>" style="padding: 10px 18px;font-size: 11px;border-radius: 4px;"><?php echo translate("Post Ads");?> </a>
                 </li>
                 <?php
                 }
                 ?>
                 <li class="nav-item d-none d-lg-block">
-                  <a class="nav-link btn btn-danger" href="process.php?p=logout"><?php echo translate("Logout");?></a>
+                  <a class="common-btn btn-color" href="process.php?p=logout"><?php echo translate("Logout");?></a>
                 </li>
                 <li class="nav-item d-block d-lg-none">
                   <a class="nav-link" href="<?php echo makepage_url($dashboard);?>"><?php echo translate("Dashboard");?></a>

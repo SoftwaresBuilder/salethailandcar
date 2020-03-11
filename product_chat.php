@@ -1,11 +1,19 @@
 <?php
 $chat = array();
-if(isset($_GET['chat_id'])){
-    $enc_chat_id = $_GET['chat_id'];
+// echo "here__".$user_id;exit();
+$product_id=dec_password($_GET['id']);
+$chat_id=$product_id.$user_id;
+$enc_chat_id=enc_password($chat_id);
+
+
+// echo "testing__".$chat_id;exit();
+if(isset($chat_id)){
+    // $enc_chat_id = $_GET['chat_id'];
     $chat_id = dec_password($enc_chat_id);
     $chat = get_records($tblchat,"chat_id='".$chat_id."'","id ASC");
     $_SESSION['chat']['last_id'][$chat_id] = 0;
 }
+// $product = get_records($tblproducts,"id='".$chat[0]['product_id']."'");
 
 ?>
 <div id="ChatMsg" class="ChatBar ui-block" style="width: 30%;display: none;">
@@ -39,6 +47,7 @@ if(isset($_GET['chat_id'])){
                     <div class="col-9 col-md-10 pr0"><input type="text" class="form-control brl" id="msg" name="msg" placeholder="<?php echo translate("Write your message");?>" /></div>
                     <div class="col-3 col-md-2 pl0">
                         <input type="hidden" id="chat_id" name="chat_id" value="<?php echo $enc_chat_id;?>">
+                        <input type="hidden" id="p_id" name="p_id" value="<?php echo $product_id;?>">
                         <input type="submit" class="btn btn-primary brr" name="submit" value="<?php echo translate("Send");?>">
                     </div>
                 </div>
@@ -50,3 +59,31 @@ if(isset($_GET['chat_id'])){
 
   </div>
 </div>
+<script type="text/javascript">
+  
+  function chat_send(){
+    var msg = $("#msg").val();
+    var chat_id = $("#chat_id").val();
+    var product_id = $("#p_id").val();
+
+    $("#msg").val("");
+    $.ajax({
+        method: "POST",
+        url: "ajaxphp.php?p=chat_send",
+        data: { chat_id: chat_id,product_id:product_id, msg:msg }
+    })
+    .done(function( msg ) {
+        var html = $("#chat_box").html();
+        $("#chat_box").html(html+msg);
+    });
+
+    scroll_chat_div();
+
+    return false;
+}
+function scroll_chat_div(){
+    $("#chat_box").animate({
+      scrollTop: $('#chat_box')[0].scrollHeight - $('#chat_box')[0].clientHeight
+    }, 500);
+}
+</script>
