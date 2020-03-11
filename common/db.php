@@ -29,7 +29,7 @@ function get_records($table,$where="",$sort="",$limit="",$fields="*",$show="")
 		}
 		$array[] = $temp_array;
 	}
-	//	echo $sql;
+	//echo $sql;
 	return $array;
 }
 

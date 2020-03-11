@@ -28,7 +28,7 @@ function submitUserForm_signup() {
     }
     return true;
 }
- s
+ 
 </script>
   </head>
 
@@ -516,6 +516,7 @@ function delete_record(url,modal_msg="",modal_tlt=""){
 
 <script type="text/javascript">
 function update_subcategories(id){
+
   $(".hide_class").hide();
   
   if($("#category_id option:selected").text()==="Vehicle"){

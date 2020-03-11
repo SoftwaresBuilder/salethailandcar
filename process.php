@@ -354,7 +354,8 @@ if($p=="add_product"){
 					$files_arr['img']['size'] = $_FILES['img']['size'][$key];
 					
 					$imgname = "";
-					echo $img_name = upload_img($files_arr,$dir_site_uploads,$imgname); 
+				    $img_name = upload_img($files_arr,$dir_site_uploads,$imgname);
+				  
 					if($img_name){
 						$data = array();
 						$data['product_id'] = $id;

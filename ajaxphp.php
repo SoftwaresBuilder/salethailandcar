@@ -7,6 +7,7 @@ $user_id = 0;
 if(isset($_SESSION['user_record'])){
 	$user_id = $_SESSION['user_record']['id'];
 }
+$lang = $_SESSION['lang'];
 //echo $cat_id = dec_password($_GET['id']);
 
 $p = $_GET['p'];
@@ -89,11 +90,13 @@ if($p=="update_submodels"){
 }
 if($p=="update_subcategories"){
 	$id = $_POST['id'];
-	$category = get_records($tblcategories,"pid='".$id."' and status='1' and trash='0'","title ASC");
-	$html = '<option value="">Select Subcategory</option>';
+	
+	$category = get_records($tblcategories,"pid='".$id."' and status='1' and trash='0'","title_".$lang." ASC");
+	
+	$html = '<option value="">'.translate("Select Sub Category").'</option>';
 	if(count($category)>0){
 		foreach ($category as $v) {
-			$html .= '<option value="'.$v['id'].'">'.$v['title'].'</option>';
+			$html .= '<option value="'.$v['id'].'">'.$v['title_'.$lang].'</option>';
 		}
 	}
 	echo $html;

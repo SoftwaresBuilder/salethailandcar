@@ -37,7 +37,27 @@ function upload_img($file,$path="",$img_name="",$allowed_types=array('jpg','jpeg
 	}
 	return false;
 }
+function add_watermark($img)
+{
+	$stamp = imagecreatefrompng('images/watermark.png');
+	$im = imagecreatefromjpeg($img);
 
+	// Set the margins for the stamp and get the height/width of the stamp image
+	$marge_right = 40;
+	$marge_bottom = 60;
+	$sx = imagesx($stamp);
+	$sy = imagesy($stamp);
+
+	// Copy the stamp image onto our photo using the margin offsets and the photo 
+	// width to calculate positioning of the stamp. 
+	imagecopy($im, $stamp, imagesx($im) - $sx - $marge_right, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($stamp), imagesy($stamp));
+
+	// Output and free memory
+	header('Content-type: image/png');
+	imagepng($im);
+	imagejpeg($im, 'newimage.jpg');
+	imagedestroy($im);
+}
 function admin_login_check(){
 	if($_SESSION['adminrecord']['id']>0){
 		return true;

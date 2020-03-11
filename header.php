@@ -193,12 +193,16 @@ function showGlobalLogin() {
 
 
   <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
-
+  <?php
+  $top_offers = get_records($tblcms,"type = 'top_offers'");
+   ?>
+ <div class="top_offers"><?php echo $top_offers[0]['content']; ?></div>
 <div class="bg_image" style="background-image: url(images/banner2.png);"> <?php if($p!="index"){?> style="background-image: none;" <?php }?>>
-  <div class="container">
-    <div class="row header">
+ <div class="container">
+  <div class="row header">
       <div class="col-8 col-md-6"><a class="navbar-brand" href="<?php echo makepage_url("index");?>"><img src="images/site-logo.png" class="img-fluid"></a></div>
       <div class="col-4 col-md-6">
         
@@ -284,7 +288,7 @@ function showGlobalLogin() {
             foreach ($parent_categories as $v) {
               echo $sep;
             ?>
-              <a href="<?php echo makepage_url("search","?id=".enc_password($v['id']));?>"><?php echo $v['title'];?></a>
+              <a href="<?php echo makepage_url("search","?id=".enc_password($v['id']));?>"><?php echo $v['title_'.$lang];?></a>
             <?php
               $sep = "&nbsp;|&nbsp;";
             }
@@ -315,7 +319,7 @@ echo translate("You have selected :") .$selected_val;  // Displaying Selected Va
               if(count($parent_categories)>0){
                 foreach ($parent_categories as $v) {
                 ?>
-                  <option value="<?php echo $v['id'];?>"><?php echo $v['title'];?></option>
+                  <option value="<?php echo $v['id'];?>"><?php echo $v['title_'.$lang];?></option>
                 <?php
                 }
               }

@@ -26,12 +26,12 @@ if(isset($_GET['id'])){
           <option value="high_to_low"><?php echo translate("Price High to Low");?></option>
 		</select>
 	</div>
-	<div class="col-12 heading2"><?php echo $category[0]['title'];?></div>
+	<div class="col-12 heading2"><?php echo $category[0]['title_'.$lang];?></div>
 	<?php
 	if(count($subcategories)>0){
 		foreach ($subcategories as $v) {?>
 
-			<div class="col-12"><input id="check_id_<?php echo $v['id'];?>" type="checkbox"  onclick="get_filter_products(<?php echo $v['id'];?>)" name="checklist" value="<?php echo $v['id'];?>">&nbsp;<?php echo $v['title'];?></div>
+			<div class="col-12"><input id="check_id_<?php echo $v['id'];?>" type="checkbox"  onclick="get_filter_products(<?php echo $v['id'];?>)" name="checklist" value="<?php echo $v['id'];?>">&nbsp;<?php echo $v['title_'.$lang];?></div>
 
 		<?php }}
 		?>

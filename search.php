@@ -29,7 +29,7 @@ $cat_id = dec_password($_GET['id']);
             </div>
             <div class="col-12 col-md-9">
                 <div class="col-12 heading mb50">
-                    <?php echo $category[0]['title'];?>
+                    <?php echo $category[0]['title_'.$lang];?>
                 </div>
 
                 <div class="row" id="serach_results">

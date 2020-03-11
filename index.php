@@ -12,18 +12,18 @@ $home_news = get_records($tblnews,"status='1' and trash='0'","","3");
     if(count($parent_categories)>0){
       foreach ($parent_categories as $k=>$v) {
         if($k>=4){ break; }
-        $subcategories = get_records($tblcategories,"pid='".$v['id']."' and status='1' and trash='0'","title ASC","5");
+        $subcategories = get_records($tblcategories,"pid='".$v['id']."' and status='1' and trash='0'","title_".$lang." ASC","5");
       ?>
         <div class="col-12 col-md-3">
           <div class="mybox">
           <div class="col-12"><i class="fa fa-cart-plus"></i></div>
-          <div class="col-12 title"><?php echo $v['title'];?></div>
+          <div class="col-12 title"><?php echo $v['title_'.$lang];?></div>
           <div class="col-12">
             <?php
             if(count($subcategories)>0){
               foreach($subcategories as $v2){
               ?>
-                <a href="<?php echo makepage_url("search","?id=".enc_password($v2['id']));?>"><?php echo $v2['title'];?></a><br>
+                <a href="<?php echo makepage_url("search","?id=".enc_password($v2['id']));?>"><?php echo $v2['title_'.$lang];?></a><br>
               <?php
               }
             }
@@ -36,9 +36,14 @@ $home_news = get_records($tblnews,"status='1' and trash='0'","","3");
     }
     ?>
     </div>
+   
   </div>
 </div>
-
+<div class="container" style="margin-top: 10px">
+ <div class="row ad_banner">
+     <img src="images/car - Copy.jpg">
+    </div>
+  </div>
 <div class="container">
   <div class="row section_spacer">
     <div class="col-12 heading center mb50"><?php echo translate("Featured Ads");?></div>
@@ -89,5 +94,9 @@ $home_news = get_records($tblnews,"status='1' and trash='0'","","3");
     ?>
   </div>
 </div>
-
+<div class="container" style="margin-bottom: 10px">
+ <div class="row ad_banner">
+     <img src="images/car - Copy.jpg">
+    </div>
+  </div>
 <?php include("footer.php");?>

@@ -1,14 +1,23 @@
+
 <?php
 include("header.php");
 $id = 0;
 if(isset($_GET['id'])){
   $id = dec_password($_GET['id']);
 }
+$views = get_records($tblproducts,"id='".$id."'","","",'views');
 $product = get_records($tblproducts,"id='".$id."' and status='1' and trash='0'");
 
 $get_user_detail =  get_records($tblusers,"id='".$product[0]['user_id']."' and status='1' and trash='0'");
 
 $user_online =  get_records($tblusers,"id='".$product[0]['user_id']."' and status='1' and trash='0'");
+$add_views = intval($views[0]['views']);
+$add_views = $add_views + 1;
+$data = array();
+$data['views'] = $add_views;
+$condition = array();
+$condition['id'] = $id;
+$result = update_record($tblproducts,$data,$condition);
 
 if(!(count($product)>0)){
   redirect("search");exit;
@@ -345,7 +354,7 @@ function show_hide_num(val) {
           <div class="col-9">
             By
             <a href="vendor_profile.php?id=<?=enc_password($get_user_detail[0]['id']);?>"><?php echo $get_user_detail[0]['name']; ?></a><br>
-            <?php echo $product[0]['created_date']; ?> - Views <span class="bold">6</span></br>
+            <?php echo $product[0]['created_date']; ?> - Views <span class="bold"><?php echo $views[0]['views']; ?></span></br>
             <?php if($user_online[0]['login']=='1')
             { echo '<h3 style="color:red;">online</h3>';} ?>
             
