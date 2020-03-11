@@ -253,7 +253,7 @@ function show_hide_num(val) {
   <div class="col-12 col-md-8">
     <div class="row">
       <div class="col-12">
-        <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+        <ul id="image-gallery" class="gallery list-unstyled cS-hidden myslider">
           <?php
           if(count($imgs)>0){
             foreach ($imgs as $v) {
@@ -331,16 +331,11 @@ function show_hide_num(val) {
       </div>
       <div class="col-12 border_bottom">
         <div class="row">
-           <?php         
-                        $web_image_path = $web_site_uploads.$get_user_detail[0]['img'];
-                        $dir_image_path = $dir_site_uploads.$get_user_detail[0]['img'];
-              
-                                if(!file_exists($dir_image_path) || empty($v) )
-                                {
-                                     $web_image_path = $web_site_uploads.'user.jpg';
-                                } ?>
+          <?php
+          $user_img = get_user_img($get_user_detail[0]['img']);
+          ?>
           <div class="col-3">
-            <img width="80px" height="80px" style="border-radius: 50px;" src="<?php echo $web_image_path; ?>" class="">
+            <img width="80px" height="80px" style="border-radius: 50px;" src="<?php echo $user_img; ?>" class="">
           </div>
           <div class="col-9">
             By

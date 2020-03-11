@@ -167,6 +167,12 @@ function get_upload_img($img)
 	$img = ($img)?$img:"no image.jpg";
 	return $web_site_uploads.$img;
 }
+function get_user_img($img)
+{
+	global $web_site_uploads;
+	$img = ($img)?$img:"user.jpg";
+	return $web_site_uploads.$img;
+}
 function get_product_featured($status=0)
 {
 	$status_arr = array('Simple','Featured');
