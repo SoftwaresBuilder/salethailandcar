@@ -7,9 +7,7 @@ if(isset($_SESSION['user_record'])){
 	$user_id = $_SESSION['user_record']['id'];
 }
 $flg = false;
- $_GET['p'];
- $p = $_GET['p'];//get page reference to execute the related condition
-
+$p = $_GET['p'];//get page reference to execute the related condition
 
 if($p=="get_package"){
 	$enc_id = $_GET['id'];
@@ -45,6 +43,7 @@ if($p=="delfavorite"){
 	header("location:dashboard.php?tab=favorites");
 	exit;
 }
+
 if($p=="like_product"){
 	foreach ($_GET as $k => $v )
 	{
@@ -65,6 +64,7 @@ if($p=="like_product"){
 	header("location:".$_SESSION['page_url']);
 	exit;
 }
+
 if($p=="select_lang"){
 	$lang = $_GET['lang'];
 	$_SESSION['lang'] = ($lang)?$lang:'en';
@@ -78,6 +78,7 @@ if($p=="select_lang"){
 	header("location:".$_SESSION['page_url']);
 	exit;
 }
+
 if($p=="inquiry_reply"){
 	foreach ($_POST as $k => $v )
 	{
@@ -113,6 +114,7 @@ if($p=="inquiry_reply"){
 	header("location:".$_SESSION['page_url']);
 	exit;
 }
+
 if($p=="search_process"){
 	if(count($_POST['favorite'])>0){
 		foreach ($_POST['favorite'] as $k => $v) {
@@ -156,6 +158,7 @@ if($p=="search_process"){
 	header("location:".$_SESSION['page_url']);
 	exit;
 }
+
 if($p=="update_assessment"){
 	foreach ($_POST as $k => $v )
 	{
@@ -184,6 +187,7 @@ if($p=="update_assessment"){
 	header("location:".$_SESSION['page_url']);
 	exit;
 }
+
 if($p=="post_inquiry"){ /// I have removed inquiry from from detail page so it is not working
 	foreach ($_POST as $k => $v )
 	{
@@ -254,7 +258,7 @@ if($p=="add_product"){
 		}
 	}
 	
-	if(!$title)
+	if(!$title_en)
 	{
 		$_SESSION['sysErr']['title'] = "Please enter ad name";
 		$flg = true;
@@ -272,7 +276,8 @@ if($p=="add_product"){
 		$data['category_id'] = $category_id;
 		$data['subcategory_id'] = $subcategory_id;
 		$data['user_id'] = $user_id;
-		$data['title'] = $title;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
 		$data['description_en'] = $description_en;
 		$data['description_th'] = $description_th;
 		$data['price'] = save_price($price);
@@ -283,7 +288,6 @@ if($p=="add_product"){
 		$data['ad_type'] = $ad_type;
 		$data['submodel'] = $submodel;
 		$data['model'] = $model;
-		$data['trash'] = 1;
 		/**
 		$data['brand'] = $brand;
 		$data['year_registration'] = $year_registration;
@@ -306,7 +310,8 @@ if($p=="add_product"){
 		$data['category_id'] = $category_id;
 		$data['subcategory_id'] = $subcategory_id;
 		$data['user_id'] = $user_id;
-		$data['title'] = $title;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
 		$data['description_en'] = $description_en;
 		$data['description_th'] = $description_th;
 		$data['price'] = save_price($price);
@@ -393,7 +398,6 @@ if($p=="add_product_detail"){
 		$data['fuel_type'] = $fuel_type_ids;
 		// $data['gearbox'] = $gearbox;
 		$data['features'] = $features_ids;
-		$data['trash'] = 0;
 		pr($data);
 		$condition = array();
 		$condition['id'] = dec_password($id);

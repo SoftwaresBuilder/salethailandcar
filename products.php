@@ -30,9 +30,9 @@ $products = get_records($tblproducts,$where,"id DESC");
             	$subcategory = get_records($tblcategories,"id='".$v['subcategory_id']."'");
                 ?>
                 <tr>
-                    <td><?php echo $category[0]['title']; ?></td>
-                    <td><?php echo $subcategory[0]['title']; ?></td>
-                    <td><a href="<?php echo makepage_url("product_detail","?id=".enc_password($v['id']));?>"><?php echo $v['title']; ?></a></td>
+                    <td><?php echo $category[0]['title_'.$lang]; ?></td>
+                    <td><?php echo $subcategory[0]['title_'.$lang]; ?></td>
+                    <td><a href="<?php echo makepage_url("product_detail","?id=".enc_password($v['id']));?>"><?php echo $v['title_'.$lang]; ?></a></td>
                     <td><?php echo show_price($v['price']); ?></td>
                     
                     <td id="action_<?php echo $v['id'];?>">

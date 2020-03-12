@@ -30,7 +30,7 @@ $count_favourites = sql($query_favourites);
         <?php
         $user_img = get_user_img($user_details[0]['img']);
         ?>
-        <img width="100px" height="100px" style="border-radius: 50px; margin-top: 10px;margin-bottom: 10px" src="<?php echo $web_image_path; ?>">
+        <img width="100px" height="100px" style="border-radius: 50px; margin-top: 10px;margin-bottom: 10px" src="<?php echo $user_img; ?>"
         <span class="" style="margin-left: 20px"> <?php echo $user_details[0]['name']; ?></span>
 
         </div>
@@ -116,7 +116,7 @@ $count_favourites = sql($query_favourites);
                             <div class="form-group">
                                 <label><?php echo translate("Profile Image");?></label>
                                 <div style="background-color:#dcdee6;height: 300px; width: 100%;">
-                                <img src="<?php echo $web_image_path; ?>" id="blah" onclick="" alt="" width="100%" height="300px" /></div>
+                                <img src="<?php echo $user_img; ?>" id="blah" onclick="" alt="" width="100%" height="300px" /></div>
                                 <input type="file" name="img"  onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
                              </div>
                         </div>

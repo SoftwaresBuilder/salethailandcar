@@ -36,7 +36,7 @@ $parent_categories = get_records($tblcategories,"pid='0' and trash!='1'");
                                 if(count($parent_categories)>0){
                                     foreach ($parent_categories as $v) {
                                     ?>
-                                        <option <?php if($_SESSION['sysData']['pid']==$v['id']){?> selected="selected" <?php }?> value="<?php echo $v['id'];?>"><?php echo $v['title'];?></option>
+                                        <option <?php if($_SESSION['sysData']['pid']==$v['id']){?> selected="selected" <?php }?> value="<?php echo $v['id'];?>"><?php echo $v['title_en'];?></option>
                                     <?php
                                     }
                                 }
@@ -44,10 +44,18 @@ $parent_categories = get_records($tblcategories,"pid='0' and trash!='1'");
                             </select>
                         </div>
                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Title English <span class="err">*</span></label>
+                            <input type="text" required class="form-control" id="title_en" name="title_en" placeholder="title" value="<?= $_SESSION['sysData']['title_en'];?>">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Title <span class="err">*</span></label>
-                            <input type="text" required class="form-control" id="title" name="title" placeholder="title" value="<?= $_SESSION['sysData']['title'];?>">
+                            <label>Title Thai <span class="err">*</span></label>
+                            <input type="text" required class="form-control" id="title_th" name="title_th" placeholder="title" value="<?= $_SESSION['sysData']['title_th'];?>">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -56,6 +64,8 @@ $parent_categories = get_records($tblcategories,"pid='0' and trash!='1'");
                             <input type="text" class="form-control" id="description" name="description" placeholder="description" value="<?= $_SESSION['sysData']['description'];?>">
                         </div>
                     </div>
+                    </div>
+                    <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Status</label>
@@ -66,11 +76,12 @@ $parent_categories = get_records($tblcategories,"pid='0' and trash!='1'");
                         </div>
                     </div>
                 </div>
-                </div>
+                
                 <input type="hidden" name="id" id="id" value="<?php echo enc_password($_SESSION['sysData']['id']); ?>" />
                 <button type="submit" class="btn btn-info btn-fill" name="submit">Submit</button>
-                <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
+           
+           <div class="clearfix"></div>
+       </div>
+   </div>
+   </div>
 </form>

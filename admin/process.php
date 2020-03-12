@@ -71,7 +71,7 @@ if($p == "addeditproduct")
 	if($id){
 		$id = dec_password($id);
 	}
-	if(!$title){
+	if(!$title_en){
 		$_SESSION['sysErr']['title'] = "Please enter product title";
 		$flg = true;
 	}
@@ -89,9 +89,11 @@ if($p == "addeditproduct")
 		$data['category_id'] = $category_id;
 		$data['subcategory_id'] = $subcategory_id;
 		$data['user_id'] = $user_id;
-		$data['title'] = $title;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
 		$data['price'] = $price;
-		$data['description'] = $description;
+		$data['description_en'] = $description_en;
+		$data['description_th'] = $description_th;
 		$data['status'] = $status;
 		$data['featured'] = $featured;
 		$data['location'] = $location;
@@ -116,9 +118,11 @@ if($p == "addeditproduct")
 		$data = array();
 		$data['category_id'] = $category_id;
 		$data['subcategory_id'] = $subcategory_id;
-		$data['title'] = $title;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
 		$data['price'] = $price;
-		$data['description'] = $description;
+		$data['description_en'] = $description_en;
+		$data['description_th'] = $description_th;
 		$data['status'] = $status;
 		$data['featured'] = $featured;
 		$data['user_id'] = $user_id;
@@ -253,7 +257,8 @@ if($p == "addeditcategory")
 	{
 		$data = array();
 		$data['pid'] = $pid;
-		$data['title'] = $title;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
 		$data['description'] = $description;
 		$data['status'] = $status;
 		$condition = array();
@@ -268,7 +273,8 @@ if($p == "addeditcategory")
 	{
 		$data = array();
 		$data['pid'] = $pid;
-		$data['title'] = $title;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
 		$data['description'] = $description;
 		$data['status'] = $status;
 		$id = insert_record($tblcategories,$data);

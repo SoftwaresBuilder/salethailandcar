@@ -265,10 +265,11 @@ function show_hide_num(val) {
         <ul id="image-gallery" class="gallery list-unstyled cS-hidden myslider">
           <?php
           if(count($imgs)>0){
-            foreach ($imgs as $v) {
+            foreach ($imgs as $key => $v) {
             ?>
-            <li data-thumb="<?php echo $v;?>"> 
-              <img src="<?php echo $v;?>" />
+            <li data-thumb="<?php echo $v['img'];?>"> 
+
+              <img src="<?php echo $v['img'];?>" />
             </li>
             <?php
             }
@@ -335,7 +336,7 @@ function show_hide_num(val) {
         $longitude = $product[0]['longitude'];
         include("gmap2.php");
         ?>
-        <div class="heading3"><?php echo $product[0]['title']; ?></div>
+        <div class="heading3"><?php echo $product[0]['title_'.$lang]; ?></div>
         <div><i class="fa fa-phone"></i>&nbsp;<?php echo $product[0]['location']; ?></div>
       </div>
       <div class="col-12 border_bottom">

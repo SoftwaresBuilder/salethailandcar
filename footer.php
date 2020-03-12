@@ -669,10 +669,10 @@ function bump_up(id)
         }
      });
 }
-function myFunction(){
-       $('#description_th').val('translating....');
+function myFunction(str){
+       $('#'+str).val('translating....');
     }
-    function translate_into_thai(str){
+    function translate_into_thai(str,id){
        var description = str;
          $.ajax({
             type: "GET",
@@ -680,7 +680,7 @@ function myFunction(){
              dataType: 'html',  
             data: {description:description,p:'translate_into_thai'},
             success: function(data){
-              $('#description_th').val(data);
+              $('#'+id).val(data);
                
              } 
         });

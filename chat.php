@@ -24,7 +24,7 @@ $chat = get_records($tblchat,$where,"id DESC");
                         	$product = get_records($tblproducts,"id='".$v['product_id']."'");
                             ?>
                             <tr>
-                                <td><a href="<?php echo makepage_url("product_detail","?id=".enc_password($v['product_id']));?>"><?php echo $product[0]['title']; ?></a></td>
+                                <td><a href="<?php echo makepage_url("product_detail","?id=".enc_password($v['product_id']));?>"><?php echo $product[0]['title_'.$lang]; ?></a></td>
                                 <td><?php echo dates_duration($v['created_date']); ?></td>
                                 <td>
                                     <a href="<?php echo makepage_url($p,"?tab=chat&chat_id=".enc_password($v['chat_id']));?>"><i class="fa fa-comments"></i></a>

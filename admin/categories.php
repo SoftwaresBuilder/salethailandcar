@@ -52,7 +52,7 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
         <div class="card">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="title">Manage <?php echo (count($parent_category)>0)?'SubCategories of '.$parent_category[0]['title']:'Categories';?></h4>
+                    <h4 class="title">Manage <?php echo (count($parent_category)>0)?'SubCategories of '.$parent_category[0]['title_en']:'Categories';?></h4>
                 </div>
                 <div class="col-md-6 add_new">
                     <?php
@@ -100,8 +100,8 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                                 $status = get_category_status($v['status']);
                                 ?>
                                 <tr>
-                                    <td><?php echo $v['title']; ?></td>
-                                    <td><?php echo $v['description']; ?></td>
+                                    <td><?php echo $v['title_en']; ?></td>
+                                   <td><?php echo $v['description']; ?></td>
                                     <td><?php echo $status; ?></td>
                                     <td>
                                         <a href="index.php?p=addeditcategory&id=<?= enc_password($v['id']); ?>" title="Update Record"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;

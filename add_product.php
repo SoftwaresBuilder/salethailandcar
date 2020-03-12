@@ -70,6 +70,7 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                     alert("This browser does not support HTML5 FileReader.");
                 }
             }
+        }
 
 </script>
 <style type="text/css">
@@ -119,7 +120,17 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                         <div class="col-md-8">
                         <div class="form-group">
                            
-                            <input type="text" required class="form-control" id="title" name="title" placeholder="" value="<?= $_SESSION['sysData']['title'];?>">
+                            <input oninput="myFunction('title_th')" onfocusout="translate_into_thai($('#title_en').val(),'title_th')" type="text" required class="form-control" id="title_en" name="title_en" placeholder="" value="<?= $_SESSION['sysData']['title_'.$lang];?>">
+                        </div>
+                        </div>
+                    </div>
+                     <div class="row form_fields">
+                        <div class="col-md-3"><?php echo translate("Ad Tittle in thai");?></div>
+                        <div class="col-md-8">
+                        <div class="form-group">
+                           
+                            <input type="text" required class="form-control" id="title_th" name="title
+                            -th" placeholder="" value="<?= $_SESSION['sysData']['title_'.$lang];?>">
                         </div>
                         </div>
                     </div>
@@ -128,7 +139,7 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                         <div class="col-md-8">
                         <div class="form-group">
                             
-                            <textarea required="" oninput="myFunction()" onfocusout="translate_into_thai($('#description_en').val())" class="form-control" rows="3" id="description_en" name="description_en" placeholder=""><?= $_SESSION['sysData']['description_en'];?></textarea>
+                            <textarea required="" oninput="myFunction('description_th')" onfocusout="translate_into_thai($('#description_en').val(),'description_th')" class="form-control" rows="3" id="description_en" name="description_en" placeholder=""><?= $_SESSION['sysData']['description_en'];?></textarea>
                         </div>
                         </div>
                     </div>

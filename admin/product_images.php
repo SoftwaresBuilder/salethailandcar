@@ -14,7 +14,7 @@ if(isset($_GET['id'])){
         <div class="card">
             
                 <div class="header">
-                    <h4 class="title"><?php echo $product[0]['title'];?> Images</h4>
+                    <h4 class="title"><?php echo $product[0]['title_en'];?> Images</h4>
                 </div>
                 <?php show_errors();?>
                 <div class="row">
@@ -24,16 +24,53 @@ if(isset($_GET['id'])){
                             $img = get_upload_img($v['img']);
                         ?>
                             <div class="col-12 col-md-3">
-                                <div class="img_box">
-                                    <div class="img_thumb"><img src="<?php echo $img;?>"></div>
+                                <div class="img_box" <?php if($v['main']==1){?> style="border: 2px solid black"<?php }?>>
+                                    <div class="img_thumb">
+
+                                        <img src="<?php echo $img;?>">
+                                    </div>
                                     <a href="javascript:;" onclick="delete_record('process.php?p=delproduct_image&id=<?= enc_password($v['id']);?>&product_id=<?= enc_password($v['product_id']);?>');" data-toggle="modal" data-target="#delete" title="Delete Image"><i class="fa fa-trash"></i></a>
                                 </div>
-                            </div>
+                                
+                                    <div class="row">
+                                    <div class="col-md-12">
+                                         
+                                        <label>Alt</label>
+                                        <input type="text" class="form-control" id="img_alt<?php echo $v['id'];?>" name="img_alt" placeholder="Attribute" value="<?php echo $v['alt'];?>">
+                                    
+                                    </div>
+                                </div>
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                        <label>Description</label>
+                                        <input type="text" class="form-control" id="img_description<?php echo $v['id'];?>" name="img_description" placeholder="Description" value="<?php echo $v['description'];?>">
+                                    </div>
+                                    </div>
+                                </div>
+                                 <div class="row">
+                                     <div class="col-md-12">
+                                        <?php if($v['main']==1){?>
+                                            <input type="radio" id="main_img<?php echo $v['id'];?>" name="is_main" value="yes" checked="checked"> Main Image
+                                       <?php } 
+                                        else
+                                            {?>
+                                              <input type="radio" id="main_img<?php echo $v['id'];?>" name="is_main" value="yes"> Main Image
+                                           <?php }?>
+                                        
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                     <div class="col-md-12"> <a class="btn btn-primary" href="javascript:;" onclick="set_image_attribute(<?php echo $v['id'];?>,<?php echo $v['product_id'];?>);" data-toggle="modal" data-target="" title="Set image attribute">Save</a>
+                                     </div>
+                                 
+                             </div>
+                                  </div>
                         <?php
                         }
                     }
                     ?>
-                </div>
+              </div>
                 <hr/>
                 <div class="row">
                     <div class="col-xs-6"><h4 class="title">Upload Images</h4></div>

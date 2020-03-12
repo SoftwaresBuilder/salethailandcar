@@ -90,12 +90,12 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                                 $status = get_product_status($v['status']);
                                 $featured = get_product_featured($v['featured']);
                                 $category = get_records($tblcategories,"id='".$v['category_id']."'");
-                                $category_name = (count($category)>0)?$category[0]['title']:'';
+                                $category_name = (count($category)>0)?$category[0]['title_en']:'';
                                 ?>
                                 <tr>
                                     <td><?php echo $category_name; ?></td>
-                                    <td><?php echo $v['title']; ?></td>
-                                    <td><?php echo $v['description']; ?></td>
+                                    <td><?php echo $v['title_en']; ?></td>
+                                    <td><?php echo $v['description_en']; ?></td>
                                     <td><?php echo $v['price']; ?></td>
                                     <td><?php echo $status; ?></td>
                                     <td><?php echo $status; ?></td>

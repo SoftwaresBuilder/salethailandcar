@@ -55,13 +55,13 @@ $p_features = get_records($tblproduct_features,'category_id = '.$product[0]['sub
                 <div class="col-12 heading2"><?php echo translate("lang_text12");?></div>
             </div>
             <div class="row">
-                <div class="col-12 heading3"><?php echo $category[0]['title'];?>&nbsp;>&nbsp;<?php echo $subcategory[0]['title'];?></div>
+                <div class="col-12 heading3"><?php echo $category[0]['title_'.$lang];?>&nbsp;>&nbsp;<?php echo $subcategory[0]['title_'.$lang];?></div>
             </div>
             <form action="process.php?p=add_product_detail" enctype="multipart/form-data" method="post">
                 <?php show_errors();?>
                 <div class="col-md-12">&nbsp;</div>
                 <?php
-                if($subcategory[0]['title']=="Cars"){
+                if($subcategory[0]['title_en']=="Cars"){
                 ?>
                     <div class="row form_fields">
                         <div class="col-md-3"><?php echo translate("Brand");?></div>

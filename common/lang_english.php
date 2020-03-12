@@ -183,5 +183,6 @@ $lang_data = array(
     'state'=>'State',
     'zipcode'=>'Zipcode', 
     'ad_description_in_thai'=>'Ad Description in thai',
+    'ad_tittle_in_thai'=>'Ad Tittle in thai',
 );
 ?>

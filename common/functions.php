@@ -37,20 +37,21 @@ function upload_img($file,$path="",$img_name="",$allowed_types=array('jpg','jpeg
 	}
 	return false;
 }
-function add_watermark($img)
-{
-	
-	$stamp = imagecreatefrompng('images/watermark.png');
-	$im = imagecreatefromjpeg($img);
-
-	$marge_right = 40;
-	$marge_bottom = 60;
-	$sx = imagesx($stamp);
-	$sy = imagesy($stamp);
-
-	imagecopy($im, $stamp, imagesx($im) - $sx - $marge_right, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($stamp), imagesy($stamp));
-	imagejpeg($im, $img);
-	imagedestroy($im);
+function add_watermark($image) {
+    $watermark = imagecreatefrompng('images/site-logo.png');
+    imagealphablending($watermark, false);
+    imagesavealpha($watermark, true);
+    $img = imagecreatefromjpeg($image);
+    $img_w = imagesx($img);
+    $img_h = imagesy($img);
+    $wtrmrk_w = imagesx($watermark);
+    $wtrmrk_h = imagesy($watermark);
+    $dst_x = ($img_w / 2) - ($wtrmrk_w / 2); // For centering the watermark on any image
+    $dst_y = ($img_h / 2) - ($wtrmrk_h / 2); // For centering the watermark on any image
+    imagecopy($img, $watermark, $dst_x, $dst_y, 0, 0, $wtrmrk_w, $wtrmrk_h);
+    imagejpeg($img, $image, 100);
+    imagedestroy($img);
+    imagedestroy($watermark);
 }
 function admin_login_check(){
 	if($_SESSION['adminrecord']['id']>0){
@@ -168,7 +169,7 @@ function get_product_imgs($id,$limit='')
 	$product_images = get_records($tblproduct_images,"product_id='".$id."' and trash='0'","main DESC",$limit);
 	if(count($product_images)>0){
 		foreach ($product_images as $v) {
-			$imgs[] = $web_site_uploads.$v['img'];
+			$imgs[] = array('img'=>$web_site_uploads.$v['img'],'alt'=>$v['alt'],'description'=>$v['description']);
 		}
 	} else {
 		$imgs[] = $web_site_uploads."no image.jpg";
@@ -287,7 +288,7 @@ function getpage_url()
 	$phpself = $_SERVER['REQUEST_URI'];
 	$phpself = explode("/",$phpself);
 	$ind = count($phpself)-1;
-	$url = (count($phpself)>0)?$phpself[$ind]:'index.php';
+	$url = (isset($phpself[$ind]) and $phpself[$ind])?$phpself[$ind]:'index.php';
 	return $url;
 }
 
