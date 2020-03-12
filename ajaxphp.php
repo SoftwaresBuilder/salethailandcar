@@ -339,25 +339,26 @@ if($p=="translate_into_thai"){
 }	
 
 if($p == "getAllProduct"){
-		// echo "_asdf";exit();
 		$cid=$_GET['cid'];
-		// echo "__".$cid;exit();
 		$products=get_records($tblproducts,"category_id='".$cid."' and trash!=1");
 		$listing_area ='';
         if(count($products)>0){
-		
-                               
+
               foreach ($products as $product) { ?>
-              			
                       <div><?php include('card_map.php');?></div>
-                       
-                        <?php
-                        
+                        <?php  
               }
             } 
-
-	
 	exit;
-
+}
+if($p == "getTranslate"){
+		$cid=$_GET['cid'];
+		$chat_msgs=get_records($tblchat,"id='".$cid."' and trash!=1");
+		$msg=$chat_msgs[0]['msg'];
+		$lang='en';
+        if($lang=='en'){
+        		$c_msg=translate_into_thai($msg);
+        		echo $c_msg;
+        	}
 }
 ?>
