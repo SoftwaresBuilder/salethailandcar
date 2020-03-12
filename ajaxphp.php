@@ -368,10 +368,14 @@ if($p == "getTranslate"){
 		$cid=$_GET['cid'];
 		$chat_msgs=get_records($tblchat,"id='".$cid."' and trash!=1");
 		$msg=$chat_msgs[0]['msg'];
-		$lang='en';
+
         if($lang=='en'){
-        		$c_msg=translate_into_thai($msg);
-        		echo $c_msg;
+        		$c_msg=translate_api($msg,'en','th');
+        		echo '<br>'.$c_msg;
+        		
+        	}else{
+        		$c_msg=translate_api($msg);
+        		echo '<br>'.$c_msg;
         	}
 }
 ?>
