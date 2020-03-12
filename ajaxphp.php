@@ -340,14 +340,27 @@ if($p=="translate_into_thai"){
 
 if($p == "getAllProduct"){
 		$cid=$_GET['cid'];
+		$latlng=explode(",",$_GET['latlng']);
+		// pr($latlng);exit();
+		$lat=trim($latlng[0]);
+		$lng=trim($latlng[1]);
+		
 		$products=get_records($tblproducts,"category_id='".$cid."' and trash!=1");
-		$listing_area ='';
+		$sub_cat_id=$products[0]['subcategory_id'];
+		
+		$sql="SELECT *, (3959 * acos(cos(radians('".$lat."')) * cos(radians(latitude)) * cos( radians(longitude) - radians('".$lng."')) + sin(radians('".$lat."')) * sin(radians(latitude)))) AS distance FROM ".$tblproducts." HAVING distance < $cons_gmap_distance ORDER BY distance LIMIT 0 , 10";
+
+        $products=sql($sql);
+
         if(count($products)>0){
 
               foreach ($products as $product) { ?>
                       <div><?php include('card_map.php');?></div>
                         <?php  
               }
+            }
+            else{
+            	 echo "<div class='err'> No post found in your selected area</div>";
             } 
 	exit;
 }

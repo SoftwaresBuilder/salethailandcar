@@ -1,5 +1,6 @@
 <?php
 $imgs = get_product_imgs($product['id'],'1');
+$sub_cat=get_records($tblcategories,"id='".$sub_cat_id."' and trash=0");
 
 ?>
 <div class="mybox2">
@@ -12,6 +13,9 @@ $imgs = get_product_imgs($product['id'],'1');
 		<div class="col-12"><i class="fa fa-usd"></i>&nbsp;<?php echo $product['price'];?></div>
 		<div class="col-12">
 			<i class="fa fa-map-marker"></i>&nbsp;<?php echo splitlimit($product['location'],'30','...');?>
+		</div>
+		<div class="col-12">
+			<i class="fa fa-home"></i>&nbsp;<?php echo splitlimit($sub_cat[0]['title_'.$lang],'30','...');?>
 		</div>
 	</div>
 	<div class="col-6" style="padding-right: 30px;">

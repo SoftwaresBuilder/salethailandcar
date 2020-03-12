@@ -17,7 +17,6 @@ if(count($products)>0){
     $lat_lng .= '{lat: '.$v['latitude'].', lng: '.$v['longitude'].'},';
   }
 }
-$cat_id = dec_password($_GET['id']); 
 ?>
 
 
@@ -87,8 +86,14 @@ $cat_id = dec_password($_GET['id']);
       }
 	  
 	  function my_function(latlng){
-      // alert('here'+latlng);
-      // pid=1;
+      var latlng = latlng.toString();
+      var latlng=latlng.replace('(','');
+      var latlng=latlng.replace(')','');
+      // alert(res);return false;
+      // var res1 = str.split(",");
+      // alert(res1);return false;
+      // var res = str.split(",");
+      // alert(res);return false;
       var cid='<?php echo dec_password($_GET['id']); ?>';
       // alert(cid);
       if (cid>0) 
@@ -97,7 +102,7 @@ $cat_id = dec_password($_GET['id']);
                     type: "GET",
                     url: "ajaxphp.php",
                     dataType :'html',
-                    data: {cid:cid,p:'getAllProduct'},
+                    data: {cid:cid,latlng:latlng,p:'getAllProduct'},
                     success: function(data){
                           $("#listing_area").html(data);
                     }
