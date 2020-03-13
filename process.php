@@ -260,7 +260,7 @@ if($p=="add_product"){
 	
 	if(!$title_en)
 	{
-		$_SESSION['sysErr']['title'] = "Please enter ad name";
+		$_SESSION['sysErr']['title_'.$lang] = "Please enter ad name";
 		$flg = true;
 	}
 	

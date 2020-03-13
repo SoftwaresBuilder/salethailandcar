@@ -19,7 +19,7 @@ $imgs = get_upload_img($news[0]['img']);
     <div class="col-12 col-md-6">
       <div class="row">
         <div class="col-12">
-          <span class="heading"><?php echo $news[0]['title'];?></span>
+          <span class="heading"><?php echo $news[0]['title_'.$lang];?></span>
         </div>
         <div class="col-12 mt10 mb10">
           <span class="small_text"><?php echo $news[0]['created_date'];?></span>

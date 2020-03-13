@@ -385,7 +385,7 @@ function sendmail_bidding($userid,$type,$bid_id)
 		$headersuser = $headers.'From: '.$adminName.' <'.$adminEmail.'>' . "\r\n";
 		
 		$message = str_replace("{{Name}}",$name,$body);
-		$message = str_replace("{{bid_product}}",$product_name[0]['title'],$message);
+		$message = str_replace("{{bid_product}}",$product_name[0]['title_'.$lang],$message);
 		$message = str_replace("{{bid_amount}}",$bidding_detail[0]['amount'],$message);
 		$message = nl2br($message);
 		

@@ -26,7 +26,7 @@ $get_user_bidds =get_records($tblbidding,"bidder_id='".$_SESSION['user_record'][
                 $get_bids_products_name =get_records($tblproducts,"id='".$v['product_id']."' and status='1' and trash='0'");
                             ?>
                             <tr>
-                                <td><a href="<?php echo makepage_url("product_detail","?id=".enc_password($get_user_bidds[0]['product_id']));?>"><?php echo $get_bids_products_name[0]['title']; ?></a></td>
+                                <td><a href="<?php echo makepage_url("product_detail","?id=".enc_password($get_user_bidds[0]['product_id']));?>"><?php echo $get_bids_products_name[0]['title_'.$lang]; ?></a></td>
                                 <td><?php echo show_price($v['amount']); ?></td>
                                 <td><?php echo $v['created_date']; ?></td>
                                

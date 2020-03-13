@@ -8,7 +8,7 @@ $sub_cat=get_records($tblcategories,"id='".$sub_cat_id."' and trash=0");
 
 	<div class="col-6">
 		<div class="col-12">
-			<a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>" style=" text-decoration: none; font-weight: bold;"><?php echo splitlimit($product['title'],'20','...');?></a>
+			<a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>" style=" text-decoration: none; font-weight: bold;"><?php echo splitlimit($product['title_'.$lang],'20','...');?></a>
 		</div>
 		<div class="col-12"><i class="fa fa-usd"></i>&nbsp;<?php echo $product['price'];?></div>
 		<div class="col-12">

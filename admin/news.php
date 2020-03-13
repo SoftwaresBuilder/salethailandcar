@@ -87,7 +87,7 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                                 ?>
                                 <tr>
                                     <td><img src="<?php echo $news_img;?>" class="news_thumb" /></td>
-                                    <td><?php echo $v['title']; ?></td>
+                                    <td><?php echo $v['title_'.$lang]; ?></td>
                                     <td><?php echo $v['description']; ?></td>
                                     <td><?php echo $news_status; ?></td>
                                     <td>

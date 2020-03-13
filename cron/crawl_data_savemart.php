@@ -24,7 +24,7 @@ if(count($explode_arr)>0){
 			$imgnew = $str_a.'-'.rand(1111,9999).rand(1111,9999).'.'.$str_b;
 			
 			$insertData = array();
-			$insertData['title'] = $product_title;
+			$insertData['title_'.$lang] = $product_title;
 			$insertData['slug'] = $slug;
 			$insertData['purchase_price'] = $product_price;
 			$insertData['sale_price'] = $product_price;

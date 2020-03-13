@@ -14,7 +14,7 @@ $product = get_records($tblproducts,"id='".$chat[0]['product_id']."'");
 ?>
 <div class="container">
 	<div class="row">
-		<div class="col-12 col-lg-12 heading"><?php echo $product[0]['title'];?></div>
+		<div class="col-12 col-lg-12 heading"><?php echo $product[0]['title_'.$lang];?></div>
 	</div>
     <div class="section_spacer">
     	<div class="row">

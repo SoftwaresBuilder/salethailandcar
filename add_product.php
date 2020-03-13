@@ -18,7 +18,7 @@ if(isset($_GET['id'])){
         exit;
     }
 }
-if(!isset($_SESSION['sysData']['title'])) {
+if(!isset($_SESSION['sysData']['title_'.$lang])) {
     $_SESSION['sysData'] = table_fields($tblproducts);
 }
 
@@ -190,9 +190,8 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                     <div class="row form_fields">
                         <div class="col-md-3"><?php echo translate("For");?> </div>
                         <div class="col-md-8">
-                            <select required class="form-control" id="type" name="type">
+                            <select required class="form-control" id="type" name="type" onchange="update_submodels(this.value);">
                                 <option value=""><?php echo translate("Select Type");?></option>
-                               
                             </select>
                         </div>
                     </div>

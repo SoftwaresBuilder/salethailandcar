@@ -59,11 +59,11 @@ if($p=="chat_send"){
 
 if($p=="update_ad_type"){
 	$id = $_POST['id'];
-	$types = get_records($tblcategory_types,"category_id='".$id."'","title ASC");
+	$types = get_records($tblcategory_types,"category_id='".$id."'","title_".$lang." ASC");
 	$html = '<option value="">Select Type</option>';
 	if(count($types)>0){
 		foreach ($types as $v) {
-			$html .= '<option value="'.$v['title'].'">'.$v['title'].'</option>';
+			$html .= '<option value="'.$v['id'].'">'.$v['title_'.$lang].'</option>';
 		}
 	}
 	echo $html;
@@ -71,11 +71,11 @@ if($p=="update_ad_type"){
 }
 if($p=="update_models"){
 	$id = $_POST['id'];
-	$models = get_records($tblcategory_models,"category_id='".$id."'","title ASC");
-	$html = '<option value="">Select Submodels</option>';
+	$models = get_records($tblcategory_models,"category_id='".$id."'","title_".$lang." ASC");
+	$html = '<option value="">Select Models</option>';
 	if(count($models)>0){
 		foreach ($models as $v) {
-			$html .= '<option value="'.$v['title'].'">'.$v['title'].'</option>';
+			$html .= '<option value="'.$v['title_'.$lang].'">'.$v['title_'.$lang].'</option>';
 		}
 	} else {
 		$html = "no";
@@ -85,11 +85,11 @@ if($p=="update_models"){
 }
 if($p=="update_submodels"){
 	$id = $_POST['id'];
-	$submodels = get_records($tblcategory_submodels,"category_id='".$id."'","title ASC");
+	$submodels = get_records($tblcategory_submodels,"type_id='".$id."'","title_".$lang." ASC");
 	$html = '<option value="">Select Submodels</option>';
 	if(count($submodels)>0){
 		foreach ($submodels as $v) {
-			$html .= '<option value="'.$v['title'].'">'.$v['title'].'</option>';
+			$html .= '<option value="'.$v['title_'.$lang].'">'.$v['title_'.$lang].'</option>';
 		}
 	} else {
 		$html = "no";
@@ -97,6 +97,7 @@ if($p=="update_submodels"){
 	echo $html;
 	exit;
 }
+
 if($p=="update_subcategories"){
 	$id = $_POST['id'];
 	

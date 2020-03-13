@@ -16,7 +16,7 @@ if ( $xlsx = SimpleXLSX::parse($excel_file)) {
 		{
 			if($k>0){
 				$insertData = array();
-				$insertData['title'] = $v[0];
+				$insertData['title_'.$lang] = $v[0];
 				$insertData['slug'] = $v[1];
 				$insertData['description'] = $v[2];
 				$insertData['purchase_price'] = $v[3];
