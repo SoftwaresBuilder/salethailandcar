@@ -14,7 +14,7 @@ if(count($categories)>0){
 		$condition = array();
 		$condition['ptype_id'] = $v['id'];
 		$result = update_record($tblproperties,$data,$condition);
-		echo "<br>".$v['title']." Has updated<br>";
+		echo "<br>".$v['title_'.$lang]." Has updated<br>";
 	}
 }
 echo "<br>All values have been updated<br>";

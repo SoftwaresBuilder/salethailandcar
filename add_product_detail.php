@@ -102,7 +102,7 @@ $p_features = get_records($tblproduct_features,'category_id = '.$product[0]['sub
                             <?php 
                                 foreach ($p_features as $key => $f) { ?>
                                     <div class="col-md-8">
-                                    <input type="Checkbox" name="features[]" value="<?php echo $f['id'] ?>"> <?php echo $f['title'] ?>
+                                    <input type="Checkbox" name="features[]" value="<?php echo $f['id'] ?>"> <?php echo $f['title_'.$lang] ?>
                                 </div>
                               <?php }
                             ?>

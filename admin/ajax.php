@@ -41,7 +41,7 @@ if($p=="translate_into_thai"){
     $description = $_GET['description'];
     if($description)
     {
-    	echo $result = translate_into_thai($description);
+    	echo $result = translate_api($description,"en","th");
     }
 	exit;
 }	

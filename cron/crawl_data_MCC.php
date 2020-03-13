@@ -34,7 +34,7 @@ for($i=$s;$i<=$e;$i++){
 				$imgnew = $slug.'-'.rand(1111,9999).rand(1111,9999).'.'.$type;
 				
 				$insertData = array();
-				$insertData['title'] = $product_title;
+				$insertData['title_'.$lang] = $product_title;
 				$insertData['slug'] = $slug;
 				$insertData['purchase_price'] = $purchase_price;
 				$insertData['sale_price'] = $sale_price;

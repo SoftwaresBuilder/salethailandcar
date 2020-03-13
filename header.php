@@ -226,7 +226,7 @@ function showGlobalLogin() {
   <?php
   $top_offers = get_records($tblcms,"type = 'top_offers'");
    ?>
- <div class="top_offers"><?php echo $top_offers[0]['content']; ?></div>
+ <div class="top_offers animation_div"><?php echo $top_offers[0]['content']; ?></div>
 <div class="bg_image" <?php if($p!="index"){?> style="background-image: none;" <?php }?>>
   <div class="container">
     <div class="row header">

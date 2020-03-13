@@ -18,6 +18,18 @@ body{
     height: 50px;
     line-height: 50px;
 }
+.animation_div{
+position: relative;
+  animation-name: example;
+  animation-duration: 2s;
+  font-size : 20px;
+  color : red;
+  animation-iteration-count: infinite;
+  animation-delay: 2s;
+}
+@keyframes example {
+  0%   {color:black;}
+}
 .fa-trash { color: #f00; }
 .navbar { padding: 0px; }
 .navbar .nav-item { padding: 0px 10px; }

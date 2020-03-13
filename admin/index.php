@@ -160,6 +160,20 @@ function myFunction(str){
                 } 
         });
 }
+function get_attribute_val(){
+  var description = $("#cat_attributes option:selected").text();
+  $('#title_en').val(description);
+   $.ajax({
+            type: "GET",
+            url: "ajax.php",
+             dataType: 'html',  
+            data: {description:description,p:'translate_into_thai'},
+            success: function(data){
+              $('#title_th').val(data);
+               
+             } 
+        });
+}
 </script>
 
 

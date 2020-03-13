@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2020 at 03:09 PM
+-- Generation Time: Mar 13, 2020 at 11:38 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -149,8 +149,7 @@ INSERT INTO `thai_categories` (`id`, `pid`, `title_en`, `title_th`, `description
 (38, 35, 'TV Video and Audio', 'ทีวีวิดีโอและเสียง', 'Searching for TV Video and Audio', 1, 0, '2020-02-10 11:55:34', NULL, NULL),
 (39, 35, 'Cameras and Accessories', 'กล้องและอุปกรณ์เสริม', 'Need Latest Cameras and Accessories?', 1, 0, '2020-02-10 11:56:14', NULL, NULL),
 (40, 35, 'Games and Entertainment', 'เกมและความบันเทิง', 'Badly looking for Games and Entertainment ', 1, 0, '2020-02-10 11:57:48', NULL, NULL),
-(41, 35, 'Fridge AC and Washing Machine', '\r\nตู้เย็น AC และเครื่องซักผ้า', 'Searching for Fridge AC and Washing Machine??', 1, 0, '2020-02-10 12:01:36', NULL, NULL),
-(42, 0, NULL, '??????\r\n', NULL, 1, 0, '2020-03-11 07:18:41', NULL, NULL);
+(41, 35, 'Fridge AC and Washing Machine', '\r\nตู้เย็น AC และเครื่องซักผ้า', 'Searching for Fridge AC and Washing Machine??', 1, 0, '2020-02-10 12:01:36', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -161,7 +160,7 @@ INSERT INTO `thai_categories` (`id`, `pid`, `title_en`, `title_th`, `description
 CREATE TABLE `thai_category_features` (
   `id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL DEFAULT 0,
-  `title` varchar(25) DEFAULT NULL,
+  `title_en` varchar(25) DEFAULT NULL,
   `title_th` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -169,13 +168,13 @@ CREATE TABLE `thai_category_features` (
 -- Dumping data for table `thai_category_features`
 --
 
-INSERT INTO `thai_category_features` (`id`, `category_id`, `title`, `title_th`) VALUES
+INSERT INTO `thai_category_features` (`id`, `category_id`, `title_en`, `title_th`) VALUES
 (1, 18, 'Air conditioner', 'เครื่องปรับอากาศ'),
 (2, 18, 'Music System', 'ระบบเพลง'),
 (3, 18, 'GPS', 'จีพีเอส'),
-(5, 18, 'Security System', 'ระบบรักษาความปลอดภัย'),
+(5, 18, 'Security Systems', 'ระบบรักษาความปลอดภัย'),
 (6, 18, 'Parking Sensor', 'เซ็นเซอร์ที่จอดรถ'),
-(7, 18, 'Parking Camera', 'กล้องจอดรถ'),
+(7, 18, 'Parking Camera\\\'s', 'ลานจอดรถของกล้องเป็น'),
 (8, 18, 'Stepney', 'สเตปนี'),
 (9, 18, 'Jack', 'ช่องเสียบ'),
 (10, 18, 'Auto Gear', 'เกียร์ออโต้'),
@@ -191,7 +190,8 @@ INSERT INTO `thai_category_features` (`id`, `category_id`, `title`, `title_th`) 
 (20, 22, 'Low Oil Indicator', 'ตัวบ่งชี้น้ำมันต่ำ'),
 (21, 22, 'Low Battery Indicator', 'ไฟแสดงสถานะแบตเตอรี่อ่อน'),
 (22, 22, 'Battery', 'แบตเตอรี่'),
-(23, 22, 'Pass Light', 'ผ่านแสง');
+(23, 22, 'Pass Light', 'ผ่านแสง'),
+(24, 18, 'Sespension', 'Sespension');
 
 -- --------------------------------------------------------
 
@@ -202,7 +202,7 @@ INSERT INTO `thai_category_features` (`id`, `category_id`, `title`, `title_th`) 
 CREATE TABLE `thai_category_models` (
   `id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL DEFAULT 0,
-  `title` varchar(20) DEFAULT NULL,
+  `title_en` varchar(20) DEFAULT NULL,
   `title_th` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -210,7 +210,7 @@ CREATE TABLE `thai_category_models` (
 -- Dumping data for table `thai_category_models`
 --
 
-INSERT INTO `thai_category_models` (`id`, `category_id`, `title`, `title_th`) VALUES
+INSERT INTO `thai_category_models` (`id`, `category_id`, `title_en`, `title_th`) VALUES
 (1, 18, 'SUV', 'เอสยูวี'),
 (2, 18, 'MPV', 'MPV'),
 (3, 18, 'Pick Up', 'ไปรับ'),
@@ -233,7 +233,7 @@ INSERT INTO `thai_category_models` (`id`, `category_id`, `title`, `title_th`) VA
 CREATE TABLE `thai_category_submodels` (
   `id` int(11) NOT NULL,
   `type_id` int(11) NOT NULL DEFAULT 0,
-  `title` varchar(25) DEFAULT NULL,
+  `title_en` varchar(25) DEFAULT NULL,
   `title_th` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -241,7 +241,7 @@ CREATE TABLE `thai_category_submodels` (
 -- Dumping data for table `thai_category_submodels`
 --
 
-INSERT INTO `thai_category_submodels` (`id`, `type_id`, `title`, `title_th`) VALUES
+INSERT INTO `thai_category_submodels` (`id`, `type_id`, `title_en`, `title_th`) VALUES
 (1, 27, 'CL Models (4)', 'รุ่น CL (4)'),
 (2, 27, '-2.2CL', '-2.2CL'),
 (3, 27, '-2.3CL', '-2.3CL'),
@@ -1565,7 +1565,7 @@ INSERT INTO `thai_category_submodels` (`id`, `type_id`, `title`, `title_th`) VAL
 CREATE TABLE `thai_category_types` (
   `id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL DEFAULT 0,
-  `title` varchar(50) DEFAULT NULL,
+  `title_en` varchar(50) DEFAULT NULL,
   `title_th` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -1573,7 +1573,7 @@ CREATE TABLE `thai_category_types` (
 -- Dumping data for table `thai_category_types`
 --
 
-INSERT INTO `thai_category_types` (`id`, `category_id`, `title`, `title_th`) VALUES
+INSERT INTO `thai_category_types` (`id`, `category_id`, `title_en`, `title_th`) VALUES
 (1, 4, 'New', 'ใหม่'),
 (2, 4, 'Old', 'เก่า'),
 (3, 5, 'New', 'ใหม่'),
@@ -1756,7 +1756,8 @@ INSERT INTO `thai_chat` (`id`, `chat_id`, `product_id`, `user_id`, `touser_id`, 
 (7, 12345, 4, 5, 6, 'slkdj flsjd fkls', 1, 0, '2020-02-16 16:55:26'),
 (8, 12345, 4, 5, 6, 'djf owiflsk jdfow fkls oiw', 1, 0, '2020-02-16 17:02:43'),
 (9, 12345, 4, 6, 5, 'jf owfsoiwejs djfoiwjefjsfojiw oe ', 1, 0, '2020-02-16 17:05:25'),
-(10, 12345, 4, 6, 5, 'mg jgj hg ', 1, 0, '2020-02-18 10:37:50');
+(10, 12345, 4, 6, 5, 'mg jgj hg ', 1, 0, '2020-02-18 10:37:50'),
+(11, 35, 0, 5, 0, 'hello', 1, 0, '2020-03-13 10:38:31');
 
 -- --------------------------------------------------------
 
@@ -1923,8 +1924,8 @@ CREATE TABLE `thai_products` (
 INSERT INTO `thai_products` (`id`, `category_id`, `subcategory_id`, `user_id`, `title_en`, `title_th`, `description_en`, `description_th`, `status`, `trash`, `created_date`, `price`, `location`, `type`, `ad_type`, `submodel`, `model`, `brand`, `year_registration`, `driven`, `fuel_type`, `gearbox`, `features`, `featured`, `latitude`, `longitude`, `sort_date`, `views`) VALUES
 (1, 16, 18, 5, 'New Tesla5 for sale', NULL, 'Test Drive First.New Tesla for sale is available', NULL, 1, 0, '2020-02-05 17:53:35', 800, 'Berlin, Germany', 'abc', 0, NULL, 'TS-5T', 'Mercedes', 2020, 11, 'Gasoline', 'vbn', 'No', 1, '51.58250734077006', '-1.4598505851562549', '2020-03-09 17:53:54', 5),
 (2, 2, 8, 6, 'Full Stack Developer', NULL, 'We are looking to hire urgently developer.The candidate must have Web Application Design and implementation. Work closely with Mobile App developers. Design and implement front-end and back-end of web dashboard for mobile', NULL, 1, 0, '2020-02-05 17:55:02', 750, 'Office#7, anchorage, Alaska', 'Urgent ', 0, NULL, '', 'Issac\\\'s Code', 2016, 0, '', '', '', 1, '', '', '2020-03-09 17:53:54', 0),
-(3, 1, 7, 6, ' Multi Color Solar Light Pots for outdoor Garden', NULL, 'These plants pots are in multi color with solar light embedded.Best pots for your Outdoor garden', NULL, 1, 0, '2020-02-10 07:24:22', 350, '25 notting hill, Anchorage, Alaska', '', 0, NULL, '', '', 0000, 0, '', '', '', 1, '', '', '2020-03-09 17:53:54', 2),
-(4, 24, 25, 8, 'Puppy for sale', NULL, 'Its Half breed german shephard puppy for sale', NULL, 3, 0, '2020-02-10 13:45:07', 150, 'rawalpindi', 'rent', 0, NULL, 'Half-Breed small size ', 'Half Breed German Shephard', 2000, 0, '', '', '', 1, '	33.738045', '	73.084488', '2020-03-09 17:53:54', 1),
+(3, 1, 7, 6, ' Multi Color Solar Light Pots for outdoor Garden', NULL, 'These plants pots are in multi color with solar light embedded.Best pots for your Outdoor garden', NULL, 1, 0, '2020-02-10 07:24:22', 350, '25 notting hill, Anchorage, Alaska', '', 0, NULL, '', '', 0000, 0, '', '', '', 1, '', '', '2020-03-09 17:53:54', 3),
+(4, 24, 25, 8, 'Puppy for sale', NULL, 'Its Half breed german shephard puppy for sale', NULL, 3, 0, '2020-02-10 13:45:07', 150, 'rawalpindi', 'rent', 0, NULL, 'Half-Breed small size ', 'Half Breed German Shephard', 2000, 0, '', '', '', 1, '	33.738045', '	73.084488', '2020-03-09 17:53:54', 3),
 (5, 24, 25, 5, 'Fully Automatic Washing Machinw', NULL, '- 10 Year Motor Warranty, - Fully Automatic Washing Machine, - Anti Bacterial Wash, - One way wash', 'สวัสดีฉันสบายดีฉันสบายดีคุณเป็นยังไงบ้าง\r\nคุณเป็นยังไงบ้าง\r\n\r\n', 1, 0, '2020-02-10 13:57:43', 500, 'Berlin, Germany', '', 0, NULL, ' HWM 85-826', 'Haier', 0000, 0, '', '', 'NO', 1, '', '', '2020-03-09 17:53:54', 15),
 (6, 24, 25, 6, 'Khan Hut', 'Khan กระท่อม', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 'Ut enim โฆษณา minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip องแฟนเก่า ea commodo consequat. Duis aute irure dolor ใน reprehenderit ใน voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 2, 0, '2020-02-16 17:16:46', 40000, 'London, UK', 'rent', 0, NULL, '', '', 2013, 0, '', '', 'Lot of benefits', 0, '51.58250734077006', '-0.09754589765625488', '2020-03-09 17:53:54', 1),
 (7, 24, 26, 6, 'Old Buddies', 'เพื่อนเก่า', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. ', 'Sed ut perspiciatis unde omnis iste natus เกิดข้อผิดพลาดนั่ง voluptatem accusantium doloremque laudantium,totam rem aperiam,eaque ipsa quae เกี่ illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. ', 2, 0, '2020-02-16 17:37:41', 3000, 'North Wessex', 'buy', 0, NULL, '', '', 0000, 0, '', '', '', 0, '51.483411449684205', '-1.4598505851562549', '2020-03-09 17:53:54', 1),
@@ -2069,8 +2070,8 @@ CREATE TABLE `thai_users` (
 --
 
 INSERT INTO `thai_users` (`name`, `phone`, `email`, `id`, `password`, `img`, `status`, `zip`, `state`, `city`, `address`, `post_ads`, `bump_up`, `package_id`, `package_date`, `trash`, `created_date`, `type`, `login`, `login_time`) VALUES
-('Ben Dunk', '+98712364-55', 'test@test.com', 5, 'MTIzNDU=', NULL, 1, 123456, 'north', 'Bjdiensl', 'thailand', 0, 0, 0, NULL, 0, '2020-01-10 06:52:30', 0, 0, '2020-03-10 12:15:10'),
-('vender 1', '+123456789', 'test1@test1.com', 6, 'MTIzNDU=', '202003101321348762.png', 1, 12345678, 'Rljwei', 'Piwjespkkkk', 'Idlkweji wie jsd wfgi gdj fjxvsnjd', 0, 6, 1, NULL, 0, '2020-01-10 06:52:30', 1, 0, '2020-03-12 07:23:51'),
+('Ben Dunk', '+98712364-55', 'test@test.com', 5, 'MTIzNDU=', NULL, 1, 123456, 'north', 'Bjdiensl', 'thailand', 0, 0, 0, NULL, 0, '2020-01-10 06:52:30', 0, 1, '2020-03-13 06:37:52'),
+('vender 1', '+123456789', 'test1@test1.com', 6, 'MTIzNDU=', '202003101321348762.png', 1, 12345678, 'Rljwei', 'Piwjespkkkk', 'Idlkweji wie jsd wfgi gdj fjxvsnjd', 10, 6, 1, NULL, 0, '2020-01-10 06:52:30', 1, 1, '2020-03-13 10:59:01'),
 ('sammy', '1098761', 'test2@test2.com', 8, 'MTIzNDU=', NULL, 1, 12345, 'Jfiekl', 'Lweijdi', 'Saoi asdifj  cxm nv,mxjvd nvdjsdl', 0, 0, 0, NULL, 0, '2020-01-10 06:52:30', 0, 0, '2020-03-05 11:59:45'),
 ('test4', NULL, 'test4@test4.com', 17, 'MTIzNDU=', NULL, 1, 0, 'fsdff', 'fsdfdf', 'fddfdf', 0, 0, 0, NULL, 0, '2020-02-28 10:03:56', 0, 0, '2020-03-05 11:59:45');
 
@@ -2262,7 +2263,7 @@ ALTER TABLE `thai_categories`
 -- AUTO_INCREMENT for table `thai_category_features`
 --
 ALTER TABLE `thai_category_features`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `thai_category_models`
@@ -2286,7 +2287,7 @@ ALTER TABLE `thai_category_types`
 -- AUTO_INCREMENT for table `thai_chat`
 --
 ALTER TABLE `thai_chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `thai_emails`

@@ -20,7 +20,7 @@ $_SESSION['pagination']['sortby'] = ($sortby) ? $sortby : "";
 $pid = 0;
 if( isset($_GET['id']) ){
     $enc_pid = $_GET['id'];
-    $pid = dec_password($_GET['id']);
+   echo $pid = dec_password($_GET['id']);
 }
 $parent_category = get_records($tblcategories,"id='".$pid."' and trash!='1'");
 $where = "pid='".$pid."' and trash!='1'";
@@ -42,6 +42,7 @@ $from = (($pageNo * $max_results) - $max_results);
 $sql = "SELECT * FROM " . $tblcategories . " where " . $where;
 $sql_limit = $sql . " LIMIT $from, " . $max_results;
 $categories = sql($sql_limit);
+//pr($categories);
 /**************************************************************************/
 $total_results = sql("SELECT COUNT(*) as Num FROM " . $tblcategories . " where " . $where);
 $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
@@ -112,6 +113,12 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                                             <a href="index.php?p=categories&id=<?= enc_password($v['id']); ?>" title="View SubCategories"><i class="fa fa-list-ul"></i></a>&nbsp;&nbsp;
                                             <?php
                                         }
+                                        else{
+                                            ?>
+                                            <a href="index.php?p=addeditcategoryattributes&id=<?= enc_password($v['id']); ?>&att=f" title="Add Features"><i class="fa fa-list-ul"></i></a>&nbsp;&nbsp;
+                                            <a href="index.php?p=addeditcategoryattributes&id=<?= enc_password($v['id']); ?>&att=t" title="Add Type"><i class="fa fa-list-ul"></i></a>&nbsp;&nbsp;
+                                            <a href="index.php?p=addeditcategoryattributes&id=<?= enc_password($v['id']); ?>&att=m" title="Add Models"><i class="fa fa-list-ul"></i></a>&nbsp;&nbsp;
+                                       <?php }
                                         ?>
                                     </td>
                                 </tr>

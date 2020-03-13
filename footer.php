@@ -546,7 +546,6 @@ function update_ad_type(id){
     $("#type").html(msg);
   });
   update_models(id);
-  update_submodels(id);
 }
 function update_models(id){
   $("#type").html('<option value="">Loading...</option>');
