@@ -23,7 +23,7 @@ if ( $xlsx = SimpleXLSX::parse($excel_file)) {
 				} else {
 					$insertData['pid'] = '0';
 				}
-				$insertData['title'] = $v[1];
+				$insertData['title_'.$lang_'.$lang] = $v[1];
 				$insertData['slug'] = $v[2];
 				$insertData['description'] = $v[3];
 				$insertData['region'] = ($v[4])?$v[4]:'Whole world';

@@ -29,9 +29,9 @@ $products = sql($sql);
                         	$subcategory = get_records($tblcategories,"id='".$v['subcategory_id']."'");
                             ?>
                             <tr>
-                                <td><?php echo $category[0]['title']; ?></td>
-                                <td><?php echo $subcategory[0]['title']; ?></td>
-                                <td><a href="<?php echo makepage_url("product_detail","?id=".enc_password($v['id']));?>"><?php echo $v['title']; ?></a></td>
+                                <td><?php echo $category[0]['title_'.$lang]; ?></td>
+                                <td><?php echo $subcategory[0]['title_'.$lang]; ?></td>
+                                <td><a href="<?php echo makepage_url("product_detail","?id=".enc_password($v['id']));?>"><?php echo $v['title_'.$lang]; ?></a></td>
                                 <td><?php echo show_price($v['price']); ?></td>
                                 <td>
                                     <a href="javascript:;" onclick="delete_record('process.php?p=delfavorite&id=<?= enc_password($v['id']); ?>');" data-toggle="modal" data-target="#delete" title="<?php echo translate("Delete Record");?>"><i class="fa fa-trash"></i></a>

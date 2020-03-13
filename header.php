@@ -20,7 +20,7 @@ if(isset($_SESSION['user_record'])){
 }
 
 $p = getpagename();
-$without_login_pages = array('index','login','forgot_password','register','about','contact','cms','map_search','search','product_detail','vendor_profile');
+$without_login_pages = array('index','login','forgot_password','register','about','contact','cms','search_by_map','search','product_detail','vendor_profile');
 if(!isset($_SESSION['user_record'])){
   if( !in_array($p,$without_login_pages) ){
     redirect("login");exit;
@@ -226,7 +226,7 @@ function showGlobalLogin() {
   <?php
   $top_offers = get_records($tblcms,"type = 'top_offers'");
    ?>
- <div class="top_offers"><?php echo $top_offers[0]['content']; ?></div>
+ <div class="top_offers animation_div"><?php echo $top_offers[0]['content']; ?></div>
 <div class="bg_image" <?php if($p!="index"){?> style="background-image: none;" <?php }?>>
   <div class="container">
     <div class="row header">
@@ -277,16 +277,16 @@ function showGlobalLogin() {
               } else {
               ?>
                 <li class="nav-item d-none d-lg-block">
-                  <a class="nav-link btn btn-danger" onclick="show_login_div();" href="javascript:void(0);"><?php echo translate("LOGIN");?></a>
+                  <a class="nav-link btn btn-danger" data-toggle="modal" data-target="#login_popup" title="" href="javascript:void(0);"><?php echo translate("LOGIN");?></a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
-                  <a class="nav-link btn btn-primary" onclick="show_sign_up_div();" href="javascript:void(0);"><?php echo translate("SIGN UP");?></a>
+                  <a class="nav-link btn btn-primary" href="javascript:;" data-toggle="modal" data-target="#register_popup" title=""><?php echo translate("SIGN UP");?></a>
                 </li>
                 <li class="nav-item d-block d-lg-none">
-                  <a class="nav-link" href="<?php echo makepage_url("login");?>"><?php echo translate("LOGIN");?></a>
+                  <a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#login_popup" title=""><?php echo translate("LOGIN");?></a>
                 </li>
                 <li class="nav-item d-block d-lg-none">
-                  <a class="nav-link" href="<?php echo makepage_url("register");?>"><?php echo translate("SIGN UP");?></a>
+                  <a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#register_popup" title=""><?php echo translate("SIGN UP");?></a>
                 </li>
               <?php
               }

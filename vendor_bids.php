@@ -35,7 +35,7 @@ $get_vendor_bidds =get_records($tblbidding,"user_id='".$_SESSION['user_record'][
                             ?>
                             <tr>
                         <td><a href="<?php echo makepage_url("product_detail","?id=".enc_password($get_vendor_bidds[0]['product_id']));?>">
-                            <?php echo $get_bids_products_name[0]['title']; ?></a></td>
+                            <?php echo $get_bids_products_name[0]['title_'.$lang]; ?></a></td>
                                 <td><?php  echo show_price($max_bid_amount[0]['max_bid_amount']); ?></a></td>
                                 <td><?php echo show_price($min_bid_amount[0]['min_bid_amount']); ?></td>
                                 <td><?php echo $total_bid_counts[0]['Num']; ?></td>

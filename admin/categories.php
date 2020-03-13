@@ -20,7 +20,7 @@ $_SESSION['pagination']['sortby'] = ($sortby) ? $sortby : "";
 $pid = 0;
 if( isset($_GET['id']) ){
     $enc_pid = $_GET['id'];
-    $pid = dec_password($_GET['id']);
+   echo $pid = dec_password($_GET['id']);
 }
 $parent_category = get_records($tblcategories,"id='".$pid."' and trash!='1'");
 $where = "pid='".$pid."' and trash!='1'";
@@ -42,6 +42,7 @@ $from = (($pageNo * $max_results) - $max_results);
 $sql = "SELECT * FROM " . $tblcategories . " where " . $where;
 $sql_limit = $sql . " LIMIT $from, " . $max_results;
 $categories = sql($sql_limit);
+//pr($categories);
 /**************************************************************************/
 $total_results = sql("SELECT COUNT(*) as Num FROM " . $tblcategories . " where " . $where);
 $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
@@ -52,7 +53,7 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
         <div class="card">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="title">Manage <?php echo (count($parent_category)>0)?'SubCategories of '.$parent_category[0]['title']:'Categories';?></h4>
+                    <h4 class="title">Manage <?php echo (count($parent_category)>0)?'SubCategories of '.$parent_category[0]['title_en']:'Categories';?></h4>
                 </div>
                 <div class="col-md-6 add_new">
                     <?php
@@ -100,8 +101,8 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                                 $status = get_category_status($v['status']);
                                 ?>
                                 <tr>
-                                    <td><?php echo $v['title']; ?></td>
-                                    <td><?php echo $v['description']; ?></td>
+                                    <td><?php echo $v['title_en']; ?></td>
+                                   <td><?php echo $v['description']; ?></td>
                                     <td><?php echo $status; ?></td>
                                     <td>
                                         <a href="index.php?p=addeditcategory&id=<?= enc_password($v['id']); ?>" title="Update Record"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
@@ -112,6 +113,12 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                                             <a href="index.php?p=categories&id=<?= enc_password($v['id']); ?>" title="View SubCategories"><i class="fa fa-list-ul"></i></a>&nbsp;&nbsp;
                                             <?php
                                         }
+                                        else{
+                                            ?>
+                                            <a href="index.php?p=addeditcategoryattributes&id=<?= enc_password($v['id']); ?>&att=f" title="Add Features"><i class="fa fa-list-ul"></i></a>&nbsp;&nbsp;
+                                            <a href="index.php?p=addeditcategoryattributes&id=<?= enc_password($v['id']); ?>&att=t" title="Add Type"><i class="fa fa-list-ul"></i></a>&nbsp;&nbsp;
+                                            <a href="index.php?p=addeditcategoryattributes&id=<?= enc_password($v['id']); ?>&att=m" title="Add Models"><i class="fa fa-list-ul"></i></a>&nbsp;&nbsp;
+                                       <?php }
                                         ?>
                                     </td>
                                 </tr>

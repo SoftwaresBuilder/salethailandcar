@@ -11,7 +11,7 @@ $tblcategories = $tblprefix."categories";
 $tblcategory_types = $tblprefix."category_types";
 $tblcategory_models = $tblprefix."category_models";
 $tblcategory_submodels = $tblprefix."category_submodels";
-$tblproduct_features = $tblprefix."category_features";
+$tblcategory_features = $tblprefix."category_features";
 $tblproducts = $tblprefix."products";
 $tblpackages = $tblprefix."packages";
 $tblproduct_images = $tblprefix."product_images";
@@ -20,5 +20,5 @@ $tblorders = $tblprefix."orders";
 $tblchat = $tblprefix."chat";
 $tblvendor_packages = $tblprefix."vendor_packages";
 $tblbidding = $tblprefix."bidding";
-
+$tblad_banner = $tblprefix."ibanners";
 ?>

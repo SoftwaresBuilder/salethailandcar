@@ -37,4 +37,38 @@ if($p == "update_bill"){
 	}
 	exit;
 }
+if($p=="translate_into_thai"){    
+    $description = $_GET['description'];
+    if($description)
+    {
+    	echo $result = translate_api($description,"en","th");
+    }
+	exit;
+}	
+if($p == "set_image_attribute"){
+	
+		$id = $_GET['id'];
+		$p_id = $_GET['p_id'];
+		$alt = $_GET['alt'];
+		$description = $_GET['description'];
+		$is_main = $_GET['is_main'];
+		if($id){
+			if($is_main!=0)
+			{
+			$data2 = array();
+			$data2['main'] = 0;
+			$condition2 = array();
+			$condition2['product_id'] =$p_id ;
+			$result2 = update_record($tblproduct_images,$data2,$condition2);
+			}
+			$data = array();
+			$data['alt'] = $alt;
+			$data['description'] = $description;
+			$data['main'] = $is_main;
+			$condition = array();
+			$condition['id'] = $id;
+			$result = update_record($tblproduct_images,$data,$condition);
+		}
+	exit;
+}
 ?>

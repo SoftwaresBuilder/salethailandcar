@@ -21,7 +21,7 @@ var chart_pie = new CanvasJS.Chart("chart_pie", {
 			if(count($records)>0){
 				foreach($records as $v){
 				?>
-					{y: <?php echo $v['types'];?>, label: "<?php echo $v['title'];?>"},
+					{y: <?php echo $v['types'];?>, label: "<?php echo $v['title_'.$lang_'.$lang];?>"},
 				<?php
 				}
 			}

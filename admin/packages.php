@@ -87,10 +87,10 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                         if (count($packages) > 0) {
                             foreach ($packages as $v) {
                                 $status = $v['status'];
-                                // $category_name = (count($category)>0)?$category[0]['title']:'';
+                                // $category_name = (count($category)>0)?$category[0]['title_'.$lang]:'';
                                 ?>
                                 <tr>
-                                    <td><?php echo $v['title']; ?></td>
+                                    <td><?php echo $v['title_'.$lang]; ?></td>
                                     <td><?php echo $v['price']; ?></td>
                                     <td><?php echo $v['post_ads']; ?></td>
                                     <td><?php echo $v['bump_up']; ?></td>

@@ -71,8 +71,8 @@ if($p == "addeditproduct")
 	if($id){
 		$id = dec_password($id);
 	}
-	if(!$title){
-		$_SESSION['sysErr']['title'] = "Please enter product title";
+	if(!$title_en){
+		$_SESSION['sysErr']['title_'.$lang] = "Please enter product title";
 		$flg = true;
 	}
 	if(!($price>0)){
@@ -89,9 +89,11 @@ if($p == "addeditproduct")
 		$data['category_id'] = $category_id;
 		$data['subcategory_id'] = $subcategory_id;
 		$data['user_id'] = $user_id;
-		$data['title'] = $title;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
 		$data['price'] = $price;
-		$data['description'] = $description;
+		$data['description_en'] = $description_en;
+		$data['description_th'] = $description_th;
 		$data['status'] = $status;
 		$data['featured'] = $featured;
 		$data['location'] = $location;
@@ -116,9 +118,11 @@ if($p == "addeditproduct")
 		$data = array();
 		$data['category_id'] = $category_id;
 		$data['subcategory_id'] = $subcategory_id;
-		$data['title'] = $title;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
 		$data['price'] = $price;
-		$data['description'] = $description;
+		$data['description_en'] = $description_en;
+		$data['description_th'] = $description_th;
 		$data['status'] = $status;
 		$data['featured'] = $featured;
 		$data['user_id'] = $user_id;
@@ -168,8 +172,8 @@ if($p == "addeditpackages")
 	if($id){
 		$id = dec_password($id);
 	}
-	if(!$title){
-		$_SESSION['sysErr']['title'] = "Please enter packages title";
+	if(!$title_.$lang){
+		$_SESSION['sysErr']['title_'.$lang] = "Please enter packages title";
 		$flg = true;
 	}
 	if(!($price>0)){
@@ -183,7 +187,7 @@ if($p == "addeditpackages")
 	if( $id > 0 )
 	{
 		$data = array();
-		$data['title'] = $title;
+		$data['title_'.$lang] = $title_.$lang;
 		$data['price'] = $price;
 		$data['post_ads'] = $post_ads;
 		$data['bump_up'] = $bump_up;
@@ -199,7 +203,7 @@ if($p == "addeditpackages")
 	else
 	{
 		$data = array();
-		$data['title'] = $title;
+		$data['title_'.$lang] = $title_.$lang;
 		$data['price'] = $price;
 		$data['post_ads'] = $post_ads;
 		$data['bump_up'] = $bump_up;
@@ -253,7 +257,8 @@ if($p == "addeditcategory")
 	{
 		$data = array();
 		$data['pid'] = $pid;
-		$data['title'] = $title;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
 		$data['description'] = $description;
 		$data['status'] = $status;
 		$condition = array();
@@ -268,10 +273,51 @@ if($p == "addeditcategory")
 	{
 		$data = array();
 		$data['pid'] = $pid;
-		$data['title'] = $title;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
 		$data['description'] = $description;
 		$data['status'] = $status;
 		$id = insert_record($tblcategories,$data);
+		if($id>0)
+		{
+			$_SESSION['sysErr']['msg'] = "Record added successfully";
+		}
+	}
+	
+	header("location:index.php?p=categories");
+	exit;
+}
+if($p == "addeditcategoryattributes")
+{
+	foreach ($_POST as $k => $v )
+	{
+		$$k = addslashes($v);
+		$_SESSION['sysData'][$k] = $v;
+	}
+ 	$category_id = dec_password($_POST['cat_id']);
+ 	$tblname = $_POST['tblname'];
+ 	$id = $_POST['cat_attributes'];
+	if( $id > 0 )
+	{
+		$data = array();
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		$condition = array();
+		$condition['id'] = $id;
+		$condition['category_id'] = $category_id;
+		$result = update_record($tblname,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	else
+	{
+		$data = array();
+		$data['category_id'] = $category_id;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		$id = insert_record($tblname,$data);
 		if($id>0)
 		{
 			$_SESSION['sysErr']['msg'] = "Record added successfully";
@@ -420,7 +466,7 @@ if($p == "addeditfaq")
 	{
 		$data = array();
 		
-		$data['title'] = $title;
+		$data['title_'.$lang] = $title_.$lang;
 		$data['description'] = $description;
 		$data['status'] = $faq_status;
 		$condition = array();
@@ -435,7 +481,7 @@ if($p == "addeditfaq")
 	{
 		$data = array();
 		
-		$data['title'] = $title;
+		$data['title_'.$lang] = $title_.$lang;
 		$data['description'] = $description;
 		$data['status'] = $status;
 		$id = insert_record($tblfaq,$data);
@@ -537,7 +583,7 @@ if($p == "addeditnews")
 	
 	if(!$title)
 	{
-		$_SESSION['sysErr']['title'] = "Please enter name";
+		$_SESSION['sysErr']['title_'.$lang] = "Please enter name";
 		$flg = true;
 	}
 	
@@ -555,7 +601,7 @@ if($p == "addeditnews")
 	if( $id > 0 )
 	{
 		$data = array();
-		$data['title'] = $title;
+		$data['title_'.$lang] = $title_.$lang;
 		//$data['slug'] = $slug;
 		$data['description'] = $description;
 		$data['status'] = $status;
@@ -570,7 +616,7 @@ if($p == "addeditnews")
 	else
 	{
 		$data = array();
-		$data['title'] = $title;
+		$data['title_'.$lang] = $title_.$lang;
 		//$data['slug'] = $slug;
 		$data['description'] = $description;
 		$data['status'] = $status;

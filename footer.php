@@ -85,8 +85,7 @@ function submitUserForm_signup() {
 
 
 <script type="text/javascript">
-
-  function show_login_div(){
+function show_login_div(){
   
   $("#sign_up_div").hide();
   $("#login").slideDown(300);
@@ -148,305 +147,40 @@ function show_forgot_password_form(){
     margin-bottom: 5px;
   }
 </style>
-<div id="login" class="modal-content login_signup_div">
-                    <div class="modal-header">
-                        <div class="page-info">
-                            <!--        <h1 class="modal-title" id="exampleModalLabel">Register with us</h1>-->
-                        </div>
-                        <button type="button" onclick="hide_login();" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="modal_left_bx">
-                                    <h4><?php echo translate("Register with us");?></h4>
-                                    <div class="media">
-                                        <img class="mr-3" src="images/side_icon_1.png">
-                                        <div class="media-body">
-                                            <h5 class="mt-0"><?php echo translate("Receive And Send Bids");?></h5>
-                                            <p<?php echo translate("lang_text19");?>></p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <img class="mr-3" src="images/side_icon_2.png">
-                                        <div class="media-body">
-                                            <h5 class="mt-0"><?php echo translate("list features");?></h5>
-                                            <p><?php echo translate("lang_text20");?></p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <img class="mr-3" src="images/side_icon_3.png">
-                                        <div class="media-body">
-                                            <h5 class="mt-0"><?php echo translate("Chat");?> &amp; <?php echo translate("message");?></h5>
-                                            <p><?php echo translate("lang_text21");?></p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <img class="mr-3" src="images/side_icon_4.png">
-                                        <div class="media-body">
-                                            <h5 class="mt-0"><?php echo translate("User dashboard");?></h5>
-                                            <p><?php echo translate("lang_text22");?></p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <img class="mr-3" src="images/side_icon_5.png">
-                                        <div class="media-body">
-                                            <h5 class="mt-0"><?php echo translate("lang_text23");?></h5>
-                                            <p><?php echo translate("lang_text23");?></p>
-                                        </div>
-                                    </div>
 
 
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="log_sign_bx">
-                                    <div class="top_social">
-                                      <div id="google_facebook">
-                                        <div id="w2">                                        <div class="row">
-                                             <div class="col pr-2"><a class="custom-btn facebook auth-link" href="/site/auth?authclient=facebook" title="Facebook" data-popup-width="860" data-popup-height="480"><span><i class="icofont-facebook"></i> <?php echo translate("FACEBOOK");?></span> </a> </div>                                                 <div class="col pr-2"><a class="custom-btn google auth-link" href="/site/auth?authclient=google" title="Google"><span><i class="fa fa-google"></i><?php echo translate("GOOGLE");?> </span> </a> </div>                                                </div>                                        </div></div>
-                                        <span class="nw_orcls"><?php echo translate("Or");?></span>
-                                    </div>
-                                    <div id="login_form">
-                                     <form onsubmit="return submitUserForm();" action="process.php?p=login" enctype="multipart/form-data" method="post">
-                                       <div class="row">
-                                         <?php show_errors();?>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label><?php echo translate("Email");?> <span class="err">*</span></label>
-                            <input type="email" required class="form-control" id="email" name="email" placeholder="<?php echo translate("Email");?>" value="">
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label><?php echo translate("Password");?> <span class="err">*</span></label>
-                            <input type="password" required class="form-control" id="password" name="password" placeholder="<?php echo translate("Password");?>" value="">
-                        </div>
-                    </div>
-                    
-
-                </div>
-                                        <div class="row mb-2">
-                                            <div class="col-sm-12">
-                                                <div class="my-1 mr-sm-2">
-                                  <div class="g-recaptcha" data-sitekey="6Lc9VN4UAAAAAGO9tfy6py6kcAHeo5xwyE0ZgNNd">
-                                   </div>
-                                   <div id="g-recaptcha-error"></div>
-                                                </div>
-                                            </div>
-                                            <div class="help-block has-error signup_captcha_error"></div>
-                                        </div>
-                                        <div class="d-flex log_nw_bx justify-content-between mb-2">
-
-                                            <a href="#" onclick="show_forgot_password_form();" class="forget_pass"><?php echo translate("lang_text25");?></a>
-                                        </div>
-
-                                       <div class="col-md-12">
-                        <input type="submit" class="btn btn-primary" value="<?php echo translate("Login");?>" name="Submit">
-                    </div>
-                                        <div class="signin-foot text-center">
-                                            <p><?php echo translate("lang_text26");?> <a href="#" onclick="show_sign_up_div();"><?php echo translate("Sign Up");?></a></p>
-                                        </div>
-                                    </form>
-                                  </div>
-                                  <div id="forgot_password_form" style="display: none;">
-                                     <form action="process.php?p=forgot_password" method="post">
-                                       <div class="row">
-                                         <?php show_errors();?>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label><?php echo translate("Email");?> <span class="err">*</span></label>
-                            <input type="email" required class="form-control" id="email" name="email" placeholder="<?php echo translate("Email");?>" value="">
-                        </div>
-                    </div>
-              </div>
-                                        <div class="row mb-2">
-                                            <div class="col-sm-12">
-                                                <div class="my-1 mr-sm-2">
-                                  <!-- <div class="g-recaptcha" data-sitekey="6Lc9VN4UAAAAAGO9tfy6py6kcAHeo5xwyE0ZgNNd">
-                                   </div>
-                                   <div id="g-recaptcha-forgot-error"></div>
-                                                </div> -->
-                                            </div>
-                                            <div class="help-block has-error signup_captcha_error"></div>
-                                        </div>
-                                      
-
-                                       <div class="col-md-12">
-                        <input type="submit" class="btn btn-primary" value="<?php echo translate("Send Link");?>" name="Submit">
-                    </div>
-                                        
-                                    </form>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-<!-- ------------------------------------------------------------------------------------ -->
-
-<!--........................................................ sign up div.................. -->
-<div id="sign_up_div" class="modal-content login_signup_div">
-                    <div class="modal-header">
-                        <div class="page-info">
-                            <!--        <h1 class="modal-title" id="exampleModalLabel">Register with us</h1>-->
-                        </div>
-                        <a class="close" onclick="hide_login();" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </a>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="modal_left_bx">
-                                    <h4><?php echo translate("Register with us");?></h4>
-                                    <div class="media">
-                                        <img class="mr-3" src="images/side_icon_6.png">
-                                        <div class="media-body">
-                                            <h5 class="mt-0"><?php echo translate("lang_text27");?></h5>
-                                            <p><?php echo translate("lang_text28");?></p>
-                                        </div>
-                                    </div>
-                                   <div class="media">
-                                        <img class="mr-3" src="images/side_icon_1.png">
-                                        <div class="media-body">
-                                            <h5 class="mt-0"><?php echo translate("Receive And Send Bids");?></h5>
-                                            <p><?php echo translate("lang_text19");?></p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <img class="mr-3" src="images/side_icon_2.png">
-                                        <div class="media-body">
-                                            <h5 class="mt-0"><?php echo translate("list features");?></h5>
-                                            <p><?php echo translate("lang_text20");?></p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <img class="mr-3" src="images/side_icon_3.png">
-                                        <div class="media-body">
-                                            <h5 class="mt-0"><?php echo translate("Chat");?> &amp; <?php echo translate("message");?></h5>
-                                            <p><?php echo translate("lang_text21");?></p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <img class="mr-3" src="images/side_icon_4.png">
-                                        <div class="media-body">
-                                            <h5 class="mt-0"><?php echo translate("User dashboard");?></h5>
-                                            <p><?php echo translate("lang_text22");?></p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <img class="mr-3" src="images/side_icon_5.png">
-                                        <div class="media-body">
-                                            <h5 class="mt-0"><?php echo translate("Track the status of your ad history");?></h5>
-                                            <p><?php echo translate("lang_text23");?></p>
-                                        </div>
-                                    </div>
+<div id="register_popup" class="modal fade login_popup" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <?php include("signup_popup.php");?>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-                                </div>
-                            </div>
-                            <div class="col-sm-5">
-                                <div class="log_sign_bx">
-                                    <div class="top_social">
-                                        <div id="w3">                                        <div class="row">
-                                             <div class="col pr-2"><a class="custom-btn facebook auth-link" href="/site/auth?authclient=facebook" title="Facebook" data-popup-width="860" data-popup-height="480"><span><i class="icofont-facebook"></i> <?php echo translate("FACEBOOK");?></span> </a> </div>                                                 <div class="col pr-2"><a class="custom-btn google auth-link" href="/site/auth?authclient=google" title="Google"><span><i class="fa fa-google"></i> <?php echo translate("GOOGLE");?></span> </a> </div>                                                </div>                                        </div>
-                                        <span class="nw_orcls">Or</span>
-                                    </div>
-                                    <form onsubmit="return submitUserForm_signup();" action="process.php?p=register" enctype="multipart/form-data" method="post">
-                                      <!-- ........................ -->
-                                        <div class="row justify-content-center">
-   
-           
-        <?php show_errors();?>
-        <div class="row">
-            <div class="col-md-8">
-                <div class="form-group">
-                    <label><?php echo translate("Full Name");?> <span class="err">*</span></label>
-                     <input type="text" required class="form-control" id="name" name="name" placeholder="<?php echo translate("Enter Your Name");?>" value="<?= $_SESSION['sysData']['name'];?>">
-                
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="form-group">
-                    <label><?php echo translate("Email");?> <span class="err">*</span></label>
-                    <input type="email" required class="form-control" id="email" name="email" placeholder="<?php echo translate("Email");?>" value="<?= $_SESSION['sysData']['email'];?>">
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="form-group">
-                    <label><?php echo translate("Password");?> <span class="err">*</span></label>
-                    <input type="password" required class="form-control" id="password" name="password" placeholder="<?php echo translate("Password");?>" value="">
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="form-group">
-                    <label><?php echo translate("Confirm Password");?> <span class="err">*</span></label>
-                    <input type="password" required class="form-control" id="cpassword" name="cpassword" placeholder="<?php echo translate("Confirm password");?>" value="">
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="form-group">
-                    <label><?php echo translate("Address");?></label>
-                    <input type="text" required class="form-control" id="address" name="address" placeholder="<?php echo translate("Enter Your Address");?>" value="<?= $_SESSION['sysData']['address'];?>">
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="form-group">
-                    <label><?php echo translate("City");?></label>
-                    <input type="text" required class="form-control" id="city" name="city" placeholder="<?php echo translate("Enter Your City");?>" value="<?= $_SESSION['sysData']['city'];?>">
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="form-group">
-                    <label><?php echo translate("State");?></label>
-                    <input type="text" required class="form-control" id="state" name="state" placeholder="<?php echo translate("Enter Your State");?>" value="<?= $_SESSION['sysData']['state'];?>">
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="form-group">
-                    <label><?php echo translate("Zipcode");?></label>
-                    <input type="text" required class="form-control" id="zip" name="zip" placeholder="<?php echo translate("Enter Your Zip code");?>" value="<?= $_SESSION['sysData']['zip'];?>">
-                </div>
-            </div>
-           
-        </div>
-      <div class="clearfix"></div>
-              
-</div>  
-                                        <!-- ......................... -->
-                                        <div class="row mb-2">
-                                            <div class="col-sm-12">
-                                                <div class="my-1 mr-sm-2">
-                                                   <div class="g-recaptcha" data-sitekey="6Lc9VN4UAAAAAGO9tfy6py6kcAHeo5xwyE0ZgNNd">
-                                   </div>
-                                   <div id="g-recaptcha-error_signup"></div>
-                                                </div>
-                                            </div>
-                                            <div class="help-block has-error signup_captcha_error"></div>
-                                        </div>
+<div id="login_popup" class="modal fade login_popup" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <?php include("login_popup.php");?>
+      </div>
+    </div>
+  </div>
+</div>
 
-                                        <div class="col-md-8">
-                <button type="submit" class="btn btn-primary" name="Submit"><?php echo translate("Submit");?></button>
-            </div>
-                                        <div class="signin-foot text-center">
-                                            <p><?php echo translate("lang_text29");?> <a href="#" onclick="show_login_div();"><?php echo translate("Sign In");?></a></p>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
 
-                    </div>
-
-                </div>
-<!-- ...................End Sign Up Div ................................................... -->
 
 <?php
 /**/
@@ -546,7 +280,6 @@ function update_ad_type(id){
     $("#type").html(msg);
   });
   update_models(id);
-  update_submodels(id);
 }
 function update_models(id){
   $("#type").html('<option value="">Loading...</option>');
@@ -669,10 +402,10 @@ function bump_up(id)
         }
      });
 }
-function myFunction(){
-       $('#description_th').val('translating....');
+function myFunction(str){
+       $('#'+str).val('translating....');
     }
-    function translate_into_thai(str){
+    function translate_into_thai(str,id){
        var description = str;
          $.ajax({
             type: "GET",
@@ -680,7 +413,7 @@ function myFunction(){
              dataType: 'html',  
             data: {description:description,p:'translate_into_thai'},
             success: function(data){
-              $('#description_th').val(data);
+              $('#'+id).val(data);
                
              } 
         });

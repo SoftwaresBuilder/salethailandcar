@@ -28,7 +28,7 @@ else if(!isset($_SESSION['sysData']['id'])) {
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Title <span class="err">*</span></label>
-                            <input type="text" required class="form-control" id="title" name="title" placeholder="title" value="<?= $_SESSION['sysData']['title'];?>">
+                            <input type="text" required class="form-control" id="title" name="title" placeholder="title" value="<?= $_SESSION['sysData']['title_'.$lang];?>">
                         </div>
                     </div>
                     <div class="col-md-6">

@@ -126,6 +126,54 @@ function delete_record(url,modal_msg="",modal_tlt=""){
 	}
 	$( "#delete_client_button" ).attr( "href", url );
 }
+function myFunction(str){
+       $('#'+str).val('translating....');
+    }
+    function translate_into_thai(str,id){
+       var description = str;
+         $.ajax({
+            type: "GET",
+            url: "ajax.php",
+             dataType: 'html',  
+            data: {description:description,p:'translate_into_thai'},
+            success: function(data){
+              $('#'+id).val(data);
+               
+             } 
+        });
+    }
+    function set_image_attribute(id,p_id)
+    {
+    	var is_main =0;
+    	var alt = $('#img_alt'+id).val();
+    	var description = $('#img_description'+id).val();
+    	if($('#main_img'+id).prop('checked')) { 
+		     is_main =1;
+		 }
+		//alert(alt + ' / '+description+' / '+is_main); return false;
+		 $.ajax({
+            type: "GET",
+            url: "ajax.php",
+             dataType: 'html',  
+            data: {id:id,p_id:p_id,alt:alt,description:description,is_main:is_main,p:'set_image_attribute'},
+            success: function(data){
+                } 
+        });
+}
+function get_attribute_val(){
+  var description = $("#cat_attributes option:selected").text();
+  $('#title_en').val(description);
+   $.ajax({
+            type: "GET",
+            url: "ajax.php",
+             dataType: 'html',  
+            data: {description:description,p:'translate_into_thai'},
+            success: function(data){
+              $('#title_th').val(data);
+               
+             } 
+        });
+}
 </script>
 
 

@@ -38,7 +38,7 @@ $users=  get_records($tblusers, "id>'0' and trash='0'");
                                 if(count($categories)>0){
                                     foreach ($categories as $v) {
                                     ?>
-                                        <option <?php if($_SESSION['sysData']['category_id']==$v['id']){?> selected <?php }?> value="<?php echo $v['id'];?>"><?php echo $v['title'];?></option>
+                                        <option <?php if($_SESSION['sysData']['category_id']==$v['id']){?> selected <?php }?> value="<?php echo $v['id'];?>"><?php echo $v['title_en'];?></option>
                                     <?php
                                     }
                                 }
@@ -55,7 +55,7 @@ $users=  get_records($tblusers, "id>'0' and trash='0'");
                                 if(count($subcategories)>0){
                                     foreach ($subcategories as $v) {
                                     ?>
-                                        <option <?php if($_SESSION['sysData']['subcategory_id']==$v['id']){?> selected <?php }?> value="<?php echo $v['id'];?>"><?php echo $v['title'];?></option>
+                                        <option <?php if($_SESSION['sysData']['subcategory_id']==$v['id']){?> selected <?php }?> value="<?php echo $v['id'];?>"><?php echo $v['title_en'];?></option>
                                     <?php
                                     }
                                 }
@@ -84,10 +84,17 @@ $users=  get_records($tblusers, "id>'0' and trash='0'");
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Title <span class="err">*</span></label>
-                            <input type="text" required class="form-control" id="title" name="title" placeholder="title" value="<?= $_SESSION['sysData']['title'];?>">
+                            <label>Title English <span class="err">*</span></label>
+                            <input oninput="myFunction('title_th')" onfocusout="translate_into_thai($('#title_en').val(),'title_th')" type="text" required class="form-control" id="title_en" name="title_en" placeholder="title" value="<?= $_SESSION['sysData']['title_en'];?>">
                         </div>
                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Title Thai <span class="err">*</span></label>
+                            <input type="text" required class="form-control" id="title_th" name="title_th" placeholder="title" value="<?= $_SESSION['sysData']['title_th'];?>">
+                        </div>
+                    </div>
+                    
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Price</label>
@@ -171,21 +178,24 @@ $users=  get_records($tblusers, "id>'0' and trash='0'");
                             <input type="text"  class="form-control" id="gearbox" name="gearbox" placeholder="gearbox" value="<?= $_SESSION['sysData']['gearbox'];?>">
                         </div>
                     </div>
-
+                     <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Description English</label>
+                            <textarea  oninput="myFunction('description_th')" onfocusout="translate_into_thai($('#description_en').val(),'description_th')" class="form-control" id="description_en" name="description_en" placeholder="description"><?= $_SESSION['sysData']['description_en'];?></textarea>
+                        </div>
+                    </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Description Thai</label>
+                            <textarea class="form-control" id="description_th" name="description_th" placeholder="description"><?= $_SESSION['sysData']['description_th'];?></textarea>
+                        </div>
+                    </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Features </label>
                             <input type="text"  class="form-control" id="features" name="features" placeholder="features" value="<?= $_SESSION['sysData']['features'];?>">
                         </div>
                     </div>
-
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea class="form-control" id="description" name="description" placeholder="description"><?= $_SESSION['sysData']['description'];?></textarea>
-                        </div>
-                    </div>
-
                 </div>
                 </div>
                 <input type="hidden" name="id" id="id" value="<?php echo enc_password($_SESSION['sysData']['id']); ?>" />
