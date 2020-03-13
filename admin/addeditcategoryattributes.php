@@ -7,7 +7,11 @@ if(isset($_GET['id']))
     $id = dec_password($_GET['id']);
     $att = $_GET['att'];
     if($att=='f'){$tblname=$tblcategory_features;$select_name="Select Feature";}
-    if($att=='t'){$tblname=$tblcategory_types;$select_name="Select Type";}
+    if($att=='t')
+    {
+        $tblname=$tblcategory_types;
+        $select_name="Select Type";
+    }
     if($att=='m'){$tblname=$tblcategory_models;$select_name="Select Model";}
     $record = get_records($tblname,"category_id='".$id."'");
     if(isset($record[0])){
@@ -34,7 +38,7 @@ else if(!isset($_SESSION['sysData']['id'])) {
                     <div class="col-md-6">
                         <div class="form-group">
                             <label><?php echo $select_name; ?></label>
-                            <select onchange="get_attribute_val();" class="form-control" id="cat_attributes" name="cat_attributes">
+                            <select onchange="get_attribute_val(this.value);" class="form-control" id="cat_attributes" name="cat_attributes">
                                 <option><?php echo $select_name; ?></option>
                                 <?php
                                 if(count($record)>0){
@@ -45,6 +49,14 @@ else if(!isset($_SESSION['sysData']['id'])) {
                                     }
                                 }
                                 ?>
+                            </select>
+                        </div>
+                    </div>
+                     <div class="col-md-6">
+                        <div class="form-group" id="cat_submodels_div" style="display: none;">
+                            <label>Select SubModels</label>
+                            <select class="form-control" id="cat_submodels" name="cat_submodels">
+                                <option>Select Sub Model</option>
                             </select>
                         </div>
                     </div>

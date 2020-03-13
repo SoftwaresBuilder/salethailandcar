@@ -45,6 +45,20 @@ if($p=="translate_into_thai"){
     }
 	exit;
 }	
+if($p=="update_submodels"){
+	$id = $_POST['id'];
+	$submodels = get_records($tblcategory_submodels,"type_id='".$id."'","title_en ASC");
+	$html = '<option value="">Select Submodels</option>';
+	if(count($submodels)>0){
+		foreach ($submodels as $v) {
+			$html .= '<option value="'.$v['id'].'">'.$v['title_en'].'</option>';
+		}
+	} else {
+		$html = "no";
+	}
+	echo $html;
+	exit;
+}
 if($p == "set_image_attribute"){
 	
 		$id = $_GET['id'];
