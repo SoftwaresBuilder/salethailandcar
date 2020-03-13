@@ -11,7 +11,7 @@ $products = get_records($tblproducts,$where,"id DESC");
     <div class="section_spacer" style="border: 1px solid #ccc;">
     	<div class="row">
             <div class="col-12 d-none d-md-block">
-                <div class="row">
+                <div class="row text-center">
             		<div class="col-12 col-md-4">
                         <strong>Photo</strong> 
                     </div>
@@ -24,7 +24,7 @@ $products = get_records($tblproducts,$where,"id DESC");
                     <div class="col-12 col-md-2">
                        <strong>Action</strong> 
                     </div>
-                </div>
+                </div><hr>
             </div>
     	</div>
         <?php
