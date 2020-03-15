@@ -1,13 +1,15 @@
 
-  <head>
+
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
 function submitUserForm() {
     var response = grecaptcha.getResponse();
+    /**
     if(response.length == 0) {
         document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;"><?php echo translate("Prove you are not robort.");?></span>';
         return false;
     }
+    /**/
     return true;
 }
 // function forgot_captcha() {
@@ -30,9 +32,7 @@ function submitUserForm_signup() {
 }
  
 </script>
-  </head>
 
-<?php error_reporting(0); ?>
 <div class="footer" style="background-color: #031543;">
   <div class="container">
     <div class="row section_spacer">

@@ -1,3 +1,8 @@
+<?php
+if(!isset($_SESSION['sysData']['name'])) {
+    $_SESSION['sysData'] = table_fields($tblusers);
+}
+?>
 <div class="row">
                             <div class="col-md-6">
                                 <div class="modal_left_bx">
