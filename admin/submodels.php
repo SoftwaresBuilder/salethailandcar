@@ -18,14 +18,17 @@ if (isset($_POST['sortby'])) {
 $_SESSION['pagination']['sortby'] = ($sortby) ? $sortby : "";
 
 $pid = 0;
+$cid =0;
 if( isset($_GET['id']) ){
     $enc_pid = $_GET['id'];
     $pid = dec_password($_GET['id']);
+    $enc_cid = $_GET['cid'];
+    $cid = dec_password($_GET['cid']);
 }
-$parent_category = get_records($tblcategories,"id='".$pid."' and trash!='1'");
-$where = "pid='".$pid."' and trash!='1'";
+$parent = get_records($tblcategory_types,"id='".$pid."'");
+$where = "type_id=".$pid;
 if ($search_key) {
-    $where .= " AND (titl LIKE '%" . $search_key . "%')";
+    $where .= " AND (titl_en LIKE '%" . $search_key . "%')";
 }
 if ($sortby) {
     $where .= " ORDER BY $sortby";
@@ -39,12 +42,12 @@ if (!isset($_GET['pageNo'])) {
 $from = (($pageNo * $max_results) - $max_results);
 
 
-$sql = "SELECT * FROM " . $tblcategories . " where " . $where;
+$sql = "SELECT * FROM " . $tblcategory_submodels . " where " . $where;
 $sql_limit = $sql . " LIMIT $from, " . $max_results;
-$categories = sql($sql_limit);
+$type_submodels = sql($sql_limit);
 //pr($categories);
 /**************************************************************************/
-$total_results = sql("SELECT COUNT(*) as Num FROM " . $tblcategories . " where " . $where);
+$total_results = sql("SELECT COUNT(*) as Num FROM " . $tblcategory_submodels . " where " . $where);
 $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
 ////////////////////////////////////////////////////
 ?>
@@ -53,16 +56,11 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
         <div class="card">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="title">Manage <?php echo (count($parent_category)>0)?'SubCategories of '.$parent_category[0]['title_en']:'Categories';?></h4>
+                    <h4 class="title">Manage SubModels of<?php echo $parent[0]['title_en'];?></h4>
                 </div>
                 <div class="col-md-6 add_new">
-                    <?php
-                    if(!(count($parent_category)>0)){
-                    ?>
-                        <a href="index.php?p=addeditcategory">Add New Category</a>
-                    <?php
-                    }
-                    ?>
+                    <a href="index.php?p=addeditsubmodels">Add Edit Sub Models</a>
+                
                 </div>
             </div>
             <div class="row">&nbsp;</div>
@@ -89,37 +87,19 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                     <thead>
                         <tr>
                             <th>Title</th>
-                            <th>Description</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        if (count($categories) > 0) {
-                            foreach ($categories as $v) {
-                                $status = get_category_status($v['status']);
+                        if (count($type_submodels) > 0) {
+                            foreach ($type_submodels as $v) {
                                 ?>
                                 <tr>
                                     <td><?php echo $v['title_en']; ?></td>
-                                   <td><?php echo $v['description']; ?></td>
-                                    <td><?php echo $status; ?></td>
                                     <td>
-                                        <a href="index.php?p=addeditcategory&id=<?= enc_password($v['id']); ?>" title="Update Record"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                        <a href="javascript:;" onclick="delete_record('process.php?p=delcategory&id=<?= enc_password($v['id']);?>');" data-toggle="modal" data-target="#delete" title="Delete Record"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;
-                                        <?php
-                                        if( !($pid>0) ){
-                                            ?>
-                                            <a href="index.php?p=categories&id=<?= enc_password($v['id']); ?>" title="View SubCategories"><i class="fa fa-list-ul"></i></a>&nbsp;&nbsp;
-                                            <?php
-                                        }
-                                        else{
-                                            ?>
-                                            <a href="index.php?p=features&id=<?= enc_password($v['id']); ?>&cid=<?= enc_password($pid); ?>" title="Add Features"><i class="fa fa-list-ul"></i></a>&nbsp;&nbsp;
-                                            <a href="index.php?p=type&id=<?= enc_password($v['id']); ?>&cid=<?= enc_password($pid); ?>" title="Add Type"><i class="fa fa-list-ul"></i></a>&nbsp;&nbsp;
-                                            <a href="index.php?p=models&id=<?= enc_password($v['id']); ?>&cid=<?= enc_password($pid); ?>" title="Add Models"><i class="fa fa-list-ul"></i></a>&nbsp;&nbsp;
-                                       <?php }
-                                        ?>
+                                        <a href="index.php?p=addeditsubmodels&id=<?= enc_password($v['id']); ?>" title="Update Record"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                        <a href="javascript:;" onclick="delete_record('process.php?p=delfeature&id=<?= enc_password($v['id']);?>');" data-toggle="modal" data-target="#delete" title="Delete Record"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;
                                     </td>
                                 </tr>
                         <?php

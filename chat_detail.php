@@ -9,7 +9,6 @@ if(!(count($chat)>0)){
     $_SESSION['sysErr']['msg'] = "Invalid chat";
     redirect("dashboard"); exit;
 }
-
 $product = get_records($tblproducts,"id='".$chat[0]['product_id']."'");
 ?>
 <div class="container">

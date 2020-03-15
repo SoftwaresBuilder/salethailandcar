@@ -170,14 +170,14 @@ function get_product_imgs($id,$limit='')
 			$imgs[] = array('img'=>$web_site_uploads.$v['img'],'alt'=>$v['alt'],'description'=>$v['description']);
 		}
 	} else {
-		$imgs[] = $web_site_uploads."no image.jpg";
+		$imgs[] = array('img'=>$web_site_uploads."no_image.jpg",'alt'=>'','description'=>'');
 	}
 	return $imgs;
 }
 function get_upload_img($img)
 {
 	global $web_site_uploads;
-	$img = ($img)?$img:"no image.jpg";
+	$img = ($img)?$img:"no_image.jpg";
 	return $web_site_uploads.$img;
 }
 function get_user_img($img)

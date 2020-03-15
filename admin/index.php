@@ -160,7 +160,8 @@ function myFunction(str){
                 } 
         });
 }
-function get_attribute_val(){
+function get_attribute_val(id){
+  update_submodels(id);
   var description = $("#cat_attributes option:selected").text();
   $('#title_en').val(description);
    $.ajax({
@@ -173,6 +174,24 @@ function get_attribute_val(){
                
              } 
         });
+   
+}
+function update_submodels(id){
+   $("#cat_submodels").html('<option value="">Loading...</option>');
+  $("#cat_submodels_div").show();
+  $.ajax({
+    method: "POST",
+    url: "ajax.php?p=update_submodels",
+    data: { id: id }
+  })
+  .done(function( msg ) {
+    if(msg=="no"){
+      $("#cat_submodels_div").hide();
+    } else {
+      $("#cat_submodels_div").show();
+      $("#cat_submodels").html(msg);
+    }
+  });
 }
 </script>
 

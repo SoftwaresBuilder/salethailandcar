@@ -287,6 +287,206 @@ if($p == "addeditcategory")
 	header("location:index.php?p=categories");
 	exit;
 }
+if($p == "addeditfeatures")
+{
+	foreach ($_POST as $k => $v )
+	{
+		$$k = addslashes($v);
+		$_SESSION['sysData'][$k] = $v;
+	}
+ 		$f_id = dec_password($_POST['id']);
+ 		$c_id = dec_password($_POST['cid']);
+	
+	if( $f_id > 0 )
+	{
+		$data = array();
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		$condition = array();
+		$condition['id'] = $f_id;
+		$condition['category_id'] = $c_id;
+		$result = update_record($tblcategory_features,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	else
+	{
+		$data = array();
+		$data['category_id'] = $c_id;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		
+		$id = insert_record($tblcategory_features,$data);
+		if($id>0)
+		{
+			$_SESSION['sysErr']['msg'] = "Record added successfully";
+		}
+	}
+	
+	header("location:index.php?p=categories");
+	exit;
+}
+if($p == "addeditmodels")
+{
+	foreach ($_POST as $k => $v )
+	{
+		$$k = addslashes($v);
+		$_SESSION['sysData'][$k] = $v;
+	}
+ 	$enc_id = $id;
+	if($id){
+		$id = dec_password($id);
+	}
+	if(!$title){
+		$_SESSION['sysErr']['msg'] = "Please enter category title";
+		$flg = true;
+	}
+	if($flg){
+		header("location:index.php?p=addeditcategory&id=".$enc_id);
+		exit;
+	}
+	if( $id > 0 )
+	{
+		$data = array();
+		$data['pid'] = $pid;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		$data['description'] = $description;
+		$data['status'] = $status;
+		$condition = array();
+		$condition['id'] = $id;
+		$result = update_record($tblcategories,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	else
+	{
+		$data = array();
+		$data['pid'] = $pid;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		$data['description'] = $description;
+		$data['status'] = $status;
+		$id = insert_record($tblcategories,$data);
+		if($id>0)
+		{
+			$_SESSION['sysErr']['msg'] = "Record added successfully";
+		}
+	}
+	
+	header("location:index.php?p=categories");
+	exit;
+}
+if($p == "addedittype")
+{
+	foreach ($_POST as $k => $v )
+	{
+		$$k = addslashes($v);
+		$_SESSION['sysData'][$k] = $v;
+	}
+ 	$enc_id = $id;
+	if($id){
+		$id = dec_password($id);
+	}
+	if(!$title){
+		$_SESSION['sysErr']['msg'] = "Please enter category title";
+		$flg = true;
+	}
+	if($flg){
+		header("location:index.php?p=addeditcategory&id=".$enc_id);
+		exit;
+	}
+	if( $id > 0 )
+	{
+		$data = array();
+		$data['pid'] = $pid;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		$data['description'] = $description;
+		$data['status'] = $status;
+		$condition = array();
+		$condition['id'] = $id;
+		$result = update_record($tblcategories,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	else
+	{
+		$data = array();
+		$data['pid'] = $pid;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		$data['description'] = $description;
+		$data['status'] = $status;
+		$id = insert_record($tblcategories,$data);
+		if($id>0)
+		{
+			$_SESSION['sysErr']['msg'] = "Record added successfully";
+		}
+	}
+	
+	header("location:index.php?p=categories");
+	exit;
+}
+if($p == "addeditsubmodels")
+{
+	foreach ($_POST as $k => $v )
+	{
+		$$k = addslashes($v);
+		$_SESSION['sysData'][$k] = $v;
+	}
+ 	$enc_id = $id;
+	if($id){
+		$id = dec_password($id);
+	}
+	if(!$title){
+		$_SESSION['sysErr']['msg'] = "Please enter category title";
+		$flg = true;
+	}
+	if($flg){
+		header("location:index.php?p=addeditcategory&id=".$enc_id);
+		exit;
+	}
+	if( $id > 0 )
+	{
+		$data = array();
+		$data['pid'] = $pid;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		$data['description'] = $description;
+		$data['status'] = $status;
+		$condition = array();
+		$condition['id'] = $id;
+		$result = update_record($tblcategories,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	else
+	{
+		$data = array();
+		$data['pid'] = $pid;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		$data['description'] = $description;
+		$data['status'] = $status;
+		$id = insert_record($tblcategories,$data);
+		if($id>0)
+		{
+			$_SESSION['sysErr']['msg'] = "Record added successfully";
+		}
+	}
+	
+	header("location:index.php?p=categories");
+	exit;
+}
 if($p == "addeditcategoryattributes")
 {
 	foreach ($_POST as $k => $v )

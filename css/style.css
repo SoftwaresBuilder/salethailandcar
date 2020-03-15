@@ -134,6 +134,7 @@ a.btn { color: #fff; }
 .mybox2 .title { color: #031542; font-size: 18px; font-weight: bold; text-transform: uppercase; padding-bottom: 15px; }
 .mybox2 .btn { margin-top: 20px; }
 
+.mybox5 { background-color: #fff; padding: 20px 0px;margin: 1px;}
 
 .imgdiv, .imgdiv2 { height: 160px; text-align: center; overflow: hidden; }
 .imgdiv2 { height: 200px; }
