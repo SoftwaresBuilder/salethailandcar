@@ -4,9 +4,13 @@ $_SESSION['chat']['last_id'][$chat_id] = $v['id'];
 $msg_id=$v['id'];
 ?>
 <div class="chat_msg">
-    <div id="div_<?php echo $msg_id;?>" class="<?php echo $chat_msg;?>"><div class="small_text"><?php echo dates_duration($v['created_date']);?></div><?php echo $v['msg'];?></div><a id="a_<?php echo $msg_id;?>" href="javascript:;" onclick="translateChat(<?php echo $msg_id;?>)" style="font-size: 15px;">Translate</a>
+    <div id="div_<?php echo $msg_id;?>" class="<?php echo $chat_msg;?>">
+    <div class="small_text"><?php echo dates_duration($v['created_date']);?>
+    <a class="translate_text" id="a_<?php echo $msg_id;?>" href="javascript:;" onclick="translateChat(<?php echo $msg_id;?>)">Translate</a>
+    </div>
+    <?php echo $v['msg'];?>
     <div id="listing_chat"></div>
-</div>
+</div></div>
 <script type="text/javascript">
 	
 	function translateChat(msg_id) {
@@ -23,9 +27,7 @@ $msg_id=$v['id'];
                     success: function(data){
                           // $("#listing_chat").html(data);
                           $("#div_"+cid).append(data);
-
-
-                    }
+                        }
                 });
 		}
 		
