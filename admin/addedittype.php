@@ -14,7 +14,7 @@ if(isset($_GET['id']))
 else if(!isset($_SESSION['sysData']['id'])) {
     $_SESSION['sysData'] = table_fields($tblcategory_types);
 }
-
+$cid = dec_password($_GET['cid']);
 ?>
 <form action="process.php?p=addedittype" enctype="multipart/form-data" method="post">
 <div class="row">
@@ -42,6 +42,7 @@ else if(!isset($_SESSION['sysData']['id'])) {
                 </div>
                     
                 <input type="hidden" name="id" id="id" value="<?php echo enc_password($_SESSION['sysData']['id']); ?>" />
+                <input type="hidden" name="cid" id="cid" value="<?php echo enc_password($cid); ?>" />
                 <button type="submit" class="btn btn-info btn-fill" name="submit">Submit</button>
            
            <div class="clearfix"></div>

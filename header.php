@@ -119,7 +119,7 @@ function find_filter_jobs(){
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjUVBDtXhhNNo36KTzFe5GhNa3o4cK5aA&libraries=places&callback=initMap" async defer></script>
-  
+  <script src='https://www.google.com/recaptcha/api.js'></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 

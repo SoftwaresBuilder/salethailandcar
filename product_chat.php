@@ -41,7 +41,7 @@ if(isset($chat_id)){
                 ?>
             </div>
             <div class="chat_send">
-              <form onsubmit="return chat_send();" method="post">
+              <form onsubmit="return chat_send();" method="post" style="">
                 <div class="row">
                     <div class="col-9 col-md-10 pr0"><input type="text" class="form-control brl" id="msg" name="msg" placeholder="<?php echo translate("Write your message");?>" /></div>
                     <div class="col-3 col-md-2 pl0">

@@ -1,3 +1,15 @@
+<script type="text/javascript">
+    // function submitUserForm() {
+    //     var response = grecaptcha.getResponse();
+    // if(response.length == 0) {
+    //     document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">Prove you are not robort.</span>';
+    //     alert('truee');
+    //     return false;
+    // }
+
+    return true;
+}
+</script>
 <div class="row">
                             <div class="col-sm-6">
                                 <div class="modal_left_bx">
@@ -73,7 +85,7 @@
                                         <div class="row mb-2">
                                             <div class="col-sm-12">
                                                 <div class="my-1 mr-sm-2">
-                                  <div class="g-recaptcha" data-sitekey="6Lc9VN4UAAAAAGO9tfy6py6kcAHeo5xwyE0ZgNNd">
+                                  <div id="re_captcha" class="g-recaptcha" data-sitekey="6Ledn-EUAAAAAOCUtL9yqb3vD4RTiYUBQenD_znG">
                                    </div>
                                    <div id="g-recaptcha-error"></div>
                                                 </div>
