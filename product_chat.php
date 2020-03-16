@@ -21,8 +21,8 @@ if(isset($chat_id)){
     <span class="user-image round-img header-img">
       <img src="images/profile-placeholder.jpg" alt="David">
     </span>
-    <a class="light-text-1 text-capitalize" href="vendor_profile.php?id=<?=enc_password($get_user_detail[0]['id']);?>">
-      <?php echo $get_user_detail[0]['name']; ?>
+    <a class="light-text-1 text-capitalize" href="vendor_profile.php?id=<?=enc_password($user[0]['id']);?>">
+      <?php echo $user[0]['name']; ?>
       <i class="fa fa-angle-double-right"></i>
     </a>
     <a href="javascript:void(0)" class="closebtn" onclick="closeChat()">×</a>

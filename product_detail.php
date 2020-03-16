@@ -5,24 +5,23 @@ $id = 0;
 if(isset($_GET['id'])){
   $id = dec_password($_GET['id']);
 }
-$views = get_records($tblproducts,"id='".$id."'","","",'views');
-$product = get_records($tblproducts,"id='".$id."' and status='1' and trash='0'");
 
-$get_user_detail =  get_records($tblusers,"id='".$product[0]['user_id']."' and status='1' and trash='0'");
+$product = get_records($tblproducts,"id='".$id."' and status>0 and trash='0'");
+if(!(count($product)>0)){
+  pr($product);exit;
+  redirect("search");exit;
+}
 
-$user_online =  get_records($tblusers,"id='".$product[0]['user_id']."' and status='1' and trash='0'");
-$add_views = intval($views[0]['views']);
-$add_views = $add_views + 1;
+$views = $product[0]['views'];
 $data = array();
-$data['views'] = $add_views;
+$data['views'] = $views + 1;
 $condition = array();
 $condition['id'] = $id;
 $result = update_record($tblproducts,$data,$condition);
 
-if(!(count($product)>0)){
-  redirect("search");exit;
-}
 $imgs = get_product_imgs($product[0]['id']);
+
+$user =  get_records($tblusers,"id='".$product[0]['user_id']."' and status='1' and trash='0'");
 ?>
 
 <link rel="stylesheet" type="text/css" href="css/custom.css">
@@ -264,6 +263,7 @@ function show_hide_num(val) {
       <div class="col-12">
         <ul id="image-gallery" class="gallery list-unstyled cS-hidden myslider">
           <?php
+          echo '<li>asldjflsakd fklasd flkas jd'; pr($imgs); echo '</li>';
           if(count($imgs)>0){
             foreach ($imgs as $key => $v) {
             ?>
@@ -342,16 +342,16 @@ function show_hide_num(val) {
       <div class="col-12 border_bottom">
         <div class="row">
           <?php
-          $user_img = get_user_img($get_user_detail[0]['img']);
+          $user_img = get_user_img($user[0]['img']);
           ?>
           <div class="col-3">
             <img width="80px" height="80px" style="border-radius: 50px;" src="<?php echo $user_img; ?>" class="">
           </div>
           <div class="col-9">
             By
-            <a href="vendor_profile.php?id=<?=enc_password($get_user_detail[0]['id']);?>"><?php echo $get_user_detail[0]['name']; ?></a><br>
-            <?php echo $product[0]['created_date']; ?> - Views <span class="bold"><?php echo $views[0]['views']; ?></span></br>
-            <?php if($user_online[0]['login']=='1')
+            <a href="vendor_profile.php?id=<?=enc_password($user[0]['id']);?>"><?php echo $user[0]['name']; ?></a><br>
+            <?php echo $product[0]['created_date']; ?> - Views <span class="bold"><?php echo $views; ?></span></br>
+            <?php if($user[0]['login']=='1')
             { echo '<h3 style="color:red;">online</h3>';} ?>
             
           </div>
@@ -362,8 +362,9 @@ function show_hide_num(val) {
       </div>
       <div class="col-12 pb10">
         <div class="row">
-          <div class="col-6"><a id="show_hide_num" class="nav-link btn btn-primary" href="javascript:void(0);" onclick="show_hide_num(<?php echo $get_user_detail[0]['phone'];?>)"><i class="fa fa-phone"></i>xxxxxxx</a></div>
-          <div class="col-6"><a class="nav-link btn btn-primary" href="javascript:void(0);" onclick="openChat();">MESSAGE</a></div>
+          <div class="col-6"><a id="show_hide_num" class="nav-link btn btn-primary" href="javascript:void(0);" onclick="show_hide_num(<?php echo $user[0]['phone'];?>)"><i class="fa fa-phone"></i>xxxxxxx</a></div>
+          <div class="col-6"><a class="nav-link btn btn-primary" href="javascript:void(0);"
+          onclick="<?php if(isset($_SESSION['user_record'])){ ?> openChat(); <?php } else {?> window.location='<?php echo makepage_url("login");?>'<?php }?>">MESSAGE</a></div>
         </div>
       </div>
     </div>
@@ -497,10 +498,3 @@ function show_hide_num(val) {
 <?php
 include("footer.php");
 ?>
-
-
-
-
-
-</body>
-</html>

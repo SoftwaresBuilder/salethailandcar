@@ -1,12 +1,10 @@
-
-
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
 function submitUserForm() {
     var response = grecaptcha.getResponse();
     /**
     if(response.length == 0) {
-        document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;"><?php echo translate("Prove you are not robort.");?></span>';
+        document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;"><?php ///echo translate("Prove you are not robort.");?></span>';
         return false;
     }
     /**/
@@ -24,10 +22,12 @@ function submitUserForm() {
 // }
 function submitUserForm_signup() {
     var response = grecaptcha.getResponse();
+    /**
     if(response.length == 0) {
-        document.getElementById('g-recaptcha-error_signup').innerHTML = '<span style="color:red;"><?php echo translate("Prove you are not robort.");?></span>';
+        document.getElementById('g-recaptcha-error_signup').innerHTML = '<span style="color:red;"><?php ///echo translate("Prove you are not robort.");?></span>';
         return false;
     }
+    /**/
     return true;
 }
  
