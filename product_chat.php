@@ -1,6 +1,5 @@
 <?php
 $chat = array();
-// echo "here__".$user_id;exit();
 $product_id=dec_password($_GET['id']);
 $chat_id=$product_id.$user_id;
 $enc_chat_id=enc_password($chat_id);

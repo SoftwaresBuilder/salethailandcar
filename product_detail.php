@@ -263,7 +263,6 @@ function show_hide_num(val) {
       <div class="col-12">
         <ul id="image-gallery" class="gallery list-unstyled cS-hidden myslider">
           <?php
-          echo '<li>asldjflsakd fklasd flkas jd'; pr($imgs); echo '</li>';
           if(count($imgs)>0){
             foreach ($imgs as $key => $v) {
             ?>
