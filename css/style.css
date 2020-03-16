@@ -120,7 +120,7 @@ a.btn { color: #fff; }
 .myslider {}
 .myslider li { height: 400px; text-align: center; border: 1px solid #E0E0E0; overflow: hidden; }
 .myslider li img { height: 100%; }
-.lSPager li { height: 70px; border: 1px solid #E0E0E0; overflow: hidden; }
+.lSPager li { height: 45px; border: 1px solid #E0E0E0; overflow: hidden; }
 .lSPager li img { height: 100% !important; }
 
 .mybox { border: 1px solid #CDD6E1; min-height: 234px; margin:50px 0 20px; padding:40px 20px 20px; text-align: center; }
@@ -136,7 +136,7 @@ a.btn { color: #fff; }
 
 .mybox5 { background-color: #fff; padding: 20px 0px;margin: 1px;}
 
-.imgdiv, .imgdiv2 { height: 160px; text-align: center; overflow: hidden; }
+.imgdiv, .imgdiv2 { height: 140px; text-align: center; overflow: hidden; }
 .imgdiv2 { height: 200px; }
 .imgdiv2 img, .imgdiv img { height: 100%; }
 
