@@ -32,19 +32,21 @@ if($p=="chat_send"){
 	$msg = $_POST['msg'];
 
 	$chat = get_records($tblchat,"chat_id='".$chat_id."'","","1");
-	if(!(count($chat)>0)){
+	if(count($chat)>0) {
+		$product = get_records($tblproducts,"id='".$chat[0]['product_id']."'");
 		$touser_id = ($chat[0]['user_id']==$user_id)?$chat[0]['touser_id']:$chat[0]['user_id'];
 		$product_id = $chat[0]['product_id'];
 	} else {
 		$product = get_records($tblproducts,"id='".$product_id."'");
 		$touser_id = $product[0]['user_id'];
 	}
+
 	$data = array();
 	$data['chat_id'] = $chat_id;
 	$data['product_id'] = $product_id;
 	$data['user_id'] = $user_id;
 	$data['touser_id'] = $touser_id;
-	$data['msg'] = $msg;
+	$data['msg'] = $msg;;
 	$id = insert_record($tblchat,$data);
 
 	$chat = get_records($tblchat,"chat_id='".$chat_id."' and id>'".$_SESSION['chat']['last_id'][$chat_id]."'");
@@ -346,10 +348,10 @@ if($p == "getAllProduct"){
 		$lat=trim($latlng[0]);
 		$lng=trim($latlng[1]);
 		
-		$products=get_records($tblproducts,"category_id='".$cid."' and trash!=1");
-		$sub_cat_id=$products[0]['subcategory_id'];
+		///$products=get_records($tblproducts,"category_id='".$cid."' and status>0 and trash!=1");
+		///$sub_cat_id=$products[0]['subcategory_id'];
 		
-		$sql="SELECT *, (3959 * acos(cos(radians('".$lat."')) * cos(radians(latitude)) * cos( radians(longitude) - radians('".$lng."')) + sin(radians('".$lat."')) * sin(radians(latitude)))) AS distance FROM ".$tblproducts." HAVING distance < $cons_gmap_distance ORDER BY distance LIMIT 0 , 10";
+		$sql="SELECT *, (3959 * acos(cos(radians('".$lat."')) * cos(radians(latitude)) * cos( radians(longitude) - radians('".$lng."')) + sin(radians('".$lat."')) * sin(radians(latitude)))) AS distance FROM ".$tblproducts." HAVING distance < $cons_gmap_distance AND category_id='".$cid."' AND status>0 AND trash!=1 ORDER BY distance LIMIT 0 , 10";
 
         $products=sql($sql);
 

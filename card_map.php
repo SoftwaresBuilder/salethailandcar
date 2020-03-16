@@ -21,7 +21,7 @@ $sub_cat=get_records($tblcategories,"id='".$sub_cat_id."' and trash=0");
 	<div class="col-6" style="padding-right: 30px;">
 		<div class="imgdiv4">
 			<a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>"><img
-			 src="<?php echo $imgs[0];?>" class=""></a>
+			 src="<?php echo $imgs[0]['img'];?>" alt="<?php echo $imgs[0]['alt'];?>" class=""></a>
 			
 		</div>
 	</div>

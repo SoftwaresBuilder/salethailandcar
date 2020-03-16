@@ -49,7 +49,7 @@ if(count($products)>0){
     		  <div id="map"></div>
         </div>
         <div class="col-12 col-lg-4" style="overflow-y: auto;height: 600px;margin-bottom: 30px;">
-        	<h3><?= translate("Listing");?> <?php echo $category[0]['title_'.$lang]; ?></h3>
+        	<h3>Listing <?php echo $category[0]['title_'.$lang]; ?></h3>
         	<div id="listing_area"></div>
         </div>
     </div>
@@ -59,8 +59,8 @@ if(count($products)>0){
       function initMap() {
 
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 5,
-          center: {lat: 51.50759530000001, lng: -0.09935640000000001}
+          zoom: 3,
+          center: {lat: -28.024, lng: 140.887}
         });
 
         // Create an array of alphabetical characters used to label the markers.
@@ -115,7 +115,7 @@ if(count($products)>0){
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVmLHD_P8I-G2Ip-2nOG1tA1v5wK-qhH4&callback=initMap&language=<?= $lang;?>">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVmLHD_P8I-G2Ip-2nOG1tA1v5wK-qhH4&callback=initMap">
     </script>
     
     
