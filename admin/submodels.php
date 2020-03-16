@@ -26,7 +26,7 @@ if( isset($_GET['id']) ){
     $cid = dec_password($_GET['cid']);
 }
 $parent = get_records($tblcategory_types,"id='".$pid."'");
-$where = "type_id=".$pid;
+$where = "type_id='".$pid."' and trash!='1'";
 if ($search_key) {
     $where .= " AND (titl_en LIKE '%" . $search_key . "%')";
 }
@@ -59,7 +59,7 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                     <h4 class="title">Manage SubModels of<?php echo $parent[0]['title_en'];?></h4>
                 </div>
                 <div class="col-md-6 add_new">
-                    <a href="index.php?p=addeditsubmodels">Add Edit Sub Models</a>
+                    <a href="index.php?p=addeditsubmodels&cid=<?= enc_password($pid); ?>">Add Edit Sub Models</a>
                 
                 </div>
             </div>
@@ -98,8 +98,8 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                                 <tr>
                                     <td><?php echo $v['title_en']; ?></td>
                                     <td>
-                                        <a href="index.php?p=addeditsubmodels&id=<?= enc_password($v['id']); ?>" title="Update Record"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                        <a href="javascript:;" onclick="delete_record('process.php?p=delfeature&id=<?= enc_password($v['id']);?>');" data-toggle="modal" data-target="#delete" title="Delete Record"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;
+                                        <a href="index.php?p=addeditsubmodels&id=<?= enc_password($v['id']); ?>>&cid=<?= enc_password($pid); ?>" title="Update Record"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                        <a href="javascript:;" onclick="delete_record('process.php?p=delsubmodels&id=<?= enc_password($v['id']);?>');" data-toggle="modal" data-target="#delete" title="Delete Record"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;
                                     </td>
                                 </tr>
                         <?php

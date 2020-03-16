@@ -289,6 +289,7 @@ if($p == "addeditcategory")
 }
 if($p == "addeditfeatures")
 {
+
 	foreach ($_POST as $k => $v )
 	{
 		$$k = addslashes($v);
@@ -305,6 +306,7 @@ if($p == "addeditfeatures")
 		$condition = array();
 		$condition['id'] = $f_id;
 		$condition['category_id'] = $c_id;
+
 		$result = update_record($tblcategory_features,$data,$condition);
 		if($result)
 		{
@@ -325,7 +327,7 @@ if($p == "addeditfeatures")
 		}
 	}
 	
-	header("location:index.php?p=categories");
+	header("location:index.php?p=features");
 	exit;
 }
 if($p == "addeditmodels")
@@ -335,29 +337,18 @@ if($p == "addeditmodels")
 		$$k = addslashes($v);
 		$_SESSION['sysData'][$k] = $v;
 	}
- 	$enc_id = $id;
-	if($id){
-		$id = dec_password($id);
-	}
-	if(!$title){
-		$_SESSION['sysErr']['msg'] = "Please enter category title";
-		$flg = true;
-	}
-	if($flg){
-		header("location:index.php?p=addeditcategory&id=".$enc_id);
-		exit;
-	}
-	if( $id > 0 )
+ 		$f_id = dec_password($_POST['id']);
+ 		$c_id = dec_password($_POST['cid']);
+	
+	if( $f_id > 0 )
 	{
 		$data = array();
-		$data['pid'] = $pid;
 		$data['title_en'] = $title_en;
 		$data['title_th'] = $title_th;
-		$data['description'] = $description;
-		$data['status'] = $status;
 		$condition = array();
-		$condition['id'] = $id;
-		$result = update_record($tblcategories,$data,$condition);
+		$condition['id'] = $f_id;
+		$condition['category_id'] = $c_id;
+		$result = update_record($tblcategory_models,$data,$condition);
 		if($result)
 		{
 			$_SESSION['sysErr']['msg'] = "Record updated successfully";
@@ -366,19 +357,17 @@ if($p == "addeditmodels")
 	else
 	{
 		$data = array();
-		$data['pid'] = $pid;
+		$data['category_id'] = $c_id;
 		$data['title_en'] = $title_en;
 		$data['title_th'] = $title_th;
-		$data['description'] = $description;
-		$data['status'] = $status;
-		$id = insert_record($tblcategories,$data);
+		$id = insert_record($tblcategory_models,$data);
 		if($id>0)
 		{
 			$_SESSION['sysErr']['msg'] = "Record added successfully";
 		}
 	}
 	
-	header("location:index.php?p=categories");
+	header("location:index.php?p=models");
 	exit;
 }
 if($p == "addedittype")
@@ -388,29 +377,18 @@ if($p == "addedittype")
 		$$k = addslashes($v);
 		$_SESSION['sysData'][$k] = $v;
 	}
- 	$enc_id = $id;
-	if($id){
-		$id = dec_password($id);
-	}
-	if(!$title){
-		$_SESSION['sysErr']['msg'] = "Please enter category title";
-		$flg = true;
-	}
-	if($flg){
-		header("location:index.php?p=addeditcategory&id=".$enc_id);
-		exit;
-	}
-	if( $id > 0 )
+ 		$f_id = dec_password($_POST['id']);
+ 		$c_id = dec_password($_POST['cid']);
+	
+	if( $f_id > 0 )
 	{
 		$data = array();
-		$data['pid'] = $pid;
 		$data['title_en'] = $title_en;
 		$data['title_th'] = $title_th;
-		$data['description'] = $description;
-		$data['status'] = $status;
 		$condition = array();
-		$condition['id'] = $id;
-		$result = update_record($tblcategories,$data,$condition);
+		$condition['id'] = $f_id;
+		$condition['category_id'] = $c_id;
+		$result = update_record($tblcategory_types,$data,$condition);
 		if($result)
 		{
 			$_SESSION['sysErr']['msg'] = "Record updated successfully";
@@ -419,19 +397,17 @@ if($p == "addedittype")
 	else
 	{
 		$data = array();
-		$data['pid'] = $pid;
+		$data['category_id'] = $c_id;
 		$data['title_en'] = $title_en;
 		$data['title_th'] = $title_th;
-		$data['description'] = $description;
-		$data['status'] = $status;
-		$id = insert_record($tblcategories,$data);
+		$id = insert_record($tblcategory_types,$data);
 		if($id>0)
 		{
 			$_SESSION['sysErr']['msg'] = "Record added successfully";
 		}
 	}
 	
-	header("location:index.php?p=categories");
+	header("location:index.php?p=type");
 	exit;
 }
 if($p == "addeditsubmodels")
@@ -441,29 +417,18 @@ if($p == "addeditsubmodels")
 		$$k = addslashes($v);
 		$_SESSION['sysData'][$k] = $v;
 	}
- 	$enc_id = $id;
-	if($id){
-		$id = dec_password($id);
-	}
-	if(!$title){
-		$_SESSION['sysErr']['msg'] = "Please enter category title";
-		$flg = true;
-	}
-	if($flg){
-		header("location:index.php?p=addeditcategory&id=".$enc_id);
-		exit;
-	}
-	if( $id > 0 )
+ 		$f_id = dec_password($_POST['id']);
+ 		$c_id = dec_password($_POST['cid']);
+	
+	if( $f_id > 0 )
 	{
 		$data = array();
-		$data['pid'] = $pid;
 		$data['title_en'] = $title_en;
 		$data['title_th'] = $title_th;
-		$data['description'] = $description;
-		$data['status'] = $status;
 		$condition = array();
-		$condition['id'] = $id;
-		$result = update_record($tblcategories,$data,$condition);
+		$condition['id'] = $f_id;
+		$condition['type_id'] = $c_id;
+		$result = update_record($tblcategory_submodels,$data,$condition);
 		if($result)
 		{
 			$_SESSION['sysErr']['msg'] = "Record updated successfully";
@@ -472,19 +437,17 @@ if($p == "addeditsubmodels")
 	else
 	{
 		$data = array();
-		$data['pid'] = $pid;
+		$data['type_id'] = $c_id;
 		$data['title_en'] = $title_en;
 		$data['title_th'] = $title_th;
-		$data['description'] = $description;
-		$data['status'] = $status;
-		$id = insert_record($tblcategories,$data);
+		$id = insert_record($tblcategory_submodels,$data);
 		if($id>0)
 		{
 			$_SESSION['sysErr']['msg'] = "Record added successfully";
 		}
 	}
 	
-	header("location:index.php?p=categories");
+	header("location:index.php?p=submodels");
 	exit;
 }
 if($p == "addeditcategoryattributes")
@@ -542,7 +505,66 @@ if($p == "delcategory")
 	header("location:index.php?p=categories");
 	exit;
 }
-
+if($p == "delfeatures")
+{
+	$id = dec_password($_GET['id']);
+	$id = (int)$id;
+	$data = array();
+	$data['trash'] = '1';
+	$condition = array();
+	$condition['id'] = $id;
+	$result = update_record($tblcategory_features,$data,$condition);
+	if($result){
+		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
+	}
+	header("location:index.php?p=categories");
+	exit;
+}
+if($p == "delmodels")
+{
+	$id = dec_password($_GET['id']);
+	$id = (int)$id;
+	$data = array();
+	$data['trash'] = '1';
+	$condition = array();
+	$condition['id'] = $id;
+	$result = update_record($tblcategory_models,$data,$condition);
+	if($result){
+		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
+	}
+	header("location:index.php?p=categories");
+	exit;
+}
+if($p == "delsubmodels")
+{
+	$id = dec_password($_GET['id']);
+	$id = (int)$id;
+	$data = array();
+	$data['trash'] = '1';
+	$condition = array();
+	$condition['id'] = $id;
+	$result = update_record($tblcategory_submodels,$data,$condition);
+	if($result){
+		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
+	}
+	header("location:index.php?p=categories");
+	exit;
+}
+if($p == "deltype")
+{
+	$id = dec_password($_GET['id']);
+	$id = (int)$id;
+	$data = array();
+	$data['trash'] = '1';
+	$condition = array();
+	$condition['id'] = $id;
+	$result = update_record($tblcategory_types,$data,$condition);
+	if($result){
+		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
+	}
+	header("location:index.php?p=categories");
+	exit;
+}
 if($p == "addedituser")
 {
 	foreach ($_POST as $k => $v )

@@ -278,52 +278,52 @@ function show_hide_num(val) {
       </div>
     </div>
     <div class="row">
-      <div class="col-12 heading mt40 border_bottom">About</div>
+      <div class="col-12 heading mt40 border_bottom"><?php echo translate("About");?></div>
       <?php
       if($product[0]['type']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3">Type</span><br><?php echo $product[0]['type'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Type");?></span><br><?php echo $product[0]['type'];?></div>
       <?php
       }
       if($product[0]['model']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3">Model</span><br><?php echo $product[0]['model'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Model");?></span><br><?php echo $product[0]['model'];?></div>
       <?php
       }
       if($product[0]['brand']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3">Brand</span><br><?php echo $product[0]['brand'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Brand");?></span><br><?php echo $product[0]['brand'];?></div>
       <?php
       }
       if($product[0]['year_registration']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3">Registration Year</span><br><?php echo $product[0]['year_registration'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Registration Year");?></span><br><?php echo $product[0]['year_registration'];?></div>
       <?php
       }
       if($product[0]['driven']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3">Driven</span><br><?php echo $product[0]['driven'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Driven");?></span><br><?php echo $product[0]['driven'];?></div>
       <?php
       }
       if($product[0]['fuel_type']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3">Fuel Type</span><br><?php echo $product[0]['fuel_type'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Fuel Type");?></span><br><?php echo $product[0]['fuel_type'];?></div>
       <?php
       }
       if($product[0]['gearbox']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3">Gearbox Type</span><br><?php echo $product[0]['gearbox'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Gearbox Type");?></span><br><?php echo $product[0]['gearbox'];?></div>
       <?php
       }
       if($product[0]['features']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3">Features</span><br><?php echo $product[0]['features'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Features");?></span><br><?php echo $product[0]['features'];?></div>
       <?php
       }
       ?>
-      <div class="col-12 heading mt40 border_bottom">Description</div>
+      <div class="col-12 heading mt40 border_bottom"><?php echo translate("Description");?></div>
       <div class="col-12"><?php echo $product[0]['description_'.$lang];?></div>
-      <div class="col-12 heading mt40 border_bottom">Similar Ads</div>
+      <div class="col-12 heading mt40 border_bottom"><?php echo translate("Similar Ads");?></div>
     </div>
   </div>
   <div class="col-12 col-md-4">
@@ -349,7 +349,7 @@ function show_hide_num(val) {
           <div class="col-9">
             By
             <a href="vendor_profile.php?id=<?=enc_password($user[0]['id']);?>"><?php echo $user[0]['name']; ?></a><br>
-            <?php echo $product[0]['created_date']; ?> - Views <span class="bold"><?php echo $views; ?></span></br>
+            <?php echo $product[0]['created_date']; ?> - <?php echo translate("Views");?> <span class="bold"><?php echo $views; ?></span></br>
             <?php if($user[0]['login']=='1')
             { echo '<h3 style="color:red;">online</h3>';} ?>
             
@@ -363,7 +363,7 @@ function show_hide_num(val) {
         <div class="row">
           <div class="col-6"><a id="show_hide_num" class="nav-link btn btn-primary" href="javascript:void(0);" onclick="show_hide_num(<?php echo $user[0]['phone'];?>)"><i class="fa fa-phone"></i>xxxxxxx</a></div>
           <div class="col-6"><a class="nav-link btn btn-primary" href="javascript:void(0);"
-          onclick="<?php if(isset($_SESSION['user_record'])){ ?> openChat(); <?php } else {?> window.location='<?php echo makepage_url("login");?>'<?php }?>">MESSAGE</a></div>
+          onclick="<?php if(isset($_SESSION['user_record'])){ ?> openChat(); <?php } else {?> window.location='<?php echo makepage_url("login");?>'<?php }?>"><?php echo translate("MESSAGE");?></a></div>
         </div>
       </div>
     </div>
@@ -375,8 +375,8 @@ function show_hide_num(val) {
           <div class="bidd-details-sec">
                             <nav>
                                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#bidding" role="tab" aria-controls="nav-home" aria-selected="true">Bidding Status</a>
-                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#bidders" role="tab" aria-controls="nav-profile" aria-selected="false">Top Bidders</a>
+                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#bidding" role="tab" aria-controls="nav-home" aria-selected="true"><?php echo translate("Bidding Status");?></a>
+                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#bidders" role="tab" aria-controls="nav-profile" aria-selected="false"><?php echo translate("Top Bidders");?></a>
                                 </div>
                             </nav>
       <?php
@@ -402,26 +402,26 @@ function show_hide_num(val) {
                                          <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="bidding" role="tabpanel" aria-labelledby="nav-home-tab">
                                         <div id ="div_bid_amount" class="tab-content-field">
-                                            <span class="field-left">Bid Amount</span>
+                                            <span class="field-left"><?php echo translate("Bid Amount");?></span>
                                             <span class="field-right"><?php echo show_price($bid_amount);?></span>
                                         </div>
                                         
                                         <div id ="div_bid_date" class="tab-content-field">
-                                            <span class="field-left">Bid Date</span>
+                                            <span class="field-left"><?php echo translate("Bid Date");?></span>
                                             <span class="field-right"><?php echo $bid_date;?></span>
                                         </div>
                                     </div>
                                 <div class="tab-pane fade" id="bidders" role="tabpanel" aria-labelledby="nav-profile-tab">
                                     <div id="total_bid" class="tab-content-field">
-                                        <span class="field-left">Total Bids</span>
+                                        <span class="field-left"><?php echo translate("Total Bids");?></span>
                                         <span class="field-right"><?php echo $total_bid_counts[0]['Num']; ?></span>
                                     </div>
                                     <div id="heighest_bid" class="tab-content-field">
-                                        <span class="field-left">Highest Bids</span>
+                                        <span class="field-left"><?php echo translate("Highest Bids");?></span>
                                         <span class="field-right"><?php echo show_price($max_bid_amount[0]['max_bid_amount']);?> </span>
                                     </div>
                                     <div id="lowest_bid" class="tab-content-field">
-                                        <span class="field-left">Lowest Bids</span>
+                                        <span class="field-left"><?php echo translate("Lowest Bids");?></span>
                                         <span class="field-right"><?php echo show_price($min_bid_amount[0]['min_bid_amount']); ?> </span>
                                     </div>
                                 </div>
@@ -434,26 +434,26 @@ function show_hide_num(val) {
                                          <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="bidding" role="tabpanel" aria-labelledby="nav-home-tab">
                                         <div id ="div_bid_amount" class="tab-content-field">
-                                            <span class="field-left">Bid Amount</span>
-                                            <span class="field-right">You have not bid this ad yet</span>
+                                            <span class="field-left"><?php echo translate("Bid Amount");?></span>
+                                            <span class="field-right"><?php echo translate("You have not bid this ad yet");?></span>
                                         </div>
                                         
                                         <div id ="div_bid_date" class="tab-content-field">
-                                            <span class="field-left">Bid Date</span>
-                                            <span class="field-right">You have not bid this ad yet</span>
+                                            <span class="field-left"><?php echo translate("Bid Date");?></span>
+                                            <span class="field-right"><?php echo translate("You have not bid this ad yet");?></span>
                                         </div>
                                     </div>
                                 <div class="tab-pane fade" id="bidders" role="tabpanel" aria-labelledby="nav-profile-tab">
                                     <div id="total_bid" class="tab-content-field">
-                                        <span class="field-left">Total Bids</span>
+                                        <span class="field-left"><?php echo translate("Total Bids");?></span>
                                         <span class="field-right"></span>
                                     </div>
                                     <div id="heighest_bid" class="tab-content-field">
-                                        <span class="field-left">Highest Bids</span>
+                                        <span class="field-left"><?php echo translate("Highest Bids");?></span>
                                         <span class="field-right"><?php echo show_price('0');?></span>
                                     </div>
                                     <div id="lowest_bid" class="tab-content-field">
-                                        <span class="field-left">Lowest Bids</span>
+                                        <span class="field-left"><?php echo translate("Lowest Bids");?></span>
                                         <span class="field-right"><?php echo show_price('0');?></span>
                                     </div>
                                 </div>
@@ -470,16 +470,16 @@ function show_hide_num(val) {
                                     <input type="hidden" name="user_id" id="user_id" value="<?php echo $product[0]['user_id'] ?>">
                                     <input type="hidden" name="bidder_id" id="bidder_id" value="<?php echo $_SESSION['user_record']['id']; ?>">
                                     <div class="form-group">
-                                        <input type="text" name="bid_amount" id="bid_amount" placeholder="Bids amount in (USD)">
+                                        <input type="text" name="bid_amount" id="bid_amount" placeholder="<?php echo translate("Bids amount in (USD)");?>">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="bid_message" id="bid_message" placeholder="Comments..."></textarea>
+                                        <textarea name="bid_message" id="bid_message" placeholder="<?php echo translate("Comments...");?>"></textarea>
                                         <span class="help-block"></span>
                                     </div>
-                                    <div class="form-info-txt">* Your phone number will be displayed to post the author</div>
+                                    <div class="form-info-txt">* <?php echo translate("lang_text33");?></div>
                                     
-                                    <a href="javascript:;" onclick="fnAdd_bidd();">Save</a>
+                                    <a href="javascript:;" onclick="fnAdd_bidd();"><?php echo translate("Save");?></a>
                                 </form>
                             </div> 
                      

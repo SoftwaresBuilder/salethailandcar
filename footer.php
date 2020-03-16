@@ -1,15 +1,6 @@
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <script>
-function submitUserForm() {
-    var response = grecaptcha.getResponse();
-    /**
-    if(response.length == 0) {
-        document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;"><?php ///echo translate("Prove you are not robort.");?></span>';
-        return false;
-    }
-    /**/
-    return true;
-}
+
 // function forgot_captcha() {
 //     var response = grecaptcha.getResponse();
 //     if(response.length == 0) {
@@ -32,6 +23,20 @@ function submitUserForm_signup() {
 }
  
 </script>
+<div id="cookie-law-info-bar"
+style="background-color: rgb(242, 245, 245);
+     color: rgb(0, 0, 0);
+     font-family: inherit;
+     bottom: 0px;
+    position: fixed; 
+    display: block;">
+<span>
+  This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.
+  <a class="cookie_setting" href="#" >Cookie settings</a>
+  <a href="#" id="" class="cookies_accept_btn st" style="height: 50px">ACCEPT</a>
+</span>
+</div>
+
 
 <div class="footer" style="background-color: #031543;">
   <div class="container">
@@ -181,10 +186,6 @@ function show_forgot_password_form(){
 </div>
 
 
-
-<?php
-/**/
-?>
 </body>
 </html>
 
