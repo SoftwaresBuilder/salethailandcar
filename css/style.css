@@ -120,23 +120,23 @@ a.btn { color: #fff; }
 .myslider {}
 .myslider li { height: 400px; text-align: center; border: 1px solid #E0E0E0; overflow: hidden; }
 .myslider li img { height: 100%; }
-.lSPager li { height: 70px; border: 1px solid #E0E0E0; overflow: hidden; }
+.lSPager li { height: 45px; border: 1px solid #E0E0E0; overflow: hidden; }
 .lSPager li img { height: 100% !important; }
 
 .mybox { border: 1px solid #CDD6E1; min-height: 234px; margin:50px 0 20px; padding:40px 20px 20px; text-align: center; }
 .mybox:hover { background-color: #fff; border: #e22029 solid 1px; }
 .mybox .fa { position: absolute; top: -50px; left: calc(50% - 25px); width: 50px; background-color: #031542; color: #fff; padding: 10px;  }
 .mybox:hover .fa { background-color: #e22029;;  }
-.mybox .title { color: #031542; font-size: 16px; font-weight: bold; text-transform: uppercase; padding-bottom: 25px; }
+.mybox .title { color: #031542; font-size: 16px; font-weight: bold; text-transform: uppercase; padding-top: 10px; padding-bottom: 25px; }
 .mybox a { font-size: 16px; font-weight: 400; color: #888; }
 
 .mybox2 { background-color: #fff; padding: 20px 0px; box-shadow: 0px 0px 5px #ccc; margin: 1px;}
-.mybox2 .title { color: #031542; font-size: 16px; font-weight: bold; text-transform: uppercase; padding-bottom: 15px; }
+.mybox2 .title { color: #031542; font-size: 16px; font-weight: bold; text-transform: uppercase; padding-top: 10px; padding-bottom: 15px; }
 .mybox2 .btn { margin-top: 20px; }
 
 .mybox5 { background-color: #fff; padding: 20px 0px;margin: 1px;}
 
-.imgdiv, .imgdiv2 { height: 160px; text-align: center; overflow: hidden; }
+.imgdiv, .imgdiv2 { height: 140px; text-align: center; overflow: hidden; }
 .imgdiv2 { height: 200px; }
 .imgdiv2 img, .imgdiv img { height: 100%; }
 
@@ -144,14 +144,14 @@ a.btn { color: #fff; }
 .imgdiv4 img { height: 100%; }
 
 .mybox3 { background-color: #fff; box-shadow: 0px 0px 5px #ccc; margin: 1px; border: 1px solid #8898AA; }
-.mybox3 .title { background-color: #031542; color: #fff; width: 100%; padding: 10px 20px; font-size: 16px; font-weight: bold; text-transform: uppercase; }
+.mybox3 .title { background-color: #031542; color: #fff; width: 100%; padding-top: 10px; padding: 10px 20px; font-size: 16px; font-weight: bold; text-transform: uppercase; }
 .mybox3 .listing { width: 100%; padding: 10px; }
 .mybox3 .listing div { padding: 0px; line-height: 40px; border-bottom: 1px solid #8898AA; }
 .mybox3 .listing div.last { border-bottom: 0px; }
 .mybox3 .listing a { font-size: 16px; color: #B098AA; }
 
 .mybox_news { background-color: #fff; padding: 20px 0px; box-shadow: 0px 0px 5px #ccc; margin: 1px; }
-.mybox_news .title { color: #031542; font-size: 18px; font-weight: bold; text-transform: uppercase; padding-bottom: 15px; }
+.mybox_news .title { color: #031542; font-size: 18px; font-weight: bold; text-transform: uppercase; padding-top: 10px; padding-bottom: 15px; }
 .mybox_news .btn { margin-top: 20px; }
 
 .search_box { border: 1px solid #E0E0E0; padding: 10px; }
