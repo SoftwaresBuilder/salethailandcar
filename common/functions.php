@@ -12,7 +12,9 @@ function translate($text){
 }
 function translate_api($text,$from="th",$to="en")
 {
-    $api = 'trnsl.1.1.20190923T051659Z.b513b7808b41eae4.2f4d48620d30c4afa4dc4a7ca1154e27f39f9172'; // TODO: Get your key from https://tech.yandex.com/translate/
+    ///$api = 'trnsl.1.1.20190923T051659Z.b513b7808b41eae4.2f4d48620d30c4afa4dc4a7ca1154e27f39f9172'; // TODO: Get your key from 
+    $api = 'trnsl.1.1.20200316T133949Z.3e9c6f7590746864.29fa002895930644899387084b217577a062bcd3'; // TODO: Get your key from 
+    https://tech.yandex.com/translate/
     $url = file_get_contents('https://translate.yandex.net/api/v1.5/tr.json/translate?key=' . $api . '&lang=' . $from . '-' . $to . '&text=' . urlencode($text));
     $json = json_decode($url);
     return $json->text[0];
