@@ -31,7 +31,13 @@ if(isset($_GET['type']))
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Page Content</label>
-                            <textarea class="form-control" id="content" name="content" placeholder="Page Content"><?= $_SESSION['sysData']['content'];?></textarea>
+                            <textarea class="form-control" id="content_en" name="content_en" placeholder="Page Content"><?= $_SESSION['sysData']['content_en'];?></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Page Content</label>
+                            <textarea class="form-control" id="content_th" name="content_th" placeholder="Page Content"><?= $_SESSION['sysData']['content_th'];?></textarea>
                         </div>
                     </div>
                 </div>

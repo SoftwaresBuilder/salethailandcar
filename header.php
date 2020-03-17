@@ -1,7 +1,7 @@
 <?php
 include("config/config.php");
-
 $_SESSION['lang'] = (isset($_SESSION['lang']))?$_SESSION['lang']:'en';
+
 $lang = $_SESSION['lang'];
 if($_SESSION['lang']=="en"){
   $_SESSION['price_rate'] = $usd_rate; /// Assigning currency exchange rate (default USD=1)
@@ -223,13 +223,21 @@ function showGlobalLogin() {
 
 </head>
 <body>
+  
   <?php
   $top_offers = get_records($tblcms,"type = 'top_offers'");
+
    ?>
- <div class="top_offers animation_div"><?php echo $top_offers[0]['content']; ?></div>
+  <div class="offer_div" <?php if(isset($_SESSION['close_offer'])) { ?> style="display: none;"  <?php } ?> >
+    <a class="offer_close" href="process.php?p=close_offer">X</a>
+ <div class="top_offers animation_div"><?php echo $top_offers[0]['content_'.$lang]; ?></div>
+  
+  </div>
+
 <div class="bg_image" <?php if($p!="index"){?> style="background-image: none;" <?php }?>>
+
   <div class="container">
-    <div class="row header">
+      <div class="row header">
       <div class="col-8 col-md-6"><a class="navbar-brand" href="<?php echo makepage_url("index");?>"><img src="images/site-logo.png" class="img-fluid"></a></div>
       <div class="col-4 col-md-6">
         
@@ -241,20 +249,15 @@ function showGlobalLogin() {
             <ul class="navbar-nav">
               <?php
               if($user_id>0){
-                $dashboard = ($_SESSION['user_record']['type'])?'dashboard':'account';
+                 $dashboard = ($_SESSION['user_record']['type'])?'dashboard':'account';
               ?>
                 <li class="nav-item d-none d-lg-block">
                   <a class="common-btn btn-color" href="<?php echo makepage_url($dashboard);?>"><?php echo translate("Dashboard");?></a>
                 </li>
-                <?php
-                if($_SESSION['user_record']['type']){
-                ?>
-                  <li class="nav-item d-none d-lg-block">
+                <li class="nav-item d-none d-lg-block">
                   <a class="homeBtn" href="<?php echo makepage_url("add_product");?>" style="padding: 10px 18px;font-size: 11px;border-radius: 4px;"><?php echo translate("Post Ads");?> </a>
                 </li>
-                <?php
-                }
-                ?>
+               
                 <li class="nav-item d-none d-lg-block">
                   <a class="common-btn btn-color" href="process.php?p=logout"><?php echo translate("Logout");?></a>
                 </li>

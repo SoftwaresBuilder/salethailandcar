@@ -8,15 +8,24 @@ body{
     margin-left: 10%;
     margin-right: 10%;
 }
-.top_offers{
-	background-color: #f4c150;
-	margin: 0;
-	font-size: 20px;
+.offer_div{
+  background-color: #f4c150;
+  margin: 0;
+  font-size: 20px;
     font-family: serif;
+    height: 50px;
+    width: 100%;
+    line-height: 40px;
+}
+.top_offers{
+	
     text-align: center;
     vertical-align: middle;
-    height: 50px;
-    line-height: 50px;
+    
+}
+.offer_close{
+  float: right; position: relative;color: white;line-height: 30px;vertical-align: middle;border: 1px solid black;padding: 10px;
+  background-color: black;
 }
 .animation_div{
 position: relative;

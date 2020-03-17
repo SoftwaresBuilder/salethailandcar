@@ -13,10 +13,12 @@ $count_total_products = count($products);
 ?>
 <script type="text/javascript">
   function changeText(val) {
-    if($("#show_number").text() ==='xxxxxxx'){
+    if(val!=''){
+    if($("#show_number").html() ==='<i class="fa fa-phone"></i>xxxxxxx'){
     $("#show_number").text(val);
   }
-  else{$("#show_number").text('xxxxxxx');}
+  else{$("#show_number").html('<i class="fa fa-phone"></i>xxxxxxx');}
+}
 }
 </script>
 <div class="container">
@@ -33,7 +35,19 @@ $count_total_products = count($products);
       <?php echo $vendor_record[0]['name']; ?> 
     </div>
      <div class="row">
-     Last Active
+    <?php if($vendor_record[0]['login']==1)
+     {
+      echo '<h6 style="color:green;">online</h6>';
+     }
+     else{
+      $now = time(); // or your date as well
+      $last_date = strtotime($vendor_record[0]['login_time']);
+      $active_time = $now - $last_date;
+
+      $last_active_date = round($active_time / (60 * 60 * 24));
+      echo '<h6 style="color:green;">Last Active : '.$last_active_date.' days ago </h6>';
+     }
+      ?>
     </div>
      <div class="row">
       <a href="#"><div class="seller-public-profile-star-icons">
@@ -57,7 +71,7 @@ $count_total_products = count($products);
    <div class="row">
       <div class="col-12 col-md-6">
         
-         <a id="show_number" onclick="changeText('1234567');" class="nav-link btn btn-primary" href="#"><i class="fa fa-phone"></i>xxxxxxx</a>
+         <a id="show_number" onclick="changeText('<?php echo $vendor_record[0]['phone']; ?>');" class="nav-link btn btn-primary" href="#"><i class="fa fa-phone"></i>xxxxxxx</a>
           
       </div>
       <div class="col-12 col-md-6">

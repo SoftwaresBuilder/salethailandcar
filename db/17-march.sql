@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2020 at 03:19 PM
+-- Generation Time: Mar 17, 2020 at 03:06 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -149,7 +149,8 @@ INSERT INTO `thai_categories` (`id`, `pid`, `title_en`, `title_th`, `description
 (38, 35, 'TV Video and Audio', 'ทีวีวิดีโอและเสียง', 'Searching for TV Video and Audio', 1, 0, '2020-02-10 11:55:34', NULL, NULL),
 (39, 35, 'Cameras and Accessories', 'กล้องและอุปกรณ์เสริม', 'Need Latest Cameras and Accessories?', 1, 0, '2020-02-10 11:56:14', NULL, NULL),
 (40, 35, 'Games and Entertainment', 'เกมและความบันเทิง', 'Badly looking for Games and Entertainment ', 1, 0, '2020-02-10 11:57:48', NULL, NULL),
-(41, 35, 'Fridge AC and Washing Machine', '\r\nตู้เย็น AC และเครื่องซักผ้า', 'Searching for Fridge AC and Washing Machine??', 1, 0, '2020-02-10 12:01:36', NULL, NULL);
+(41, 35, 'Fridge AC and Washing Machine', '\r\nตู้เย็น AC และเครื่องซักผ้า', 'Searching for Fridge AC and Washing Machine??', 1, 0, '2020-02-10 12:01:36', NULL, NULL),
+(43, 0, 'Service', 'บริการ', 'Service', 1, 0, '2020-03-17 09:01:37', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1782,18 +1783,19 @@ INSERT INTO `thai_chat` (`id`, `chat_id`, `product_id`, `user_id`, `touser_id`, 
 
 CREATE TABLE `thai_cms` (
   `type` varchar(50) NOT NULL,
-  `content` text DEFAULT NULL
+  `content_en` text DEFAULT NULL,
+  `content_th` text CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `thai_cms`
 --
 
-INSERT INTO `thai_cms` (`type`, `content`) VALUES
-('aboutus', '<h1>About Us</h1>\r\n<p>This is our About Us page</p>'),
-('privacy_policy', '<h1>Privacy Policy</h1>\r\n<p>This is our privacy policy page</p>'),
-('terms_and_conditions', '<h1>Terms and Conditions</h1>\r\n<p>This is our terms and conditions page</p>'),
-('top_offers', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>');
+INSERT INTO `thai_cms` (`type`, `content_en`, `content_th`) VALUES
+('aboutus', '<h1>About Us</h1>\r\n<p>This is our About Us page</p>', '<h1>เกี่ยวกับเรา</h1>\r\n\r\n<p>นี่คือหน้าเกี่ยวกับเรา</p>'),
+('privacy_policy', '<h1>Privacy Policy</h1>\r\n<p>This is our privacy policy page</p>', '<h1>นโยบายความเป็นส่วนตัว</h1>\r\n<p>นี่คือหน้านโยบายความเป็นส่วนตัวของเรา</p>'),
+('terms_and_conditions', '<h1>Terms and Conditions</h1>\r\n<p>This is our terms and conditions page</p>', '<h1>ข้อกำหนดและเงื่อนไข</h1>\r\n<p>นี่คือหน้าข้อกำหนดในการให้บริการของเรา</p>'),
+('top_offers', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>', '<p>Lorem Ipsum เป็นเพียงตัวอย่างของอุตสาหกรรมการพิมพ์และการเรียงพิมพ์</p>');
 
 -- --------------------------------------------------------
 
@@ -1937,16 +1939,16 @@ CREATE TABLE `thai_products` (
 --
 
 INSERT INTO `thai_products` (`id`, `category_id`, `subcategory_id`, `user_id`, `title_en`, `title_th`, `description_en`, `description_th`, `status`, `trash`, `created_date`, `price`, `location`, `type`, `ad_type`, `submodel`, `model`, `brand`, `year_registration`, `driven`, `fuel_type`, `gearbox`, `features`, `featured`, `latitude`, `longitude`, `sort_date`, `views`) VALUES
-(1, 16, 18, 5, 'New Tesla5 for sale', NULL, 'Test Drive First.New Tesla for sale is available', NULL, 1, 0, '2020-02-05 17:53:35', 800, 'Berlin, Germany', 'abc', 0, NULL, 'TS-5T', 'Mercedes', 2020, 11, 'Gasoline', 'vbn', 'No', 1, '51.58250734077006', '-1.4598505851562549', '2020-03-09 17:53:54', 56),
-(2, 2, 8, 6, 'Full Stack Developer', NULL, 'We are looking to hire urgently developer.The candidate must have Web Application Design and implementation. Work closely with Mobile App developers. Design and implement front-end and back-end of web dashboard for mobile', NULL, 1, 0, '2020-02-05 17:55:02', 750, 'Office#7, anchorage, Alaska', 'Urgent ', 0, NULL, '', 'Issac\\\'s Code', 2016, 0, '', '', '', 1, '', '', '2020-03-09 17:53:54', 17),
-(3, 1, 7, 6, ' Multi Color Solar Light Pots for outdoor Garden', NULL, 'These plants pots are in multi color with solar light embedded.Best pots for your Outdoor garden', NULL, 1, 0, '2020-02-10 07:24:22', 350, '25 notting hill, Anchorage, Alaska', '', 0, NULL, '', '', 0000, 0, '', '', '', 1, '', '', '2020-03-09 17:53:54', 84),
+(1, 16, 18, 5, 'New Tesla5 for sale', NULL, 'Test Drive First.New Tesla for sale is available', NULL, 1, 0, '2020-02-05 17:53:35', 800, 'Berlin, Germany', 'abc', 0, NULL, 'TS-5T', 'Mercedes', 2020, 11, 'Gasoline', 'vbn', 'No', 1, '51.58250734077006', '-1.4598505851562549', '2020-03-09 17:53:54', 67),
+(2, 2, 8, 6, 'Full Stack Developer', NULL, 'We are looking to hire urgently developer.The candidate must have Web Application Design and implementation. Work closely with Mobile App developers. Design and implement front-end and back-end of web dashboard for mobile', NULL, 1, 0, '2020-02-05 17:55:02', 750, 'Office#7, anchorage, Alaska', 'Urgent ', 0, NULL, '', 'Issac\\\'s Code', 2016, 0, '', '', '', 1, '', '', '2020-03-09 17:53:54', 32),
+(3, 1, 7, 6, ' Multi Color Solar Light Pots for outdoor Garden', NULL, 'These plants pots are in multi color with solar light embedded.Best pots for your Outdoor garden', NULL, 1, 0, '2020-02-10 07:24:22', 350, '25 notting hill, Anchorage, Alaska', '', 0, NULL, '', '', 0000, 0, '', '', '', 1, '', '', '2020-03-09 17:53:54', 92),
 (4, 24, 25, 8, 'Puppy for sale', NULL, 'Its Half breed german shephard puppy for sale', NULL, 3, 0, '2020-02-10 13:45:07', 150, 'rawalpindi', 'rent', 0, NULL, 'Half-Breed small size ', 'Half Breed German Shephard', 2000, 0, '', '', '', 1, '	33.738045', '	73.084488', '2020-03-09 17:53:54', 3),
 (5, 24, 25, 5, 'Fully Automatic Washing Machinw', NULL, '- 10 Year Motor Warranty, - Fully Automatic Washing Machine, - Anti Bacterial Wash, - One way wash', 'สวัสดีฉันสบายดีฉันสบายดีคุณเป็นยังไงบ้าง\r\nคุณเป็นยังไงบ้าง\r\n\r\n', 1, 0, '2020-02-10 13:57:43', 500, 'Berlin, Germany', '', 0, NULL, ' HWM 85-826', 'Haier', 0000, 0, '', '', 'NO', 1, '', '', '2020-03-09 17:53:54', 15),
 (6, 24, 25, 6, 'Khan Hut', 'Khan กระท่อม', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 'Ut enim โฆษณา minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip องแฟนเก่า ea commodo consequat. Duis aute irure dolor ใน reprehenderit ใน voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 2, 0, '2020-02-16 17:16:46', 40000, 'London, UK', 'rent', 0, NULL, '', '', 2013, 0, '', '', 'Lot of benefits', 0, '51.58250734077006', '-0.09754589765625488', '2020-03-09 17:53:54', 4),
 (7, 24, 26, 6, 'Old Buddies', 'เพื่อนเก่า', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. ', 'Sed ut perspiciatis unde omnis iste natus เกิดข้อผิดพลาดนั่ง voluptatem accusantium doloremque laudantium,totam rem aperiam,eaque ipsa quae เกี่ illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. ', 2, 0, '2020-02-16 17:37:41', 3000, 'North Wessex', 'buy', 0, NULL, '', '', 0000, 0, '', '', '', 0, '51.483411449684205', '-1.4598505851562549', '2020-03-09 17:53:54', 1),
 (8, 2, 11, 6, 'testing for langauage', NULL, 'hello i am fine how are you\r\nhow are you\r\n\r\n', 'สวัสดีฉันสบายดีฉันสบายดีคุณเป็นยังไงบ้าง\r\nคุณเป็นยังไงบ้าง\r\n\r\n', 1, 0, '2020-03-09 13:20:27', 36, 'Gatwick Airport, LGW (LGW), Horley, Gatwick, UK', 'Full-Time', 0, '', '', '', NULL, 0, NULL, NULL, NULL, 0, '51.5073509', '-0.1277583', '2020-03-09 18:20:27', 9),
-(9, 2, 13, 6, 'jobs needes', NULL, 'jobs are required', 'ทำงานต้องการ', 1, 0, '2020-03-10 07:11:59', 20000, 'Streatham, London, UK', 'Full-Time', 0, '', '', '', 0000, 0, '', NULL, '', 0, '51.5073509', '-0.1277583', '2020-03-10 12:11:59', 0),
-(10, 24, 27, 6, 'House', NULL, 'house for rent', 'บ้านสำหรับค่าเช่า', 1, 0, '2020-03-10 08:05:15', 4334, 'Tate Modern, Bankside, London, UK', 'Rent', 0, '', '', '', 0000, 0, '', NULL, '', 0, '51.50759530000001', '-0.09935640000000001', '2020-03-10 13:05:15', 17),
+(9, 2, 13, 6, 'jobs needes', NULL, 'jobs are required', 'ทำงานต้องการ', 1, 0, '2020-03-10 07:11:59', 20000, 'Streatham, London, UK', 'Full-Time', 0, '', '', '', 0000, 0, '', NULL, '', 0, '51.5073509', '-0.1277583', '2020-03-10 12:11:59', 1),
+(10, 24, 27, 6, 'House', NULL, 'house for rent', 'บ้านสำหรับค่าเช่า', 1, 0, '2020-03-10 08:05:15', 4334, 'Tate Modern, Bankside, London, UK', 'Rent', 0, '', '', '', 0000, 0, '', NULL, '', 0, '51.50759530000001', '-0.09935640000000001', '2020-03-10 13:05:15', 18),
 (11, 16, 18, 6, 'Car for sale', NULL, 'urgent car sale in low price', 'เร่งด่วนรถขายในราคาต่ำ', 1, 0, '2020-03-10 08:15:50', 5678, 'John Lewis & Partners, Oxford Street, London, UK', 'Honda,', 0, '', 'MPV', 'civic', 2017, 25000, '', NULL, '1-2-3', 0, '51.5154109', '-0.145197', '2020-03-10 13:15:50', 4),
 (27, 24, 27, 6, 'ggg', NULL, 'ree', 'ree', 1, 0, '2020-03-12 06:34:56', 53, 'Gatwick Airport, LGW (LGW), Horley, Gatwick, UK', 'Rent', 0, '', '', '', 0000, 0, '', NULL, '', 0, '51.5073509', '-0.1277583', '2020-03-12 11:34:56', 0),
 (29, 16, 18, 6, 'checking', '', 'send', 'ส่ง', 1, 0, '2020-03-12 13:59:18', 5545, 'Gatwick Airport, LGW (LGW), Horley, Gatwick, UK', 'Audi', 0, '', 'Pick Up', '', NULL, 0, NULL, NULL, NULL, 0, '51.1536621', '-0.1820629', '2020-03-12 18:59:18', 0);
@@ -1968,7 +1970,7 @@ CREATE TABLE `thai_product_favorites` (
 --
 
 INSERT INTO `thai_product_favorites` (`id`, `user_id`, `product_id`) VALUES
-(5, 5, 1);
+(30, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -2038,7 +2040,8 @@ INSERT INTO `thai_settings` (`id`, `option_name`, `value_name`) VALUES
 (1, 'site title', 'SALE THAILAND'),
 (2, 'show records', '30'),
 (16, 'site address', 'H 598 St 4-b'),
-(17, 'discount', '200');
+(17, 'discount', '200'),
+(18, 'top offers', '2020-04-20');
 
 -- --------------------------------------------------------
 
@@ -2086,11 +2089,11 @@ CREATE TABLE `thai_users` (
 --
 
 INSERT INTO `thai_users` (`id`, `name`, `phone`, `email`, `password`, `img`, `status`, `zip`, `state`, `city`, `address`, `user_intro`, `post_ads`, `bump_up`, `package_id`, `package_date`, `trash`, `created_date`, `type`, `login`, `login_time`) VALUES
-(1, 'thaitravel', NULL, 'user@softwaresbuilder.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, 39, 12, 0, NULL, 0, '2020-03-13 12:24:06', 0, 1, '2020-03-16 14:22:45'),
+(1, 'thaitravel', NULL, 'user@softwaresbuilder.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, 39, 12, 0, NULL, 0, '2020-03-13 12:24:06', 0, 1, '2020-03-17 09:40:21'),
 (2, 'username.msc', '1221212', 'username.msc@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06'),
 (4, 'info', '555555555', 'info@royal-sea.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06'),
-(5, 'moshene1', NULL, 'phprocks4web@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, -1, 0, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-16 09:14:11'),
-(6, 'phprocks4web', '1234567', 'vender@softwaresbuilder.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 1, '2020-03-16 12:40:10'),
+(5, 'moshene1', NULL, 'phprocks4web@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, -1, 0, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-10 09:14:11'),
+(6, 'phprocks4web', '+9444785-6666', 'vender@softwaresbuilder.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, 9, 4, 2, NULL, 0, '2020-03-13 12:24:06', 1, 1, '2020-03-17 09:48:09'),
 (7, 'themepair', '012345678', 'themepair@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06'),
 (8, 'ishrarkhan1984', '9899920712', 'ishrarkhan1984@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06'),
 (9, 'demo33.intel', '09033411928', 'demo33.intel@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, -1, -1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06'),
@@ -7136,7 +7139,7 @@ ALTER TABLE `thai_bidding`
 -- AUTO_INCREMENT for table `thai_categories`
 --
 ALTER TABLE `thai_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `thai_category_features`
@@ -7202,7 +7205,7 @@ ALTER TABLE `thai_products`
 -- AUTO_INCREMENT for table `thai_product_favorites`
 --
 ALTER TABLE `thai_product_favorites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `thai_product_images`
@@ -7214,7 +7217,7 @@ ALTER TABLE `thai_product_images`
 -- AUTO_INCREMENT for table `thai_settings`
 --
 ALTER TABLE `thai_settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `thai_subscribe`

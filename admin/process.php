@@ -653,7 +653,8 @@ if($p == "addeditcms")
 	{
 		$data = array();
 		
-		$data['content'] = $content;
+		$data['content_en'] = $content;
+		$data['content_th'] = $content;
 		$condition = array();
 		$condition['type'] = $type;
 		$result = update_record($tblcms,$data,$condition);

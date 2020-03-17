@@ -23,8 +23,9 @@ function submitUserForm_signup() {
 }
  
 </script>
-<div id="cookie-law-info-bar"
-style="background-color: rgb(242, 245, 245);
+<div <?php if(isset($_SESSION['cookie'])){ ?> style="display: none"  <?php  }  ?>>
+<div id="cookie-law-info-bar" 
+style=" background-color: rgb(242, 245, 245);
      color: rgb(0, 0, 0);
      font-family: inherit;
      bottom: 0px;
@@ -33,9 +34,10 @@ style="background-color: rgb(242, 245, 245);
 <span>
   This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.
   <a class="cookie_setting" href="#" >Cookie settings</a>
-  <a href="#" id="" class="cookies_accept_btn st" style="height: 50px">ACCEPT</a>
+  <a href="process.php?p=cookie_accept" id="" onclick="" class="cookies_accept_btn st" style="height: 50px">ACCEPT</a>
 </span>
 </div>
+</div> 
 
 
 <div class="footer" style="background-color: #031543;">

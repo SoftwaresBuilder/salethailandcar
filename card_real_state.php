@@ -4,12 +4,12 @@ $imgs = get_product_imgs($product['id'],'1');
 <div class="row mybox2">
 	<div class="col-12">
 		<div class="imgdiv">
-			<img src="<?php echo $imgs[0]['img'];?>">
+			<a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>"><img src="<?php echo $imgs[0]['img'];?>"></a>
 			
 			<?php include("like.php");?>
 		</div>
 	</div>
-	<div class="col-12 title"><?php echo $product['title_'.$lang];?></div>
+	<div class="col-12 title"><a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>"><?php echo showstring($product['title_'.$lang],"20");?></a></div>
 
 	<div class="col-12"><i class="fa fa-phone"></i>&nbsp;<?php echo translate("Location");?></div>
 	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;N/A</div>

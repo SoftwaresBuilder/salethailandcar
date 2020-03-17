@@ -381,4 +381,26 @@ if($p == "getTranslate"){
         		echo '<br>'.$c_msg;
         	}
 }
+	if($p == "like_product"){
+		$pid=$_GET['id'];
+		if($user_id>0)
+		{
+			$liked = get_records($tblproduct_favorites,"user_id='".$user_id."' and product_id='".$pid."'");
+			if(count($liked)>0){
+				$result = delete_records($tblproduct_favorites ,"user_id='".$user_id."' and product_id='".$pid."'");
+				echo "dislike";
+			} 
+			else {
+				$data = array();
+				$data['user_id'] = $user_id;
+				$data['product_id'] = $pid;
+				$id = insert_record($tblproduct_favorites,$data);
+				if($id>0)
+				{
+					echo 'liked';
+				}
+			}
+		}
+		
+}
 ?>

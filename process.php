@@ -793,4 +793,14 @@ if($p=="forgot_password"){
 			}
 		exit;
 		}
+	if($p=="cookie_accept"){
+		$_SESSION['cookie'] = "accept";
+		header("location:".$_SESSION['page_url']);
+		exit;
+	}
+	if($p=="close_offer"){
+		$_SESSION['close_offer'] = "close";
+		header("location:".$_SESSION['page_url']);
+		exit;
+	}
 ?>

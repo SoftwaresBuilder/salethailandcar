@@ -245,14 +245,17 @@ function fnAdd_bidd(){
 
 }
 function show_hide_num(val) {
-    if($("#show_hide_num").text() ==='xxxxxxx')
+  if(val!=''){
+    if($("#show_hide_num").html() ==='<i class="fa fa-phone"></i>xxxxxxx')
         {
            $("#show_hide_num").text(val);
         }
+
   else
       {
-         $("#show_hide_num").text('xxxxxxx');
+         $("#show_hide_num").html('<i class="fa fa-phone"></i>xxxxxxx');
       }
+}
 }
 </script>
 
@@ -351,17 +354,17 @@ function show_hide_num(val) {
             <a href="vendor_profile.php?id=<?=enc_password($user[0]['id']);?>"><?php echo $user[0]['name']; ?></a><br>
             <?php echo $product[0]['created_date']; ?> - <?php echo translate("Views");?> <span class="bold"><?php echo $views; ?></span></br>
             <?php if($user[0]['login']=='1')
-            { echo '<h3 style="color:red;">online</h3>';} ?>
+            { echo '<h6 style="color:green;">online</h6>';} ?>
             
           </div>
         </div>
       </div>
       <div class="col-12 border_bottom">
-        <?php echo show_price($product[0]['price']);?>
+        <h5><?php echo show_price($product[0]['price']);?></h5>
       </div>
       <div class="col-12 pb10">
         <div class="row">
-          <div class="col-6"><a id="show_hide_num" class="nav-link btn btn-primary" href="javascript:void(0);" onclick="show_hide_num(<?php echo $user[0]['phone'];?>)"><i class="fa fa-phone"></i>xxxxxxx</a></div>
+          <div class="col-6"><a id="show_hide_num" class="nav-link btn btn-primary" href="javascript:void(0);" onclick="show_hide_num('<?php echo $user[0]['phone'];?>')"><i class="fa fa-phone"></i>xxxxxxx</a></div>
           <div class="col-6"><a class="nav-link btn btn-primary" href="javascript:void(0);"
           onclick="<?php if(isset($_SESSION['user_record'])){ ?> openChat(); <?php } else {?> window.location='<?php echo makepage_url("login");?>'<?php }?>"><?php echo translate("MESSAGE");?></a></div>
         </div>
@@ -470,11 +473,11 @@ function show_hide_num(val) {
                                     <input type="hidden" name="user_id" id="user_id" value="<?php echo $product[0]['user_id'] ?>">
                                     <input type="hidden" name="bidder_id" id="bidder_id" value="<?php echo $_SESSION['user_record']['id']; ?>">
                                     <div class="form-group">
-                                        <input type="text" name="bid_amount" id="bid_amount" placeholder="<?php echo translate("Bids amount in (USD)");?>">
+                                        <input type="text" name="bid_amount" id="bid_amount" placeholder="<?php echo translate("Bids amount in");?> (USD)">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="bid_message" id="bid_message" placeholder="<?php echo translate("Comments...");?>"></textarea>
+                                        <textarea name="bid_message" id="bid_message" placeholder="<?php echo translate("Comments");?>...."></textarea>
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="form-info-txt">* <?php echo translate("lang_text33");?></div>
