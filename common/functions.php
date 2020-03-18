@@ -80,6 +80,7 @@ function redirect($page,$str=""){
 }
 function dates_duration($dated,$type='ago')
 {
+	$num = $duration = "";
 	$date1 = $dated;
 	$date2 = date("Y-m-d H:i:s");
 	$diff = strtotime($date2) - strtotime($date1);
@@ -92,33 +93,42 @@ function dates_duration($dated,$type='ago')
 	$years   = floor($diff / (365*60*60*24));
 	if($years>0)
 	{
-		return $years.' years '.$type;
+		$num = $years;
+		$duration = 'years '.$type;
 	}
 	$months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
 	if($months>0)
 	{
-		return $months.' months '.$type;
+		$num = $months;
+		$duration = 'months '.$type;
 	}
 	$days    = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 	if($days>0)
 	{
-		return $days.' days '.$type;
+		$num = $days;
+		$duration = 'days '.$type;
 	}
 	$hours   = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24)/ (60*60));
 	if($hours>0)
 	{
-		return $hours.' hours '.$type;
+		$num = $hours;
+		$duration = 'hours '.$type;
 	}
 	$minuts  = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60)/ 60);
 	if($minuts>0)
 	{
-		return $minuts.' minuts '.$type;
+		$num = $minuts;
+		$duration = 'minuts '.$type;
 	}
 	$seconds = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minuts*60));
 	if($seconds>0)
 	{
-		return $seconds.' seconds '.$type;
+		$num = $seconds;
+		$duration = 'seconds '.$type;
 	}
+	 $num = translate($num);
+	 $duration = translate($duration);
+	return $num.' '.$duration;
 }
 
 function currency_converter($price,$convertfrom="thai",$convertin="usd")

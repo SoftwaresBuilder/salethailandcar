@@ -723,9 +723,11 @@ if($p=="logout"){
 
 	$ans = update_record($tblusers ,$data,$condition);
 	$_SESSION['user_record'] = "";
-
+	$lang = $_SESSION['lang'];
 	unset($_SESSION['user_record']);
 	session_destroy();
+	session_start();
+	$_SESSION['lang'] = $lang;
 	header("location: index.php?p=login");
 }
 
