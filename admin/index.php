@@ -56,8 +56,8 @@ if(!isset($_SESSION['page_url']) or $_SESSION['page_url']!=$p){
 	.img_box { background-color: #ddd; border:1px solid #ccc; }
 	.img_thumb { width: 100%; height: 150px; padding: 10px; overflow: hidden; }
 	.img_thumb img { width: 100%; }
-	.news_thumb { width: 50%; height: 80px; padding: 10px; overflow: hidden; }
-	.news_thumb img { width: 50%; }
+	.news_thumb { width: 100%; height: 80px; padding: 10px; overflow: hidden; }
+	.news_thumb img { width: 100%; }
 	
 	</style>
     

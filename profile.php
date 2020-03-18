@@ -30,7 +30,7 @@ $count_favourites = sql($query_favourites);
         <?php
         $user_img = get_user_img($user_details[0]['img']);
         ?>
-        <img width="100px" height="100px" style="border-radius: 50px; margin-top: 10px;margin-bottom: 10px" src="<?php echo $user_img; ?>"
+        <img width="100px" height="100px" style="border-radius: 50px; margin-top: 10px;margin-bottom: 10px" src="<?php echo $user_img; ?>">
         <span class="" style="margin-left: 20px"> <?php echo $user_details[0]['name']; ?></span>
 
         </div>

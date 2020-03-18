@@ -11,10 +11,9 @@ $imgs = get_product_imgs($product['id'],'1');
 	</div>
 	<div class="col-12 title"><a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>"><?php echo showstring($product['title_'.$lang],"20");?></a></div>
 
-	<div class="col-12"><i class="fa fa-phone"></i>&nbsp;<?php echo translate("Location");?></div>
-	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;N/A</div>
-	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;N/A</div>
-	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;N/A</div>
+	<div class="col-12"><i class="fa fa-phone"></i>&nbsp;<?php echo showstring($product['location'],"20");?></div>
+	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;<?php echo showstring($product['type'],"20");?></div>
+	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;<?php echo show_price($product['price']);?></div>
 	<?php if($product['status']==1)
 	{
 	echo '<div class="col-4"><i class="fa fa-phone"></i>&nbsp;Active</div>';

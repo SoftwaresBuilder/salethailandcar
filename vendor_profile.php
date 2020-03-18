@@ -26,8 +26,11 @@ $count_total_products = count($products);
     <div class="col-12 col-md-4">
        <div class="row">
         <div class="col-12 col-md-6">
+          <?php
+        $user_img = get_user_img($vendor_record[0]['img']);
+        ?>
       <div class="row">
-      <img style="height: 150px; width: 150px" src="images/user.jpg" alt="/images/user.jpg">
+      <img style="height: 150px; width: 150px" src="<?php echo $user_img; ?>" alt="/images/user.jpg">
     </div>
      </div>
      <div class="col-12 col-md-6">

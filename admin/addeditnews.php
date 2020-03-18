@@ -21,23 +21,35 @@ else if(!isset($_SESSION['sysData']['id'])) {
         <div class="card">
             
                 <div class="header">
-                    <h4 class="title">Add/Edit News</h4>
+                    <h4 class="title">Add/Edit Blogs</h4>
                 </div>
                 <?php show_errors();?>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Title<span class="err">*</span></label>
-                            <input type="text" required class="form-control" id="title" name="title" placeholder="Post name" value="<?= $_SESSION['sysData']['title_'.$lang];?>">
+                            <label>Title English<span class="err">*</span></label>
+                            <input onfocusout="translate_into_thai(this.value,'title_th')" type="text" required class="form-control" id="title_en" name="title_en" placeholder="Post name" value="<?= $_SESSION['sysData']['title_en'];?>">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Title thai<span class="err">*</span></label>
+                            <input type="text" required class="form-control" id="title_th" name="title_th" placeholder="Post name" value="<?= $_SESSION['sysData']['title_th'];?>">
                         </div>
                     </div>
                     
                 </div>
                 <div class="row">
-                	<div class="col-md-12">
+                	<div class="col-md-6">
                         <div class="form-group">
-                            <label>Description</label>
-                            <textarea class="form-control" id="description" name="description" placeholder="Category detail"><?= $_SESSION['sysData']['description'];?></textarea>
+                            <label>Description English</label>
+                            <textarea onfocusout="translate_into_thai(this.value,'description_th')" class="form-control" id="description_en" name="description_en" placeholder="Category detail"><?= $_SESSION['sysData']['description_en'];?></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Description Thai</label>
+                            <textarea class="form-control" id="description_th" name="description_th" placeholder="Category detail"><?= $_SESSION['sysData']['description_th'];?></textarea>
                         </div>
                     </div>
                 </div>

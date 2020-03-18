@@ -225,7 +225,7 @@ $lang_data = array(
     'photos'=>'Photos',
     'ads_details'=>'Ads Details',
     'faq'=>'FAQ',
-    ''=>'',
+    'lang_text35'=>'We will never share your email with anyone else.',
     ''=>'',
 
 );

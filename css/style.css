@@ -10,28 +10,32 @@ body{
 }
 .offer_div{
   background-color: #f4c150;
-  margin: 0;
   font-size: 20px;
-    font-family: serif;
-    height: 50px;
-    width: 100%;
-    line-height: 40px;
+  font-family: serif;
+  height: 50px;
+  width: 100%;
+  line-height: 50px;
 }
 .top_offers{
-	
     text-align: center;
     vertical-align: middle;
-    
-}
+  }
 .offer_close{
-  float: right; position: relative;color: white;line-height: 30px;vertical-align: middle;border: 1px solid black;padding: 10px;
+  float: right;
+  color: white;
+  padding: 0px 10px 0px 10px;
   background-color: black;
 }
+.offer_close:hover {
+  color: yellow;
+}
+.count_down{
+  float: left; font-size: 40px;
+  margin-left: 20px
+}
 .animation_div{
-position: relative;
   animation-name: example;
   animation-duration: 2s;
-  font-size : 20px;
   color : red;
   animation-iteration-count: infinite;
   animation-delay: 2s;
@@ -133,7 +137,7 @@ a.btn { color: #fff; }
 .lSPager li { height: 45px; border: 1px solid #E0E0E0; overflow: hidden; }
 .lSPager li img { height: 100% !important; }
 
-.mybox { border: 1px solid #CDD6E1; min-height: 234px; margin:50px 0 20px; padding:40px 20px 20px; text-align: center; }
+.mybox { border: 1px solid #CDD6E1; min-height: 265px; margin:50px 0 20px; padding:40px 20px 20px; text-align: center; }
 .mybox:hover { background-color: #fff; border: #e22029 solid 1px; }
 .mybox .fa { position: absolute; top: -50px; left: calc(50% - 25px); width: 50px; background-color: #031542; color: #fff; padding: 10px;  }
 .mybox:hover .fa { background-color: #e22029;;  }

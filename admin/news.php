@@ -45,10 +45,10 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
         <div class="card">
             <div class="header">
                 <div class="col-md-6">
-                    <h4 class="title">Manage News</h4>
+                    <h4 class="title">Manage Blogs</h4>
                 </div>
                 <div class="col-md-6 add_new">
-                    <a href="index.php?p=addeditnews">Add News</a>
+                    <a href="index.php?p=addeditnews">Add Blogs</a>
                 </div>
             </div>
             <?php show_errors(); ?>
@@ -72,7 +72,7 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                     <thead>
                         <tr>
                             <th>Image</th>
-                            <th>News</th>
+                            <th>Blog</th>
                             <th>Detail</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -83,12 +83,12 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                         if (count($news) > 0) {
                             foreach ($news as $v) {
                                 $news_status = get_news_status($v['status']);
-								$news_img = get_news_img($v['img']);
+								$news_img = get_user_img($v['img']);
                                 ?>
                                 <tr>
                                     <td><img src="<?php echo $news_img;?>" class="news_thumb" /></td>
-                                    <td><?php echo $v['title_'.$lang]; ?></td>
-                                    <td><?php echo $v['description']; ?></td>
+                                    <td><?php echo $v['title_en']; ?></td>
+                                    <td><?php echo $v['description_en']; ?></td>
                                     <td><?php echo $news_status; ?></td>
                                     <td>
                                         <a href="index.php?p=addeditnews&id=<?= enc_password($v['id']); ?>" title="Update Record"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;

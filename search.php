@@ -3,6 +3,7 @@ include("header.php");
 
 $id = 0;
 if(isset($_GET['id'])){
+    $enc_id =$_GET['id'];
   $id = dec_password($_GET['id']);
 }
 
@@ -30,6 +31,8 @@ $cat_id = dec_password($_GET['id']);
             <div class="col-12 col-md-9">
                 <div class="col-12 heading mb50">
                     <?php echo $category[0]['title_'.$lang];?>
+                    <div style="float: right;"><span style="color: green;font-size: 24px"><a href="<?php echo makepage_url("search_by_map","?id=".$enc_id);?>">View in map&nbsp;</a> 
+                    </span></div>
                 </div>
 
                 <div class="row" id="serach_results">

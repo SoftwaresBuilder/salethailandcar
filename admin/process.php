@@ -1,3 +1,4 @@
+
 <?php
 include('../config/config.php');
 unset($_SESSION['sysErr']);
@@ -810,9 +811,9 @@ if($p == "addeditnews")
 	}
 	$flg = false;
 	
-	if(!$title)
+	if(!$title_en)
 	{
-		$_SESSION['sysErr']['title_'.$lang] = "Please enter name";
+		$_SESSION['sysErr']['title_en'] = "Please enter name";
 		$flg = true;
 	}
 	
@@ -830,9 +831,10 @@ if($p == "addeditnews")
 	if( $id > 0 )
 	{
 		$data = array();
-		$data['title_'.$lang] = $title_.$lang;
-		//$data['slug'] = $slug;
-		$data['description'] = $description;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		$data['description_en'] = $description_en;
+		$data['description_th'] = $description_th;
 		$data['status'] = $status;
 		$condition = array();
 		$condition['id'] = $id;
@@ -845,9 +847,10 @@ if($p == "addeditnews")
 	else
 	{
 		$data = array();
-		$data['title_'.$lang] = $title_.$lang;
-		//$data['slug'] = $slug;
-		$data['description'] = $description;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		$data['description_en'] = $description_en;
+		$data['description_th'] = $description_th;
 		$data['status'] = $status;
 		$id = insert_record($tblnews,$data);
 		if($id>0)

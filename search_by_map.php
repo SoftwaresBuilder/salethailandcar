@@ -3,6 +3,7 @@
 // $product=get_records($tblproducts,"trash!=1");
 $id = 0;
 if(isset($_GET['id'])){
+  $enc_id = $_GET['id'];
   $id = dec_password($_GET['id']);
 }
 $category = get_records($tblcategories,"id='".$id."' and status='1' and trash='0'");
@@ -50,6 +51,7 @@ if(count($products)>0){
         </div>
         <div class="col-12 col-lg-4" style="overflow-y: auto;height: 600px;margin-bottom: 30px;">
         	<h3><?= translate("Listing");?> <?php echo $category[0]['title_'.$lang]; ?></h3>
+          <a href="<?php echo makepage_url("search","?id=".$enc_id);?>"> List View</a>
         	<div id="listing_area"></div>
         </div>
     </div>

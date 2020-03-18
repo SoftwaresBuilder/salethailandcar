@@ -19,7 +19,7 @@ if(isset($_SESSION['user_record'])){
 }
 
 $p = getpagename();
-$without_login_pages = array('index','login','forgot_password','register', 'faqs', 'news_detail','about','contact','cms','search_by_map','search','product_detail','vendor_profile');
+$without_login_pages = array('contact_us','index','login','forgot_password','register', 'faqs', 'news_detail','about','contact','cms','search_by_map','search','product_detail','vendor_profile');
 if(!isset($_SESSION['user_record'])){
   if( !in_array($p,$without_login_pages) ){
     redirect("login");exit;
@@ -213,13 +213,27 @@ function showGlobalLogin() {
     } else {
         $('#globalloginModal').modal('show');
     }
-
 }
-    </script>
+<!-- //Count down function -->
+// var countDownDate = new Date("<?php echo $top_offers; ?>").getTime();
+// var x = setInterval(function() {
+// var now = new Date().getTime();
+// var distance = countDownDate - now;
+// var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+// var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+// var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+// var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+// document.getElementById("count_down").innerHTML = days + "d " + hours + "h "
+// + minutes + "m " + seconds + "s ";
+// if (distance < 0) {
+//   clearInterval(x);
+//   document.getElementById("count_down").innerHTML = "EXPIRED";
+// }
+// }, 1000);
+<!-- //End Count Down function -->
+</script>
 
-
-  <link rel="stylesheet" href="css/style.css?v=1.1">
-
+<link rel="stylesheet" href="css/style.css?v=1.1">
 </head>
 <body>
   
@@ -229,8 +243,9 @@ function showGlobalLogin() {
    ?>
   <div class="offer_div" <?php if(isset($_SESSION['close_offer'])) { ?> style="display: none;"  <?php } ?> >
     <a class="offer_close" href="process.php?p=close_offer">X</a>
- <div class="top_offers animation_div"><?php echo $top_offers[0]['content_'.$lang]; ?></div>
-  
+    <p class="count_down" id="count_down"></p>
+    <div class="top_offers animation_div"><?php echo $top_offers[0]['content_'.$lang]; ?></div>
+
   </div>
 
 <div class="bg_image" <?php if($p!="index"){?> style="background-image: none;" <?php }?>>
@@ -242,7 +257,7 @@ function showGlobalLogin() {
         
         <nav class="navbar navbar-expand-lg navbar-dark pull-right">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
@@ -316,12 +331,9 @@ function showGlobalLogin() {
             $sep = "";
             foreach ($parent_categories as $v) {
               echo $sep;
-              if ($v['title_en']=='Jobs' || $v['title_en']=='Vehicle' || $v['title_en']=='Real Estate') {
             ?>
-            <a href="<?php echo makepage_url("search_by_map","?id=".enc_password($v['id']));?>"><?php echo $v['title_'.$lang];?></a>
-            <?php } else{ ?>
               <a href="<?php echo makepage_url("search","?id=".enc_password($v['id']));?>"><?php echo $v['title_'.$lang];?></a>
-            <?php }
+            <?php
               $sep = "&nbsp;|&nbsp;";
             }
           }

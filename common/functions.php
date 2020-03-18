@@ -208,6 +208,11 @@ function get_product_status($status=0)
 	$status_arr = array('Pending','Active','Sold','Expired');
 	return $status_arr[$status];
 }
+function get_news_status($status=0)
+{
+	$status_arr = array('Inactive','Active');
+	return $status_arr[$status];
+}
 function get_category_status($status=0)
 {
 	$status_arr = array('Inactive','Active');

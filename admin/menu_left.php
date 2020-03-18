@@ -38,7 +38,7 @@
     <li <?php if ($p == "news.php" or $p == "addeditnews.php") { ?> class="active" <?php } ?>>
         <a href="index.php?p=news">
             <i class="pe-7s-note"></i>
-            <p>Manage News </p>
+            <p>Manage Blogs </p>
         </a>
     </li>
     <li <?php if ($p == "emails.php" or $p == "addeditemail.php") { ?> class="active" <?php } ?>>
