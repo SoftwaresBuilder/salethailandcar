@@ -32,7 +32,23 @@ function get_records($table,$where="",$sort="",$limit="",$fields="*",$show="")
 	//echo $sql;
 	return $array;
 }
-
+function get_count($table,$where="",$fields="id",$show="")
+{
+	global $conn;
+	
+	$sql = "SELECT ".$fields." FROM `".$table."`";
+	if($where != "")
+	{
+		$sql .= " WHERE ".$where;
+	}
+	if($show){
+		echo "SQL: ".$sql;
+	}
+	$result = mysqli_query($conn,$sql);
+	$rows = @mysqli_num_rows($result);
+	
+	return $rows;
+}
 function sql($sql)
 {
 	global $conn;
