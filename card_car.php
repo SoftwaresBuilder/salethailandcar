@@ -21,7 +21,7 @@ $imgs = get_product_imgs($product['id'],'1');
 	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;N/A</div>
 
 
-	<div class="col-12"><i class="fa fa-map-marker"></i>&nbsp;<?php echo $product['location'];?></div>
+	<div class="col-12"><i class="fa fa-map-marker"></i>&nbsp;<?php echo showstring($product['location'],"25");?></div>
 	<div class="col-4 card_feature"><i class="fa fa-car"></i>&nbsp;<?php echo $product['type'];?></div>
 	<?php
 	/**

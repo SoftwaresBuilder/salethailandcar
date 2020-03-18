@@ -32,9 +32,9 @@ style=" background-color: rgb(242, 245, 245);
     position: fixed; 
     display: block;">
 <span>
-  This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.
-  <a class="cookie_setting" href="#" >Cookie settings</a>
-  <a href="process.php?p=cookie_accept" id="" onclick="" class="cookies_accept_btn st" style="height: 50px">ACCEPT</a>
+  <?php echo translate('lang_text34'); ?>
+  <a class="cookie_setting" href="#" ><?php echo translate('Cookie Setting'); ?></a>
+  <a href="process.php?p=cookie_accept" id="" onclick="" class="cookies_accept_btn st" style="height: 50px"><?php echo translate('ACCEPT'); ?></a>
 </span>
 </div>
 </div> 

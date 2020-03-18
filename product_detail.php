@@ -230,8 +230,8 @@ function fnAdd_bidd(){
                var strdate = '<span class="field-left">Bid Amount</span> <span id="sp_bid_amount" class="field-right">'+data[0].created_date+'</span>';
               $("#div_bid_date").html(strdate);
                 var total_bid = '<span class="field-left">Total Bids</span> <span class="field-right">'+data[0].total_bid_counts+'</span>';
-                var heighest_bid ='<span class="field-left">Highest Bids</span> <span class="field-right">USD'+data[0].max_bid_amount+'</span>';
-                var lowest_bid = '<span class="field-left">Lowest Bids</span> <span class="field-right">USD'+data[0].min_bid_amount+'</span>';
+                var heighest_bid ='<span class="field-left">Highest Bids</span> <span class="field-right"><?php echo translate('usd'); ?>'+data[0].max_bid_amount+'</span>';
+                var lowest_bid = '<span class="field-left">Lowest Bids</span> <span class="field-right"><?php echo translate('usd'); ?>'+data[0].min_bid_amount+'</span>';
                 $("#total_bid").html(total_bid);
                 $("#heighest_bid").html(heighest_bid);
                 $("#lowest_bid").html(lowest_bid);
@@ -473,7 +473,7 @@ function show_hide_num(val) {
                                     <input type="hidden" name="user_id" id="user_id" value="<?php echo $product[0]['user_id'] ?>">
                                     <input type="hidden" name="bidder_id" id="bidder_id" value="<?php echo $_SESSION['user_record']['id']; ?>">
                                     <div class="form-group">
-                                        <input type="text" name="bid_amount" id="bid_amount" placeholder="<?php echo translate("Bids amount in");?> (USD)">
+                                        <input type="text" name="bid_amount" id="bid_amount" placeholder="<?php echo translate("Bids amount in");?> (<?php echo translate('usd'); ?>)">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="form-group">
