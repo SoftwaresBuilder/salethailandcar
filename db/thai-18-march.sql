@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2020 at 02:12 PM
+-- Generation Time: Mar 18, 2020 at 03:09 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -2043,7 +2043,7 @@ INSERT INTO `thai_product_images` (`id`, `product_id`, `img`, `alt`, `descriptio
 CREATE TABLE `thai_settings` (
   `id` int(11) NOT NULL,
   `option_name` varchar(100) NOT NULL,
-  `value_name` text NOT NULL
+  `value_name` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -2054,10 +2054,10 @@ INSERT INTO `thai_settings` (`id`, `option_name`, `value_name`) VALUES
 (1, 'site title', 'SALE THAILAND'),
 (2, 'show records', '30'),
 (18, 'top offers', '2020-04-05'),
-(19, 'meta tags en', 'tagss in english'),
-(20, 'meta tags th', 'tags in thai'),
-(21, 'meta description en', 'description en'),
-(22, 'meta descriptionn th', 'description th');
+(19, 'meta tags en', 'sell online,buy vehicle,house for rent, dog for sale'),
+(20, 'meta tags th', 'ขายออนไลน์, ซื้อยานพาหนะ, บ้านให้เช่า, ขายสุนัข'),
+(21, 'meta description en', 'a place where to sell and buy pets, vehicle,house,apartments etc.'),
+(22, 'meta description th', 'สถานที่ที่จะขายและซื้อสัตว์เลี้ยงยานพาหนะบ้านอพาร์ทเมนท์ ฯลฯ');
 
 -- --------------------------------------------------------
 
