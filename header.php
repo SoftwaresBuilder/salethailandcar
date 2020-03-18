@@ -11,7 +11,6 @@ if($_SESSION['lang']=="en"){
   $_SESSION['cons_currency'] = $cons_thai;
 }
 
-
 $user_id = 0;
 if(isset($_SESSION['user_record'])){
   $login_user = get_records($tblusers,"id='".$_SESSION['user_record']['id']."' and status='1' and trash='0'");
@@ -20,7 +19,7 @@ if(isset($_SESSION['user_record'])){
 }
 
 $p = getpagename();
-$without_login_pages = array('index','login','forgot_password','register','about','contact','cms','search_by_map','search','product_detail','vendor_profile');
+$without_login_pages = array('index','login','forgot_password','register', 'news_detail','about','contact','cms','search_by_map','search','product_detail','vendor_profile');
 if(!isset($_SESSION['user_record'])){
   if( !in_array($p,$without_login_pages) ){
     redirect("login");exit;

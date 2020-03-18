@@ -10,18 +10,10 @@ $imgs = get_product_imgs($product['id'],'1');
 	</div>
 	<div class="col-12 title"><a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>"><?php echo showstring($product['title_'.$lang],"20");?></a></div>
 
+	<div class="col-12"><i class="fa fa-map-marker"></i>&nbsp;<?php echo showstring($product['location'],"30");?></div>
 
-	<div class="col-12"><i class="fa fa-phone"></i>&nbsp;<?php echo showstring($product['location'],"30");?></div>
-	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;N/A</div>
-	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;N/A</div>
-	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;N/A</div>
-
-	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;N/A</div>
-	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;N/A</div>
-	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;N/A</div>
-
-
-	<div class="col-12"><i class="fa fa-map-marker"></i>&nbsp;<?php echo $product['location'];?></div>
+	<div class="col-4 card_feature"><i class="fa fa-cog"></i>&nbsp;<?php echo $product['year_registration'];?></div>
+	<div class="col-4 card_feature"><i class="fa fa-tachometer"></i>&nbsp;<?php echo $product['driven'];?></div>
 	<div class="col-4 card_feature"><i class="fa fa-car"></i>&nbsp;<?php echo $product['type'];?></div>
 	<?php
 	/**
@@ -32,8 +24,6 @@ $imgs = get_product_imgs($product['id'],'1');
 	<?php
 	/**/
 	?>
-	<div class="col-4 card_feature"><i class="fa fa-cog"></i>&nbsp;<?php echo $product['year_registration'];?></div>
-	<div class="col-4 card_feature"><i class="fa fa-tachometer"></i>&nbsp;<?php echo $product['driven'];?></div>
 	
 	<div class="col-12"><a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>" class="btn btn-primary full_width"><?php echo translate("View Detail");?></a></div>
 </div>
