@@ -14,7 +14,7 @@ if( !(count($record)>0) ){
 <div class="container">
   <div class="row section_spacer">
     <div class="col-12">
-      <?php echo  $record[0]['content'];?>
+      <?php echo  $record[0]['content_'.$lang];?>
     </div>
   </div>
 </div>

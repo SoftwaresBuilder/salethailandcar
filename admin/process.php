@@ -172,8 +172,8 @@ if($p == "addeditpackages")
 	if($id){
 		$id = dec_password($id);
 	}
-	if(!$title_.$lang){
-		$_SESSION['sysErr']['title_'.$lang] = "Please enter packages title";
+	if(!$title_en){
+		$_SESSION['sysErr']['title_en'] = "Please enter packages title";
 		$flg = true;
 	}
 	if(!($price>0)){
@@ -187,14 +187,15 @@ if($p == "addeditpackages")
 	if( $id > 0 )
 	{
 		$data = array();
-		$data['title_'.$lang] = $title_.$lang;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
 		$data['price'] = $price;
 		$data['post_ads'] = $post_ads;
 		$data['bump_up'] = $bump_up;
 		$data['status'] = $status;
 		$condition = array();
 		$condition['id'] = $id;
-		$result = update_record($tblpackages,$data,$condition);
+		$result = update_record($tblvendor_packages,$data,$condition);
 		if($result)
 		{
 			$_SESSION['sysErr']['msg'] = "Record updated successfully";
@@ -203,12 +204,13 @@ if($p == "addeditpackages")
 	else
 	{
 		$data = array();
-		$data['title_'.$lang] = $title_.$lang;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
 		$data['price'] = $price;
 		$data['post_ads'] = $post_ads;
 		$data['bump_up'] = $bump_up;
 		$data['status'] = $status;
-		$id = insert_record($tblpackages,$data);
+		$id = insert_record($tblvendor_packages,$data);
 		if($id>0)
 		{
 			$_SESSION['sysErr']['msg'] = "Record added successfully";
@@ -689,8 +691,10 @@ if($p == "addeditfaq")
 	{
 		$data = array();
 		
-		$data['title_'.$lang] = $title_.$lang;
-		$data['description'] = $description;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		$data['description_en'] = $description_en;
+		$data['description_en'] = $description_en;
 		$data['status'] = $faq_status;
 		$condition = array();
 		$condition['id'] = $id;
@@ -704,8 +708,10 @@ if($p == "addeditfaq")
 	{
 		$data = array();
 		
-		$data['title_'.$lang] = $title_.$lang;
-		$data['description'] = $description;
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		$data['description_en'] = $description_en;
+		$data['description_en'] = $description_en;
 		$data['status'] = $status;
 		$id = insert_record($tblfaq,$data);
 		if($id>0)

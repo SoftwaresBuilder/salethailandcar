@@ -13,16 +13,16 @@ $products = get_records($tblproducts,$where,"id DESC");
             <div class="col-12 d-none d-md-block">
                 <div class="row text-center">
             		<div class="col-12 col-md-4">
-                        <strong>Photo</strong> 
+                        <strong><?php echo translate("Photos");?></strong> 
                     </div>
                     <div class="col-12 col-md-4">
-                       <strong>Ads Details</strong> 
+                       <strong><?php echo translate("Ads Details");?></strong> 
                     </div>
                     <div class="col-12  col-md-2">
-                       <strong>Price</strong> 
+                       <strong><?php echo translate("Price");?></strong> 
                     </div>
                     <div class="col-12 col-md-2">
-                       <strong>Action</strong> 
+                       <strong><?php echo translate("Action");?></strong> 
                     </div>
                 </div><hr>
             </div>

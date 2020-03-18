@@ -6,7 +6,7 @@ $msg_id=$v['id'];
 <div class="chat_msg">
     <div id="div_<?php echo $msg_id;?>" class="<?php echo $chat_msg;?>">
     <div class="small_text"><?php echo dates_duration($v['created_date']);?>
-    <a class="translate_text" id="a_<?php echo $msg_id;?>" href="javascript:;" onclick="translateChat(<?php echo $msg_id;?>)"><?php echo translate('Translate'); ?></a>
+    <a class="translate_text" style="color: yellow" id="a_<?php echo $msg_id;?>" href="javascript:;" onclick="translateChat(<?php echo $msg_id;?>)"><?php echo translate('Translate'); ?></a>
     </div>
     <?php echo $v['msg'];?>
     <div id="listing_chat"></div>

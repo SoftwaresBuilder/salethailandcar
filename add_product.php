@@ -18,10 +18,11 @@ if(isset($_GET['id'])){
         exit;
     }
 }
+
 if(!isset($_SESSION['sysData']['title_'.$lang])) {
     $_SESSION['sysData'] = table_fields($tblproducts);
 }
-
+//pr($_SESSION['sysData']); exit;
 $category = get_records($tblcategories,"pid='0' and status='1' and trash='0'","title_".$lang." ASC");
 $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and status='1' and trash='0'","title_".$lang." ASC");
 

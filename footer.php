@@ -82,6 +82,7 @@ style=" background-color: rgb(242, 245, 245);
           <div class="col-12 mb10"><a href=""><?php echo translate("Contact Us");?></a></div>
           <div class="col-12 mb10"><a href="cms.php?type=privacy_policy"><?php echo translate("Privacy Policy");?></a></div>
           <div class="col-12 mb10"><a href="cms.php?type=terms_and_conditions"><?php echo translate("lang_text18");?></a></div>
+          <div class="col-12 mb10"><a href="faqs.php"><?php echo translate("FAQ");?></a></div>
         </div>
       </div>
     </div>

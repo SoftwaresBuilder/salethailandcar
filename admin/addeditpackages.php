@@ -3,7 +3,7 @@ $id = '';
 if(isset($_GET['id']))
 {
     $id = dec_password($_GET['id']);
-    $record = get_records($tblpackages,"id='".$id."'");
+    $record = get_records($tblvendor_packages,"id='".$id."'");
     if(isset($record[0])){
         foreach ($record[0] as $k => $v )
         {
@@ -12,7 +12,7 @@ if(isset($_GET['id']))
     }
 }
 else if(!isset($_SESSION['sysData']['id'])) {
-    $_SESSION['sysData'] = table_fields($tblpackages);
+    $_SESSION['sysData'] = table_fields($tblvendor_packages);
 }
 ?>
 <form action="process.php?p=addeditpackages" enctype="multipart/form-data" method="post">
@@ -27,8 +27,14 @@ else if(!isset($_SESSION['sysData']['id'])) {
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Title <span class="err">*</span></label>
-                            <input type="text" required class="form-control" id="title" name="title" placeholder="title" value="<?= $_SESSION['sysData']['title_'.$lang];?>">
+                            <label>Title English <span class="err">*</span></label>
+                            <input onfocusout="translate_into_thai(this.value,'title_th')" type="text" required class="form-control" id="title_en" name="title_en" placeholder="title" value="<?= $_SESSION['sysData']['title_en'];?>">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Title Thai <span class="err">*</span></label>
+                            <input type="text" required class="form-control" id="title_th" name="title_th" placeholder="title" value="<?= $_SESSION['sysData']['title_th'];?>">
                         </div>
                     </div>
                     <div class="col-md-6">

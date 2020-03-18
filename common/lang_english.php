@@ -72,7 +72,7 @@ $lang_data = array(
     'date'=>'Date',
     'action'=>'Action',
     'no_record_found'=>'No record found',
-    'write_your _message'=>'Write your message',
+    'write_your_message'=>'Write your message',
     'send'=>'Send',
     'my_ads'=>'My Ads',
     'pending_approvals'=>'Pending Approvals',
@@ -222,6 +222,10 @@ $lang_data = array(
     'hours_ago'=>'hours ago',
     'minutes_ago'=>'minutes ago',
     'seconds ago'=>'seconds ago',
+    'photos'=>'Photos',
+    'ads_details'=>'Ads Details',
+    'faq'=>'FAQ',
+    ''=>'',
     ''=>'',
 
 );

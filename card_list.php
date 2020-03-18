@@ -17,6 +17,6 @@ $imgs = get_product_imgs($product['id'],'1');
 		<?php echo show_price($product['price']);?>
 	</div>
 	<div class="col-12 col-md-2">
-		Action
+		<a href="<?php echo makepage_url("add_product","?id=".enc_password($product['id']));?>" title="Edit Product"><i class="fa fa-pencil"></i></a>
 	</div>
 </div>

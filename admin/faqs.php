@@ -92,8 +92,8 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                                 $faq_status = get_user_status($v['status']);
                                 ?>
                                 <tr>
-                                    <td><?php echo $v['title_'.$lang]; ?></td>
-                                    <td><?php echo $v['description']; ?></td>
+                                    <td><?php echo $v['title_en']; ?></td>
+                                    <td><?php echo $v['description_en']; ?></td>
                                     
                                     <td><?php echo $faq_status; ?></td>
                                     <td>

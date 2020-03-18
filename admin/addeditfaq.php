@@ -27,20 +27,30 @@ else if(!isset($_SESSION['sysData']['id'])) {
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Title <span class="err">*</span></label>
-                            <input type="text" required class="form-control" id="title" name="title" placeholder="title" value="<?= $_SESSION['sysData']['title_'.$lang];?>">
+                            <label>Title English <span class="err">*</span></label>
+                            <input onfocusout="translate_into_thai(this.value,'title_th')" type="text" required class="form-control" id="title_en" name="title_en" placeholder="title english" value="<?= $_SESSION['sysData']['title_en'];?>">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Description</label>
-                            <input type="text" class="form-control" id="description" name="description" placeholder="description" value="<?= $_SESSION['sysData']['description'];?>">
+                            <label>Title thai <span class="err">*</span></label>
+                            <input type="text" required class="form-control" id="title_th" name="title_th" placeholder="title thai" value="<?= $_SESSION['sysData']['title_th'];?>">
                         </div>
                     </div>
                 </div>
-                
-                   
-                    
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Description english</label>
+                            <input onfocusout="translate_into_thai(this.value,'description_en')" type="text" class="form-control" id="description_en" name="description_en" placeholder="description english" value="<?= $_SESSION['sysData']['description_en'];?>">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Description thai</label>
+                            <input type="text" class="form-control" id="description_th" name="description_th" placeholder="description thai" value="<?= $_SESSION['sysData']['description_th'];?>">
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -62,7 +72,7 @@ else if(!isset($_SESSION['sysData']['id'])) {
                             </select>
                         </div>
                   -->  </div>
-                </div>
+               
                 <input type="hidden" name="id" id="id" value="<?php echo enc_password($_SESSION['sysData']['id']); ?>" />
                 <button type="submit" class="btn btn-info btn-fill" name="submit">Submit</button>
                 <div class="clearfix"></div>

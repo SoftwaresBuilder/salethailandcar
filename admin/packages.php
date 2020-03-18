@@ -32,7 +32,7 @@ if (!isset($_GET['pageNo'])) {
 }
 $from = (($pageNo * $max_results) - $max_results);
 
-$sql = "SELECT * FROM " . $tblpackages . " where " . $where;
+$sql = "SELECT * FROM " . $tblvendor_packages . " where " . $where;
 $sql_limit = $sql . " LIMIT $from, " . $max_results;
 $packages = sql($sql_limit);
 /**************************************************************************/
@@ -90,7 +90,7 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                                 // $category_name = (count($category)>0)?$category[0]['title_'.$lang]:'';
                                 ?>
                                 <tr>
-                                    <td><?php echo $v['title_'.$lang]; ?></td>
+                                    <td><?php echo $v['title_en']; ?></td>
                                     <td><?php echo $v['price']; ?></td>
                                     <td><?php echo $v['post_ads']; ?></td>
                                     <td><?php echo $v['bump_up']; ?></td>
