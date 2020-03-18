@@ -149,19 +149,6 @@ function find_filter_jobs(){
     .btn-color{
       background-color: #e22029;
     }
-    .common-btn{
-      font-size: 12px;
-      font-family: 'Roboto Slab', sans-serif;
-      text-transform: uppercase;
-      font-weight: bold;
-      color:
-      #fff;
-      padding: 9px 25px;
-      border-radius: 4px;
-      display: inline-block;
-      -webkit-transition: 0.4s ease-in-out;
-      transition: 0.4s ease-in-out;
-    }
     .homeBtn {
           border: none;
           padding: 15px 25px;
@@ -169,6 +156,17 @@ function find_filter_jobs(){
           font-weight: 700;
           color: #fff !important;
           background-color: #4885ED;
+          text-transform: uppercase;
+          display: block ruby;
+          margin-top:4px; 
+      }
+      .homeBtn1 {
+          border: none;
+          padding: 15px 25px;
+          font-size: 16px;
+          font-weight: 700;
+          color: #fff !important;
+          background-color: #e22029;
           text-transform: uppercase;
           display: block ruby;
           margin-top:4px; 
@@ -268,14 +266,14 @@ function showGlobalLogin() {
                  $dashboard = ($_SESSION['user_record']['type'])?'dashboard':'account';
               ?>
                 <li class="nav-item d-none d-lg-block">
-                  <a class="common-btn btn-color" href="<?php echo makepage_url($dashboard);?>"><?php echo translate("Dashboard");?></a>
+                  <a class="homeBtn1" href="<?php echo makepage_url($dashboard);?>" style="padding: 10px 18px;font-size: 11px;border-radius: 4px;"><?php echo translate("Dashboard");?></a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
                   <a class="homeBtn" href="<?php echo makepage_url("add_product");?>" style="padding: 10px 18px;font-size: 11px;border-radius: 4px;"><?php echo translate("Post Ads");?> </a>
                 </li>
                
                 <li class="nav-item d-none d-lg-block">
-                  <a class="common-btn btn-color" href="process.php?p=logout"><?php echo translate("Logout");?></a>
+                  <a class="homeBtn1" href="process.php?p=logout" style="padding: 10px 18px;font-size: 11px;border-radius: 4px;"><?php echo translate("Logout");?></a>
                 </li>
                 <li class="nav-item d-block d-lg-none">
                   <a class="nav-link" href="<?php echo makepage_url($dashboard);?>"><?php echo translate("Dashboard");?></a>

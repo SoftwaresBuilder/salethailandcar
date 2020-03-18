@@ -1,4 +1,4 @@
-body{
+ body{
 	font-size: 14px;
 	color: #333;
 }
@@ -148,7 +148,7 @@ a.btn { color: #fff; }
 .mybox2 .title { color: #031542; font-size: 16px; font-weight: bold; text-transform: uppercase; padding-top: 10px; padding-bottom: 15px; }
 .mybox2 .btn { margin-top: 20px; }
 
-.mybox5 { background-color: #fff; padding: 20px 0px;margin: 1px;}
+.mybox5 { background-color: #fff; padding: 20px 0px;margin: 1px;border-bottom: 1px solid #ccc;}
 
 .imgdiv, .imgdiv2 { height: 140px; text-align: center; overflow: hidden; }
 .imgdiv2 { height: 200px; }
