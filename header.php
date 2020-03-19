@@ -304,6 +304,7 @@ function showGlobalLogin() {
               ?>
                 <li class="nav-item d-none d-lg-block">
                   <a class="homeBtn1 btn_size" data-toggle="modal" data-target="#login_popup" title="" href="javascript:void(0);"><?php echo translate("LOGIN");?></a>
+                  <a class="homeBtn" href="<?php echo makepage_url("login");?>" style="padding: 10px 18px;font-size: 11px;border-radius: 4px;"><?php echo translate("Post Ads");?> </a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
                   <a class="homeBtn btn_size" href="javascript:;" data-toggle="modal" data-target="#register_popup" title=""><?php echo translate("SIGN UP");?></a>
@@ -360,14 +361,14 @@ $selected_val = $_POST['category'];  // Storing Selected Value In Variable
 echo translate("You have selected :") .$selected_val;  // Displaying Selected Value
 }
 ?>
-    <form action="<?php echo makepage_url("search","?id=".enc_password($v['id']));?>" method="post">
+    <form action="<?php echo makepage_url("search");?>" method="post">
     <div class="row top_banner_section justify-content-center">
       <div class="col-12 banner_caption"><?php echo translate("lang_text1");?></div>
       <div class="col-12 col-md-8">
         <div class="row">
-          <div class="col-12 col-md-4 nopadding"><input type="text" class="form-control search_fields" name="" placeholder="<?php echo translate("lang_text2.");?>" value=""></div>
+          <div class="col-12 col-md-4 nopadding"><input type="text" class="form-control search_fields" name="title" placeholder="<?php echo translate("lang_text2.");?>" value=""></div>
           <div class="col-12 col-md-4 nopadding">
-            <select class="form-control search_fields" selected="selected" name="category">
+            <select class="form-control search_fields" selected="selected" name="id">
               <?php
               if(count($parent_categories)>0){
                 foreach ($parent_categories as $v) {
@@ -379,10 +380,10 @@ echo translate("You have selected :") .$selected_val;  // Displaying Selected Va
               ?>
             </select>
           </div>
-          <div class="col-12 col-md-4 nopadding"><input type="text" class="form-control search_fields" name="" placeholder="<?php echo translate("Enter location");?>" value=""></div>
+          <div class="col-12 col-md-4 nopadding"><input type="text" class="form-control search_fields" name="location" placeholder="<?php echo translate("Enter location");?>" value=""></div>
         </div>
       </div>
-      <div class="col-12 banner_search_btn"><input type="submit" class="btn btn-primary" name="" value="<?php echo translate("Search");?>"></div>
+      <div class="col-12 banner_search_btn"><input type="submit" class="btn btn-primary" name="submit" value="<?php echo translate("Search");?>"></div>
     </div>
     </form>
   </div>
