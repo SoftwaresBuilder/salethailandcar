@@ -1,11 +1,8 @@
 <?php
 $subcategories = array();
-if(isset($_GET['id'])){
-	$category_id = dec_password($_GET['id']);
-	$subcategories = get_records($tblcategories,"pid='".$category_id."' and status='1' and trash='0'");
+if($id>0){
+	$subcategories = get_records($tblcategories,"pid='".$id."' and status='1' and trash='0'");
 	$subcategories1 = get_records($tblcategories,"banner_name !='NULL' and status='1' and trash='0'");
-	//pr($subcategories1);
-	
 }
 ?>
 <div class="row search_box">

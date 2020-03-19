@@ -2,10 +2,9 @@
 include("header.php");
 
 $id = 0;
-if(isset($_POST['id'])){
-    $id = $_POST['id'];
+if(isset($_REQUEST['id'])){
+    $id = dec_password($_REQUEST['id']);
 }
-
 
 $flag_for_location = false;
 $category = get_records($tblcategories,"id='".$id."' and status='1' and trash='0'");
@@ -42,7 +41,7 @@ if($banner_name){
             <div class="col-12 col-md-9">
                 <div class="col-12 heading mb50">
                     <?php echo $category[0]['title_'.$lang];?>
-                    <div style="float: right;"><span style="color: green;font-size: 24px"><a href="<?php echo makepage_url("search_by_map","?id=".$enc_id);?>">View in map&nbsp;</a> 
+                    <div style="float: right;"><span style="color: green;font-size: 24px"><a href="<?php echo makepage_url("search_by_map","?id=".enc_password($id));?>">View in map&nbsp;</a> 
                     </span></div>
                 </div>
 

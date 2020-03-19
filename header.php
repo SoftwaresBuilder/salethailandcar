@@ -373,7 +373,7 @@ echo translate("You have selected :") .$selected_val;  // Displaying Selected Va
               if(count($parent_categories)>0){
                 foreach ($parent_categories as $v) {
                 ?>
-                  <option value="<?php echo $v['id'];?>"><?php echo $v['title_'.$lang];?></option>
+                  <option value="<?php echo enc_password($v['id']);?>"><?php echo $v['title_'.$lang];?></option>
                 <?php
                 }
               }

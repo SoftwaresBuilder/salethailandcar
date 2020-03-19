@@ -343,7 +343,10 @@ if($p=="translate_into_thai"){
 
 if($p == "getAllProduct"){
 		$cid=$_GET['cid'];
+		$sort_by=$_GET['sort_by'];
+		$location=$_GET['location'];
 		$latlng=explode(",",$_GET['latlng']);
+		$sort_by = ($sort_by)?$sort_by:"distance";
 		// pr($latlng);exit();
 		$lat=trim($latlng[0]);
 		$lng=trim($latlng[1]);
@@ -351,7 +354,7 @@ if($p == "getAllProduct"){
 		///$products=get_records($tblproducts,"category_id='".$cid."' and status>0 and trash!=1");
 		///$sub_cat_id=$products[0]['subcategory_id'];
 		
-		$sql="SELECT *, (3959 * acos(cos(radians('".$lat."')) * cos(radians(latitude)) * cos( radians(longitude) - radians('".$lng."')) + sin(radians('".$lat."')) * sin(radians(latitude)))) AS distance FROM ".$tblproducts." HAVING distance < $cons_gmap_distance AND category_id='".$cid."' AND status>0 AND trash!=1 ORDER BY distance LIMIT 0 , 10";
+		$sql="SELECT *, (3959 * acos(cos(radians('".$lat."')) * cos(radians(latitude)) * cos( radians(longitude) - radians('".$lng."')) + sin(radians('".$lat."')) * sin(radians(latitude)))) AS distance FROM ".$tblproducts." HAVING distance < $cons_gmap_distance AND category_id='".$cid."' AND status>0 AND trash!=1 AND location LIKE '%".$location."%' ORDER BY ".$sort_by." LIMIT 0 , 10";
 
         $products=sql($sql);
 

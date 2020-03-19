@@ -13,9 +13,13 @@ if(!(count($category)>0)){
 $products = get_records($tblproducts,"category_id='".$id."' and status>0 and  trash='0' and latitude!='' and longitude!=''");
 
 $lat_lng = '';
+$lat = "";
+$lng = "";
 if(count($products)>0){
   foreach ($products as $v) {
     $lat_lng .= '{lat: '.$v['latitude'].', lng: '.$v['longitude'].'},';
+    $lat = $v['latitude'];
+    $lng = $v['longitude'];
   }
 }
 ?>
@@ -52,6 +56,21 @@ if(count($products)>0){
         <div class="col-12 col-lg-4" style="overflow-y: auto;height: 600px;margin-bottom: 30px;">
         	<h3><?= translate("Listing");?> <?php echo $category[0]['title_'.$lang]; ?></h3>
           <a href="<?php echo makepage_url("search","?id=".$enc_id);?>"> List View</a>
+          <div class="row">
+              <input type="hidden" name="lat" id="lat" value="<?php echo $lat ?>">
+              <input type="hidden" name="lng" id="lng" value="<?php echo $lng ?>">
+          <div class="col-6">
+            <input name="location" type="text" pattern=".{3,}" onblur="search_on_map()" id="location" class="form-control" placeholder="<?php echo translate("Enter Location");?>" value="" >
+          </div>
+          <div class="col-6">
+            <select class="form-control" id="price_sort" onchange="search_on_map();">
+                  <option value=""><?php echo translate("Sort By");?></option>                       
+                  <option value="price DESC"><?php echo translate("Price Low to High");?></option>
+                  <option value="price ASC"><?php echo translate("Price High to Low");?></option>
+            </select>
+
+          </div>
+          </div>
         	<div id="listing_area"></div>
         </div>
     </div>
@@ -62,7 +81,7 @@ if(count($products)>0){
 
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 5,
-          center: {lat: 51.50759530000001, lng: -0.09935640000000001}
+          center: {lat: <?php echo $lat ?>, lng: <?php echo $lng ?>}
         });
 
         // Create an array of alphabetical characters used to label the markers.
@@ -79,7 +98,7 @@ if(count($products)>0){
         });
 		
 		map.addListener('click', function(e) {
-			my_function(e.latLng);
+			search_on_map(e.latLng);
 		});
 		
 		// Add a marker clusterer to manage the markers.
@@ -87,15 +106,16 @@ if(count($products)>0){
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
       }
 	  
-	  function my_function(latlng){
-      var latlng = latlng.toString();
-      var latlng=latlng.replace('(','');
-      var latlng=latlng.replace(')','');
-      // alert(res);return false;
-      // var res1 = str.split(",");
-      // alert(res1);return false;
-      // var res = str.split(",");
-      // alert(res);return false;
+	  function search_on_map(latlng=""){
+      if(latlng){
+        var latlng = latlng.toString();
+        var latlng=latlng.replace('(','');
+        var latlng=latlng.replace(')','');
+      } else {
+        var latlng=$('#lat').val()+','+$('#lng').val();
+      }
+      var location=$('#location').val();
+      var sort_by = $('#price_sort').val();
       var cid='<?php echo dec_password($_GET['id']); ?>';
       // alert(cid);
       if (cid>0) 
@@ -104,7 +124,7 @@ if(count($products)>0){
                     type: "GET",
                     url: "ajaxphp.php",
                     dataType :'html',
-                    data: {cid:cid,latlng:latlng,p:'getAllProduct'},
+                    data: {cid:cid,location:location,sort_by:sort_by,latlng:latlng,p:'getAllProduct'},
                     success: function(data){
                           $("#listing_area").html(data);
                     }
