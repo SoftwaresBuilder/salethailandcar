@@ -10,7 +10,7 @@
                         <p class="small_para"><?php echo translate("lang_text14");?></p>
                         <div class="search-sec inner">
                             <div class="input-group">
-                                <input name="location" type="text" pattern=".{3,}" id="location" class="form-control" placeholder="<?php echo translate("Enter Location");?>" value="" autocomplete="off">
+                                <input name="location" type="text" pattern=".{3,}" id="location" class="form-control" placeholder="<?php echo translate("Enter Location");?>" value="<?php echo $location;?>" autocomplete="off">
                                 <div class="input-group-append search_btn">
                                     <button class="btn btn-outline-secondary" type="button" onclick="get_filter_products(document.getElementById('location').value);"><img src="images/search.png"></button>
                                 </div>

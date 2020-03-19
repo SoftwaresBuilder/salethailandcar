@@ -47,25 +47,23 @@ if($banner_name){
                 </div>
 
                 <div class="row" id="serach_results">
-
                     <?php
-            if(count($products)>0){
-              foreach ($products as $product) {
-              ?>
+                    if(count($products)>0){
+                      foreach ($products as $product) {
+                    ?>
                         <div class="col-12 col-md-4">
                             <?php include($card_name);?>
                         </div>
-                        <?php
-              }
-            } else {
-            ?>
-                            <div class="col-12">
-                                <div class="err err_div"><?php echo translate("No record found");?></div>
-                            </div>
-                            <?php
-            }
-            ?>
-
+                    <?php
+                      }
+                    } else {
+                    ?>
+                        <div class="col-12">
+                            <div class="err err_div"><?php echo translate("No record found");?></div>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
                 <div id="get_focus" style="display: block;"></div>
             </div>
