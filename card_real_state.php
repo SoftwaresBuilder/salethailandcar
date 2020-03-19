@@ -11,20 +11,20 @@ $imgs = get_product_imgs($product['id'],'1');
 	</div>
 	<div class="col-12 title"><a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>"><?php echo showstring($product['title_'.$lang],"20");?></a></div>
 
-	<div class="col-12"><i class="fa fa-phone"></i>&nbsp;<?php echo showstring($product['location'],"20");?></div>
-	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;<?php echo showstring($product['type'],"20");?></div>
-	<div class="col-4"><i class="fa fa-phone"></i>&nbsp;<?php echo show_price($product['price']);?></div>
+	<div class="col-12"><i class="fa fa-map-marker"></i>&nbsp;<?php echo showstring($product['location'],"20");?></div>
+	<div class="col-4"><i class="fa fa-home"></i>&nbsp;<?php echo showstring($product['type'],"20");?></div>
+	<div class="col-4">&nbsp;<?php echo show_price($product['price']);?></div>
 	<?php if($product['status']==1)
 	{
-	echo '<div class="col-4"><i class="fa fa-phone"></i>&nbsp;Active</div>';
+	echo '<div class="col-4"><i class="fa fa-cog"></i>&nbsp;Active</div>';
 	}
 	else if($product['status']==2)
 	{
-	echo '<div class="col-4"><i class="fa fa-phone"></i>&nbsp;Sold</div>';
+	echo '<div class="col-4"><i class="fa fa-cog"></i>&nbsp;Sold</div>';
 	}
 	else if($product['status']==3)
 	{
-	echo '<div class="col-4"><i class="fa fa-phone"></i>&nbsp;Expired</div>';
+	echo '<div class="col-4"><i class="fa fa-cog"></i>&nbsp;Expired</div>';
 	}
 	 ?>
 	

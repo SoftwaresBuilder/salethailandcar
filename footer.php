@@ -302,7 +302,7 @@ function update_models(id){
   });
 }
 function update_submodels(id){
-  $("#type").html('<option value="">Loading...</option>');
+  $("#submodel_div").html('<option value="">Loading...</option>');
   $.ajax({
     method: "POST",
     url: "ajaxphp.php?p=update_submodels",

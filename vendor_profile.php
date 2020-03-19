@@ -74,7 +74,7 @@ $count_total_products = count($products);
    <div class="row">
       <div class="col-12 col-md-6">
         
-         <a id="show_number" onclick="changeText('<?php echo $vendor_record[0]['phone']; ?>');" class="nav-link btn btn-primary" href="#"><i class="fa fa-phone"></i>xxxxxxx</a>
+         <a id="show_number" onclick="<?php if(isset($_SESSION['user_record'])){?>changeText('<?php echo $vendor_record[0]['phone']; ?>');<?php } ?>" class="nav-link btn btn-primary" href="javascript:;"><i class="fa fa-phone"></i>xxxxxxx</a>
           
       </div>
       <div class="col-12 col-md-6">

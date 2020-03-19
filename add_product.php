@@ -121,11 +121,11 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                         <div class="col-md-8">
                         <div class="form-group">
                            
-                            <input oninput="myFunction('title_th')" onfocusout="translate_into_thai($('#title_en').val(),'title_th')" type="text" required class="form-control" id="title_en" name="title_en" placeholder="" value="<?= $_SESSION['sysData']['title_'.$lang];?>">
+                            <input type="text" required class="form-control" id="title" name="title" placeholder="" value="<?= $_SESSION['sysData']['title_'.$lang];?>">
                         </div>
                         </div>
                     </div>
-                     <div class="row form_fields">
+                     <!-- <div class="row form_fields">
                         <div class="col-md-3"><?php echo translate("Ad Tittle in thai");?></div>
                         <div class="col-md-8">
                         <div class="form-group">
@@ -134,17 +134,17 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                             -th" placeholder="" value="<?= $_SESSION['sysData']['title_'.$lang];?>">
                         </div>
                         </div>
-                    </div>
+                    </div> -->
                      <div class="row form_fields">
                         <div class="col-md-3"><?php echo translate("Ad Description");?> </div>
                         <div class="col-md-8">
                         <div class="form-group">
                             
-                            <textarea required="" oninput="myFunction('description_th')" onfocusout="translate_into_thai($('#description_en').val(),'description_th')" class="form-control" rows="3" id="description_en" name="description_en" placeholder=""><?= $_SESSION['sysData']['description_en'];?></textarea>
+                            <textarea required="" class="form-control" rows="3" id="description" name="description" placeholder=""><?= $_SESSION['sysData']['description_'.$lang];?></textarea>
                         </div>
                         </div>
                     </div>
-                    <div class="row form_fields">
+                   <!--  <div class="row form_fields">
                         <div class="col-md-3"><?php echo translate("Ad Description in thai");?> </div>
                         <div class="col-md-8">
                         <div class="form-group">
@@ -152,7 +152,7 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                             <textarea class="form-control" rows="3" id="description_th" name="description_th" placeholder=""><?= $_SESSION['sysData']['description_th'];?></textarea>
                         </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row form_fields">
                         <div class="col-md-3"><?php echo translate("Category");?></div>
                         <div class="col-md-8">
@@ -229,6 +229,12 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                              <input id="fileupload" name="img[]" type="file" multiple="multiple" />
                     </div>
                 </div>
+                <div class="row form_fields">
+                        <div class="col-md-3"><?php echo translate("Tags");?></div>
+                        <div class="col-md-8">
+                             <input type="text" required class="form-control" id="tags" name="tags" placeholder="<?php echo translate("Tags");?>" value="<?= $_SESSION['sysData']['tags_'.$lang];?>">
+                        </div>
+                    </div>
                     <div class="row form_fields">
                         <div class="col-md-3"><?php echo translate("Address");?></div>
                         <div class="col-md-8">

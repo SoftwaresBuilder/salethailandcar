@@ -19,7 +19,7 @@ if(isset($_SESSION['user_record'])){
 }
 
 $p = getpagename();
-$without_login_pages = array('contact_us','index','login','forgot_password','register', 'faqs', 'news_detail','about','contact','cms','search_by_map','search','product_detail','vendor_profile');
+$without_login_pages = array('contact_us','index','login','forgot_password','register', 'faqs', 'news_detail','about','contact','cms','search_by_map','search','product_detail','vendor_profile','vendor_products');
 if(!isset($_SESSION['user_record'])){
   if( !in_array($p,$without_login_pages) ){
     redirect("login");exit;
@@ -150,27 +150,36 @@ function find_filter_jobs(){
       background-color: #e22029;
     }
     .homeBtn {
-          border: none;
-          padding: 15px 25px;
-          font-size: 16px;
-          font-weight: 700;
-          color: #fff !important;
-          background-color: #4885ED;
-          text-transform: uppercase;
-          display: block ruby;
-          margin-top:4px; 
-      }
-      .homeBtn1 {
-          border: none;
-          padding: 15px 25px;
-          font-size: 16px;
-          font-weight: 700;
-          color: #fff !important;
-          background-color: #e22029;
-          text-transform: uppercase;
-          display: block ruby;
-          margin-top:4px; 
-      }
+    border: none;
+    padding: 15px 25px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff !important;
+    background-color: #4885ED;
+    text-transform: uppercase;
+    display: block ruby;
+    margin-top:4px; 
+}
+.homeBtn:hover{
+  background-color: #3e3bf5;
+}
+.homeBtn1:hover{
+  background-color: #bd3719;
+}
+.homeBtn1 {
+    border: none;
+    padding: 15px 25px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff !important;
+    background-color: #e22029;
+    text-transform: uppercase;
+    display: block ruby;
+    margin-top:4px; 
+}
+.btn_size{
+  padding: 10px 18px;font-size: 11px;border-radius: 4px;
+}
     </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="src/js/lightslider.js"></script> 
@@ -266,14 +275,14 @@ function showGlobalLogin() {
                  $dashboard = ($_SESSION['user_record']['type'])?'dashboard':'account';
               ?>
                 <li class="nav-item d-none d-lg-block">
-                  <a class="homeBtn1" href="<?php echo makepage_url($dashboard);?>" style="padding: 10px 18px;font-size: 11px;border-radius: 4px;"><?php echo translate("Dashboard");?></a>
+                  <a class="homeBtn1 btn_size" href="<?php echo makepage_url($dashboard);?>"><?php echo translate("Dashboard");?></a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
-                  <a class="homeBtn" href="<?php echo makepage_url("add_product");?>" style="padding: 10px 18px;font-size: 11px;border-radius: 4px;"><?php echo translate("Post Ads");?> </a>
+                  <a class="homeBtn btn_size" href="<?php echo makepage_url("add_product");?>"><?php echo translate("Post Ads");?> </a>
                 </li>
                
                 <li class="nav-item d-none d-lg-block">
-                  <a class="homeBtn1" href="process.php?p=logout" style="padding: 10px 18px;font-size: 11px;border-radius: 4px;"><?php echo translate("Logout");?></a>
+                  <a class="homeBtn1 btn_size" href="process.php?p=logout"><?php echo translate("Logout");?></a>
                 </li>
                 <li class="nav-item d-block d-lg-none">
                   <a class="nav-link" href="<?php echo makepage_url($dashboard);?>"><?php echo translate("Dashboard");?></a>
@@ -294,25 +303,25 @@ function showGlobalLogin() {
               } else {
               ?>
                 <li class="nav-item d-none d-lg-block">
-                  <a class="nav-link btn btn-danger" data-toggle="modal" data-target="#login_popup" title="" href="javascript:void(0);"><?php echo translate("LOGIN");?></a>
+                  <a class="homeBtn1 btn_size" data-toggle="modal" data-target="#login_popup" title="" href="javascript:void(0);"><?php echo translate("LOGIN");?></a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
-                  <a class="nav-link btn btn-primary" href="javascript:;" data-toggle="modal" data-target="#register_popup" title=""><?php echo translate("SIGN UP");?></a>
+                  <a class="homeBtn btn_size" href="javascript:;" data-toggle="modal" data-target="#register_popup" title=""><?php echo translate("SIGN UP");?></a>
                 </li>
                 <li class="nav-item d-block d-lg-none">
-                  <a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#login_popup" title=""><?php echo translate("LOGIN");?></a>
+                  <a class="homeBtn1 btn_size" href="javascript:;" data-toggle="modal" data-target="#login_popup" title=""><?php echo translate("LOGIN");?></a>
                 </li>
                 <li class="nav-item d-block d-lg-none">
-                  <a class="nav-link" href="javascript:;" data-toggle="modal" data-target="#register_popup" title=""><?php echo translate("SIGN UP");?></a>
+                  <a class="homeBtn btn_size" href="javascript:;" data-toggle="modal" data-target="#register_popup" title=""><?php echo translate("SIGN UP");?></a>
                 </li>
               <?php
               }
               ?>
               <li class="nav-item">
-                <a class="nav-link" href="process.php?p=select_lang&lang=en"><img src="images/en-flag.png" width="20" /> EN</a>
+                <a class="nav-link lang" href="process.php?p=select_lang&lang=en"><img src="images/en-flag.png" width="20" /> EN</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="process.php?p=select_lang&lang=th"><img src="images/th-flag.png" width="20" /> TH</a>
+                <a class="nav-link lang" href="process.php?p=select_lang&lang=th"><img src="images/th-flag.png" width="20" /> TH</a>
               </li>
             </ul>
           </div>

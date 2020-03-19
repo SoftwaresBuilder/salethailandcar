@@ -10,7 +10,7 @@ $imgs = get_product_imgs($product['id'],'1');
 	</div>
 	<div class="col-12 title"><a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>"><?php echo showstring($product['title_'.$lang],"20");?></a></div>
 
-	<div class="col-12"><i class="fa fa-map-marker"></i>&nbsp;<?php echo showstring($product['location'],"25");?></div>
+	<div class="col-12"><i class="fa fa-map-marker"></i>&nbsp;<?php echo showstring($product['location'],"20");?></div>
 
 	<div class="col-4 card_feature"><i class="fa fa-car"></i>&nbsp;<?php echo $product['type'];?></div>
 	<div class="col-4 card_feature"><i class="fa fa-cog"></i>&nbsp;<?php echo $product['year_registration'];?></div>

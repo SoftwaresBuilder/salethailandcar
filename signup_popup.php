@@ -61,7 +61,7 @@ if(!isset($_SESSION['sysData']['name'])) {
                                              <div class="col pr-2"><a class="btn btn-primary google full_width" href="/site/auth?authclient=google" title="Google"><span><i class="fa fa-google"></i> <?php echo translate("GOOGLE");?></span> </a> </div>                                                </div>                                        </div>
                                         <span class="nw_orcls">Or</span>
                                     </div>
-                                    <form onsubmit="return submitUserForm_signup();" action="process.php?p=register" enctype="multipart/form-data" method="post">
+                                    <form onsubmit="return submitUserForm_signup();" action="process.php?p=partner_register" enctype="multipart/form-data" method="post">
                                       <!-- ........................ -->
                                         <div class="row justify-content-center">
    

@@ -2,6 +2,7 @@
 	font-size: 14px;
 	color: #333;
 }
+
 .ad_banner{
     height: 150px;
     width: 100%;
@@ -92,10 +93,10 @@ a.btn { color: #fff; }
 .bg_image { background-image: url(../images/banner2.png); background-color: #031542; }
 .header { height: 100px; padding-top: 30px; }
 .header .header_menu { float: right; }
-.header a {  color: #fff; font-size: 16px; }
+.header a {  color: #fff; font-size: 11px; }
 .menu_bar { background-color: #1d3c72; color: #fff; font-size: 16px; opacity: .8; border-bottom: 1px solid #5d5d5d; height: 50px; line-height: 50px; text-align: center; }
 .menu_bar a {  color: #fff; font-size: 16px; padding: 10px 20px; }
-
+.lang { font-size: 16px }
 .top_banner_section { padding: 100px 0px; text-align: center; }
 .banner_caption { font-size: 36px; font-weight: bold; color: #fff; font-family: 'Roboto Slab', sans-serif; text-transform: uppercase; padding-bottom: 40px; }
 .banner_search_btn { margin-top: 30px; }

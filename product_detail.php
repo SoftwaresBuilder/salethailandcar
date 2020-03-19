@@ -326,7 +326,8 @@ function show_hide_num(val) {
       ?>
       <div class="col-12 heading mt40 border_bottom"><?php echo translate("Description");?></div>
       <div class="col-12"><?php echo $product[0]['description_'.$lang];?></div>
-      <div class="col-12 heading mt40 border_bottom"><?php echo translate("Similar Ads");?></div>
+
+      <?php $temp_product = $product; include('similar_ads.php'); $product = $temp_product ;?>
     </div>
   </div>
   <div class="col-12 col-md-4">
@@ -352,6 +353,7 @@ function show_hide_num(val) {
           <div class="col-9">
             By
             <a href="vendor_profile.php?id=<?=enc_password($user[0]['id']);?>"><?php echo $user[0]['name']; ?></a><br>
+            <a href="vendor_products.php?id=<?=enc_password($user[0]['id']);?>"><?php echo translate('View All Products'); ?></a><br>
             <?php echo $product[0]['created_date']; ?> - <?php echo translate("Views");?> <span class="bold"><?php echo $views; ?></span></br>
             <?php if($user[0]['login']=='1')
             { echo '<h6 style="color:green;">online</h6>';} ?>
@@ -364,7 +366,7 @@ function show_hide_num(val) {
       </div>
       <div class="col-12 pb10">
         <div class="row">
-          <div class="col-6"><a id="show_hide_num" class="nav-link btn btn-primary" href="javascript:void(0);" onclick="show_hide_num('<?php echo $user[0]['phone'];?>')"><i class="fa fa-phone"></i>xxxxxxx</a></div>
+          <div class="col-6"><a id="show_hide_num" class="nav-link btn btn-primary" href="javascript:void(0);" onclick="<?php if(isset($_SESSION['user_record'])){?> show_hide_num('<?php echo $user[0]['phone'];?>') <?php } ?>"><i class="fa fa-phone"></i>xxxxxxx</a></div>
           <div class="col-6"><a class="nav-link btn btn-primary" href="javascript:void(0);"
           onclick="<?php if(isset($_SESSION['user_record'])){ ?> openChat(); <?php } else {?> window.location='<?php echo makepage_url("login");?>'<?php }?>"><?php echo translate("MESSAGE");?></a></div>
         </div>

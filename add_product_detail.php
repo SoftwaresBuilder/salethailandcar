@@ -133,6 +133,52 @@ $p_features = get_records($tblproduct_features,'category_id = '.$product[0]['sub
                     </div>
                 <?php
                 }
+                if($category[0]['title_en']=="Real Estate"){
+                ?>
+                 <div class="row form_fields">
+                        <div class="col-md-3"><?php echo translate("Number of BedRooms");?></div>
+                        <div class="col-md-8">
+                        <select class="form-control" id="bedrooms" name="bedrooms">
+                            <option value=""><?php echo translate("Select Bedrooms");?></option>
+                            <?php
+                                for($i=0;i<10;i++){
+                                ?>
+                                    <option value="<?php echo $i;?>"><?php echo $i;?></option>
+                                <?php
+                            }?>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="row form_fields">
+                        <div class="col-md-3"><?php echo translate("Number of BathRooms");?></div>
+                        <div class="col-md-8">
+                        <select class="form-control" id="bathrooms" name="bathrooms">
+                            <option value=""><?php echo translate("Select Bathrooms");?></option>
+                            <?php
+                                for($i=0;i<10;i++){
+                                ?>
+                                    <option value="<?php echo $i;?>"><?php echo $i;?></option>
+                                <?php
+                            }?>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="row form_fields">
+                        <div class="col-md-3"><?php echo translate("Number of Kitchens");?></div>
+                        <div class="col-md-8">
+                        <select class="form-control" id="kitchens" name="kitchens">
+                            <option value=""><?php echo translate("Select Kitchens");?></option>
+                            <?php
+                                for($i=0;i<10;i++){
+                                ?>
+                                    <option value="<?php echo $i;?>"><?php echo $i;?></option>
+                                <?php
+                            }?>
+                        </select>
+                        </div>
+                    </div>
+                <?php
+                }
                 ?>
                 <div class="col-md-12 heading3"><?php echo translate("Seller information");?></div>
                 <div class="row form_fields">

@@ -6,6 +6,7 @@ $user_id = 0;
 if(isset($_SESSION['user_record'])){
 	$user_id = $_SESSION['user_record']['id'];
 }
+$lang = $_SESSION['lang'];
 $flg = false;
 $p = $_GET['p'];//get page reference to execute the related condition
 
@@ -258,9 +259,9 @@ if($p=="add_product"){
 		}
 	}
 	
-	if(!$title_en)
+	if(!$title)
 	{
-		$_SESSION['sysErr']['title_'.$lang] = "Please enter ad name";
+		$_SESSION['sysErr']['title'] = "Please enter ad name";
 		$flg = true;
 	}
 	
@@ -273,13 +274,25 @@ if($p=="add_product"){
 	if( $id > 0 )
 	{
 		$data = array();
+		if($lang =='en'){
+			$data['title_en'] = $title;
+			$data['title_th'] = translate_api($title,'en','th');
+			$data['description_en'] = $description;
+			$data['description_th'] = translate_api($description,'en','th');
+			$data['tags_en'] = $tags;
+			$data['tags_th'] = translate_api($tags,'en','th');
+			}
+		else if($lang =='th'){
+			$data['title_th'] = $title;
+			$data['title_en'] =  translate_api($title,'th','en');
+			$data['description_th'] = $description;
+			$data['description_en'] =  translate_api($description,'th','en');
+			$data['tags_th'] = $tags;
+			$data['tags_en'] = translate_api($tags,'th','en');
+		}
 		$data['category_id'] = $category_id;
 		$data['subcategory_id'] = $subcategory_id;
 		$data['user_id'] = $user_id;
-		$data['title_en'] = $title_en;
-		$data['title_th'] = $title_th;
-		$data['description_en'] = $description_en;
-		$data['description_th'] = $description_th;
 		$data['price'] = save_price($price);
 		$data['longitude'] = $longitude;
 		$data['latitude'] = $latitude;
@@ -307,20 +320,31 @@ if($p=="add_product"){
 	else
 	{
 		$data = array();
+		if($lang =='en'){
+			$data['title_en'] = $title;
+			$data['title_th'] = translate_api($title,'en','th');
+			$data['description_en'] = $description;
+			$data['description_th'] = translate_api($description,'en','th');
+			$data['tags_en'] = $tags;
+			$data['tags_th'] = translate_api($tags,'en','th');
+			}
+		else if($lang =='th'){
+			$data['title_th'] = $title;
+			$data['title_en'] =  translate_api($title,'th','en');
+			$data['description_th'] = $description;
+			$data['description_en'] =  translate_api($description,'th','en');
+			$data['tags_th'] = $tags;
+			$data['tags_en'] = translate_api($tags,'th','en');
+		}
 		$data['category_id'] = $category_id;
 		$data['subcategory_id'] = $subcategory_id;
 		$data['user_id'] = $user_id;
-		$data['title_en'] = $title_en;
-		$data['title_th'] = $title_th;
-		$data['description_en'] = $description_en;
-		$data['description_th'] = $description_th;
 		$data['price'] = save_price($price);
 		$data['longitude'] = $longitude;
 		$data['latitude'] = $latitude;
 		$data['location'] = $location;
 		$data['type'] = $type;
 		$data['submodel'] = $submodel;
-		
 		$data['model'] = $model;
 		/**
 		$data['brand'] = $brand;
@@ -330,7 +354,6 @@ if($p=="add_product"){
 		$data['gearbox'] = $gearbox;
 		$data['features'] = $features;
 		/**/
-		
 		$id = insert_record($tblproducts,$data);
 		
 		if($id>0)

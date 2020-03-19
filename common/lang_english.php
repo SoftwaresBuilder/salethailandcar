@@ -226,7 +226,15 @@ $lang_data = array(
     'ads_details'=>'Ads Details',
     'faq'=>'FAQ',
     'lang_text35'=>'We will never share your email with anyone else.',
-    ''=>'',
+    'tags'=>'tags',
+    'view_all_products'=>'View All Products',
+    'all_products_of'=>'All Products of',
+    'number_of_bedrooms'=>'Number of BedRooms',
+    'select_bedrooms'=>'Select Bedrooms',
+    'number_of-bathrooms'=>'Number of BathRooms',
+    'select_bathrooms'=>'Select Bathrooms',
+    'number_of_kitchens'=>'Number of Kitchens',
+    'select_kitchens'=>'Select Kitchens',
 
 );
 ?>
