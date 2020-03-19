@@ -25,6 +25,7 @@ if($p == "upload_product_images"){
 					
 					$imgname = "";
 					$img_name = upload_img($files_arr,$dir_site_uploads,$imgname);
+					add_watermark($dir_site_uploads.$img_name);
 					if($img_name){
 						$_SESSION['sysErr']['msg'] = "Images uploaded successfully";
 						$data = array();
@@ -248,7 +249,7 @@ if($p == "addeditcategory")
 	if($id){
 		$id = dec_password($id);
 	}
-	if(!$title){
+	if(!$title_en){
 		$_SESSION['sysErr']['msg'] = "Please enter category title";
 		$flg = true;
 	}
@@ -835,6 +836,10 @@ if($p == "addeditnews")
 		$data['title_th'] = $title_th;
 		$data['description_en'] = $description_en;
 		$data['description_th'] = $description_th;
+		$data['tags_en'] = $tags_en;
+		$data['tags_th'] = $tags_th;
+		$data['meta_description_en'] = $meta_description_en;
+		$data['meta_description_th'] = $meta_description_th;
 		$data['status'] = $status;
 		$condition = array();
 		$condition['id'] = $id;
@@ -851,6 +856,10 @@ if($p == "addeditnews")
 		$data['title_th'] = $title_th;
 		$data['description_en'] = $description_en;
 		$data['description_th'] = $description_th;
+		$data['tags_en'] = $tags_en;
+		$data['tags_th'] = $tags_th;
+		$data['meta_description_en'] = $meta_description_en;
+		$data['meta_description_th'] = $meta_description_th;
 		$data['status'] = $status;
 		$id = insert_record($tblnews,$data);
 		if($id>0)

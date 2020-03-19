@@ -65,7 +65,7 @@ if($p=="update_ad_type"){
 	$html = '<option value="">Select Type</option>';
 	if(count($types)>0){
 		foreach ($types as $v) {
-			$html .= '<option value="'.$v['id'].'">'.$v['title_'.$lang].'</option>';
+			$html .= '<option value="'.$v['title_'.$lang].'">'.$v['title_'.$lang].'</option>';
 		}
 	}
 	echo $html;

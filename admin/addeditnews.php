@@ -27,14 +27,14 @@ else if(!isset($_SESSION['sysData']['id'])) {
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Title English<span class="err">*</span></label>
-                            <input onfocusout="translate_into_thai(this.value,'title_th')" type="text" required class="form-control" id="title_en" name="title_en" placeholder="Post name" value="<?= $_SESSION['sysData']['title_en'];?>">
+                            <label>Blog Title English<span class="err">*</span></label>
+                            <input onfocusout="translate_into_thai(this.value,'title_th')" type="text" required class="form-control" id="title_en" name="title_en" placeholder="Blog title in English" value="<?= $_SESSION['sysData']['title_en'];?>">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Title thai<span class="err">*</span></label>
-                            <input type="text" required class="form-control" id="title_th" name="title_th" placeholder="Post name" value="<?= $_SESSION['sysData']['title_th'];?>">
+                            <label>Blog Title thai<span class="err">*</span></label>
+                            <input type="text" required class="form-control" id="title_th" name="title_th" placeholder="Blog titile in Thai" value="<?= $_SESSION['sysData']['title_th'];?>">
                         </div>
                     </div>
                     
@@ -43,13 +43,41 @@ else if(!isset($_SESSION['sysData']['id'])) {
                 	<div class="col-md-6">
                         <div class="form-group">
                             <label>Description English</label>
-                            <textarea onfocusout="translate_into_thai(this.value,'description_th')" class="form-control" id="description_en" name="description_en" placeholder="Category detail"><?= $_SESSION['sysData']['description_en'];?></textarea>
+                            <textarea onfocusout="translate_into_thai(this.value,'description_th')" class="form-control" id="description_en" name="description_en" placeholder="Description in English"><?= $_SESSION['sysData']['description_en'];?></textarea>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Description Thai</label>
-                            <textarea class="form-control" id="description_th" name="description_th" placeholder="Category detail"><?= $_SESSION['sysData']['description_th'];?></textarea>
+                            <textarea class="form-control" id="description_th" name="description_th" placeholder="Description in Thai"><?= $_SESSION['sysData']['description_th'];?></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Tags in English</label>
+                            <textarea onfocusout="translate_into_thai(this.value,'tags_th')" class="form-control" id="tags_en" name="tags_en" placeholder="Tags in English"><?= $_SESSION['sysData']['tags_en'];?></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Tags in Thai</label>
+                            <textarea class="form-control" id="tags_th" name="tags_th" placeholder="Tags in Thai"><?= $_SESSION['sysData']['tags_th'];?></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Meta Description English</label>
+                            <textarea onfocusout="translate_into_thai(this.value,'meta_description_th')" class="form-control" id="meta_description_en" name="meta_description_en" placeholder="Meta Description in English"><?= $_SESSION['sysData']['meta_description_en'];?></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Meta Description Thai</label>
+                            <textarea class="form-control" id="meta_description_th" name="meta_description_th" placeholder="Meta Description in Thai"><?= $_SESSION['sysData']['meta_description_th'];?></textarea>
                         </div>
                     </div>
                 </div>

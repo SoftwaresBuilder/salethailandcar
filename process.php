@@ -249,6 +249,21 @@ if($p=="delproduct_img"){
 	header("location:".$_SESSION['page_url']);
 	exit;
 }
+if($p=="delproduct"){
+	$enc_id = $_GET['id'];
+	$id = dec_password($enc_id);
+	$data = array();
+	$data['trash'] = '1';
+	$condition = array();
+	$condition['id'] = $id;
+	$result = update_record($tblproducts ,$data,$condition);
+	if($result)
+	{
+		$_SESSION['sysErr']['msg'] = "Product deleted successfully";
+	}
+	header("location:".$_SESSION['page_url']);
+	exit;
+}
 if($p=="add_product"){
 	//pr($_FILES); exit;	
 	foreach ($_POST as $k => $v )
@@ -402,10 +417,8 @@ if($p=="add_product"){
 	exit;
 }
 if($p=="add_product_detail"){
-	
 	$features_ids = implode('-', $_POST['features']);
 	$fuel_type_ids = implode('-', $_POST['fuel_type']);
-	
 	foreach ($_POST as $k => $v )
 	{
 		if(!is_array($v)){
@@ -421,7 +434,9 @@ if($p=="add_product_detail"){
 		$data['fuel_type'] = $fuel_type_ids;
 		// $data['gearbox'] = $gearbox;
 		$data['features'] = $features_ids;
-		pr($data);
+		$data['bedrooms'] =$bedrooms;
+		$data['bathrooms'] =$bathrooms;
+		$data['kitchens'] =$kitchens;
 		$condition = array();
 		$condition['id'] = dec_password($id);
 		$result = update_record($tblproducts ,$data,$condition);
@@ -626,22 +641,24 @@ if($p=="my_account"){
 				  $img_name = upload_img($files_arr,$dir_site_uploads,$imgname);
 			}
 			$password = enc_password($password);
+			$data = array();
 			$data['name'] = $name;
-			$data['img'] = $profile_img;
+			if($imgname!=""){
+			$data['img'] = $img_name;
+			}
 			$data['address'] = $address;
 			$data['email'] = $email;
 			$data['password'] = $password;
 			$data['city'] = $city;
 			$data['state'] = $state;
 			$data['zip'] = $zip;
-			$data['img'] = $img_name;
 			$condition = array();
 			$condition['id'] = $user_id;
 			$result = update_record($tblusers,$data,$condition);
 			
 			if($result)
 			{
-				$_SESSION['sysErr']['msg'] = "Record updated successfully";
+				$_SESSION['sysErr']['msg'] = "Profile updated successfully";
 			}
 		}
 	}

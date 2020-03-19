@@ -141,7 +141,7 @@ $p_features = get_records($tblproduct_features,'category_id = '.$product[0]['sub
                         <select class="form-control" id="bedrooms" name="bedrooms">
                             <option value=""><?php echo translate("Select Bedrooms");?></option>
                             <?php
-                                for($i=0;i<10;i++){
+                                for($i=0;$i<11;$i++){
                                 ?>
                                     <option value="<?php echo $i;?>"><?php echo $i;?></option>
                                 <?php
@@ -155,7 +155,7 @@ $p_features = get_records($tblproduct_features,'category_id = '.$product[0]['sub
                         <select class="form-control" id="bathrooms" name="bathrooms">
                             <option value=""><?php echo translate("Select Bathrooms");?></option>
                             <?php
-                                for($i=0;i<10;i++){
+                                for($i=0;$i<11;$i++){
                                 ?>
                                     <option value="<?php echo $i;?>"><?php echo $i;?></option>
                                 <?php
@@ -169,7 +169,7 @@ $p_features = get_records($tblproduct_features,'category_id = '.$product[0]['sub
                         <select class="form-control" id="kitchens" name="kitchens">
                             <option value=""><?php echo translate("Select Kitchens");?></option>
                             <?php
-                                for($i=0;i<10;i++){
+                                for($i=0;$i<11;$i++){
                                 ?>
                                     <option value="<?php echo $i;?>"><?php echo $i;?></option>
                                 <?php

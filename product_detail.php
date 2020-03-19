@@ -8,7 +8,6 @@ if(isset($_GET['id'])){
 
 $product = get_records($tblproducts,"id='".$id."' and status>0 and trash='0'");
 if(!(count($product)>0)){
-  pr($product);exit;
   redirect("search");exit;
 }
 

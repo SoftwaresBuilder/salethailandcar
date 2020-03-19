@@ -304,7 +304,9 @@ function showGlobalLogin() {
               ?>
                 <li class="nav-item d-none d-lg-block">
                   <a class="homeBtn1 btn_size" data-toggle="modal" data-target="#login_popup" title="" href="javascript:void(0);"><?php echo translate("LOGIN");?></a>
-                  <a class="homeBtn" href="<?php echo makepage_url("login");?>" style="padding: 10px 18px;font-size: 11px;border-radius: 4px;"><?php echo translate("Post Ads");?> </a>
+                </li>
+                <li class="nav-item d-none d-lg-block">
+                  <a class="homeBtn btn_size" href="<?php echo makepage_url("login");?>"><?php echo translate("Post Ads");?> </a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
                   <a class="homeBtn btn_size" href="javascript:;" data-toggle="modal" data-target="#register_popup" title=""><?php echo translate("SIGN UP");?></a>
