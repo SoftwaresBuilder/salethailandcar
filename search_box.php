@@ -10,7 +10,7 @@ if(isset($_GET['id'])){
 ?>
 <div class="row search_box">
 	
-	<div <?php if($flag_for_location){?> style="display: none;" <?php } ?> class="col-12 border_bottom pt10"><input type="text" class="form-control" placeholder="<?php echo translate("Location");?>" name=""></div>
+	<div <?php if($flag_for_location){?> style="display: none;" <?php } ?> class="col-12 border_bottom pt10"><input type="text" class="form-control" placeholder="<?php echo translate("Location");?>" name="location" value="<?php echo $location;?>"></div>
 	<div class="col-12 border_bottom">
 		
 		<select class="form-control">

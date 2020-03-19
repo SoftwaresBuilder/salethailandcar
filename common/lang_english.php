@@ -99,7 +99,7 @@ $lang_data = array(
     'or'=>'Or',
     'password'=>'Password',
     'lang_text1'=>'WHAT ARE YOU LOOKING FOR?',
-	'lang_text2'=>'Search by cars, houses etc.',
+	'lang_text2'=>'Search by product name',
 	'lang_text3'=>'Post a Free Classified Ad',
 	'lang_text4'=>'Post your free online classified ads with us. Lorem ipsum dolor sit amet, consectetur
                             adipiscing elit.',
