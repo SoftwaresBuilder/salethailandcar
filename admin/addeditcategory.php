@@ -47,7 +47,7 @@ $parent_categories = get_records($tblcategories,"pid='0' and trash!='1'");
                      <div class="col-md-6">
                         <div class="form-group">
                             <label>Title English <span class="err">*</span></label>
-                            <input type="text" required class="form-control" id="title_en" name="title_en" placeholder="title" value="<?= $_SESSION['sysData']['title_en'];?>">
+                            <input onfocusout="translate_into_thai(this.value,'title_th')" type="text" required class="form-control" id="title_en" name="title_en" placeholder="title" value="<?= $_SESSION['sysData']['title_en'];?>">
                         </div>
                     </div>
                 </div>

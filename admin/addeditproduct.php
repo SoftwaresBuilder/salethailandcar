@@ -85,7 +85,7 @@ $users=  get_records($tblusers, "id>'0' and trash='0'");
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Title English <span class="err">*</span></label>
-                            <input oninput="myFunction('title_th')" onfocusout="translate_into_thai($('#title_en').val(),'title_th')" type="text" required class="form-control" id="title_en" name="title_en" placeholder="title" value="<?= $_SESSION['sysData']['title_en'];?>">
+                            <input onfocusout="translate_into_thai($('#title_en').val(),'title_th')" type="text" required class="form-control" id="title_en" name="title_en" placeholder="title" value="<?= $_SESSION['sysData']['title_en'];?>">
                         </div>
                     </div>
                      <div class="col-md-6">
@@ -181,7 +181,7 @@ $users=  get_records($tblusers, "id>'0' and trash='0'");
                      <div class="col-md-6">
                         <div class="form-group">
                             <label>Description English</label>
-                            <textarea  oninput="myFunction('description_th')" onfocusout="translate_into_thai($('#description_en').val(),'description_th')" class="form-control" id="description_en" name="description_en" placeholder="description"><?= $_SESSION['sysData']['description_en'];?></textarea>
+                            <textarea onfocusout="translate_into_thai($('#description_en').val(),'description_th')" class="form-control" id="description_en" name="description_en" placeholder="description"><?= $_SESSION['sysData']['description_en'];?></textarea>
                         </div>
                     </div>
                      <div class="col-md-6">

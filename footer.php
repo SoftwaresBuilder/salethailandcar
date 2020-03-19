@@ -155,7 +155,28 @@ function show_forgot_password_form(){
     margin-bottom: 5px;
   }
 </style>
+</body>
+</html>
 
+<div id="delete" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal_tlt"><?php echo translate("Delete");?></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-danger" id="modal_msg"><?php echo translate("Are you sure you want to perform delete operation?");?></p>
+      </div>
+      
+      <div class="modal-footer">
+      <a class="btn btn-danger" id="delete_client_button" href="" ><?php echo translate("Yes");?></a>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo translate("No");?></button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div id="register_popup" class="modal fade login_popup" role="dialog">
   <div class="modal-dialog">
@@ -188,10 +209,6 @@ function show_forgot_password_form(){
   </div>
 </div>
 
-
-</body>
-</html>
-
 <div id="form_popup" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
@@ -221,25 +238,7 @@ function form_popup(modal_tlt="",modal_msg=""){
 }
 </script>
 
-<div id="delete" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" id="modal_tlt"><?php echo translate("Delete");?></h4>
-      </div>
-      <div class="modal-body">
-        <p class="text-danger" id="modal_msg"><?php echo translate("Are you sure you want to perform delete operation?");?></p>
-      </div>
-      
-      <div class="modal-footer">
-      <a class="btn btn-danger" id="delete_client_button" href="" ><?php echo translate("Yes");?></a>
-        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo translate("No");?></button>
-      </div>
-    </div>
-  </div>
-</div>
+
 <script>
 function delete_record(url,modal_msg="",modal_tlt=""){
   if(modal_msg!=""){
