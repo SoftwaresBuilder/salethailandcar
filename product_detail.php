@@ -284,42 +284,42 @@ function show_hide_num(val) {
       <?php
       if($product[0]['type']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Type");?></span><br><?php echo $product[0]['type'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Type");?></span><br><?php echo translate($product[0]['type']);?></div>
       <?php
       }
       if($product[0]['model']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Model");?></span><br><?php echo $product[0]['model'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Model");?></span><br><?php echo translate($product[0]['model']);?></div>
       <?php
       }
       if($product[0]['brand']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Brand");?></span><br><?php echo $product[0]['brand'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Brand");?></span><br><?php echo translate($product[0]['brand']);?></div>
       <?php
       }
       if($product[0]['year_registration']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Registration Year");?></span><br><?php echo $product[0]['year_registration'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Registration Year");?></span><br><?php echo translate($product[0]['year_registration']);?></div>
       <?php
       }
       if($product[0]['driven']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Driven");?></span><br><?php echo $product[0]['driven'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Driven");?></span><br><?php echo translate($product[0]['driven']);?></div>
       <?php
       }
       if($product[0]['fuel_type']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Fuel Type");?></span><br><?php echo $product[0]['fuel_type'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Fuel Type");?></span><br><?php echo translate($product[0]['fuel_type']);?></div>
       <?php
       }
       if($product[0]['gearbox']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Gearbox Type");?></span><br><?php echo $product[0]['gearbox'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Gearbox Type");?></span><br><?php echo translate($product[0]['gearbox']);?></div>
       <?php
       }
       if($product[0]['features']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Features");?></span><br><?php echo $product[0]['features'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Features");?></span><br><?php echo translate($product[0]['features']);?></div>
       <?php
       }
       ?>

@@ -47,7 +47,7 @@ style=" background-color: rgb(242, 245, 245);
         <div class="row">
           <div class="col-12 mb10"><img src="images/site-logo.png" class="img-fluid"></div>
           <div class="col-12 mb10"><?php echo translate("lang_text16");?> </div>
-          <div class="col-12"><input type="button" class="btn btn-primary" name="" value="<?php echo translate("READ MORE ABOUT US");?>"></div>
+          <div class="col-12"><a href="cms.php?type=aboutus"><input type="button" class="btn btn-primary" name="" value="<?php echo translate("READ MORE ABOUT US");?>"></a></div>
         </div>
       </div>
       <div class="col-12 col-md-3">

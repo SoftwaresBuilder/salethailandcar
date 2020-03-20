@@ -9,13 +9,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Email <span class="err">*</span></label>
+                            <label><?php echo translate("Email");?> <span class="err">*</span></label>
                             <input type="email" required class="form-control" id="email" name="email" placeholder="Email" value="">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Password <span class="err">*</span></label>
+                            <label><?php echo translate("Password");?><span class="err">*</span></label>
                             <input type="password" required class="form-control" id="password" name="password" placeholder="Password" value="">
                         </div>
                     </div>
