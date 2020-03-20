@@ -42,7 +42,6 @@ if($p=="chat_send"){
 	}
 
 	$data = array();
-	$data['chat_id'] = $chat_id;
 	$data['product_id'] = $product_id;
 	$data['user_id'] = $user_id;
 	$data['touser_id'] = $touser_id;
@@ -65,7 +64,7 @@ if($p=="update_ad_type"){
 	$html = '<option value="">Select Type</option>';
 	if(count($types)>0){
 		foreach ($types as $v) {
-			$html .= '<option value="'.$v['title_'.$lang].'">'.$v['title_'.$lang].'</option>';
+			$html .= '<option value="'.$v['id'].'">'.$v['title_'.$lang].'</option>';
 		}
 	}
 	echo $html;
@@ -402,5 +401,31 @@ if($p == "getTranslate"){
 			}
 		}
 		
+}
+if($p == "set_image_attribute"){
+	
+		$id = $_GET['id'];
+		$p_id = $_GET['p_id'];
+		$alt = $_GET['alt'];
+		$description = $_GET['description'];
+		$is_main = $_GET['is_main'];
+		if($id){
+			if($is_main!=0)
+			{
+			$data2 = array();
+			$data2['main'] = 0;
+			$condition2 = array();
+			$condition2['product_id'] =$p_id ;
+			$result2 = update_record($tblproduct_images,$data2,$condition2);
+			}
+			$data = array();
+			$data['alt'] = $alt;
+			$data['description'] = $description;
+			$data['main'] = $is_main;
+			$condition = array();
+			$condition['id'] = $id;
+			$result = update_record($tblproduct_images,$data,$condition);
+		}
+	exit;
 }
 ?>

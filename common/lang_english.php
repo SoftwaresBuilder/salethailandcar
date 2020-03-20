@@ -235,6 +235,23 @@ $lang_data = array(
     'select_bathrooms'=>'Select Bathrooms',
     'number_of_kitchens'=>'Number of Kitchens',
     'select_kitchens'=>'Select Kitchens',
+    'images'=>'Images',
+    'delete_image'=>'Delete Image',
+    'alt'=>'Alt',
+    'attribute'=>'Attribute',
+    'upload_images'=>'Upload Images',
+    'main_image'=>'Main Image',
+    'add_another_image'=>'Add Another Image',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
+    ''=>'',
 
 );
 ?>

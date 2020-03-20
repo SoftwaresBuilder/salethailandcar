@@ -17,8 +17,9 @@ $imgs = get_product_imgs($product['id'],'1');
 		<?php echo show_price($product['price']);?>
 	</div>
 	<div class="col-12 col-md-2">
-		<a href="<?php echo makepage_url("add_product","?id=".enc_password($product['id']));?>" title="Edit Product"><i class="fa fa-pencil"></i></a>
+		<a href="<?php echo makepage_url("edit_product","?id=".enc_password($product['id']));?>" title="<?php echo translate('Edit Product'); ?>"><i class="fa fa-pencil"></i></a>
 		<!-- <a href="process.php?p=delproduct&id=<?= enc_password($product['id']);?>" title="Delete Product"><i class="fa fa-trash"></i></a> -->
-		<a href="javascript:;" onclick="delete_record('process.php?p=delproduct&id=<?= enc_password($product['id']);?>');" data-toggle="modal" data-target="#delete" title="Delete Record"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;
+		<a href="javascript:;" onclick="delete_record('process.php?p=delproduct&id=<?= enc_password($product['id']);?>');" data-toggle="modal" data-target="#delete" title="<?php echo translate('Delete Record'); ?>"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;
+		<a href="<?php echo makepage_url("edit_product_images","?id=".enc_password($product['id']));?>" title="<?php echo translate('Upload Images'); ?>"><i class="fa fa-image"></i></a>
 	</div>
 </div>

@@ -283,6 +283,7 @@ function update_ad_type(id){
     $("#type").html(msg);
   });
   update_models(id);
+  update_submodels(id);
 }
 function update_models(id){
   $("#type").html('<option value="">Loading...</option>');
@@ -301,7 +302,6 @@ function update_models(id){
   });
 }
 function update_submodels(id){
-  $("#submodel_div").html('<option value="">Loading...</option>');
   $.ajax({
     method: "POST",
     url: "ajaxphp.php?p=update_submodels",
@@ -421,6 +421,24 @@ function myFunction(str){
              } 
         });
     }
+     function set_image_attribute(id,p_id)
+    {
+      var is_main =0;
+      var alt = $('#img_alt'+id).val();
+      var description = $('#img_description'+id).val();
+      if($('#main_img'+id).prop('checked')) { 
+         is_main =1;
+     }
+    //alert(alt + ' / '+description+' / '+is_main); return false;
+     $.ajax({
+            type: "GET",
+            url: "ajaxphp.php",
+             dataType: 'html',  
+            data: {id:id,p_id:p_id,alt:alt,description:description,is_main:is_main,p:'set_image_attribute'},
+            success: function(data){
+                } 
+        });
+}
 </script>
 
 <?php

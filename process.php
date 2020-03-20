@@ -264,8 +264,7 @@ if($p=="delproduct"){
 	header("location:".$_SESSION['page_url']);
 	exit;
 }
-if($p=="add_product"){
-	//pr($_FILES); exit;	
+if($p=="add_product"){	
 	foreach ($_POST as $k => $v )
 	{
 		if(!is_array($v)){
@@ -288,6 +287,8 @@ if($p=="add_product"){
 
 	if( $id > 0 )
 	{
+		$features_ids = implode('::', $_POST['features']);
+		$fuel_type_ids = implode('::', $_POST['fuel_type']);
 		$data = array();
 		if($lang =='en'){
 			$data['title_en'] = $title;
@@ -314,22 +315,24 @@ if($p=="add_product"){
 		$data['location'] = $location;
 		$data['type'] = $type;
 		$data['ad_type'] = $ad_type;
-		$data['submodel'] = $submodel;
-		$data['model'] = $model;
-		/**
-		$data['brand'] = $brand;
-		$data['year_registration'] = $year_registration;
-		$data['driven'] = $driven;
-		$data['fuel_type'] = $fuel_type;
-		$data['gearbox'] = $gearbox;
-		$data['features'] = $features;
-		/**/
+		if(isset($submodel)){$data['submodel'] = $submodel;}
+		if(isset($model)){$data['model'] = $model;}
+		if(isset($brand)){$data['brand'] = $brand;}
+		if(isset($year_registration)){$data['year_registration'] = $year_registration;}
+		if(isset($driven)){$data['driven'] = $driven;}
+		if(isset($fuel_type_ids)){$data['fuel_type'] = $fuel_type_ids;}
+		if(isset($features_ids)){$data['features'] = $features_ids;}
+		if(isset($bedrooms)){$data['bedrooms'] =$bedrooms;}
+		if(isset($bathrooms)){$data['bathrooms'] =$bathrooms;}
+		if(isset($kitchens)){$data['kitchens'] =$kitchens;}
 		$condition = array();
 		$condition['id'] = $id;
 		$result = update_record($tblproducts ,$data,$condition);
 		if($result)
 		{
 			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+			header("location:dashboard.php");
+			exit;
 		}
 	}
 	else
@@ -417,8 +420,8 @@ if($p=="add_product"){
 	exit;
 }
 if($p=="add_product_detail"){
-	$features_ids = implode('-', $_POST['features']);
-	$fuel_type_ids = implode('-', $_POST['fuel_type']);
+	$features_ids = implode('::', $_POST['features']);
+	$fuel_type_ids = implode('::', $_POST['fuel_type']);
 	foreach ($_POST as $k => $v )
 	{
 		if(!is_array($v)){
@@ -845,4 +848,58 @@ if($p=="forgot_password"){
 		header("location:".$_SESSION['page_url']);
 		exit;
 	}
+if($p == "upload_product_images"){
+	$enc_id = $_POST['id'];
+	$id = dec_password($enc_id);
+	$_SESSION['sysErr']['msg'] = "There is some problem try again";
+
+	if($id>0 and isset($_FILES['img']['name'])){
+		if(count($_FILES['img']['name'])>0){  /// Add product images
+			$product_images = get_records($tblproduct_images,"product_id='".$id."' and main='1'");
+			$main = (count($product_images)>0)?0:1;
+			foreach ($_FILES['img']['name'] as $key => $value) {
+				if($value){
+					$files_arr = array();
+					$files_arr['img']['name'] = $_FILES['img']['name'][$key];
+					$files_arr['img']['tmp_name'] = $_FILES['img']['tmp_name'][$key];
+					$files_arr['img']['size'] = $_FILES['img']['size'][$key];
+					
+					$imgname = "";
+					$img_name = upload_img($files_arr,$dir_site_uploads,$imgname);
+					add_watermark($dir_site_uploads.$img_name);
+					if($img_name){
+						$_SESSION['sysErr']['msg'] = "Images uploaded successfully";
+						$data = array();
+						$data['product_id'] = $id;
+						$data['img'] = $img_name;
+						$data['main'] = $main;
+						$result = insert_record($tblproduct_images,$data);
+						$main = 0;
+					}
+				}
+			}
+
+		}
+	}
+
+	header("location:dashboard.php");
+	exit;
+}
+if($p == "delproduct_image")
+{
+	$enc_id = $_GET['product_id'];
+	$id = dec_password($_GET['id']);
+	$id = (int)$id;
+	
+	$data = array();
+	$data['trash'] = '1';
+	$condition = array();
+	$condition['id'] = $id;
+	$result = update_record($tblproduct_images,$data,$condition);
+	if($result){
+		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
+	}
+	header("location:".$_SESSION['page_url']);
+	exit;
+}
 ?>

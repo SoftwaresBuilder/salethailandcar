@@ -17,7 +17,7 @@ if(isset($_GET['id'])){
 $category = get_records($tblcategories,"id='".$product[0]['category_id']."'");
 $subcategory = get_records($tblcategories,"id='".$product[0]['subcategory_id']."'");
 $user_detail = get_records($tblusers,"id = ".$product[0]['user_id']);
-$p_features = get_records($tblproduct_features,'category_id = '.$product[0]['subcategory_id']);
+$p_features = get_records($tblcategory_features,'category_id = '.$product[0]['subcategory_id']);
 ?>
 <script type="text/javascript">
     function cat_div_show(){
@@ -114,19 +114,19 @@ $p_features = get_records($tblproduct_features,'category_id = '.$product[0]['sub
                         <div class="col-md-8">
                         <div class="form-group">
                              <div class="col-md-8">
-                                    <input type="Checkbox" name="   []" value="1"> <?php echo translate("Petrol");?>
+                                    <input type="Checkbox" name="fuel_type[]" value="Petrol"> <?php echo translate("Petrol");?>
                                      </div>
                                 <div class="col-md-8">
-                                     <input type="Checkbox" name="fuel_type[]" value="2"> <?php echo translate("Diesel");?>
+                                     <input type="Checkbox" name="fuel_type[]" value="Diesel"> <?php echo translate("Diesel");?>
                                       </div>
                                 <div class="col-md-8">
-                                    <input type="Checkbox" name="fuel_type[]" value="3"><?php echo translate("LPG");?> 
+                                    <input type="Checkbox" name="fuel_type[]" value="LPG"><?php echo translate("LPG");?> 
                                     </div>
                                 <div class="col-md-8">
-                                    <input type="Checkbox" name="fuel_type[]" value="4"><?php echo translate("CNG");?> 
+                                    <input type="Checkbox" name="fuel_type[]" value="CNG"><?php echo translate("CNG");?> 
                                     </div>
                                 <div class="col-md-8">
-                                 <input type="Checkbox" name="fuel_type[]" value="5"> <?php echo translate("Electric");?>
+                                 <input type="Checkbox" name="fuel_type[]" value="Electric"> <?php echo translate("Electric");?>
                                 </div>
                         </div>
                         </div>

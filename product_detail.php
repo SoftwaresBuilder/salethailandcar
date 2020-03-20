@@ -284,20 +284,35 @@ function show_hide_num(val) {
       <?php
       if($product[0]['type']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Type");?></span><br><?php echo $product[0]['type'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Type");?></span><br>
+          <?php
+            $type_title = get_records($tblcategory_types,"title_en='".$product[0]['type']."' and trash='0'");
+           echo $type_title[0]['title_'.$lang];?>
+        </div>
       <?php
       }
       if($product[0]['model']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Model");?></span><br><?php echo $product[0]['model'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Model");?></span><br>
+          <?php
+          $p_model = get_records($tblcategory_models,"title_en='".$product[0]['model']."' and trash='0'");
+           echo $p_model[0]['title_'.$lang];
+          ?></div>
       <?php
       }
       if($product[0]['brand']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Brand");?></span><br><?php echo $product[0]['brand'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Brand");?></span><br><?php 
+        if($lang=='th'){
+          echo $brand = translate_api($product[0]['brand'],"en","th");
+        }
+        else{
+        echo $product[0]['brand'];
+      }
+      ?></div>
       <?php
       }
-      if($product[0]['year_registration']){
+      if($product[0]['year_registration']>0){
       ?>
         <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Registration Year");?></span><br><?php echo $product[0]['year_registration'];?></div>
       <?php
@@ -309,20 +324,58 @@ function show_hide_num(val) {
       }
       if($product[0]['fuel_type']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Fuel Type");?></span><br><?php echo $product[0]['fuel_type'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Fuel Type");?></span><br>
+          <?php
+          $fuel_type_ids =explode('::', $product[0]['fuel_type']);
+          foreach ($fuel_type_ids as $key => $value) {
+            echo '<div class="col-md-12">' .translate($value).'</div>';
+          }
+          ?>
+        </div>
       <?php
       }
       if($product[0]['gearbox']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Gearbox Type");?></span><br><?php echo $product[0]['gearbox'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Gearbox Type");?></span><br>
+          <?php
+          if($lang=='th'){
+          echo $gearbox = translate_api($product[0]['gearbox'],"en","th");
+        }
+        else{
+        echo $product[0]['gearbox'];
+      }
+      ?></div>
       <?php
       }
       if($product[0]['features']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Features");?></span><br><?php echo $product[0]['features'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Features");?></span><br>
+          <?php 
+           $features_ids =explode('::', $product[0]['features']);
+          foreach($features_ids as $key => $value) {
+         $features_title= get_records($tblcategory_features,"id='".$value."' and trash='0'");
+          echo '<div class="col-md-12">' .$features_title[0]['title_'.$lang].'</div>';
+          }?>
+        </div>
+      <?php
+       }
+       if($product[0]['bathrooms']){
+      ?>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Number of BathRooms");?></span><br><?php echo $product[0]['bathrooms'];?></div>
+      <?php
+      }
+      if($product[0]['bedrooms']){
+      ?>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Number of BedRooms");?></span><br><?php echo $product[0]['bedrooms'];?></div>
+      <?php
+      }
+      if($product[0]['kitchens']){
+      ?>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Number of Kitchens");?></span><br><?php echo $product[0]['kitchens'];?></div>
       <?php
       }
       ?>
+
       <div class="col-12 heading mt40 border_bottom"><?php echo translate("Description");?></div>
       <div class="col-12"><?php echo $product[0]['description_'.$lang];?></div>
 
@@ -363,6 +416,7 @@ function show_hide_num(val) {
       <div class="col-12 border_bottom">
         <h5><?php echo show_price($product[0]['price']);?></h5>
       </div>
+      <?php if($user[0]['id']!=$_SESSION['user_record']['id']) { ?>
       <div class="col-12 pb10">
         <div class="row">
           <div class="col-6"><a id="show_hide_num" class="nav-link btn btn-primary" href="javascript:void(0);" onclick="<?php if(isset($_SESSION['user_record'])){?> show_hide_num('<?php echo $user[0]['phone'];?>') <?php } ?>"><i class="fa fa-phone"></i>xxxxxxx</a></div>
@@ -370,6 +424,7 @@ function show_hide_num(val) {
           onclick="<?php if(isset($_SESSION['user_record'])){ ?> openChat(); <?php } else {?> window.location='<?php echo makepage_url("login");?>'<?php }?>"><?php echo translate("MESSAGE");?></a></div>
         </div>
       </div>
+    <?php } ?>
     </div>
 
     

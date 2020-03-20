@@ -2,7 +2,14 @@
 	font-size: 14px;
 	color: #333;
 }
-
+.vender_img{
+  height: 150px; width: 150px;border-radius: 80px;margin-left: 30px
+}
+.img_box { background-color: #ddd; border:1px solid #ccc; }
+  .img_thumb { width: 100%; height: 200px; padding: 10px; overflow: hidden; }
+  .img_thumb img { width: 100%; }
+  .news_thumb { width: 100%; height: 80px; padding: 10px; overflow: hidden; }
+  .news_thumb img { width: 100%; }
 .ad_banner{
     height: 150px;
     width: 100%;

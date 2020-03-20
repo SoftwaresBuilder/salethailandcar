@@ -30,7 +30,7 @@ $count_total_products = count($products);
         $user_img = get_user_img($vendor_record[0]['img']);
         ?>
       <div class="row">
-      <img style="height: 150px; width: 150px" src="<?php echo $user_img; ?>" alt="/images/user.jpg">
+      <img class="vender_img" src="<?php echo $user_img; ?>" alt="/images/user.jpg">
     </div>
      </div>
      <div class="col-12 col-md-6">
@@ -71,6 +71,7 @@ $count_total_products = count($products);
       <h4> Total Num of Sale Ads = </h4>
      </div>
     </div> -->
+    <?php if($vendor_record[0]['id']!=$_SESSION['user_record']['id']){ ?>
    <div class="row">
       <div class="col-12 col-md-6">
         
@@ -81,6 +82,7 @@ $count_total_products = count($products);
         <a class="nav-link btn btn-primary" href="javascript:void(0);" onclick="openChat();"><?php echo translate("MESSAGE");?></a>
       </div>
     </div>
+  <?php } ?>
      
   
   </div>
