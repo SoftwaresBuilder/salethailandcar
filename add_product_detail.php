@@ -67,7 +67,7 @@ $p_features = get_records($tblcategory_features,'category_id = '.$product[0]['su
                         <div class="col-md-3"><?php echo translate("Brand");?></div>
                         <div class="col-md-8">
                         <div class="form-group">
-                            <input type="text" required class="form-control" id="brand" name="brand" placeholder="" value="<?= $_SESSION['sysData']['brand'];?>">
+                            <input type="text" required class="form-control" id="brand" name="brand" placeholder="" value="<?= $_SESSION['sysData'][0]['brand'];?>">
                         </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@ $p_features = get_records($tblcategory_features,'category_id = '.$product[0]['su
                         <div class="col-md-3"><?php echo translate("Kms Driven");?></div>
                         <div class="col-md-8">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="driven" name="driven" placeholder="" value="<?= $_SESSION['sysData']['driven'];?>">
+                            <input type="text" class="form-control" id="driven" name="driven" placeholder="" value="<?= $_SESSION['sysData'][0]['driven'];?>">
                         </div>
                         </div>
                     </div>

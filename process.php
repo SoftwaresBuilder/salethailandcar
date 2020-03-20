@@ -41,7 +41,7 @@ if($p=="delfavorite"){
 	{
 		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
 	}
-	header("location:dashboard.php?tab=favorites");
+	header("location:dashboard.php");
 	exit;
 }
 

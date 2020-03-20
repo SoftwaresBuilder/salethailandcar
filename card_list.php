@@ -10,7 +10,7 @@ $imgs = get_product_imgs($product['id'],'1');
 	<div class="col-12 col-md-4">
 		<a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>"><?php echo showstring($product['title_'.$lang],"20");?></a><br>
 		<strong><?php echo translate("Views");?> : </strong><?php echo $product['views'];?><br>
-		<div><strong> <?php echo translate("Posted On");?> : </strong><?php echo dateFormat($product['created_date']);?></div><br>
+		<strong> <?php echo translate("Posted On");?> : </strong><?php echo dateFormat($product['created_date']);?><br>
 		<strong><?php echo translate("Location");?> : </strong><?php echo $product['location'];?>
 	</div>
 	<div class="col-12  col-md-2">

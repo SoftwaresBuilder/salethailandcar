@@ -289,6 +289,7 @@ function show_hide_num(val) {
             $type_title = get_records($tblcategory_types,"title_en='".$product[0]['type']."' and trash='0'");
            echo $type_title[0]['title_'.$lang];?>
         </div>
+
       <?php
       }
       if($product[0]['model']){
@@ -302,6 +303,7 @@ function show_hide_num(val) {
       }
       if($product[0]['brand']){
       ?>
+
         <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Brand");?></span><br><?php 
         if($lang=='th'){
           echo $brand = translate_api($product[0]['brand'],"en","th");
@@ -310,20 +312,22 @@ function show_hide_num(val) {
         echo $product[0]['brand'];
       }
       ?></div>
+
       <?php
       }
       if($product[0]['year_registration']>0){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Registration Year");?></span><br><?php echo $product[0]['year_registration'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Registration Year");?></span><br><?php echo translate($product[0]['year_registration']);?></div>
       <?php
       }
       if($product[0]['driven']){
       ?>
-        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Driven");?></span><br><?php echo $product[0]['driven'];?></div>
+        <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Driven");?></span><br><?php echo translate($product[0]['driven']);?></div>
       <?php
       }
       if($product[0]['fuel_type']){
       ?>
+
         <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Fuel Type");?></span><br>
           <?php
           $fuel_type_ids =explode('::', $product[0]['fuel_type']);
@@ -332,10 +336,12 @@ function show_hide_num(val) {
           }
           ?>
         </div>
+
       <?php
       }
       if($product[0]['gearbox']){
       ?>
+
         <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Gearbox Type");?></span><br>
           <?php
           if($lang=='th'){
@@ -345,10 +351,12 @@ function show_hide_num(val) {
         echo $product[0]['gearbox'];
       }
       ?></div>
+
       <?php
       }
       if($product[0]['features']){
       ?>
+
         <div class="col-12 col-md-4"><span class="heading3"><?php echo translate("Features");?></span><br>
           <?php 
            $features_ids =explode('::', $product[0]['features']);
