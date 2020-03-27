@@ -42,7 +42,7 @@ $count_favourites = sql($query_favourites);
         </div>
     </div>
     <div class="row">
-        <div style="background-color: #e6e9ed" class="col-md-4 for_text"><?php echo translate("Remaings Bids");?>
+        <div style="background-color: #e6e9ed" class="col-md-4 for_text"><?php echo translate("Remaings Ads");?>
             <?php echo $user_details[0]['post_ads']; ?>
         </div>
         <div style="background-color: #e6e9ed" class="col-md-4 for_text"><?php echo translate("Remaing bumps up");?>
