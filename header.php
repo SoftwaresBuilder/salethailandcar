@@ -224,7 +224,7 @@ function showGlobalLogin() {
     }
 }
 <!-- //Count down function -->
-// var countDownDate = new Date("<?php echo $top_offers; ?>").getTime();
+// var countDownDate = new Date("<?php //echo $top_offers; ?>").getTime();
 // var x = setInterval(function() {
 // var now = new Date().getTime();
 // var distance = countDownDate - now;

@@ -12,10 +12,10 @@ $products = get_records($tblproducts,$where,"id DESC");
     	<div class="row">
             <div class="col-12 d-none d-md-block">
                 <div class="row text-center">
-            		<div class="col-12 col-md-4">
+            		<div class="col-12 col-md-3">
                         <strong><?php echo translate("Photos");?></strong> 
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-3">
                        <strong><?php echo translate("Ads Details");?></strong> 
                     </div>
                     <div class="col-12  col-md-2">
@@ -23,6 +23,9 @@ $products = get_records($tblproducts,$where,"id DESC");
                     </div>
                     <div class="col-12 col-md-2">
                        <strong><?php echo translate("Action");?></strong> 
+                    </div>
+                    <div class="col-12 col-md-2">
+                        
                     </div>
                 </div><hr>
             </div>

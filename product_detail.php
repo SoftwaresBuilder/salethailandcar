@@ -243,18 +243,18 @@ function fnAdd_bidd(){
     }
 
 }
-function show_hide_num(val) {
+function show_hide_num(val){
   if(val!=''){
-    if($("#show_hide_num").html() ==='<i class="fa fa-phone"></i>xxxxxxx')
-        {
-           $("#show_hide_num").text(val);
-        }
-
-  else
-      {
-         $("#show_hide_num").html('<i class="fa fa-phone"></i>xxxxxxx');
-      }
-}
+    if($("#show_hide_num").text()!=val){
+     $("#show_hide_num").text(val);
+    }
+    else{
+       $("#show_hide_num").html('<i class="fa fa-phone"></i>XXXXXXX');
+    }
+  }
+  else{
+  $("#show_hide_num").text('No Number');
+  }
 }
 </script>
 
@@ -427,9 +427,11 @@ function show_hide_num(val) {
       <?php if($user[0]['id']!=$_SESSION['user_record']['id']) { ?>
       <div class="col-12 pb10">
         <div class="row">
-          <div class="col-6"><a id="show_hide_num" class="nav-link btn btn-primary" href="javascript:void(0);" onclick="<?php if(isset($_SESSION['user_record'])){?> show_hide_num('<?php echo $user[0]['phone'];?>') <?php } ?>"><i class="fa fa-phone"></i>xxxxxxx</a></div>
-          <div class="col-6"><a class="nav-link btn btn-primary" href="javascript:void(0);"
-          onclick="<?php if(isset($_SESSION['user_record'])){ ?> openChat(); <?php } else {?> window.location='<?php echo makepage_url("login");?>'<?php }?>"><?php echo translate("MESSAGE");?></a></div>
+          <div class="col-6"><a <?php if(!isset($_SESSION['user_record'])){ ?> data-toggle="modal" data-target="#login_popup" <?php } ?> id="show_hide_num" class="nav-link btn btn-primary" href="javascript:void(0);"
+           onclick="<?php if(isset($_SESSION['user_record'])){?> show_hide_num('<?php echo $user[0]['phone'];?>') <?php } ?>">
+           <i class="fa fa-phone"></i>XXXXXXX</a></div>
+          <div class="col-6"><a <?php if(!isset($_SESSION['user_record'])){ ?> data-toggle="modal" data-target="#login_popup" <?php } ?> class="nav-link btn btn-primary" href="javascript:void(0);"
+          onclick="<?php if(isset($_SESSION['user_record'])){ ?> openChat(); <?php } ?>"><?php echo translate("MESSAGE");?></a></div>
         </div>
       </div>
     <?php } ?>

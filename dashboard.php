@@ -35,7 +35,7 @@ switch($tab){
     <div class="section_spacer">
         <div class="col-12"><?php show_errors();?></div>
         <div class="row mt10">
-          <div class="col-12 col-md-4 col-lg-3">
+          <div class="col-12 col-md-4 col-lg-2">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
               <a class="nav-link <?php echo $tab_personal;?>" id="v-pills-menu2-tab" data-toggle="pill" href="#v-pills-menu2" role="tab" aria-controls="v-pills-menu2" aria-selected="false"><?php echo translate("Personal Home");?></a>
               <a class="nav-link <?php echo $tab_ads;?>" id="v-pills-menu1-tab" data-toggle="pill" href="#v-pills-menu1" role="tab" aria-controls="v-pills-menu1" aria-selected="true"><?php echo translate("My Ads");?></a>
@@ -47,7 +47,7 @@ switch($tab){
               <a class="nav-link <?php echo $tab_bids;?>" id="v-pills-menu7-tab" data-toggle="pill" href="#v-pills-menu7" role="tab" aria-controls="v-pills-menu7" aria-selected="false"><?php echo translate("My Bids");?></a>
             </div>
           </div>
-          <div class="col-12 col-md-8 col-lg-9">
+          <div class="col-12 col-md-8 col-lg-10">
             <div class="tab-content" id="v-pills-tabContent">
               <div class="tab-pane fade <?php echo $tab_ads;?>" id="v-pills-menu1" role="tabpanel" aria-labelledby="v-pills-menu1-tab">
                 <?php include("products.php");?>
