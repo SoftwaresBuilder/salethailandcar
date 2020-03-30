@@ -162,9 +162,9 @@ if($p=="add_bidd"){
 }					
 if($p=="get_search_filter"){
 	 	$location = $_GET['location'];
-	
+		$cat_id = $_GET['cat_val'];
 		$subcategory_ids = implode(",",$_GET['product_ids']);
-	     $condition = " category_id=".$_GET['cat_val'];
+	    $condition = " category_id=".$_GET['cat_val'];
 		if($subcategory_ids){
 			$condition .= " AND subcategory_id IN(".$subcategory_ids.")";
 		}
@@ -177,7 +177,19 @@ if($p=="get_search_filter"){
 				if(count($products)>0){
 		          foreach ($products as $product) {
 		          ?>
-		           <div class="col-12 col-md-4"><?php include("card_real_state.php");?></div>
+		           <div class="col-12 col-md-4"><?php 
+		           if($cat_id==16)
+		           {
+		           	include("card_car.php");
+		           }
+		           else if($cat_id==24){
+		           include("card_real_state.php");
+		       		}
+		       		else
+		       		{
+		       			include("card_job.php");	
+		       		}
+		       ?></div>
 		           <?php
 		          }
 		        } else {
@@ -253,7 +265,7 @@ if($p=="get_jobs_filter"){
 }	
 if($p=="get_price_sort"){
 	  
-    
+   $cat_id = $_GET['cat_val'];
    $sort_by = $_GET['sort_by'];
    $condition = " category_id=".$_GET['cat_val'];
 		
@@ -273,7 +285,19 @@ if($p=="get_price_sort"){
 				if(count($products)>0){
 		          foreach ($products as $product) {
 		          ?>
-		           <div class="col-12 col-md-4"><?php include("card_real_state.php");?></div>
+		           <div class="col-12 col-md-4"><?php 
+		           if($cat_id==16)
+		           {
+		           	include("card_car.php");
+		           }
+		           else if($cat_id==24){
+		           include("card_real_state.php");
+		       		}
+		       		else
+		       		{
+		       			include("card_job.php");	
+		       		}
+		       ?></div>
 		           <?php
 		          }
 		        } else {

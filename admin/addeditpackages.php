@@ -14,6 +14,7 @@ if(isset($_GET['id']))
 else if(!isset($_SESSION['sysData']['id'])) {
     $_SESSION['sysData'] = table_fields($tblvendor_packages);
 }
+$categories = get_records($tblcategories,"pid='0' and trash!='1'");
 ?>
 <form action="process.php?p=addeditpackages" enctype="multipart/form-data" method="post">
 <div class="row">
@@ -39,6 +40,23 @@ else if(!isset($_SESSION['sysData']['id'])) {
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label>Category <span class="err">*</span></label>
+                            <select required class="form-control" id="category" name="category">
+                                <option value="">Select Category</option>
+                                <?php
+                                if(count($categories)>0){
+                                    foreach ($categories as $v) {
+                                    ?>
+                                        <option <?php if($_SESSION['sysData']['category']==$v['id']){?> selected <?php }?> value="<?php echo $v['id'];?>"><?php echo $v['title_en'];?></option>
+                                    <?php
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
                             <label>Price</label>
                             <input type="number" required class="form-control" id="price" name="price" placeholder="price" value="<?= $_SESSION['sysData']['price'];?>">
                         </div>
@@ -56,7 +74,24 @@ else if(!isset($_SESSION['sysData']['id'])) {
                             <input type="text" required class="form-control" id="bump_up" name="bump_up" placeholder="bump_up" value="<?= $_SESSION['sysData']['bump_up'];?>">
                         </div>
                     </div>
-
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Social Media Ads <span class="err">*</span></label>
+                            <input type="text" required class="form-control" id="social_media_ads" name="social_media_ads" placeholder="Social Media Ads" value="<?= $_SESSION['sysData']['social_media_ads'];?>">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Feature Ads <span class="err">*</span></label>
+                            <input type="text" required class="form-control" id="feature_ads" name="feature_ads" placeholder="Feature ads" value="<?= $_SESSION['sysData']['feature_ads'];?>">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Expiry Days <span class="err">*</span></label>
+                            <input type="text" required class="form-control" id="expiry_days" name="expiry_days" placeholder="Expiry Days" value="<?= $_SESSION['sysData']['expiry_days'];?>">
+                        </div>
+                    </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Status</label>

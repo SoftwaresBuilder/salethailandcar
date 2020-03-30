@@ -21,4 +21,5 @@ $tblchat = $tblprefix."chat";
 $tblvendor_packages = $tblprefix."vendor_packages";
 $tblbidding = $tblprefix."bidding";
 $tblad_banner = $tblprefix."ibanners";
+$tbluser_package = $tblprefix."package_user";
 ?>

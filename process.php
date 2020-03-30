@@ -16,19 +16,45 @@ if($p=="get_package"){
 	$package = get_records($tblvendor_packages ,"id='".$id."'");
 	if($package)
 	{
-		$user = get_records($tblusers ,"id='".$user_id."'");
-
+		$user = get_records($tbluser_package ,"user_id='".$user_id."' and category_id ='".$package[0]['category']."'");
+		if(count($user)>0){
 		$data = array();
+		$data['user_id'] = $user_id;
+		$data['package_id'] = $package[0]['id'];
+		$data['category_id'] = $package[0]['category'];
 		$data['post_ads'] = $package[0]['post_ads']+$user[0]['post_ads'];
 		$data['bump_up'] = $package[0]['bump_up']+$user[0]['bump_up'];
-		$data['package_id'] = $package[0]['id'];
+		$data['social_media_ads'] = $package[0]['social_media_ads']+$user[0]['social_media_ads'];
+		$data['feature_ads'] = $package[0]['feature_ads']+$user[0]['feature_ads'];
+		$data['expiry_days'] = $package[0]['expiry_days'];
+		$data['purchase_date'] = date("m.d.y");
 		$condition = array();
-		$condition['id'] = $user_id;
-		$result = update_record($tblusers ,$data,$condition);
+		$condition['user_id'] = $user_id;
+		$condition['category_id'] = $package[0]['category'];
+		$result = update_record($tbluser_package ,$data,$condition);
 		if($result)
 		{
 			$_SESSION['sysErr']['msg'] = "Package updated successfully";
 		}
+	}
+	else
+	{
+		$data = array();
+		$data['user_id'] = $user_id;
+		$data['package_id'] = $package[0]['id'];
+		$data['category_id'] = $package[0]['category'];
+		$data['post_ads'] = $package[0]['post_ads'];
+		$data['bump_up'] = $package[0]['bump_up'];
+		$data['social_media_ads'] = $package[0]['social_media_ads']+$user[0]['social_media_ads'];
+		$data['feature_ads'] = $package[0]['feature_ads'];
+		$data['expiry_days'] = $package[0]['expiry_days'];
+		$data['purchase_date'] = date("m.d.y");
+		$id = insert_record($tbluser_package,$data);
+		if($id>0)
+		{
+			$_SESSION['sysErr']['msg'] = "Package Added successfully";
+		}
+	}
 	}
 	header("location:dashboard.php?tab=packages");
 	exit;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2020 at 03:21 PM
+-- Generation Time: Mar 30, 2020 at 04:59 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -1773,7 +1773,13 @@ INSERT INTO `thai_chat` (`id`, `chat_id`, `product_id`, `user_id`, `touser_id`, 
 (30, 11, 1, 1, 5, 'hellooooooooo', 1, 0, '2020-03-16 15:02:09'),
 (31, 11, 1, 1, 5, 'hellooooooooo hellooooooooo hellooooooooo hellooooooooo hellooooooooo hellooooooooo', 1, 0, '2020-03-16 15:02:27'),
 (32, 101, 10, 1, 6, 'helloo', 1, 0, '2020-03-16 15:31:26'),
-(33, 0, 31, 1, 6, 'i am fine', 1, 0, '2020-03-22 14:06:53');
+(33, 0, 31, 1, 6, 'i am fine', 1, 0, '2020-03-22 14:06:53'),
+(34, 0, 1, 6, 5, 'hi', 1, 0, '2020-03-30 19:39:20'),
+(35, 0, 1, 6, 5, 'hi', 1, 0, '2020-03-30 19:41:20'),
+(36, 0, 1, 6, 5, 'hi', 1, 0, '2020-03-30 19:41:45'),
+(37, 0, 1, 6, 5, 'hi', 1, 0, '2020-03-30 19:44:37'),
+(38, 0, 1, 6, 5, 'helloo', 1, 0, '2020-03-30 19:50:42'),
+(39, 0, 1, 6, 5, 'helloo', 1, 0, '2020-03-30 19:51:09');
 
 -- --------------------------------------------------------
 
@@ -1908,6 +1914,37 @@ INSERT INTO `thai_orders` (`id`, `product_id`, `price`, `qty`, `status`, `trash`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `thai_package_user`
+--
+
+CREATE TABLE `thai_package_user` (
+  `id` int(11) NOT NULL,
+  `user_id` int(10) DEFAULT NULL,
+  `package_id` int(10) DEFAULT NULL,
+  `category_id` int(10) DEFAULT NULL,
+  `post_ads` int(10) DEFAULT NULL,
+  `bump_up` int(10) DEFAULT NULL,
+  `social_media_ads` int(10) DEFAULT NULL,
+  `feature_ads` int(10) DEFAULT NULL,
+  `expiry_days` int(10) DEFAULT NULL,
+  `purchase_date` datetime DEFAULT NULL,
+  `created_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` int(10) DEFAULT 1,
+  `trash` int(10) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `thai_package_user`
+--
+
+INSERT INTO `thai_package_user` (`id`, `user_id`, `package_id`, `category_id`, `post_ads`, `bump_up`, `social_media_ads`, `feature_ads`, `expiry_days`, `purchase_date`, `created_date`, `status`, `trash`) VALUES
+(1, 6, 1, 31, 21, 7, 84, 70, 12, '0000-00-00 00:00:00', '2020-03-30 18:59:52', 1, 0),
+(3, 6, 2, 3, 10, 3, 10, 12, 25, '0000-00-00 00:00:00', '2020-03-30 19:13:22', 1, 0),
+(4, 6, 3, 1, 30, 40, 10, 5, 25, '0000-00-00 00:00:00', '2020-03-30 19:53:41', 1, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `thai_products`
 --
 
@@ -1954,9 +1991,9 @@ CREATE TABLE `thai_products` (
 --
 
 INSERT INTO `thai_products` (`id`, `category_id`, `subcategory_id`, `user_id`, `title_en`, `title_th`, `description_en`, `description_th`, `status`, `trash`, `created_date`, `price`, `location`, `type`, `ad_type`, `submodel`, `model`, `brand`, `year_registration`, `driven`, `fuel_type`, `gearbox`, `features`, `featured`, `bedrooms`, `bathrooms`, `kitchens`, `latitude`, `longitude`, `sort_date`, `views`, `tags_en`, `tags_th`, `meta_description_en`, `meta_description_th`) VALUES
-(1, 16, 18, 5, 'New Tesla5 for sale', 'ใหม่ Tesla5 สำหรับขาย', 'Test Drive First.New Tesla for sale is available', 'ทดสอบขับรถก่อนใหม่ Tesla สำหรับการขายอยู่', 1, 0, '2020-02-05 17:53:35', 800, 'Berlin, Germany', 'Audi', 0, NULL, 'SUV', 'Mercedes', 2020, 11, 'Gasoline', 'vbn', '1-3', 1, NULL, NULL, NULL, '51.58250734077006', '-1.4598505851562549', '2020-03-09 17:53:54', 128, NULL, NULL, NULL, NULL),
+(1, 16, 18, 5, 'New Tesla5 for sale', 'ใหม่ Tesla5 สำหรับขาย', 'Test Drive First.New Tesla for sale is available', 'ทดสอบขับรถก่อนใหม่ Tesla สำหรับการขายอยู่', 1, 0, '2020-02-05 17:53:35', 800, 'Berlin, Germany', 'Audi', 0, NULL, 'SUV', 'Mercedes', 2020, 11, 'Gasoline', 'vbn', '1-3', 1, NULL, NULL, NULL, '51.58250734077006', '-1.4598505851562549', '2020-03-09 17:53:54', 133, NULL, NULL, NULL, NULL),
 (2, 2, 8, 6, 'Full Stack Developer', 'เต็มไปด้วตั้งผู้พัฒนา', 'We are looking to hire urgently developer.The candidate must have Web Application Design and implementation. Work closely with Mobile App developers. Design and implement front-end and back-end of web dashboard for mobile', 'เรากำลังมองหาเพื่อจ้าง urgently อะไร-หุบปากไว้ดีกว่าผู้ลงสมัครคงต้องเว็บโปรแกรมออกแบบและ implementation. ทำงานใกล้ชิดกับเคลื่อนที่ลุ่มผู้พัฒนาโปรแกร. ออกแบบและเตรียมกำหน้า-สิ้นสุดแล้วกลับมา-สิ้นสุดของเว็บแดชบอร์ดสำหรับเคลื่อนที่', 1, 0, '2020-02-05 17:55:02', 750, 'Office#7, anchorage, Alaska', 'Urgent ', 0, NULL, '', 'Issac\\\'s Code', 2016, 0, '', '', '', 1, NULL, NULL, NULL, '', '', '2020-03-09 17:53:54', 53, NULL, NULL, NULL, NULL),
-(3, 1, 7, 6, ' Multi Color Solar Light Pots for outdoor Garden', ' หลายของสีแสงสว่างสุริยะจักรวาลหม้อสำหรับสุนัขไม่มีสัญญาณกันขโมยและสวน', 'These plants pots are in multi color with solar light embedded.Best pots for your Outdoor garden', 'พวกต้นไม้หม้ออยู่ในหลายสีกับแสงสว่างสุริยะจักรวาลที่ฝังแนบ.ที่ดีที่สุดที่หม้อสำหรับคุณสุนัขไม่มีสัญญาณกันขโมยและสวน', 1, 0, '2020-02-10 07:24:22', 350, '25 notting hill, Anchorage, Alaska', '', 0, NULL, '', '', 0000, 0, '', '', '', 1, NULL, NULL, NULL, '', '', '2020-03-09 17:53:54', 132, NULL, NULL, NULL, NULL),
+(3, 1, 7, 6, ' Multi Color Solar Light Pots for outdoor Garden', ' หลายของสีแสงสว่างสุริยะจักรวาลหม้อสำหรับสุนัขไม่มีสัญญาณกันขโมยและสวน', 'These plants pots are in multi color with solar light embedded.Best pots for your Outdoor garden', 'พวกต้นไม้หม้ออยู่ในหลายสีกับแสงสว่างสุริยะจักรวาลที่ฝังแนบ.ที่ดีที่สุดที่หม้อสำหรับคุณสุนัขไม่มีสัญญาณกันขโมยและสวน', 1, 0, '2020-02-10 07:24:22', 350, '25 notting hill, Anchorage, Alaska', '', 0, NULL, '', '', 0000, 0, '', '', '', 1, NULL, NULL, NULL, '', '', '2020-03-09 17:53:54', 133, NULL, NULL, NULL, NULL),
 (4, 24, 25, 8, 'Puppy for sale', NULL, 'Its Half breed german shephard puppy for sale', NULL, 1, 0, '2020-02-10 13:45:07', 150, 'rawalpindi', 'rent', 0, NULL, 'Half-Breed small size ', 'Half Breed German Shephard', 2000, 0, '', '', '', 1, NULL, NULL, NULL, '	33.738045', '	73.084488', '2020-03-09 17:53:54', 13, NULL, NULL, NULL, NULL),
 (5, 24, 25, 5, 'Fully Automatic Washing Machinw', NULL, '- 10 Year Motor Warranty, - Fully Automatic Washing Machine, - Anti Bacterial Wash, - One way wash', 'สวัสดีฉันสบายดีฉันสบายดีคุณเป็นยังไงบ้าง\r\nคุณเป็นยังไงบ้าง\r\n\r\n', 1, 0, '2020-02-10 13:57:43', 500, 'Berlin, Germany', '', 0, NULL, ' HWM 85-826', 'Haier', 0000, 0, '', '', 'NO', 1, NULL, NULL, NULL, '', '', '2020-03-09 17:53:54', 15, NULL, NULL, NULL, NULL),
 (6, 24, 26, 6, 'Khan Hut', 'Khan กระท่อม', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 'Ut enim โฆษณา minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip องแฟนเก่า ea commodo consequat. Duis aute irure dolor ใน reprehenderit ใน voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 2, 0, '2020-02-16 17:16:46', 40000, 'London, UK', 'rent', 0, NULL, '', '', 2013, 0, '', '', 'Lot of benefits', 0, NULL, NULL, NULL, '51.58250734077006', '-0.09754589765625488', '2020-03-09 17:53:54', 5, NULL, NULL, NULL, NULL),
@@ -2128,7 +2165,7 @@ INSERT INTO `thai_users` (`id`, `name`, `phone`, `email`, `password`, `img`, `st
 (2, 'username.msc', '1221212', 'username.msc@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06'),
 (4, 'info', '555555555', 'info@royal-sea.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06'),
 (5, 'moshene1', '1234556', 'phprocks4web@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, -1, 0, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-10 09:14:11'),
-(6, 'phprocks4web', '+9444785-6666', 'vender@softwaresbuilder.com', 'MTIzNDU=', '202003191353405067.jpg', 1, 778855, 'yyy', 'xx', 'xyz', NULL, 7, 3, 2, NULL, 0, '2020-03-13 12:24:06', 1, 1, '2020-03-27 14:11:54'),
+(6, 'phprocks4web', '+9444785-6666', 'vender@softwaresbuilder.com', 'MTIzNDU=', '202003191353405067.jpg', 1, 778855, 'yyy', 'xx', 'xyz', NULL, 0, 3, 2, NULL, 0, '2020-03-13 12:24:06', 1, 1, '2020-03-30 14:12:50'),
 (7, 'themepair', '012345678', 'themepair@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06'),
 (8, 'ishrarkhan1984', '9899920712', 'ishrarkhan1984@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06'),
 (9, 'demo33.intel', '09033411928', 'demo33.intel@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, -1, -1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06'),
@@ -7003,8 +7040,12 @@ CREATE TABLE `thai_vendor_packages` (
   `title_en` varchar(20) DEFAULT NULL,
   `title_th` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `price` int(11) NOT NULL DEFAULT 0,
+  `category` varchar(100) DEFAULT NULL,
   `post_ads` int(11) NOT NULL DEFAULT 0,
   `bump_up` int(11) NOT NULL DEFAULT 0,
+  `social_media_ads` varchar(100) DEFAULT NULL,
+  `feature_ads` varchar(100) DEFAULT NULL,
+  `expiry_days` varchar(100) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1,
   `trash` int(11) NOT NULL DEFAULT 0,
   `created_date` datetime NOT NULL DEFAULT current_timestamp()
@@ -7014,10 +7055,10 @@ CREATE TABLE `thai_vendor_packages` (
 -- Dumping data for table `thai_vendor_packages`
 --
 
-INSERT INTO `thai_vendor_packages` (`id`, `title_en`, `title_th`, `price`, `post_ads`, `bump_up`, `status`, `trash`, `created_date`) VALUES
-(1, 'Free', 'ฟรี', 0, 3, 0, 1, 0, '2020-02-16 17:49:30'),
-(2, 'Silver', 'สีเงิน', 10, 10, 3, 1, 0, '2020-02-16 17:49:30'),
-(3, 'Gold', 'ทอง', 15, 30, 40, 1, 0, '2020-03-18 13:27:16');
+INSERT INTO `thai_vendor_packages` (`id`, `title_en`, `title_th`, `price`, `category`, `post_ads`, `bump_up`, `social_media_ads`, `feature_ads`, `expiry_days`, `status`, `trash`, `created_date`) VALUES
+(1, 'Free', 'ฟรี', 2, '31', 3, 1, '12', '10', '12', 1, 0, '2020-02-16 17:49:30'),
+(2, 'Silver', 'สีเงิน', 10, '3', 10, 3, '10', '12', '25', 1, 0, '2020-02-16 17:49:30'),
+(3, 'Gold', 'ทอง', 15, '1', 30, 40, '10', '5', '25', 1, 0, '2020-03-18 13:27:16');
 
 --
 -- Indexes for dumped tables
@@ -7105,6 +7146,12 @@ ALTER TABLE `thai_news`
 -- Indexes for table `thai_orders`
 --
 ALTER TABLE `thai_orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `thai_package_user`
+--
+ALTER TABLE `thai_package_user`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -7206,7 +7253,7 @@ ALTER TABLE `thai_category_types`
 -- AUTO_INCREMENT for table `thai_chat`
 --
 ALTER TABLE `thai_chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `thai_emails`
@@ -7231,6 +7278,12 @@ ALTER TABLE `thai_news`
 --
 ALTER TABLE `thai_orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `thai_package_user`
+--
+ALTER TABLE `thai_package_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `thai_products`

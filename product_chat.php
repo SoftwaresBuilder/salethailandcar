@@ -12,7 +12,6 @@ if(isset($chat_id)){
     $chat = get_records($tblchat,"chat_id='".$chat_id."'","id ASC");
     $_SESSION['chat']['last_id'][$chat_id] = 0;
 }
-// $product = get_records($tblproducts,"id='".$chat[0]['product_id']."'");
 
 ?>
 <div id="ChatMsg" class="ChatBar ui-block" style="width: 30%;display: none;">

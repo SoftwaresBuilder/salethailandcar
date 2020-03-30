@@ -243,6 +243,9 @@ $lang_data = array(
     'main_image'=>'รูปภาพหลัก',
     'add_another_image'=>'เพิ่มรูปภาพอื่น',
     'edit_product'=>'แก้ไขผลิตภัณฑ์',
+    'social_media_ads'=>'โฆษณาโซเชียลมีเดีย',
+    'feature_ads'=>'คุณสมบัติโฆษณา',
+    'expiry_days'=>'วันหมดอายุ',
     ''=>'',
     ''=>'',
 

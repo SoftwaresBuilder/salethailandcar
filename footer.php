@@ -33,8 +33,7 @@ style=" background-color: rgb(242, 245, 245);
     display: block;">
 <span>
   <?php echo translate('lang_text34'); ?>
-  <a class="cookie_setting" href="#" ><?php echo translate('Cookie Setting'); ?></a>
-  <a href="process.php?p=cookie_accept" id="" onclick="" class="cookies_accept_btn st" style="height: 50px"><?php echo translate('ACCEPT'); ?></a>
+ <a href="process.php?p=cookie_accept" id="" onclick="" class="cookies_accept_btn st" style="height: 50px"><?php echo translate('ACCEPT'); ?></a>
 </span>
 </div>
 </div> 
@@ -209,6 +208,7 @@ function show_forgot_password_form(){
   </div>
 </div>
 
+
 <div id="form_popup" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
@@ -253,8 +253,7 @@ function delete_record(url,modal_msg="",modal_tlt=""){
 
 <script type="text/javascript">
 function update_subcategories(id){
-
-  $(".hide_class").hide();
+   $(".hide_class").hide();
   
   if($("#category_id option:selected").text()==="Vehicle"){
      $(".vehicle").show();

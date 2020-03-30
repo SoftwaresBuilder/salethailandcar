@@ -82,10 +82,9 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
-                            <th>Zip</th>
-                            <th>State</th>
                             <th>City</th>
-                            <th>address</th>
+                            <th>Address</th>
+                            <th>Last Active</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -95,15 +94,25 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                         if (count($users) > 0) {
                             foreach ($users as $v) {
                                 $user_status = get_user_status($v['status']);
+                                $last_active = "";
+                                if($v['login']==1){$last_active = "Online";}
+                                else{
+                                     $now = time(); // or your date as well
+                                      $last_date = strtotime($v['login_time']);
+                                      $active_time = $now - $last_date;
+
+                                      $last_active_date = round($active_time / (60 * 60 * 24));
+                                     $last_active = $last_active_date.' days ago';
+                                }
+
                                 ?>
                                 <tr>
                                     <td><?php echo $v['name']; ?></td>
                                     <td><?php echo $v['email']; ?></td>
                                     <td><?php echo $v['phone']; ?></td>
-                                    <td><?php echo $v['zip']; ?></td>
-                                    <td><?php echo $v['state']; ?></td>
                                     <td><?php echo $v['city']; ?></td>
                                     <td><?php echo $v['address']; ?></td>
+                                    <td style="color: green"><?php echo $last_active; ?></td>
                                     <td><?php echo $user_status; ?></td>
                                     <td>
                                         <a href="index.php?p=addedituser&id=<?= enc_password($v['id']); ?>" title="Update Record"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;

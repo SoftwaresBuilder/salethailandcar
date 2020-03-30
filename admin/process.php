@@ -191,9 +191,13 @@ if($p == "addeditpackages")
 		$data = array();
 		$data['title_en'] = $title_en;
 		$data['title_th'] = $title_th;
+		$data['category'] = $category;
 		$data['price'] = $price;
 		$data['post_ads'] = $post_ads;
 		$data['bump_up'] = $bump_up;
+		$data['social_media_ads'] = $social_media_ads;
+		$data['feature_ads'] = $feature_ads;
+		$data['expiry_days'] = $expiry_days;
 		$data['status'] = $status;
 		$condition = array();
 		$condition['id'] = $id;
@@ -208,9 +212,13 @@ if($p == "addeditpackages")
 		$data = array();
 		$data['title_en'] = $title_en;
 		$data['title_th'] = $title_th;
+		$data['category'] = $category;
 		$data['price'] = $price;
 		$data['post_ads'] = $post_ads;
 		$data['bump_up'] = $bump_up;
+		$data['social_media_ads'] = $social_media_ads;
+		$data['feature_ads'] = $feature_ads;
+		$data['expiry_days'] = $expiry_days;
 		$data['status'] = $status;
 		$id = insert_record($tblvendor_packages,$data);
 		if($id>0)

@@ -77,7 +77,11 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                             <th>Title</th>
                             <th>Price</th>
                             <th>Post_ads</th>
+                            <th>For Category</th>
+                            <th>Social Media ads</th>
+                            <th>Feature adsp</th>
                             <th>Bump_up</th>
+                            <th>Expiry Days</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -87,13 +91,17 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                         if (count($packages) > 0) {
                             foreach ($packages as $v) {
                                 $status = $v['status'];
-                                // $category_name = (count($category)>0)?$category[0]['title_'.$lang]:'';
+                                $category_name = get_records($tblcategories,"id='".$v['category']."' and trash!='1'");
                                 ?>
                                 <tr>
                                     <td><?php echo $v['title_en']; ?></td>
                                     <td><?php echo $v['price']; ?></td>
                                     <td><?php echo $v['post_ads']; ?></td>
+                                    <td><?php echo $category_name[0]['title_en']; ?></td>
+                                    <td><?php echo $v['social_media_ads']; ?></td>
+                                    <td><?php echo $v['feature_ads']; ?></td>
                                     <td><?php echo $v['bump_up']; ?></td>
+                                    <td><?php echo $v['expiry_days']; ?></td>
                                     <td><?php echo $status; ?></td>
                                     <td>
                                         <a href="index.php?p=addeditpackages&id=<?= enc_password($v['id']); ?>" title="Update Record"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;

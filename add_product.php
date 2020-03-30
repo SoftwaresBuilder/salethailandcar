@@ -87,7 +87,18 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
     left: 20%;
     height: 85%;
     width: 60%;
-    overflow: auto;
+    overflow: auto;}
+    .drop-area-text {
+         margin-top: 25%;
+    text-align: center;
+    vertical-align: center;
+    font-size: 1.5em;
+    padding-bottom: 20px;
+}
+.preview{
+    background-color:#dcdee6;height: 300px; width: 100%;
+    border: 1px dashed black; 
+}
 </style>
 
 <div class="container">
@@ -224,7 +235,8 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                     <div class="row form_fields">
                         <div class="col-md-3"><?php echo translate("Picture");?></div>
                         <div class="col-md-8">
-                            <div id="dvPreview" style="background-color:#dcdee6;height: 300px; width: 100%;">
+                            <div id="dvPreview" class="preview" onclick="$('#dvPreview').click(function(){ $('#fileupload').trigger('click'); });">
+                               <p class="drop-area-text"> Click Here to add Images </p>
                             </div>
                              <input id="fileupload" name="img[]" type="file" multiple="multiple" />
                     </div>
