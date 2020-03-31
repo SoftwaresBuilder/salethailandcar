@@ -101,9 +101,14 @@ if($p=="update_submodels"){
 
 if($p=="update_subcategories"){
 	$id = $_POST['id'];
-	
+	$check_package =  get_records($tbluser_package,"user_id='".$user_id."' and category_id ='".$id."' and status='1' and trash='0'");
+	$n_date = update_date($check_package[0]['purchase_date'],$check_package[0]['expiry_days']);
+	$date1=$n_date;
+	$date2=date("Y-m-d H:i:s");
+	$diff = strtotime($date2) - strtotime($date1);
+	$x =abs(floor($diff /(60*60*24)));
+	if($check_package[0]['post_ads']>=1 && $x>0){
 	$category = get_records($tblcategories,"pid='".$id."' and status='1' and trash='0'","title_".$lang." ASC");
-	
 	$html = '<option value="">'.translate("Select Sub Category").'</option>';
 	if(count($category)>0){
 		foreach ($category as $v) {
@@ -111,6 +116,10 @@ if($p=="update_subcategories"){
 		}
 	}
 	echo $html;
+}
+else{
+	echo $html = "package end";
+}
 	exit;
 }
 

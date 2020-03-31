@@ -10,14 +10,14 @@ if(isset($_GET['id'])){
             $_SESSION['sysData'][$k] = $v;
         }
     }
-} else{
-    $user = get_records($tblusers ,"id='".$user_id."'");
-    if(count($user)>0 and $user[0]['post_ads']<1){
-        $_SESSION['sysErr']['msg'] = "Please refill your post ads limit";
-        redirect("dashboard","?tab=packages");
-        exit;
-    }
-}
+ } //else{
+//     $user = get_records($tblusers ,"id='".$user_id."'");
+//     if(count($user)>0 and $user[0]['post_ads']<1){
+//         $_SESSION['sysErr']['msg'] = "Please refill your post ads limit";
+//         redirect("dashboard","?tab=packages");
+//         exit;
+//     }
+// }
 
 if(!isset($_SESSION['sysData']['title_'.$lang])) {
     $_SESSION['sysData'] = table_fields($tblproducts);

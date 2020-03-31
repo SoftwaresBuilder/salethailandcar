@@ -254,7 +254,6 @@ function delete_record(url,modal_msg="",modal_tlt=""){
 <script type="text/javascript">
 function update_subcategories(id){
    $(".hide_class").hide();
-  
   if($("#category_id option:selected").text()==="Vehicle"){
      $(".vehicle").show();
   }
@@ -265,7 +264,15 @@ function update_subcategories(id){
     data: { id: id }
   })
   .done(function( msg ) {
+    if(msg =='package end'){
+      $("#subcategory_id").html('<option value="">Please Refill your post ad limit</option>');
+      <?php  $_SESSION['sysErr']['msg'] = "Please refill your post ads limit"; ?>
+      location.href = "dashboard.php";
+
+    }else
+    {
     $("#subcategory_id").html(msg);
+  }
   });
 
   $("#submodel_div").hide();
