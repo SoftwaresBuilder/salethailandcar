@@ -3,7 +3,7 @@ $id = '';
 if(isset($_GET['id']))
 {
     $id = dec_password($_GET['id']);
-    $record = get_records($tblvendor_packages,"id='".$id."'");
+    $record = get_records($tblcoupon,"id='".$id."'");
     if(isset($record[0])){
         foreach ($record[0] as $k => $v )
         {
@@ -12,17 +12,17 @@ if(isset($_GET['id']))
     }
 }
 else if(!isset($_SESSION['sysData']['id'])) {
-    $_SESSION['sysData'] = table_fields($tblvendor_packages);
+    $_SESSION['sysData'] = table_fields($tblcoupon);
 }
 $categories = get_records($tblcategories,"pid='0' and trash!='1'");
 ?>
-<form action="process.php?p=addeditpackages" enctype="multipart/form-data" method="post">
+<form action="process.php?p=addeditcoupon" enctype="multipart/form-data" method="post">
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             
                 <div class="header">
-                    <h4 class="title">Add/Edit Packages</h4>
+                    <h4 class="title">Add/Edit Coupon</h4>
                 </div>
                 <?php show_errors();?>
                 <div class="row">
@@ -64,32 +64,14 @@ $categories = get_records($tblcategories,"pid='0' and trash!='1'");
                     
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>post_ads <span class="err">*</span></label>
-                            <input type="text" required class="form-control" id="post_ads" name="post_ads" placeholder="post_ads" value="<?= $_SESSION['sysData']['post_ads'];?>">
+                            <label>Code <span class="err">*</span></label>
+                            <input type="text" required class="form-control" id="code" name="code" placeholder="Code" value="<?= $_SESSION['sysData']['code'];?>">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>bump_up <span class="err">*</span></label>
-                            <input type="text" required class="form-control" id="bump_up" name="bump_up" placeholder="bump_up" value="<?= $_SESSION['sysData']['bump_up'];?>">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Social Media Ads <span class="err">*</span></label>
-                            <input type="text" required class="form-control" id="social_media_ads" name="social_media_ads" placeholder="Social Media Ads" value="<?= $_SESSION['sysData']['social_media_ads'];?>">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Feature Ads <span class="err">*</span></label>
-                            <input type="text" required class="form-control" id="feature_ads" name="feature_ads" placeholder="Feature ads" value="<?= $_SESSION['sysData']['feature_ads'];?>">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Expiry Days <span class="err">*</span></label>
-                            <input type="text" required class="form-control" id="expiry_days" name="expiry_days" placeholder="Expiry Days" value="<?= $_SESSION['sysData']['expiry_days'];?>">
+                            <label>Expiry Date <span class="err">*</span></label>
+                            <input type="date" required class="form-control" id="expiry_date" name="expiry_date" placeholder="Expiry Date" value="<?= $_SESSION['sysData']['expiry_date'];?>">
                         </div>
                     </div>
                     <div class="col-md-6">

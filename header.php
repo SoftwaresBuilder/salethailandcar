@@ -1,5 +1,8 @@
 <?php
 include("config/config.php");
+if(!isset($_SESSION['testing']) and $web_live=="yes"){
+    header("location:coming_soon/");exit;
+}
 $_SESSION['lang'] = (isset($_SESSION['lang']))?$_SESSION['lang']:'en';
 
 $lang = $_SESSION['lang'];

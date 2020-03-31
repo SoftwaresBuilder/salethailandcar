@@ -246,6 +246,8 @@ $lang_data = array(
     'social_media_ads'=>'โฆษณาโซเชียลมีเดีย',
     'feature_ads'=>'คุณสมบัติโฆษณา',
     'expiry_days'=>'วันหมดอายุ',
+     'enter_code'=>'ใส่รหัส',
+     'validate'=>'ตรวจสอบ',
     ''=>'',
     ''=>'',
 

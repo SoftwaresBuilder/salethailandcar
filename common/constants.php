@@ -15,4 +15,3 @@ $usd_rate = '1';
 
 $cons_thai = "฿";
 $cons_usd = "$";
-?>

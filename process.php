@@ -11,7 +11,7 @@ $flg = false;
 $p = $_GET['p'];//get page reference to execute the related condition
 
 if($p=="get_package"){
-	$enc_id = $_GET['id'];
+	$enc_id = $_POST['id'];
 	$id = dec_password($enc_id);
 	$package = get_records($tblvendor_packages ,"id='".$id."'");
 	if($package)
@@ -35,6 +35,18 @@ if($p=="get_package"){
 		if($result)
 		{
 			$_SESSION['sysErr']['msg'] = "Package updated successfully";
+			if(isset($_POST['code_used'])){
+			$code_used = $_POST['code_used'];
+			if($code_used==1){
+			$coupon_code = $_POST['coupon_code'];
+			$coupon = get_records($tblcoupon ,"code='".$coupon_code."' and status =1 and trash = 0");
+			$data = array();
+			$data['user_id'] = $user_id;
+			$data['coupon_id'] = $coupon[0]['id'];
+			$data['created_date'] =date("Y-m-d H:i:s");
+			$id = insert_record($tblcoupon_used,$data);
+		}
+			}
 		}
 	}
 	else
@@ -53,6 +65,18 @@ if($p=="get_package"){
 		if($id>0)
 		{
 			$_SESSION['sysErr']['msg'] = "Package Added successfully";
+			if(isset($_POST['code_used'])){
+			$code_used = $_POST['code_used'];
+			if($code_used==1){
+			$coupon_code = $_POST['coupon_code'];
+			$coupon = get_records($tblcoupon ,"code='".$coupon_code."' and status =1 and trash = 0");
+			$data = array();
+			$data['user_id'] = $user_id;
+			$data['coupon_id'] = $coupon[0]['id'];
+			$data['created_date'] =date("Y-m-d H:i:s");
+			$id = insert_record($tblcoupon_used,$data);
+		}
+			}
 		}
 	}
 	}

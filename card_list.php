@@ -22,6 +22,7 @@ $imgs = get_product_imgs($product['id'],'1');
 		<a href="javascript:;" onclick="delete_record('process.php?p=delproduct&id=<?= enc_password($product['id']);?>');" data-toggle="modal" data-target="#delete" title="<?php echo translate('Delete Record'); ?>"><i class="fa fa-trash"></i></a>
 		<a href="<?php echo makepage_url("edit_product_images","?id=".enc_password($product['id']));?>" title="<?php echo translate('Upload Images'); ?>"><i class="fa fa-image"></i></a>
 	</div>
+	<?php if($product['status']!=0){ ?> 
 	<div class="col-12 col-md-1" id="action_<?php echo $product['id'];?>">
         <?php 
         if($product['status']!=1 and $product['status']!=0){
@@ -41,5 +42,6 @@ $imgs = get_product_imgs($product['id'],'1');
                                  
      </div>
     <div class="col-12 col-md-1" id="bump_up_<?php echo $product['id'];?>">  <a href="javascript:void(0);" onclick="bump_up(<?php echo $product['id']; ?>);"> Bump up </a>
-    </div>   
+    </div>
+    <?php  }  ?>  
 </div>

@@ -238,14 +238,89 @@ if($p == "delpackages")
 	$data['trash'] = '1';
 	$condition = array();
 	$condition['id'] = $id;
-	$result = update_record($tblpackages,$data,$condition);
+	$result = update_record($tblvendor_packages,$data,$condition,"1");
 	if($result){
 		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
 	}
 	header("location:index.php?p=packages");
 	exit;
 }
-
+if($p == "addeditcoupon")
+{
+	foreach ($_POST as $k => $v )
+	{
+		$$k = addslashes($v);
+		$_SESSION['sysData'][$k] = $v;
+	}
+ 	$enc_id = $id;
+	if($id){
+		$id = dec_password($id);
+	}
+	if(!$title_en){
+		$_SESSION['sysErr']['title_en'] = "Please enter Coupon title";
+		$flg = true;
+	}
+	if(!($price>0)){
+		$_SESSION['sysErr']['price'] = "Please enter price";
+		$flg = true;
+	}
+	if($flg){
+		header("location:index.php?p=addeditcoupon&id=".$enc_id);
+		exit;
+	}
+	if( $id > 0 )
+	{
+		$data = array();
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		$data['category'] = $category;
+		$data['price'] = $price;
+		$data['code'] = $code;
+		$data['expiry_date'] = $expiry_date;
+		$data['status'] = $status;
+		$condition = array();
+		$condition['id'] = $id;
+		$result = update_record($tblcoupon,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	else
+	{
+		$data = array();
+		$data['title_en'] = $title_en;
+		$data['title_th'] = $title_th;
+		$data['category'] = $category;
+		$data['price'] = $price;
+		$data['code'] = $code;
+		$data['expiry_date'] = $expiry_date;
+		$data['status'] = $status;
+		$id = insert_record($tblcoupon,$data);
+		if($id>0)
+		{
+			$_SESSION['sysErr']['msg'] = "Record added successfully";
+		}
+	}
+	
+	header("location:index.php?p=coupon");
+	exit;
+}
+if($p == "delcoupon")
+{
+	$id = dec_password($_GET['id']);
+	$id = (int)$id;
+	$data = array();
+	$data['trash'] = '1';
+	$condition = array();
+	$condition['id'] = $id;
+	$result = update_record($tblcoupon,$data,$condition);
+	if($result){
+		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
+	}
+	header("location:index.php?p=coupon");
+	exit;
+}
 if($p == "addeditcategory")
 {
 	foreach ($_POST as $k => $v )

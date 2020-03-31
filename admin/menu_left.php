@@ -59,4 +59,10 @@
             <p>Manage packages</p>
         </a>
     </li>
+     <li <?php if ($p == "coupon.php") { ?> class="active" <?php } ?>>
+        <a href="index.php?p=coupon">
+            <i class="pe-7s-users" style="color:#fff;"></i>
+            <p>Manage Coupon</p>
+        </a>
+    </li>
 </ul>

@@ -32,11 +32,11 @@ if (!isset($_GET['pageNo'])) {
 }
 $from = (($pageNo * $max_results) - $max_results);
 
-$sql = "SELECT * FROM " . $tblvendor_packages . " where " . $where;
+$sql = "SELECT * FROM " . $tblcoupon . " where " . $where;
 $sql_limit = $sql . " LIMIT $from, " . $max_results;
 $packages = sql($sql_limit);
 /**************************************************************************/
-$total_results = sql("SELECT COUNT(*) as Num FROM " . $tblvendor_packages . " where " . $where);
+$total_results = sql("SELECT COUNT(*) as Num FROM " . $tblcoupon . " where " . $where);
 $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
 ////////////////////////////////////////////////////
 ?>
@@ -45,10 +45,10 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
         <div class="card">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="title">Manage packages</h4>
+                    <h4 class="title">Manage Coupon</h4>
                 </div>
                 <div class="col-md-6 add_new">
-                    <a href="index.php?p=addeditpackages">Add New pakages</a>
+                    <a href="index.php?p=addeditcoupon">Add New Coupon</a>
                 </div>
             </div>
             <div class="row">&nbsp;</div>
@@ -76,12 +76,9 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                         <tr>
                             <th>Title</th>
                             <th>Price</th>
-                            <th>Post_ads</th>
+                            <th>Code</th>
                             <th>For Category</th>
-                            <th>Social Media ads</th>
-                            <th>Feature adsp</th>
-                            <th>Bump_up</th>
-                            <th>Expiry Days</th>
+                            <th>Expiry Date</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -96,16 +93,13 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                                 <tr>
                                     <td><?php echo $v['title_en']; ?></td>
                                     <td><?php echo $v['price']; ?></td>
-                                    <td><?php echo $v['post_ads']; ?></td>
+                                    <td><?php echo $v['code']; ?></td>
                                     <td><?php echo $category_name[0]['title_en']; ?></td>
-                                    <td><?php echo $v['social_media_ads']; ?></td>
-                                    <td><?php echo $v['feature_ads']; ?></td>
-                                    <td><?php echo $v['bump_up']; ?></td>
-                                    <td><?php echo $v['expiry_days']; ?></td>
+                                    <td><?php echo $v['expiry_date']; ?></td>
                                     <td><?php echo $status; ?></td>
                                     <td>
-                                        <a href="index.php?p=addeditpackages&id=<?= enc_password($v['id']); ?>" title="Update Record"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                        <a href="javascript:;" onclick="delete_record('process.php?p=delpackages&id=<?= enc_password($v['id']);?>');" data-toggle="modal" data-target="#delete" title="Delete Record"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;
+                                        <a href="index.php?p=addeditcoupon&id=<?= enc_password($v['id']); ?>" title="Update Record"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                        <a href="javascript:;" onclick="delete_record('process.php?p=delcoupon&id=<?= enc_password($v['id']);?>');" data-toggle="modal" data-target="#delete" title="Delete Record"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;
                                     </td>
                                 </tr>
                         <?php

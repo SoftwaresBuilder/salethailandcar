@@ -22,4 +22,6 @@ $tblvendor_packages = $tblprefix."vendor_packages";
 $tblbidding = $tblprefix."bidding";
 $tblad_banner = $tblprefix."ibanners";
 $tbluser_package = $tblprefix."package_user";
+$tblcoupon = $tblprefix."coupon";
+$tblcoupon_used = $tblprefix."coupon_used";
 ?>

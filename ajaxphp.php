@@ -464,4 +464,23 @@ if($p == "set_image_attribute"){
 		}
 	exit;
 }
+if($p=="code_validate"){
+	$val = $_POST['val'];
+	$cat_id = $_POST['cat_id'];
+	$coupon = get_records($tblcoupon ,"code='".$val."' and category ='".$cat_id."' and status =1 and trash = 0");
+	if(count($coupon)>0){
+		$used = get_records($tblcoupon_used ,"coupon_id='".$coupon[0]['id']."' and user_id ='".$user_id."'");
+		if(count($used)>0){	
+			$code = "Code is Already Used";
+			}else
+				{
+					$code = 'Valid';
+				}
+
+	} else {
+		$code = "Not Valid";
+	}
+	echo $code;
+	exit;
+}
 ?>
