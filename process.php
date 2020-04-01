@@ -423,7 +423,6 @@ if($p=="add_product"){
 		$data['features'] = $features;
 		/**/
 		$id = insert_record($tblproducts,$data);
-		
 		if($id>0)
 		{
 			$user = get_records($tbluser_package,"user_id='".$user_id."' and category_id ='".$category_id."'");
@@ -438,9 +437,8 @@ if($p=="add_product"){
 			$_SESSION['sysErr']['msg'] = "Record added successfully";
 		}
 	}
-	
 	if($id>0 and isset($_FILES['img']['name'])){
-		
+	
 		if(count($_FILES['img']['name'])>0){  /// Add product images
 			$product_images = get_records($tblproduct_images,"product_id='".$id."' and main='1'");
 			$main = (count($product_images)>0)?0:1;
@@ -595,7 +593,23 @@ if($p=="partner_register"){
 	{
 		$user = get_records($tblusers,"id='".$id."' and status='1'");
 		if(count($user)>0){
-			header("location:partner_account.php");
+			$free_packages = get_records($tblvendor_packages,"title_en='new user' and status='1'");
+			if(count($free_packages)>0){
+				foreach ($free_packages as $key => $v) {
+					$data =array();
+					$data['user_id'] = $id;
+					$data['package_id'] = $v['id'];
+					$data['category_id'] = $v['category'];
+					$data['post_ads'] = $v['post_ads'];
+					$data['bump_up'] = $v['bump_up'];
+					$data['social_media_ads'] = $v['social_media_ads'];
+					$data['feature_ads'] = $v['feature_ads'];
+					$data['expiry_days'] = $v['expiry_days'];
+					$data['purchase_date'] = date("Y-m-d H:i:s");
+					insert_record($tbluser_package,$data,"1");
+				}
+			}
+			header("location:dashboard.php");
 			exit;
 		}
 		$_SESSION['sysErr']['msg'] = "Record added successfully";

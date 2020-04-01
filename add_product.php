@@ -34,8 +34,7 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
     function hide_div(){
         $("#select_Category_div").hide("slow");
     }
-    
-        window.onload = function () {
+    window.onload = function () {
             var fileUpload = document.getElementById("fileupload");
             fileUpload.onchange = function () {
                 if (typeof (FileReader) != "undefined") {

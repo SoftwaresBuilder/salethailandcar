@@ -15,3 +15,4 @@ $usd_rate = '1';
 
 $cons_thai = "฿";
 $cons_usd = "$";
+$for_new_user = "new user";

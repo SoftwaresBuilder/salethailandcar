@@ -178,10 +178,6 @@ if($p == "addeditpackages")
 		$_SESSION['sysErr']['title_en'] = "Please enter packages title";
 		$flg = true;
 	}
-	if(!($price>0)){
-		$_SESSION['sysErr']['price'] = "Please enter price";
-		$flg = true;
-	}
 	if($flg){
 		header("location:index.php?p=addeditpackages&id=".$enc_id);
 		exit;
