@@ -81,7 +81,7 @@ $count_favourites = sql($query_favourites);
             $categories = get_records($tblcategories,"id='".$v['category_id']."' and trash!='1'");
          ?>
             <div class="col-md-4 multiple">
-            <h4 style="font-weight: bold;"><?php echo 'For ' .$categories[0]['title_en']; ?></h4></br>
+            <span style="font-weight: bold;"><?php echo 'For ' .$categories[0]['title_en']; ?></span></br>
             <?php echo 'Post Ads ' .$v['post_ads']; ?></br>
             <?php echo 'Bump up ' .$v['bump_up']; ?></br>
             <?php echo 'Social Media Ads ' .$v['social_media_ads']; ?></br>

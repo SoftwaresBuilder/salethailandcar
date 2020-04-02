@@ -10,8 +10,8 @@ if(isset($_SESSION['lang']) and $_SESSION['lang']=="th"){
 	$meta_description = getsettings("meta description en");
 }
 $cons_gmap_distance=100;
-$thai_rate = '31.41';
-$usd_rate = '1';
+$thai_rate = '1'; /// I have removed multi currency option when enable set its rate
+$usd_rate = '1'; /// I have removed multi currency option when enable set its rate
 
 $cons_thai = "฿";
 $cons_usd = "$";

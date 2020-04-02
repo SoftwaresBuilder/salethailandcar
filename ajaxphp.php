@@ -42,6 +42,7 @@ if($p=="chat_send"){
 	}
 
 	$data = array();
+	$data['chat_id'] = $chat_id;
 	$data['product_id'] = $product_id;
 	$data['user_id'] = $user_id;
 	$data['touser_id'] = $touser_id;

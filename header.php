@@ -6,13 +6,8 @@ if(!isset($_SESSION['testing']) and $web_live=="yes"){
 $_SESSION['lang'] = (isset($_SESSION['lang']))?$_SESSION['lang']:'en';
 
 $lang = $_SESSION['lang'];
-if($_SESSION['lang']=="en"){
-  $_SESSION['price_rate'] = $usd_rate; /// Assigning currency exchange rate (default USD=1)
-  $_SESSION['cons_currency'] = $cons_usd; /// Assigning which currency will show on site
-} else {
-  $_SESSION['price_rate'] = $thai_rate;
-  $_SESSION['cons_currency'] = $cons_thai;
-}
+$_SESSION['price_rate'] = $thai_rate;
+$_SESSION['cons_currency'] = $cons_thai;
 
 $user_id = 0;
 if(isset($_SESSION['user_record'])){

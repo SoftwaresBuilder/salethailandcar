@@ -34,12 +34,14 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
     function hide_div(){
         $("#select_Category_div").hide("slow");
     }
-    window.onload = function () {
+    
+        window.onload = function () {
             var fileUpload = document.getElementById("fileupload");
             fileUpload.onchange = function () {
                 if (typeof (FileReader) != "undefined") {
                     var dvPreview = document.getElementById("dvPreview");
                     dvPreview.innerHTML = "";
+                    var img_id = 1;
                     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
                     for (var i = 0; i < fileUpload.files.length; i++) {
                         var file = fileUpload.files[i];
@@ -47,7 +49,8 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                             var reader = new FileReader();
                             reader.onload = function (e) {
                                 var img = document.createElement("IMG");
-                                img.style="margin:20px"
+                                img.id = "img"+img_id;
+                                img.style="margin:20px";
                                 if(fileUpload.files.length<=1){
                                  img.height = 250/fileUpload.files.length;
                                 }
@@ -57,7 +60,8 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
                                 }
                                 img.width = 400/fileUpload.files.length;
                                 img.src = e.target.result;
-                                dvPreview.appendChild(img);
+                                dvPreview.prepend(img);
+                                img_id++;
                             }
                             reader.readAsDataURL(file);
                         } else {

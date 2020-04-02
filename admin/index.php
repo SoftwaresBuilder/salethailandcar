@@ -55,6 +55,8 @@ if(!isset($_SESSION['page_url']) or $_SESSION['page_url']!=$p){
 	.chart_iframe { border:0px; height:390px; }
 	.img_box { background-color: #ddd; border:1px solid #ccc; }
 	.img_thumb { width: 100%; height: 150px; padding: 10px; overflow: hidden; }
+  .img_thumb_view { width: 100%; height: 100%; padding: 10px; overflow: hidden; }
+  .img_thumb_view img { width: 100%; }
 	.img_thumb img { width: 100%; }
 	.news_thumb { width: 100%; height: 80px; padding: 10px; overflow: hidden; }
 	.news_thumb img { width: 100%; }

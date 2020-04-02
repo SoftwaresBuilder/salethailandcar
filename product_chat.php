@@ -4,7 +4,6 @@ $product_id=dec_password($_GET['id']);
 $chat_id=$product_id.$user_id;
 $enc_chat_id=enc_password($chat_id);
 
-
 // echo "testing__".$chat_id;exit();
 if(isset($chat_id)){
     // $enc_chat_id = $_GET['chat_id'];
@@ -58,12 +57,10 @@ if(isset($chat_id)){
   </div>
 </div>
 <script type="text/javascript">
-  
-  function chat_send(){
+function chat_send(){
     var msg = $("#msg").val();
     var chat_id = $("#chat_id").val();
     var product_id = $("#p_id").val();
-
     $("#msg").val("");
     $.ajax({
         method: "POST",

@@ -10,13 +10,6 @@ $lang = $_SESSION['lang'];
 $flg = false;
 $p = $_GET['p'];//get page reference to execute the related condition
 
-
-if($p=="testing"){
-	$_SESSION['testing'] = "yes";
-	header("location:".$_SESSION['page_url']);
-	exit;
-}
-
 if($p=="get_package"){
 	$enc_id = $_POST['id'];
 	$id = dec_password($enc_id);
@@ -126,6 +119,7 @@ if($p=="like_product"){
 if($p=="select_lang"){
 	$lang = $_GET['lang'];
 	$_SESSION['lang'] = ($lang)?$lang:'en';
+	/**
 	if($_SESSION['lang']=="en"){
 		$_SESSION['price_rate'] = $usd_rate; /// Assigning currency exchange rate (default USD=1)
 		$_SESSION['cons_currency'] = $cons_usd; /// Assigning which currency will show on site
@@ -133,6 +127,7 @@ if($p=="select_lang"){
 		$_SESSION['price_rate'] = $thai_rate;
 		$_SESSION['cons_currency'] = $cons_thai;
 	}
+	/**/
 	header("location:".$_SESSION['page_url']);
 	exit;
 }
@@ -430,6 +425,7 @@ if($p=="add_product"){
 		$data['features'] = $features;
 		/**/
 		$id = insert_record($tblproducts,$data);
+		
 		if($id>0)
 		{
 			$user = get_records($tbluser_package,"user_id='".$user_id."' and category_id ='".$category_id."'");
@@ -444,8 +440,9 @@ if($p=="add_product"){
 			$_SESSION['sysErr']['msg'] = "Record added successfully";
 		}
 	}
-	if($id>0 and isset($_FILES['img']['name'])){
 	
+	if($id>0 and isset($_FILES['img']['name'])){
+		
 		if(count($_FILES['img']['name'])>0){  /// Add product images
 			$product_images = get_records($tblproduct_images,"product_id='".$id."' and main='1'");
 			$main = (count($product_images)>0)?0:1;
@@ -600,23 +597,7 @@ if($p=="partner_register"){
 	{
 		$user = get_records($tblusers,"id='".$id."' and status='1'");
 		if(count($user)>0){
-			$free_packages = get_records($tblvendor_packages,"title_en='new user' and status='1'");
-			if(count($free_packages)>0){
-				foreach ($free_packages as $key => $v) {
-					$data =array();
-					$data['user_id'] = $id;
-					$data['package_id'] = $v['id'];
-					$data['category_id'] = $v['category'];
-					$data['post_ads'] = $v['post_ads'];
-					$data['bump_up'] = $v['bump_up'];
-					$data['social_media_ads'] = $v['social_media_ads'];
-					$data['feature_ads'] = $v['feature_ads'];
-					$data['expiry_days'] = $v['expiry_days'];
-					$data['purchase_date'] = date("Y-m-d H:i:s");
-					insert_record($tbluser_package,$data,"1");
-				}
-			}
-			header("location:dashboard.php");
+			header("location:partner_account.php");
 			exit;
 		}
 		$_SESSION['sysErr']['msg'] = "Record added successfully";

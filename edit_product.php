@@ -128,7 +128,7 @@ $p_features = get_records($tblcategory_features,'category_id = '.$product[0]['su
                             if(count($type)>0){
                                 foreach ($type as $v) {
                                 ?>
-                                    <option <?php if($product[0]['type']==$v['id']){?> selected="selected" <?php }?> value="<?php echo $v['title_'.$lang];?>"><?php echo $v['title_'.$lang];?></option>
+                                    <option <?php if($product[0]['type']==$v['title_'.$lang]){?> selected="selected" <?php }?> value="<?php echo $v['title_'.$lang];?>"><?php echo $v['title_'.$lang];?></option>
                                 <?php
                                 }
                             }
@@ -227,7 +227,7 @@ $p_features = get_records($tblcategory_features,'category_id = '.$product[0]['su
                         <div class="col-md-8">
                         <div class="form-group">
                             <?php 
-                            $features_ids = explode('-', $product[0]['features']);
+                            $features_ids = explode('::', $product[0]['features']);
                                 foreach ($p_features as $key => $f) { ?>
                                     <div class="col-md-8">
                                     <input <?php if(in_array($f['id'], $features_ids)){?> checked="checked" <?php } ?> type="Checkbox" name="features[]" value="<?php echo $f['id'] ?>"> <?php echo $f['title_'.$lang] ?>
@@ -241,22 +241,22 @@ $p_features = get_records($tblcategory_features,'category_id = '.$product[0]['su
                         <div class="col-md-3"><?php echo translate("Fuel Type");?></div>
                         <div class="col-md-8">
                         <div class="form-group">
-                            <?php $fuel_type_ids = explode('-', $product[0]['fuel_type']);
+                            <?php $fuel_type_ids = explode('::', $product[0]['fuel_type']);
                              ?>
                              <div class="col-md-8">
-                                    <input <?php if(in_array("1", $fuel_type_ids)){?> checked="checked" <?php } ?> type="Checkbox" name="  fuel_type[]" value="1"> <?php echo translate("Petrol");?>
+                                    <input <?php if(in_array("Petrol", $fuel_type_ids)){?> checked="checked" <?php } ?> type="Checkbox" name="  fuel_type[]" value="Petrol"> <?php echo translate("Petrol");?>
                                      </div>
                                 <div class="col-md-8">
-                                     <input <?php if(in_array("2", $fuel_type_ids)){?> checked="checked" <?php } ?> type="Checkbox" name="fuel_type[]" value="2"> <?php echo translate("Diesel");?>
+                                     <input <?php if(in_array("Diesel", $fuel_type_ids)){?> checked="checked" <?php } ?> type="Checkbox" name="fuel_type[]" value="Diesel"> <?php echo translate("Diesel");?>
                                       </div>
                                 <div class="col-md-8">
-                                    <input <?php if(in_array("3", $fuel_type_ids)){?> checked="checked" <?php } ?> type="Checkbox" name="fuel_type[]" value="3"><?php echo translate("LPG");?> 
+                                    <input <?php if(in_array("LPG", $fuel_type_ids)){?> checked="checked" <?php } ?> type="Checkbox" name="fuel_type[]" value="LPG"><?php echo translate("LPG");?> 
                                     </div>
                                 <div class="col-md-8">
-                                    <input <?php if(in_array("4", $fuel_type_ids)){?> checked="checked" <?php } ?> type="Checkbox" name="fuel_type[]" value="4"><?php echo translate("CNG");?> 
+                                    <input <?php if(in_array("CNG", $fuel_type_ids)){?> checked="checked" <?php } ?> type="Checkbox" name="fuel_type[]" value="CNG"><?php echo translate("CNG");?> 
                                     </div>
                                 <div class="col-md-8">
-                                 <input <?php if(in_array("5", $fuel_type_ids)){?> checked="checked" <?php } ?> type="Checkbox" name="fuel_type[]" value="5"> <?php echo translate("Electric");?>
+                                 <input <?php if(in_array("Electric", $fuel_type_ids)){?> checked="checked" <?php } ?> type="Checkbox" name="fuel_type[]" value="Electric"> <?php echo translate("Electric");?>
                                 </div>
                         </div>
                         </div>

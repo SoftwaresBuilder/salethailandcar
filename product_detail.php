@@ -229,8 +229,8 @@ function fnAdd_bidd(){
                var strdate = '<span class="field-left">Bid Amount</span> <span id="sp_bid_amount" class="field-right">'+data[0].created_date+'</span>';
               $("#div_bid_date").html(strdate);
                 var total_bid = '<span class="field-left">Total Bids</span> <span class="field-right">'+data[0].total_bid_counts+'</span>';
-                var heighest_bid ='<span class="field-left">Highest Bids</span> <span class="field-right"><?php echo translate('usd'); ?>'+data[0].max_bid_amount+'</span>';
-                var lowest_bid = '<span class="field-left">Lowest Bids</span> <span class="field-right"><?php echo translate('usd'); ?>'+data[0].min_bid_amount+'</span>';
+                var heighest_bid ='<span class="field-left">Highest Bids</span> <span class="field-right"><?php echo $_SESSION['cons_currency']; ?>'+data[0].max_bid_amount+'</span>';
+                var lowest_bid = '<span class="field-left">Lowest Bids</span> <span class="field-right"><?php echo $_SESSION['cons_currency']; ?>'+data[0].min_bid_amount+'</span>';
                 $("#total_bid").html(total_bid);
                 $("#heighest_bid").html(heighest_bid);
                 $("#lowest_bid").html(lowest_bid);
@@ -424,7 +424,7 @@ function show_hide_num(val){
       <div class="col-12 border_bottom">
         <h5><?php echo show_price($product[0]['price']);?></h5>
       </div>
-      <?php if($user[0]['id']!=$_SESSION['user_record']['id']) { ?>
+      <?php if($user[0]['id']!=$user_id) { ?>
       <div class="col-12 pb10">
         <div class="row">
           <div class="col-6"><a <?php if(!isset($_SESSION['user_record'])){ ?> data-toggle="modal" data-target="#login_popup" <?php } ?> id="show_hide_num" class="nav-link btn btn-primary" href="javascript:void(0);"
@@ -539,7 +539,7 @@ function show_hide_num(val){
                                     <input type="hidden" name="user_id" id="user_id" value="<?php echo $product[0]['user_id'] ?>">
                                     <input type="hidden" name="bidder_id" id="bidder_id" value="<?php echo $_SESSION['user_record']['id']; ?>">
                                     <div class="form-group">
-                                        <input type="text" name="bid_amount" id="bid_amount" placeholder="<?php echo translate("Bids amount in");?> (<?php echo translate('usd'); ?>)">
+                                        <input type="text" name="bid_amount" id="bid_amount" placeholder="<?php echo translate("Bids amount in");?> (<?php echo $_SESSION['cons_currency']; ?>)">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="form-group">

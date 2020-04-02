@@ -85,4 +85,23 @@ if($p == "set_image_attribute"){
 		}
 	exit;
 }
+if($p=="convert_to_pdf"){    
+    $html = $_GET['html'];
+    if($html)
+    {
+    	require("phpToPDF.php"); 
+
+// SET YOUR PDF OPTIONS
+// FOR ALL AVAILABLE OPTIONS, VISIT HERE:  http://phptopdf.com/documentation/
+
+		phptopdf_html($html,'', 'html_example.pdf');
+
+		// OPTIONAL - PUT A LINK TO DOWNLOAD THE PDF YOU JUST CREATED
+		header("Content-Type: application/pdf");
+		header("Cache-Control: max-age=0");
+		header("Accept-Ranges: none");
+		header("Content-Disposition: attachment; filename=\"pdfs/html_example.pdf\"");
+    }
+	exit;
+}	
 ?>
