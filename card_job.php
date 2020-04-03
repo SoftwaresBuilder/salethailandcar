@@ -2,6 +2,7 @@
 $imgs = get_product_imgs($product['id'],'1');
 ?>
 <div class="row mybox2">
+	<?php include('status.php'); ?>
 	<div class="col-12">
 		<div class="imgdiv">
 			<a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>"><img src="<?php echo $imgs[0]['img'];?>"></a>

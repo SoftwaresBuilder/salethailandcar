@@ -63,23 +63,72 @@ $parent_categories = get_records($tblcategories,"pid='0' and status='1' and tras
     var location = $('#location').val();
     var cat_val = $('#hidden_value').val();
     var product_ids = [];
-            $.each($("input[name='checklist']:checked"), function(){
-                product_ids.push($(this).val());
-            });
-           product_ids.join();
+    var brands_ids = [];
+      $.each($("input[name='checklist']:checked"), function(){
 
-         $.ajax({
+          product_ids.push($(this).val());
+      });
+     if ((product_ids.indexOf('18') === -1) && (product_ids.indexOf('22') === -1)) {
+          $('#brand_div').hide();
+          $("#brand_title").hide();
+          $("#for_brand").val('');
+        }
+        else {
+          if($("#for_brand").val()=='done'){}
+            else{
+           $.ajax({
             type: "GET",
             url: "ajaxphp.php",
-             dataType: 'html',  
-            data: {product_ids:product_ids,location:location,cat_val:cat_val,p:'get_search_filter'},
+            dataType: 'html',  
+            data: {product_ids:product_ids,p:'update_brand'},
             success: function(data){
-              $('#serach_results').html('');
-              //return false;
-               //alert(data);
-               $('#serach_results').html(data);
-            } 
-        });
+              $("#brand_title").show();
+              $("#brand_div").show();
+              $("#items").html(data);
+              $("#for_brand").val('done');
+              } 
+  });
+       } }
+        
+      $.each($("input[name='brands']:checked"), function(){
+
+          brands_ids.push($(this).val());
+      });
+     brands_ids.join();
+   $.ajax({
+      type: "GET",
+      url: "ajaxphp.php",
+       dataType: 'html',  
+      data: {product_ids:product_ids,brands_ids:brands_ids,location:location,cat_val:cat_val,p:'get_search_filter'},
+      success: function(data){
+        $('#serach_results').html('');
+        //return false;
+         //alert(data);
+         $('#serach_results').html(data);
+      } 
+  });
+   
+}
+function get_filter_brands(){
+  alert('here');return false;
+  var brands_ids = [];
+      $.each($("input[name='brands']:checked"), function(){
+
+          brands_ids.push($(this).val());
+      });
+     brands_ids.join();
+   $.ajax({
+      type: "GET",
+      url: "ajaxphp.php",
+       dataType: 'html',  
+      data: {brands_ids:brands_ids,p:'get_search_filter'},
+      success: function(data){
+        $('#serach_results').html('');
+        //return false;
+         //alert(data);
+         $('#serach_results').html(data);
+      } 
+  });
    
 }
 

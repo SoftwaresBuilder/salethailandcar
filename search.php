@@ -23,7 +23,7 @@ if(isset($_POST['location'])){
     $where .= " AND location LIKE '%".$location."%'";
 }
 
-$products = get_records($tblproducts,$where,'sort_date ASC');
+$products = get_records($tblproducts,$where,'sort_date DESC');
 $card_name = (count($category)>0)?$category[0]['card_name'].'.php':"card_car.php";
 $banner_name = ($category[0]['banner_name'])?$category[0]['banner_name'].'.php':"";
 if($banner_name){

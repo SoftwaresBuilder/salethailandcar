@@ -123,6 +123,21 @@ else{
 }
 	exit;
 }
+if($p=="update_brand"){
+	$subcategory_ids = implode(",",$_GET['product_ids']);
+	if($subcategory_ids){
+			$condition = "category_id IN(".$subcategory_ids.")";
+		}
+	$brands = get_records($tblcategory_types,$condition);
+	if(count($brands)>0){
+		foreach ($brands as $v) {
+			$html .= '<div class="col-12"><input type="checkbox" name="brands" onclick="get_filter_products()" value="'.$v['title_en'].'">&nbsp;'.$v['title_'.$lang].'</div>';
+		}
+	}
+	echo $html;
+	exit;
+	
+}
 
 if($p=="add_bidd"){
 	
@@ -174,15 +189,19 @@ if($p=="get_search_filter"){
 	 	$location = $_GET['location'];
 		$cat_id = $_GET['cat_val'];
 		$subcategory_ids = implode(",",$_GET['product_ids']);
+		$brands_ids = implode("','",$_GET['brands_ids']);
 	    $condition = " category_id=".$_GET['cat_val'];
 		if($subcategory_ids){
 			$condition .= " AND subcategory_id IN(".$subcategory_ids.")";
+		}
+		if($brands_ids){
+			$condition .= " AND type IN('".$brands_ids."')";
 		}
 		if($location){
 			$condition .= " AND location LIKE '%".$location."%' ";
 		}
 		/////////////// Search Code ///////////////////
-		$products = get_records($tblproducts,$condition,"","");
+		$products = get_records($tblproducts,$condition,'sort_date DESC');
 
 				if(count($products)>0){
 		          foreach ($products as $product) {
@@ -247,7 +266,7 @@ if($p=="get_jobs_filter"){
 	
 	 	 $condition = " category_id=".$_GET['cat_val'];
 		if($job_title){
-			$condition .= " AND title LIKE '%".$job_titlex."%' ";
+			$condition .= " AND title_$lang LIKE '%".$job_title."%' ";
 		}
 		if($job_location){
 			$condition .= " AND location LIKE '%".$job_location."%' ";
@@ -255,14 +274,19 @@ if($p=="get_jobs_filter"){
 		if($job_sub_category){
 			$condition .= " AND subcategory_id =".$job_sub_category;
 		}
-		
+		if($job_min_price){
+			$condition .= " AND price<=".$job_min_price;
+		}
+		if($job_max_price){
+			$condition .= " AND price>=".$job_max_price;
+		}
 		 $condition; 
-	 	 $products = get_records($tblproducts,$condition,"","");
+	 	 $products = get_records($tblproducts,$condition,'sort_date DESC');
 
 				if(count($products)>0){
 		          foreach ($products as $product) {
 		          ?>
-		           <div class="col-12 col-md-4"><?php include("card_real_state.php");?></div>
+		           <div class="col-12 col-md-4"><?php include("card_job.php");?></div>
 		           <?php
 		          }
 		        } else {
@@ -286,7 +310,7 @@ if($p=="get_price_sort"){
 			$order_by .= " price desc ";
 		}
 		else if($sort_by=="default"){
-			$order_by .= " sort_date ASC ";
+			$order_by .= " sort_date DESC ";
 		}
 		
 		 $condition; 
@@ -482,6 +506,17 @@ if($p=="code_validate"){
 		$code = "Not Valid";
 	}
 	echo $code;
+	exit;
+}
+if($p=="save_user_lat_long"){
+	$latitude = $_GET['latitude'];
+	$longitude = $_GET['longitude'];
+	$data = array();
+		$data['latitude'] = $latitude;
+		$data['longitude'] = $longitude;
+		$condition = array();
+		$condition['id'] = $user_id;
+		$result = update_record($tblusers,$data,$condition);
 	exit;
 }
 ?>

@@ -459,6 +459,7 @@ if($p=="add_product"){
 					$imgname = "";
 				    $img_name = upload_img($files_arr,$dir_site_uploads,$imgname);
 				  	add_watermark($dir_site_uploads.$img_name);
+				  	resize_and_crop($dir_site_uploads.$img_name,$dir_site_uploads.$img_name,700,450);
 					if($img_name){
 						$data = array();
 						$data['product_id'] = $id;
@@ -940,6 +941,7 @@ if($p == "upload_product_images"){
 					$imgname = "";
 					$img_name = upload_img($files_arr,$dir_site_uploads,$imgname);
 					add_watermark($dir_site_uploads.$img_name);
+					resize_and_crop($dir_site_uploads.$img_name,$dir_site_uploads.$img_name,700,450);
 					if($img_name){
 						$_SESSION['sysErr']['msg'] = "Images uploaded successfully";
 						$data = array();

@@ -2,6 +2,7 @@
 $subcategories = array();
 if($id>0){
 	$subcategories = get_records($tblcategories,"pid='".$id."' and status='1' and trash='0'");
+	//$brands = get_records($tblcategory_types,"category_id='".$id."' and trash='0'");
 	$subcategories1 = get_records($tblcategories,"banner_name !='NULL' and status='1' and trash='0'");
 }
 ?>
@@ -28,8 +29,17 @@ if($id>0){
 	if(count($subcategories)>0){
 		foreach ($subcategories as $v) {?>
 
-			<div class="col-12"><input id="check_id_<?php echo $v['id'];?>" type="checkbox"  onclick="get_filter_products(<?php echo $v['id'];?>)" name="checklist" value="<?php echo $v['id'];?>">&nbsp;<?php echo $v['title_'.$lang];?></div>
+			<div class="col-12"><input id="check_id_<?php echo $v['id'];?>" type="checkbox" onclick="get_filter_products(<?php echo $v['id'];?>)" name="checklist" value="<?php echo $v['id'];?>">&nbsp;<?php echo $v['title_'.$lang];?></div>
 
 		<?php }}
 		?>
+		<div id="brand_title" style="display: none;" class="col-12 heading2">Brand</div>
+		<div id="brand_div" style="height: 300px;width:100%;overflow: auto; display: none">
+			<input type="hidden" id="for_brand" name="" value="">
+		<div id="items"></div>
+		
+		</div>
 	</div>
+<script type="text/javascript">
+
+</script>

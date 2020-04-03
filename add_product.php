@@ -11,12 +11,17 @@ if(isset($_GET['id'])){
         }
     }
  } //else{
-//     $user = get_records($tblusers ,"id='".$user_id."'");
-//     if(count($user)>0 and $user[0]['post_ads']<1){
-//         $_SESSION['sysErr']['msg'] = "Please refill your post ads limit";
-//         redirect("dashboard","?tab=packages");
-//         exit;
-//     }
+    $user = get_records($tblusers ,"id='".$user_id."'");
+    if(count($user)>0){
+                if($user[0]['latitude']=="" && $user[0]['longitude']==""){
+                ?>
+            <script type="text/javascript">
+            $(document).ready(function(){
+                getLocation();
+            });
+            </script>
+        <?php }
+    }
 // }
 
 if(!isset($_SESSION['sysData']['title_'.$lang])) {
@@ -28,53 +33,75 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
 
 ?>
 <script type="text/javascript">
-    function cat_div_show(){
-        $("#select_Category_div").show("slow");
-    }
-    function hide_div(){
-        $("#select_Category_div").hide("slow");
-    }
-    
-        window.onload = function () {
-            var fileUpload = document.getElementById("fileupload");
-            fileUpload.onchange = function () {
-                if (typeof (FileReader) != "undefined") {
-                    var dvPreview = document.getElementById("dvPreview");
-                    dvPreview.innerHTML = "";
-                    var img_id = 1;
-                    var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
-                    for (var i = 0; i < fileUpload.files.length; i++) {
-                        var file = fileUpload.files[i];
-                        if (regex.test(file.name.toLowerCase())) {
-                            var reader = new FileReader();
-                            reader.onload = function (e) {
-                                var img = document.createElement("IMG");
-                                img.id = "img"+img_id;
-                                img.style="margin:20px";
-                                if(fileUpload.files.length<=1){
-                                 img.height = 250/fileUpload.files.length;
-                                }
-                                else
-                                {
-                                    img.height = 250/fileUpload.files.length*2;
-                                }
-                                img.width = 400/fileUpload.files.length;
-                                img.src = e.target.result;
-                                dvPreview.prepend(img);
-                                img_id++;
-                            }
-                            reader.readAsDataURL(file);
-                        } else {
-                            alert(file.name + " is not a valid image file.");
-                            dvPreview.innerHTML = "";
-                            return false;
-                        }
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+function showPosition(position) {
+  var latitude  =position.coords.latitude;
+  var longitude = position.coords.longitude;
+   $.ajax({
+            type: "GET",
+            url: "ajaxphp.php",
+             dataType: 'html',  
+            data: {latitude:latitude,longitude:longitude,p:'save_user_lat_long'},
+            success: function(data){
+            } 
+        });
+}
+function savee(lat,long){
+
+}
+function cat_div_show(){
+$("#select_Category_div").show("slow");
+}
+function hide_div(){
+$("#select_Category_div").hide("slow");
+}
+
+window.onload = function () {
+var fileUpload = document.getElementById("fileupload");
+fileUpload.onchange = function () {
+    if (typeof (FileReader) != "undefined") {
+        var dvPreview = document.getElementById("dvPreview");
+        dvPreview.innerHTML = "";
+        var img_id = 1;
+        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+        for (var i = 0; i < fileUpload.files.length; i++) {
+            var file = fileUpload.files[i];
+            if (regex.test(file.name.toLowerCase())) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var img = document.createElement("IMG");
+                    img.id = "img"+img_id;
+                    img.style="margin:20px";
+                    if(fileUpload.files.length<=1){
+                     img.height = 250/fileUpload.files.length;
                     }
-                } else {
-                    alert("This browser does not support HTML5 FileReader.");
+                    else
+                    {
+                        img.height = 250/fileUpload.files.length*2;
+                    }
+                    img.width = 400/fileUpload.files.length;
+                    img.src = e.target.result;
+                    dvPreview.prepend(img);
+                    img_id++;
                 }
+                reader.readAsDataURL(file);
+            } else {
+                alert(file.name + " is not a valid image file.");
+                dvPreview.innerHTML = "";
+                return false;
             }
         }
+    } else {
+        alert("This browser does not support HTML5 FileReader.");
+    }
+}
+}
 
 </script>
 <style type="text/css">
@@ -114,7 +141,6 @@ $subcategory = get_records($tblcategories,"pid='".$category[0]['id']."' and stat
             </div>
             <form action="process.php?p=add_product" enctype="multipart/form-data" method="post">
                 <?php show_errors();?>
-               
                     <div class="row form_fields">
                         <div class="col-md-3"><?php echo translate("Ad Type");?></div>
                         <div class="col-md-3">

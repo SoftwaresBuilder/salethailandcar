@@ -64,8 +64,11 @@
                                                 <div class="select-btn">
                                                     <select class="form-control selectpicker bs-select-hidden" id="min_price" name="min_price">
                                                         <option value=""><?php echo translate("Min Price");?></option>
-                                 <option value="2500"><?php echo translate("THB 2500");?></option>
-                                  <option value="2600"><?php echo translate("THB 2600");?></option>
+                                 <option value="500"><?php echo translate("THB 500");?></option>
+                                  <option value="1000"><?php echo translate("THB 1000");?></option>
+                                  <option value="2000"><?php echo translate("THB 2000");?></option>
+                                  <option value="3000"><?php echo translate("THB 3000");?></option>
+                                  <option value="4000"><?php echo translate("THB 4000");?></option>
                                                             </select>
   
      </div>
@@ -74,8 +77,11 @@
         <div class="select-btn">
          <select class="form-control selectpicker bs-select-hidden" id="max_price" name="max_price" onchange="">
          <option value=""><?php echo translate("Max Price");?></option>
-         <option value="2500"><?php echo translate("THB 2500");?></option>
-         <option value="2600"><?php echo translate("THB 2600");?></option>
+         <option value="500"><?php echo translate("THB 500");?></option>
+                                  <option value="1000"><?php echo translate("THB 1000");?></option>
+                                  <option value="2000"><?php echo translate("THB 2000");?></option>
+                                  <option value="3000"><?php echo translate("THB 3000");?></option>
+                                  <option value="4000"><?php echo translate("THB 4000");?></option>
           </select>
                                      </div>
                                             </div>
