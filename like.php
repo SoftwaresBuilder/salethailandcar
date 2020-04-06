@@ -1,8 +1,10 @@
+
 <?php
 if($user_id>0){
 	$liked = get_records($tblproduct_favorites,"user_id='".$user_id."' and product_id='".$product['id']."'");
 	?>
 	<a onclick="add_to_favourite('<?php echo $product['id'];?>');" href="javascript:;"><i id="like_<?php echo $product['id'];?>" class="fa fa-heart <?php if(count($liked)>0){?>liked <?php }else{?>like <?php }?>"></i></a>
+    
 <?php
 }
 ?>

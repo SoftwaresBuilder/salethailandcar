@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2020 at 06:16 PM
+-- Generation Time: Apr 06, 2020 at 08:48 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -1960,7 +1960,7 @@ CREATE TABLE `thai_package_user` (
 INSERT INTO `thai_package_user` (`id`, `user_id`, `package_id`, `category_id`, `post_ads`, `bump_up`, `social_media_ads`, `feature_ads`, `expiry_days`, `purchase_date`, `created_date`, `status`, `trash`) VALUES
 (1, 6, 1, 31, 12, 11, 132, 110, 12, '2020-03-31 15:52:02', '2020-03-30 18:59:52', 1, 0),
 (3, 6, 2, 3, 40, 12, 40, 48, 25, '2020-03-31 15:55:40', '2020-03-30 19:13:22', 1, 0),
-(6, 6, 3, 1, 42, 80, 20, 10, 25, '2020-03-31 15:39:05', '2020-03-31 18:38:43', 1, 0),
+(6, 6, 3, 1, 36, 80, 20, 10, 25, '2020-03-31 15:39:05', '2020-03-31 18:38:43', 1, 0),
 (11, 4862, 8, 1, 3, 3, 1, 1, 20, '2020-04-01 16:15:49', '2020-04-01 19:15:49', 1, 0),
 (12, 4862, 9, 3, 3, 3, 1, 1, 25, '2020-04-01 16:15:49', '2020-04-01 19:15:49', 1, 0);
 
@@ -2026,10 +2026,11 @@ INSERT INTO `thai_products` (`id`, `category_id`, `subcategory_id`, `user_id`, `
 (11, 16, 18, 6, 'Car for sale urgent', 'รถขายด่วน', 'urgent car sale in low price', 'เร่งด่วนรถขายในราคาต่ำ', 1, 0, '2020-03-10 08:15:50', 5678, 'Reading, UK', 'Avanti', 0, 'CL Models (4)', 'Pick Up', 'civic', 2018, 2505, '2', NULL, '2::3', 0, 0, 0, 0, '51.5073509', '-0.1277583', '2020-03-10 13:15:50', 99, 'default', 'ค่าปริยาย', NULL, NULL),
 (27, 24, 27, 6, 'ggg', NULL, 'ree', 'ree', 1, 0, '2020-03-12 06:34:56', 53, 'Gatwick Airport, LGW (LGW), Horley, Gatwick, UK', 'Rent', 0, '', '', '', 0000, 0, '', NULL, '', 0, NULL, NULL, NULL, '51.5073509', '-0.1277583', '2020-03-12 11:34:56', 0, NULL, NULL, NULL, NULL),
 (29, 16, 18, 6, 'checking', 'ตรวจ', 'send', 'ส่ง', 1, 0, '2020-03-12 13:59:18', 5545, 'Gatwick Airport, LGW (LGW), Horley, Gatwick, UK', 'Alfa Romeo', 0, 'MDX', 'Pick Up', 'n', 2020, 0, 'Petrol::Diesel::LPG', '', '1::3', 0, NULL, NULL, NULL, '51.5073509', '-0.1277583', '2020-03-12 18:59:18', 9, 'hh', 'hh', NULL, NULL),
-(30, 24, 27, 6, 'new house', 'บ้านใหม่', 'brand new house for sale', 'แบรนด์ใหม่บ้านสำหรับขาย', 1, 0, '2020-03-19 06:24:39', 555, 'Gatwick Airport, LGW (LGW), Horley, Gatwick, UK', 'Sale', 0, '', '', '', 0000, 0, '', NULL, '', 0, NULL, NULL, NULL, '51.1536621', '-0.1820629', '2020-03-27 12:41:44', 3, 'house,sale', 'บ้านหลังขาย', NULL, NULL),
-(31, 24, 28, 6, 'shops in market now for sale', 'ร้านค้าในตลาดตอนนี้สำหรับขาย', 'shop for sale', 'ร้านขาย', 1, 0, '2020-03-19 10:34:27', 456581, 'Jermyn Street, London, UK', 'Sale', 0, '', '', '', 0000, 0, '', '', '', 0, 3, 2, 5, '51.5073509', '-0.1277583', '2020-03-27 12:39:21', 42, 'shops', 'ออกร้าน', NULL, NULL),
+(30, 24, 27, 6, 'new house', 'บ้านใหม่', 'brand new house for sale', 'แบรนด์ใหม่บ้านสำหรับขาย', 1, 0, '2020-03-19 06:24:39', 555, 'Gatwick Airport, LGW (LGW), Horley, Gatwick, UK', 'Sale', 0, '', '', '', 0000, 0, '', NULL, '', 0, NULL, NULL, NULL, '51.1536621', '-0.1820629', '2020-04-03 14:25:50', 3, 'house,sale', 'บ้านหลังขาย', NULL, NULL),
+(31, 24, 28, 6, 'shops in market now for sale', 'ร้านค้าในตลาดตอนนี้สำหรับขาย', 'shop for sale', 'ร้านขาย', 1, 0, '2020-03-19 10:34:27', 456581, 'Jermyn Street, London, UK', 'Sale', 0, '', '', '', 0000, 0, '', '', '', 0, 3, 2, 5, '51.5073509', '-0.1277583', '2020-03-27 12:39:21', 43, 'shops', 'ออกร้าน', NULL, NULL),
 (35, 1, 6, 6, 'seconde hand', 'seconde มือ', 'seconde', 'seconde', 0, 0, '2020-03-31 07:19:43', 1254, 'John Radcliffe Hospital, Headley Way, Headington, Oxford, UK', '5', 0, '', '', '', NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, '51.5073509', '-0.1277583', '2020-03-31 12:19:43', 0, 'hhjj', 'hhjj', NULL, NULL),
-(54, 1, 6, 6, 'testing ad images', 'การทดสอบโฆษณาภาพ', 'dsd', 'dsd', 0, 0, '2020-04-01 13:43:51', 25, 'Dagenham, UK', '5', 0, '', '', '', 0000, 0, '', NULL, '', 0, 0, 0, 0, '51.53888999999999', '0.14743', '2020-04-01 18:43:51', 0, 'd', 'd', NULL, NULL);
+(54, 1, 6, 6, 'testing ad images', 'การทดสอบโฆษณาภาพ', 'dsd', 'dsd', 0, 0, '2020-04-01 13:43:51', 25, 'Dagenham, UK', '5', 0, '', '', '', 0000, 0, '', NULL, '', 0, 0, 0, 0, '51.53888999999999', '0.14743', '2020-04-01 18:43:51', 0, 'd', 'd', NULL, NULL),
+(60, 1, 5, 6, 'crop testing', 'ข้าวโพดไปส่วนหนึ่การทดสอบ', 'testing for crop', 'การทดสอบสำหรับข้าวโพดไปส่วนหนึ่', 1, 0, '2020-04-03 06:43:11', 124, 'Guildford, UK', '3', 0, '', '', '', 0000, 0, '', NULL, '', 0, 0, 0, 0, '51.23622', '-0.570409', '2020-04-03 14:23:56', 3, 'ggg', 'ggg', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2109,7 +2110,12 @@ INSERT INTO `thai_product_images` (`id`, `product_id`, `img`, `alt`, `descriptio
 (47, 32, '202003310911487013.jpg', NULL, NULL, 1, 0),
 (48, 54, '202004011543516642.jpg', NULL, NULL, 1, 0),
 (49, 54, '202004011543521204.jpg', NULL, NULL, 0, 0),
-(50, 54, '202004011543525104.jpg', NULL, NULL, 0, 0);
+(50, 54, '202004011543525104.jpg', NULL, NULL, 0, 0),
+(51, 55, '202004030820313138.jpg', NULL, NULL, 1, 0),
+(53, 60, '202004030843125622.jpg', NULL, NULL, 1, 0),
+(54, 60, '202004030843128773.jpg', NULL, NULL, 0, 0),
+(55, 60, '202004030843125983.jpg', NULL, NULL, 0, 0),
+(56, 60, '202004031248286335.jpg', NULL, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2186,22 +2192,24 @@ CREATE TABLE `thai_users` (
   `created_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `type` int(11) NOT NULL DEFAULT 1 COMMENT '0=user, 1=partner',
   `login` int(11) NOT NULL DEFAULT 0 COMMENT '0=logout, 1=login',
-  `login_time` datetime NOT NULL DEFAULT current_timestamp()
+  `login_time` datetime NOT NULL DEFAULT current_timestamp(),
+  `latitude` varchar(100) DEFAULT NULL,
+  `longitude` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `thai_users`
 --
 
-INSERT INTO `thai_users` (`id`, `member`, `name`, `phone`, `email`, `password`, `img`, `status`, `zip`, `state`, `city`, `address`, `social_media_accounts`, `ip_address`, `signup_from_page`, `preferred_payment_method`, `user_intro`, `post_ads`, `bump_up`, `package_id`, `package_date`, `trash`, `created_date`, `type`, `login`, `login_time`) VALUES
-(1, NULL, 'thaitravel', NULL, 'user@softwaresbuilder.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 39, 12, 0, NULL, 0, '2020-03-13 12:24:06', 0, 0, '2020-03-22 10:06:06'),
-(2, NULL, 'username.msc', '1221212', 'username.msc@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06'),
-(4, NULL, 'info', '555555555', 'info@royal-sea.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06'),
-(5, NULL, 'moshene1', '1234556', 'phprocks4web@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1, 0, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-10 09:14:11'),
-(6, NULL, 'phprocks4web', '+9444785-6666', 'vendor@softwaresbuilder.com', 'MTIzNDU=', '202003191353405067.jpg', 1, 778855, 'yyy', 'xx', 'xyz', NULL, NULL, NULL, NULL, NULL, 7, 3, 2, NULL, 0, '2020-03-13 12:24:06', 1, 1, '2020-04-02 11:02:35'),
-(7, NULL, 'themepair', '012345678', 'themepair@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06'),
-(8, NULL, 'ishrarkhan1984', '9899920712', 'ishrarkhan1984@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06'),
-(4862, '20040116154986', 'free package', NULL, 'free@free.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, '2020-04-01 14:15:49', 1, 1, '2020-04-01 16:16:16');
+INSERT INTO `thai_users` (`id`, `member`, `name`, `phone`, `email`, `password`, `img`, `status`, `zip`, `state`, `city`, `address`, `social_media_accounts`, `ip_address`, `signup_from_page`, `preferred_payment_method`, `user_intro`, `post_ads`, `bump_up`, `package_id`, `package_date`, `trash`, `created_date`, `type`, `login`, `login_time`, `latitude`, `longitude`) VALUES
+(1, NULL, 'thaitravel', NULL, 'user@softwaresbuilder.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 39, 12, 0, NULL, 0, '2020-03-13 12:24:06', 0, 0, '2020-03-22 10:06:06', NULL, NULL),
+(2, NULL, 'username.msc', '1221212', 'username.msc@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06', NULL, NULL),
+(4, NULL, 'info', '555555555', 'info@royal-sea.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06', NULL, NULL),
+(5, NULL, 'moshene1', '1234556', 'phprocks4web@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1, 0, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-10 09:14:11', NULL, NULL),
+(6, NULL, 'phprocks4web', '+9444785-6666', 'vendor@softwaresbuilder.com', 'MTIzNDU=', '202003191353405067.jpg', 1, 778855, 'yyy', 'xx', 'xyz', NULL, NULL, NULL, NULL, NULL, 7, 0, 2, NULL, 0, '2020-03-13 12:24:06', 1, 1, '2020-04-06 07:22:37', '33.61215', '73.01061'),
+(7, NULL, 'themepair', '012345678', 'themepair@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06', NULL, NULL),
+(8, NULL, 'ishrarkhan1984', '9899920712', 'ishrarkhan1984@gmail.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1, 1, 0, NULL, 0, '2020-03-13 12:24:06', 1, 0, '2020-03-13 05:24:06', NULL, NULL),
+(4862, '20040116154986', 'free package', NULL, 'free@free.com', 'MTIzNDU=', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, '2020-04-01 14:15:49', 1, 1, '2020-04-01 16:16:16', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2492,7 +2500,7 @@ ALTER TABLE `thai_package_user`
 -- AUTO_INCREMENT for table `thai_products`
 --
 ALTER TABLE `thai_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `thai_product_favorites`
@@ -2504,7 +2512,7 @@ ALTER TABLE `thai_product_favorites`
 -- AUTO_INCREMENT for table `thai_product_images`
 --
 ALTER TABLE `thai_product_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `thai_settings`
