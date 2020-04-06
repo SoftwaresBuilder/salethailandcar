@@ -2,6 +2,7 @@
 // echo "hereqw";exit();
 // $product=get_records($tblproducts,"trash!=1");
 $id = 0;
+$for_marker=0;
 if(isset($_GET['id'])){
   $enc_id = $_GET['id'];
   $id = dec_password($_GET['id']);
@@ -15,11 +16,15 @@ $products = get_records($tblproducts,"category_id='".$id."' and status>0 and  tr
 $lat_lng = '';
 $lat = "";
 $lng = "";
+$p_id = array();
+$p_price = array();
 if(count($products)>0){
   foreach ($products as $v) {
     $lat_lng .= '{lat: '.$v['latitude'].', lng: '.$v['longitude'].'},';
     $lat = $v['latitude'];
     $lng = $v['longitude'];
+    $p_id[] = $v['id'];
+    $p_price[] = $v['price'];
   }
 }
 ?>
@@ -90,12 +95,19 @@ if(count($products)>0){
         // Note: The code uses the JavaScript Array.prototype.map() method to
         // create an array of markers based on a given "locations" array.
         // The map() method here has nothing to do with the Google Maps API.
+        var pinImage = "download.png";
+       
+        var infowindow = new google.maps.InfoWindow();
         var markers = locations.map(function(location, i) {
+
           return new google.maps.Marker({
             position: location,
-            ///label: labels[i % labels.length]
+            icon: pinImage,
+            title: 'Price : <?php echo $p_price[$for_marker]; $for_marker=$for_marker+1; ?>'
           });
         });
+
+     
 		
 		map.addListener('click', function(e) {
 			search_on_map(e.latLng);
@@ -105,7 +117,7 @@ if(count($products)>0){
         var markerCluster = new MarkerClusterer(map, markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
       }
-	  
+
 	  function search_on_map(latlng=""){
       if(latlng){
         var latlng = latlng.toString();
@@ -133,6 +145,7 @@ if(count($products)>0){
 	  }
       var locations = [
         <?php echo $lat_lng;?>]
+ 
     </script>
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
     </script>

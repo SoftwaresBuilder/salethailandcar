@@ -24,6 +24,7 @@ if ($search_key) {
 if ($sortby) {
     $where .= " ORDER BY $sortby";
 }
+$where = "trash!='1'";
 ///////////// Paging /////////////////////
 if (!isset($_GET['pageNo'])) {
     $pageNo = 1;
@@ -87,6 +88,7 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                                     <td><?php echo $v['adminemail']; ?></td>
                                     <td>
                                         <a href="index.php?p=addeditemail&id=<?= enc_password($v['id']); ?>" title="Update Record"><i class="fa fa-pencil"></i></a>
+                                        <a href="javascript:;" onclick="delete_record('process.php?p=delemail&id=<?= enc_password($v['id']);?>');" data-toggle="modal" data-target="#delete" title="Delete Record"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;
                                     </td>
                                 </tr>
                         <?php

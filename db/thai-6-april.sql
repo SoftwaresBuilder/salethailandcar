@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2020 at 08:48 AM
+-- Generation Time: Apr 06, 2020 at 05:16 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -1833,21 +1833,24 @@ CREATE TABLE `thai_emails` (
   `id` int(11) NOT NULL,
   `type` text NOT NULL,
   `adminname` text NOT NULL,
-  `subject` varchar(255) DEFAULT NULL,
-  `body` text NOT NULL,
-  `adminemail` varchar(255) NOT NULL
+  `subject_en` varchar(255) DEFAULT NULL,
+  `subject_th` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `body_en` text NOT NULL,
+  `body_th` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `adminemail` varchar(255) NOT NULL,
+  `trash` int(10) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `thai_emails`
 --
 
-INSERT INTO `thai_emails` (`id`, `type`, `adminname`, `subject`, `body`, `adminemail`) VALUES
-(1, 'signup', 'Admin', 'Create Account', '<p>Dear {{Name}}</p>\r\n<p>Thanks for creating Account.</p>\r\n<p>Your Email: {{Email}}</p>\r\n<p>Password: {{Password}}</p>\r\n<p>Click on following link to actvate your account ! :</p>\r\n<p>{{ConfirmationLink}}</p>\r\n<p>&nbsp;</p>', 'info@domain.com'),
-(2, 'forgot password', 'Admin', 'Forgot Password', '<p>Dear {{Name}}</p>\r\n<p>Your login detail is</p>\r\n<p>Your Email: {{Email}}</p>\r\n<p>Password: {{Password}}</p>\r\n<p>&nbsp;</p>', 'info@domain.com'),
-(3, 'change password', 'Admin', 'Change Password', '<p>Dear {{Name}}</p>\r\n<p>Your password have been changed successfully</p>\r\n<p>Your Email: {{Email}}</p>\r\n<p>Password: {{Password}}</p>\r\n<p>&nbsp;</p>', 'info@domain.com'),
-(4, 'add posted', 'Admin', 'Ad Posted Successfully', '<p>Dear {{Name}}</p>\r\n<p>Your Ad is posted successfully.</p>\r\n<p>Your Ad id is \r\n: {{id}}</p>', 'info@domain.com'),
-(5, 'post bid', 'Admin', 'Post Bid', '<p>Dear {{Name}}</p>\r\n<p>Your have post a bid on product successfully.</p>\r\n<p>Your Bid product is : {{bid_product}}</p>\r\n<p>Your Bid Amount is : {{bid_amount}}</p>', 'info@domain.com');
+INSERT INTO `thai_emails` (`id`, `type`, `adminname`, `subject_en`, `subject_th`, `body_en`, `body_th`, `adminemail`, `trash`) VALUES
+(1, 'signup', 'Admin', 'Create Account', NULL, '<p>Dear {{Name}}</p>\r\n<p>Thanks for creating Account.</p>\r\n<p>Your Email: {{Email}}</p>\r\n<p>Password: {{Password}}</p>\r\n<p>Click on following link to actvate your account ! :</p>\r\n<p>{{ConfirmationLink}}</p>\r\n<p>&nbsp;</p>', '', 'info@domain.com', 0),
+(2, 'forgot password', 'Admin', 'Forgot Password', NULL, '<p>Dear {{Name}}</p>\r\n<p>Your login detail is</p>\r\n<p>Your Email: {{Email}}</p>\r\n<p>Password: {{Password}}</p>\r\n<p>&nbsp;</p>', '', 'info@domain.com', 0),
+(3, 'change password', 'Admin', 'Change Password', NULL, '<p>Dear {{Name}}</p>\r\n<p>Your password have been changed successfully</p>\r\n<p>Your Email: {{Email}}</p>\r\n<p>Password: {{Password}}</p>\r\n<p>&nbsp;</p>', '', 'info@domain.com', 0),
+(4, 'add posted', 'Admin', 'Ad Posted Successfully', NULL, '<p>Dear {{Name}}</p>\r\n<p>Your Ad is posted successfully.</p>\r\n<p>Your Ad id is \r\n: {{id}}</p>', '', 'info@domain.com', 0),
+(5, 'post bid', 'Admin', 'Post Bid', 'โพสประมูล', '<p>Dear {{Name}}</p>\r\n<p>Your have post a bid on product successfully.</p>\r\n<p>Your Bid product is : {{bid_product}}</p>\r\n<p>Your Bid Amount is : {{bid_amount}}</p>', '<p>ที่รัก{{ชื่อ}}</p>\r\n<p>ของคุณต้องโพสเป็นประมูลสินค้าเรียบร้อยแล้ว</p>\r\n<p>ของคุณประมูลสินค้าคือ:{{bid_product}}</p>\r\n<p>ของคุณประมูลจำนวนมากคือ:{{bid_amount}}</p>', 'info@domain.com', 0);
 
 -- --------------------------------------------------------
 
@@ -2013,7 +2016,7 @@ CREATE TABLE `thai_products` (
 --
 
 INSERT INTO `thai_products` (`id`, `category_id`, `subcategory_id`, `user_id`, `title_en`, `title_th`, `description_en`, `description_th`, `status`, `trash`, `created_date`, `price`, `location`, `type`, `ad_type`, `submodel`, `model`, `brand`, `year_registration`, `driven`, `fuel_type`, `gearbox`, `features`, `featured`, `bedrooms`, `bathrooms`, `kitchens`, `latitude`, `longitude`, `sort_date`, `views`, `tags_en`, `tags_th`, `meta_description_en`, `meta_description_th`) VALUES
-(1, 16, 18, 5, 'New Tesla5 for sale', 'ใหม่ Tesla5 สำหรับขาย', 'Test Drive First.New Tesla for sale is available', 'ทดสอบขับรถก่อนใหม่ Tesla สำหรับการขายอยู่', 1, 0, '2020-02-05 17:53:35', 800, 'Berlin, Germany', 'Audi', 0, NULL, 'SUV', 'Mercedes', 2020, 11, 'Gasoline', 'vbn', '1-3', 1, NULL, NULL, NULL, '51.58250734077006', '-1.4598505851562549', '2020-03-09 17:53:54', 136, NULL, NULL, NULL, NULL),
+(1, 16, 18, 5, 'New Tesla5 for sale', 'ใหม่ Tesla5 สำหรับขาย', 'Test Drive First.New Tesla for sale is available', 'ทดสอบขับรถก่อนใหม่ Tesla สำหรับการขายอยู่', 1, 0, '2020-02-05 17:53:35', 800, 'Berlin, Germany', 'Audi', 0, NULL, 'SUV', 'Mercedes', 2020, 11, 'Gasoline', 'vbn', '1-3', 1, NULL, NULL, NULL, '51.58250734077006', '-1.4598505851562549', '2020-03-09 17:53:54', 137, NULL, NULL, NULL, NULL),
 (2, 2, 8, 6, 'Full Stack Developer', 'เต็มไปด้วตั้งผู้พัฒนา', 'We are looking to hire urgently developer.The candidate must have Web Application Design and implementation. Work closely with Mobile App developers. Design and implement front-end and back-end of web dashboard for mobile', 'เรากำลังมองหาเพื่อจ้าง urgently อะไร-หุบปากไว้ดีกว่าผู้ลงสมัครคงต้องเว็บโปรแกรมออกแบบและ implementation. ทำงานใกล้ชิดกับเคลื่อนที่ลุ่มผู้พัฒนาโปรแกร. ออกแบบและเตรียมกำหน้า-สิ้นสุดแล้วกลับมา-สิ้นสุดของเว็บแดชบอร์ดสำหรับเคลื่อนที่', 1, 0, '2020-02-05 17:55:02', 750, 'Office#7, anchorage, Alaska', 'Urgent ', 0, NULL, '', 'Issac\\\'s Code', 2016, 0, '', '', '', 1, NULL, NULL, NULL, '', '', '2020-03-09 17:53:54', 53, NULL, NULL, NULL, NULL),
 (3, 1, 7, 6, ' Multi Color Solar Light Pots for outdoor Garden', ' หลายของสีแสงสว่างสุริยะจักรวาลหม้อสำหรับสุนัขไม่มีสัญญาณกันขโมยและสวน', 'These plants pots are in multi color with solar light embedded.Best pots for your Outdoor garden', 'พวกต้นไม้หม้ออยู่ในหลายสีกับแสงสว่างสุริยะจักรวาลที่ฝังแนบ.ที่ดีที่สุดที่หม้อสำหรับคุณสุนัขไม่มีสัญญาณกันขโมยและสวน', 1, 0, '2020-02-10 07:24:22', 350, '25 notting hill, Anchorage, Alaska', '', 0, NULL, '', '', 0000, 0, '', '', '', 1, NULL, NULL, NULL, '', '', '2020-03-09 17:53:54', 133, NULL, NULL, NULL, NULL),
 (4, 24, 25, 8, 'Puppy for sale', NULL, 'Its Half breed german shephard puppy for sale', NULL, 1, 0, '2020-02-10 13:45:07', 150, 'rawalpindi', 'rent', 0, NULL, 'Half-Breed small size ', 'Half Breed German Shephard', 2000, 0, '', '', '', 1, NULL, NULL, NULL, '	33.738045', '	73.084488', '2020-03-09 17:53:54', 13, NULL, NULL, NULL, NULL),
@@ -2022,10 +2025,10 @@ INSERT INTO `thai_products` (`id`, `category_id`, `subcategory_id`, `user_id`, `
 (7, 24, 26, 6, 'Old Buddies', 'เพื่อนเก่า', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. ', 'Sed ut perspiciatis unde omnis iste natus เกิดข้อผิดพลาดนั่ง voluptatem accusantium doloremque laudantium,totam rem aperiam,eaque ipsa quae เกี่ illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. ', 2, 0, '2020-02-16 17:37:41', 3000, 'North Wessex', 'buy', 0, NULL, '', '', 0000, 0, '', '', '', 0, NULL, NULL, NULL, '51.483411449684205', '-1.4598505851562549', '2020-03-09 17:53:54', 2, NULL, NULL, NULL, NULL),
 (8, 2, 11, 6, 'testing for langauage', NULL, 'hello i am fine how are you\r\nhow are you\r\n\r\n', 'สวัสดีฉันสบายดีฉันสบายดีคุณเป็นยังไงบ้าง\r\nคุณเป็นยังไงบ้าง\r\n\r\n', 1, 0, '2020-03-09 13:20:27', 36, 'Gatwick Airport, LGW (LGW), Horley, Gatwick, UK', 'Full-Time', 0, '', '', '', NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, '51.5073509', '-0.1277583', '2020-03-09 18:20:27', 11, NULL, NULL, NULL, NULL),
 (9, 2, 13, 6, 'jobs needes', NULL, 'jobs are required', 'ทำงานต้องการ', 1, 0, '2020-03-10 07:11:59', 20000, 'Streatham, London, UK', 'Full-Time', 0, '', '', '', 0000, 0, '', NULL, '', 0, NULL, NULL, NULL, '51.5073509', '-0.1277583', '2020-03-10 12:11:59', 1, NULL, NULL, NULL, NULL),
-(10, 24, 27, 6, 'House', NULL, 'house for rent', 'บ้านสำหรับค่าเช่า', 1, 0, '2020-03-10 08:05:15', 4334, 'Tate Modern, Bankside, London, UK', 'Rent', 0, '', '', '', 0000, 0, '', NULL, '', 0, NULL, NULL, NULL, '51.50759530000001', '-0.09935640000000001', '2020-03-10 13:05:15', 18, NULL, NULL, NULL, NULL),
+(10, 24, 27, 6, 'House', NULL, 'house for rent', 'บ้านสำหรับค่าเช่า', 1, 0, '2020-03-10 08:05:15', 4334, 'Tate Modern, Bankside, London, UK', 'Rent', 0, '', '', '', 0000, 0, '', NULL, '', 0, NULL, NULL, NULL, '51.50759530000001', '-0.09935640000000001', '2020-03-10 13:05:15', 19, NULL, NULL, NULL, NULL),
 (11, 16, 18, 6, 'Car for sale urgent', 'รถขายด่วน', 'urgent car sale in low price', 'เร่งด่วนรถขายในราคาต่ำ', 1, 0, '2020-03-10 08:15:50', 5678, 'Reading, UK', 'Avanti', 0, 'CL Models (4)', 'Pick Up', 'civic', 2018, 2505, '2', NULL, '2::3', 0, 0, 0, 0, '51.5073509', '-0.1277583', '2020-03-10 13:15:50', 99, 'default', 'ค่าปริยาย', NULL, NULL),
 (27, 24, 27, 6, 'ggg', NULL, 'ree', 'ree', 1, 0, '2020-03-12 06:34:56', 53, 'Gatwick Airport, LGW (LGW), Horley, Gatwick, UK', 'Rent', 0, '', '', '', 0000, 0, '', NULL, '', 0, NULL, NULL, NULL, '51.5073509', '-0.1277583', '2020-03-12 11:34:56', 0, NULL, NULL, NULL, NULL),
-(29, 16, 18, 6, 'checking', 'ตรวจ', 'send', 'ส่ง', 1, 0, '2020-03-12 13:59:18', 5545, 'Gatwick Airport, LGW (LGW), Horley, Gatwick, UK', 'Alfa Romeo', 0, 'MDX', 'Pick Up', 'n', 2020, 0, 'Petrol::Diesel::LPG', '', '1::3', 0, NULL, NULL, NULL, '51.5073509', '-0.1277583', '2020-03-12 18:59:18', 9, 'hh', 'hh', NULL, NULL),
+(29, 16, 18, 6, 'checking', 'ตรวจ', 'send', 'ส่ง', 1, 0, '2020-03-12 13:59:18', 5545, 'Gatwick Airport, LGW (LGW), Horley, Gatwick, UK', 'Alfa Romeo', 0, 'MDX', 'Pick Up', 'n', 2020, 0, 'Petrol::Diesel::LPG', '', '1::3', 0, NULL, NULL, NULL, '51.5073509', '-0.1277583', '2020-03-12 18:59:18', 11, 'hh', 'hh', NULL, NULL),
 (30, 24, 27, 6, 'new house', 'บ้านใหม่', 'brand new house for sale', 'แบรนด์ใหม่บ้านสำหรับขาย', 1, 0, '2020-03-19 06:24:39', 555, 'Gatwick Airport, LGW (LGW), Horley, Gatwick, UK', 'Sale', 0, '', '', '', 0000, 0, '', NULL, '', 0, NULL, NULL, NULL, '51.1536621', '-0.1820629', '2020-04-03 14:25:50', 3, 'house,sale', 'บ้านหลังขาย', NULL, NULL),
 (31, 24, 28, 6, 'shops in market now for sale', 'ร้านค้าในตลาดตอนนี้สำหรับขาย', 'shop for sale', 'ร้านขาย', 1, 0, '2020-03-19 10:34:27', 456581, 'Jermyn Street, London, UK', 'Sale', 0, '', '', '', 0000, 0, '', '', '', 0, 3, 2, 5, '51.5073509', '-0.1277583', '2020-03-27 12:39:21', 43, 'shops', 'ออกร้าน', NULL, NULL),
 (35, 1, 6, 6, 'seconde hand', 'seconde มือ', 'seconde', 'seconde', 0, 0, '2020-03-31 07:19:43', 1254, 'John Radcliffe Hospital, Headley Way, Headington, Oxford, UK', '5', 0, '', '', '', NULL, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, '51.5073509', '-0.1277583', '2020-03-31 12:19:43', 0, 'hhjj', 'hhjj', NULL, NULL),

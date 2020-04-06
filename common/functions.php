@@ -416,8 +416,8 @@ function sendmail($userid,$type,$confirmationLink="")
 		$content = $content[0];
 		$adminName = $content['adminname'];
 		$adminEmail = $content['adminemail'];
-		$subject = $content['subject'];
-		$body = $content['body'];
+		$subject = $content['subject_'.$lang];
+		$body = $content['body_'.$lang];
 		
 		$headersuser = $headers.'From: '.$adminName.' <'.$adminEmail.'>' . "\r\n";
 		
@@ -429,6 +429,21 @@ function sendmail($userid,$type,$confirmationLink="")
 		
 		$mailsent = @mail($email,$subject,$message,$headersuser);
 	}
+}
+function sendmail_follow_up($email,$subject,$message)
+{
+	global $tblusers,$tblemails;
+	$headers  = 'MIME-Version: 1.0' . "\r\n";
+	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+	
+		$content = get_records($tblemails);
+		$content = $content[0];
+		$adminName = $content['adminname'];
+		$adminEmail = $content['adminemail'];
+
+		$headersuser = $headers.'From: '.$adminName.' <'.$adminEmail.'>' . "\r\n";
+
+		$mailsent = @mail($email,$subject,$message,$headersuser);
 }
 function sendmail_bidding($userid,$type,$bid_id)
 {
@@ -449,14 +464,15 @@ function sendmail_bidding($userid,$type,$bid_id)
 	if(count($user)>0){
 		$user = $user[0];
 		$name = $user['name'];
+		$email = $user['email'];
 
 		$where = "type='".$type."'";
 		$content = get_records($tblemails,$where);
 		$content = $content[0];
 		$adminName = $content['adminname'];
 		$adminEmail = $content['adminemail'];
-		$subject = $content['subject'];
-		$body = $content['body'];
+		$subject = $content['subject_'.$lang];
+		$body = $content['body_'.$lang];
 		
 		$headersuser = $headers.'From: '.$adminName.' <'.$adminEmail.'>' . "\r\n";
 		

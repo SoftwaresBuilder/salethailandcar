@@ -25,6 +25,14 @@ else if(!isset($_SESSION['sysData']['id'])) {
                 </div>
                 <?php show_errors();?>
                 <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Type</label>
+                            <textarea class="form-control" id="type" name="type" placeholder="From Name"><?= $_SESSION['sysData']['type'];?></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                 	<div class="col-md-6">
                         <div class="form-group">
                             <label>From Name</label>
@@ -41,14 +49,28 @@ else if(!isset($_SESSION['sysData']['id'])) {
                 <div class="row">
                 	<div class="col-md-6">
                         <div class="form-group">
-                            <label>Subject</label>
-                            <textarea class="form-control" id="subject" name="subject" placeholder="Subject"><?= $_SESSION['sysData']['subject'];?></textarea>
+                            <label>Subject English</label>
+                            <textarea onfocusout="translate_into_thai(this.value,'subject_th')" class="form-control" id="subject_en" name="subject_en" placeholder="Subject"><?= $_SESSION['sysData']['subject_en'];?></textarea>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Email Content</label>
-                            <textarea class="form-control" id="body" name="body" placeholder="Email Content"><?= $_SESSION['sysData']['body'];?></textarea>
+                            <label>Subject Thai</label>
+                            <textarea class="form-control" id="subject_th" name="subject_th" placeholder="Subject"><?= $_SESSION['sysData']['subject_th'];?></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Email Content English</label>
+                            <textarea onfocusout="translate_into_thai(this.value,'body_th')" class="form-control" id="body_en" name="body_en" placeholder="Email Content"><?= $_SESSION['sysData']['body_en'];?></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Email Content Thai</label>
+                            <textarea class="form-control" id="body_th" name="body_th" placeholder="Email Content"><?= $_SESSION['sysData']['body_th'];?></textarea>
                         </div>
                     </div>
                 </div>

@@ -65,4 +65,10 @@
             <p>Manage Coupon</p>
         </a>
     </li>
+     <li <?php if ($p == "follow_up_emails.php") { ?> class="active" <?php } ?>>
+        <a href="index.php?p=follow_up_emails">
+            <i class="pe-7s-users" style="color:#fff;"></i>
+            <p>Follow Up Emails</p>
+        </a>
+    </li>
 </ul>

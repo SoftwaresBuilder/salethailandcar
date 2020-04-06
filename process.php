@@ -601,6 +601,7 @@ if($p=="partner_register"){
 	{
 		$user = get_records($tblusers,"id='".$id."' and status='1'");
 		if(count($user)>0){
+			sendmail($id,'signup');
 			$free_packages = get_records($tblvendor_packages,"title_en='new user' and status='1'");
 			if(count($free_packages)>0){
 				foreach ($free_packages as $key => $v) {
@@ -911,17 +912,17 @@ if($p=="forgot_password"){
 				echo'email you entered does not exixst';
 			}
 		exit;
-		}
-	if($p=="cookie_accept"){
-		$_SESSION['cookie'] = "accept";
-		header("location:".$_SESSION['page_url']);
-		exit;
 	}
-	if($p=="close_offer"){
-		$_SESSION['close_offer'] = "close";
-		header("location:".$_SESSION['page_url']);
-		exit;
-	}
+if($p=="cookie_accept"){
+	$_SESSION['cookie'] = "accept";
+	header("location:".$_SESSION['page_url']);
+	exit;
+}
+if($p=="close_offer"){
+	$_SESSION['close_offer'] = "close";
+	header("location:".$_SESSION['page_url']);
+	exit;
+}
 if($p == "upload_product_images"){
 	$enc_id = $_POST['id'];
 	$id = dec_password($enc_id);
