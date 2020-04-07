@@ -186,6 +186,7 @@ if($p=="add_bidd"){
 				exit;
 }					
 if($p=="get_search_filter"){
+		$sort_by = $_GET['sort_by'];
 	 	$location = $_GET['location'];
 		$cat_id = $_GET['cat_val'];
 		$subcategory_ids = implode(",",$_GET['product_ids']);
@@ -200,8 +201,20 @@ if($p=="get_search_filter"){
 		if($location){
 			$condition .= " AND location LIKE '%".$location."%' ";
 		}
+		if($sort_by)
+		{
+			if($sort_by=="low_to_high"){
+				$order_by .= " price asc ";
+			}
+			else if($sort_by=="high_to_low"){
+				$order_by .= " price desc ";
+			}
+			else if($sort_by=="default"){
+				$order_by .= " sort_date DESC ";
+			}
+		}
 		/////////////// Search Code ///////////////////
-		$products = get_records($tblproducts,$condition,'sort_date DESC');
+		$products = get_records($tblproducts,$condition,$order_by);
 
 				if(count($products)>0){
 		          foreach ($products as $product) {
