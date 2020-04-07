@@ -56,10 +56,10 @@ $parent_categories = get_records($tblcategories,"pid='0' and status='1' and tras
         });
         filter();
     });
-
-    function get_filter_products(){
+ function get_filter_products(){
     var location = $('#location').val();
     var cat_val = $('#hidden_value').val();
+    var sort_by = $('#price_sort').val();
     var product_ids = [];
     var brands_ids = [];
       $.each($("input[name='checklist']:checked"), function(){
@@ -97,29 +97,7 @@ $parent_categories = get_records($tblcategories,"pid='0' and status='1' and tras
       type: "GET",
       url: "ajaxphp.php",
        dataType: 'html',  
-      data: {product_ids:product_ids,brands_ids:brands_ids,location:location,cat_val:cat_val,p:'get_search_filter'},
-      success: function(data){
-        $('#serach_results').html('');
-        //return false;
-         //alert(data);
-         $('#serach_results').html(data);
-      } 
-  });
-   
-}
-function get_filter_brands(){
-  alert('here');return false;
-  var brands_ids = [];
-      $.each($("input[name='brands']:checked"), function(){
-
-          brands_ids.push($(this).val());
-      });
-     brands_ids.join();
-   $.ajax({
-      type: "GET",
-      url: "ajaxphp.php",
-       dataType: 'html',  
-      data: {brands_ids:brands_ids,p:'get_search_filter'},
+      data: {product_ids:product_ids,brands_ids:brands_ids,location:location,cat_val:cat_val,sort_by:sort_by,p:'get_search_filter'},
       success: function(data){
         $('#serach_results').html('');
         //return false;
@@ -132,12 +110,12 @@ function get_filter_brands(){
 
 function find_filter_jobs(){
   var cat_val = $('#hidden_value').val();
-  var job_title = $('#job_title').val();
-   var job_location =$('#location').val();
-   var job_sub_category =$('#subcategory_jobs').val();
-   var job_month_year =$('#month_year').val();
-   var job_min_price =$('#min_price').val();
-   var job_max_price =$('#max_price').val();
+ var job_title = $('#job_title').val();
+ var job_location =$('#location').val();
+ var job_sub_category =$('#subcategory_jobs').val();
+ var job_month_year =$('#month_year').val();
+ var job_min_price =$('#min_price').val();
+ var job_max_price =$('#max_price').val();
   
    //alert(job_filter);
     $.ajax({

@@ -16,7 +16,7 @@ if($id>0){
 		</select>
 	</div>
 	<div class="col-12 border_bottom">
-		<select class="form-control" id="price_sort" onchange="sort_by_price();">
+		<select class="form-control" id="price_sort" onchange="get_filter_products();">
 			<option value="default"><?php echo translate("Sort By");?></option>
 
                                 
@@ -29,7 +29,7 @@ if($id>0){
 	if(count($subcategories)>0){
 		foreach ($subcategories as $v) {?>
 
-			<div class="col-12"><input id="check_id_<?php echo $v['id'];?>" type="checkbox" onclick="get_filter_products(<?php echo $v['id'];?>)" name="checklist" value="<?php echo $v['id'];?>">&nbsp;<?php echo $v['title_'.$lang];?></div>
+			<div class="col-12"><input id="check_id_<?php echo $v['id'];?>" type="checkbox" onclick="get_filter_products()" name="checklist" value="<?php echo $v['id'];?>">&nbsp;<?php echo $v['title_'.$lang];?></div>
 
 		<?php }}
 		?>
