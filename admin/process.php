@@ -977,5 +977,94 @@ if($p == "delnews")
 	header("location:index.php?p=news");
 	exit;
 }
-
+if($p == "addeditemail")
+{
+	foreach ($_POST as $k => $v )
+	{
+		$$k = addslashes($v);
+		$_SESSION['sysData'][$k] = $v;
+	}
+ 	$enc_id = $id;
+	if($id){
+		$id = dec_password($id);
+	}
+	if( $id > 0 )
+	{
+		$data = array();
+		$data['type'] = $type;
+		$data['adminname'] = $adminname;
+		$data['adminemail'] = $adminemail;
+		$data['subject_en'] = $subject_en;
+		$data['subject_th'] = $subject_th;
+		$data['body_en'] = $body_en;
+		$data['body_th'] = $body_th;
+		$condition = array();
+		$condition['id'] = $id;
+		$result = update_record($tblemails,$data,$condition);
+		if($result)
+		{
+			$_SESSION['sysErr']['msg'] = "Record updated successfully";
+		}
+	}
+	else
+	{
+		$data = array();
+		$data['type'] = $type;
+		$data['adminname'] = $adminname;
+		$data['adminemail'] = $adminemail;
+		$data['subject_en'] = $subject_en;
+		$data['subject_th'] = $subject_th;
+		$data['body_en'] = $body_en;
+		$data['body_th'] = $body_th;
+		$id = insert_record($tblemails,$data);
+		if($id>0)
+		{
+			$_SESSION['sysErr']['msg'] = "Record added successfully";
+		}
+	}
+	
+	header("location:index.php?p=emails");
+	exit;
+}
+if($p == "delemail")
+{
+	$id = dec_password($_GET['id']);
+	$id = (int)$id;
+	$data = array();
+	$data['trash'] = '1';
+	$condition = array();
+	$condition['id'] = $id;
+	$result = update_record($tblemails,$data,$condition);
+	if($result){
+		$_SESSION['sysErr']['msg'] = "Record deleted successfully";
+	}
+	header("location:index.php?p=emails");
+	exit;
+}
+if($p == "follow_up_emails")
+{
+	foreach ($_POST as $k => $v )
+	{
+		$$k = addslashes($v);
+		$_SESSION['sysData'][$k] = $v;
+	}
+	$type = $type;
+	$subject = $subject;
+	$message = $body;
+	if($type =="users"){
+		$result = get_records($tblusers,"status = '0' and trash ='0'");
+	}
+	else if($type =="partners"){
+		$result = get_records($tblusers,"status = '1' and trash ='0'");
+	}
+	else if($type =="subscribers"){
+		$result = get_records($tblsubscribed);
+	}
+	foreach ($result as $key => $v) {
+		$email = $v['email'];
+		sendmail_follow_up($email,$subject,$message);
+	}
+	header("location:index.php?p=follow_up_emails");
+	exit;
+}
 ?>
