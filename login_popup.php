@@ -1,4 +1,4 @@
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     // function submitUserForm() {
     //     var response = grecaptcha.getResponse();
     // if(response.length == 0) {
@@ -9,7 +9,7 @@
 
     return true;
 }
-</script>
+</script> -->
 <div class="row">
                             <div class="col-sm-6">
                                 <div class="modal_left_bx">
@@ -64,7 +64,7 @@
                                         <span class="nw_orcls"><?php echo translate("Or");?></span>
                                     </div>
                                     <div id="login_form">
-                                     <form onsubmit="return submitUserForm();" action="process.php?p=login" enctype="multipart/form-data" method="post">
+                                     <form action="process.php?p=login" enctype="multipart/form-data" method="post">
                                        <div class="row">
                                          <?php show_errors();?>
                     <div class="col-md-12">
@@ -85,9 +85,10 @@
                                         <div class="row mb-2">
                                             <div class="col-sm-12">
                                                 <div class="my-1 mr-sm-2">
-                                  <div id="re_captcha" class="g-recaptcha" data-sitekey="6Ledn-EUAAAAAOCUtL9yqb3vD4RTiYUBQenD_znG">
+                                  <div id="re_captcha" class="g-recaptcha" data-sitekey="6Le0HucUAAAAAMMTA9XKvSeuqvHC-9gb2DyEmBVO">
                                    </div>
-                                   <div id="g-recaptcha-error"></div>
+                                   <div><p style="color: red;">
+                                    <?php show_errors(); ?></p></div>
                                                 </div>
                                             </div>
                                             <div class="help-block has-error signup_captcha_error"></div>
