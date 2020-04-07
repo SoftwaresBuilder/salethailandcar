@@ -88,7 +88,8 @@
                                   <div id="re_captcha" class="g-recaptcha" data-sitekey="6Le0HucUAAAAAMMTA9XKvSeuqvHC-9gb2DyEmBVO">
                                    </div>
                                    <div><p style="color: red;">
-                                    <?php show_errors(); ?></p></div>
+                                    <?php show_errors(); ?></p>
+                                </div>
                                                 </div>
                                             </div>
                                             <div class="help-block has-error signup_captcha_error"></div>

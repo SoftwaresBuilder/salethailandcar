@@ -19,6 +19,10 @@
                             <input type="password" required class="form-control" id="password" name="password" placeholder="Password" value="">
                         </div>
                     </div>
+                    <div class="col-md-12">
+                    <div id="re_captcha" class="g-recaptcha" data-sitekey="6Le0HucUAAAAAMMTA9XKvSeuqvHC-9gb2DyEmBVO">
+                                   </div>
+                    </div>
                     <div class="col-xs-12">&nbsp;</div>
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-primary" name="Submit">Login</button>

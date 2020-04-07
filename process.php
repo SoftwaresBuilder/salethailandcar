@@ -522,6 +522,21 @@ if($p=="add_product_detail"){
 }
 
 if($p=="login"){
+	foreach ($_POST as $k => $v )
+	{
+		$$k = addslashes($v);
+		$_SESSION['sysData'][$k] = $v;
+	}
+	
+	if(!$email)
+	{
+		$_SESSION['sysErr']['email'] = "Please enter email";
+		$flg = true;
+	}
+	
+	$password = enc_password($password);
+	$where = "email='".$email."' and password='".$password."' and status='1' and trash='0'";
+	$result = get_records($tblusers,$where);
 	if(isset($_POST['g-recaptcha-response']))
     {
         $secretKey = '6Le0HucUAAAAAEKaOmpLgDyylXLPv2--9XKUyynh'; 
@@ -552,26 +567,10 @@ if($p=="login"){
 				exit;
 			}
 		}else{
-           $_SESSION['sysErr']['msg'] = "Please check recaptcha that you are not a bot.";
-			header("location:".$_SESSION['page_url']);
+        	$_SESSION['sysErr']['msg'] = "Please check recaptcha that you are not a bot.";
+			header("location: login.php");
 			exit;
         }
-	}if(count($result)>0)
-	{  
-		$_SESSION['user_record'] = $result[0];
-		$data = array();
-			$data['login'] = '1';
-			$data['login_time'] = date("Y-m-d H:i:s");
-			$condition = array();
-			$condition['id'] = $result[0]['id'];
-
-			$ans = update_record($tblusers ,$data,$condition);
-		if($result[0]['type']=="1"){
-			header("location: dashboard.php");
-		} else {
-			header("location: account.php");
-		}
-        exit;
 	}
 }
 if($p=="partner_register"){
