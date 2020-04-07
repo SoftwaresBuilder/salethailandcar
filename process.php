@@ -537,41 +537,7 @@ if($p=="login"){
 	$password = enc_password($password);
 	$where = "email='".$email."' and password='".$password."' and status='1' and trash='0'";
 	$result = get_records($tblusers,$where);
-	if(isset($_POST['g-recaptcha-response']))
-    {
-        $secretKey = '6Le0HucUAAAAAEKaOmpLgDyylXLPv2--9XKUyynh'; 
-        $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secretKey.'&response='.$_POST['g-recaptcha-response']); 
-        $response=json_decode($verifyResponse);
-        if($response->success)
-        {
-			if(count($result)>0)
-			{  
-				$_SESSION['user_record'] = $result[0];
-				$data = array();
-					$data['login'] = '1';
-					$data['login_time'] = date("Y-m-d H:i:s");
-					$condition = array();
-					$condition['id'] = $result[0]['id'];
-
-					$ans = update_record($tblusers ,$data,$condition);
-				if($result[0]['type']=="1"){
-					header("location: dashboard.php");
-				} else {
-					header("location: account.php");
-				}
-		        exit;
-			}
-			else{
-				$_SESSION['sysErr']['msg'] = "Invalid email or password !";
-				header("location:login.php");
-				exit;
-			}
-		}else{
-           $_SESSION['sysErr']['msg'] = "Please check recaptcha that you are not a bot.";
-			header("location:".$_SESSION['page_url']);
-			exit;
-        }
-	}if(count($result)>0)
+	if(count($result)>0)
 	{  
 		$_SESSION['user_record'] = $result[0];
 		$data = array();
@@ -588,9 +554,15 @@ if($p=="login"){
 		}
         exit;
 	}
+	else
+	{
+		$_SESSION['sysErr']['msg'] = "Invalid email or password !";
+		header("location:login.php");
+		exit;
+	}
 	
-	// header("location:".$_SESSION['page_url']);
-	// exit;
+	header("location:".$_SESSION['page_url']);
+	exit;
 }
 if($p=="partner_register"){
 	foreach ($_POST as $k => $v )
@@ -624,44 +596,33 @@ if($p=="partner_register"){
 	$data['email'] = $email;
 	$data['password'] = $password;
 	$data['type'] = "1";
-	if(isset($_POST['g-recaptcha-response']))
-    {
-        $secretKey = '6Le0HucUAAAAAEKaOmpLgDyylXLPv2--9XKUyynh'; 
-        $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secretKey.'&response='.$_POST['g-recaptcha-response']); 
-        $response=json_decode($verifyResponse);
-        if($response->success)
-        {
-			$id = insert_record($tblusers,$data);
-			if($id>0)
-			{
-				$user = get_records($tblusers,"id='".$id."' and status='1'");
-				if(count($user)>0){
-					$free_packages = get_records($tblvendor_packages,"title_en='new user' and status='1'");
-					if(count($free_packages)>0){
-						foreach ($free_packages as $key => $v) {
-							$data =array();
-							$data['user_id'] = $id;
-							$data['package_id'] = $v['id'];
-							$data['category_id'] = $v['category'];
-							$data['post_ads'] = $v['post_ads'];
-							$data['bump_up'] = $v['bump_up'];
-							$data['social_media_ads'] = $v['social_media_ads'];
-							$data['feature_ads'] = $v['feature_ads'];
-							$data['expiry_days'] = $v['expiry_days'];
-							$data['purchase_date'] = date("Y-m-d H:i:s");
-							insert_record($tbluser_package,$data,"1");
-						}
-					}
-					header("location:dashboard.php");
-					exit;
+	$id = insert_record($tblusers,$data);
+	if($id>0)
+	{
+		$user = get_records($tblusers,"id='".$id."' and status='1'");
+		if(count($user)>0){
+			sendmail($id,'signup');
+			$free_packages = get_records($tblvendor_packages,"title_en='new user' and status='1'");
+			if(count($free_packages)>0){
+				foreach ($free_packages as $key => $v) {
+					$data =array();
+					$data['user_id'] = $id;
+					$data['package_id'] = $v['id'];
+					$data['category_id'] = $v['category'];
+					$data['post_ads'] = $v['post_ads'];
+					$data['bump_up'] = $v['bump_up'];
+					$data['social_media_ads'] = $v['social_media_ads'];
+					$data['feature_ads'] = $v['feature_ads'];
+					$data['expiry_days'] = $v['expiry_days'];
+					$data['purchase_date'] = date("Y-m-d H:i:s");
+					insert_record($tbluser_package,$data,"1");
 				}
-				$_SESSION['sysErr']['msg'] = "Record added successfully";
 			}
-		}else
-        {
-           $_SESSION['sysErr']['msg'] = "Please check recaptcha that you are not a bot.";
-        }
-    }
+			header("location:dashboard.php");
+			exit;
+		}
+		$_SESSION['sysErr']['msg'] = "Record added successfully";
+	}
 
 	header("location:login.php");
 	exit;
@@ -951,17 +912,17 @@ if($p=="forgot_password"){
 				echo'email you entered does not exixst';
 			}
 		exit;
-		}
-	if($p=="cookie_accept"){
-		$_SESSION['cookie'] = "accept";
-		header("location:".$_SESSION['page_url']);
-		exit;
 	}
-	if($p=="close_offer"){
-		$_SESSION['close_offer'] = "close";
-		header("location:".$_SESSION['page_url']);
-		exit;
-	}
+if($p=="cookie_accept"){
+	$_SESSION['cookie'] = "accept";
+	header("location:".$_SESSION['page_url']);
+	exit;
+}
+if($p=="close_offer"){
+	$_SESSION['close_offer'] = "close";
+	header("location:".$_SESSION['page_url']);
+	exit;
+}
 if($p == "upload_product_images"){
 	$enc_id = $_POST['id'];
 	$id = dec_password($enc_id);
