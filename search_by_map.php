@@ -95,7 +95,7 @@ if(count($products)>0){
         // Note: The code uses the JavaScript Array.prototype.map() method to
         // create an array of markers based on a given "locations" array.
         // The map() method here has nothing to do with the Google Maps API.
-        var pinImage = "download.png";
+        var pinImage = "http://maps.google.com/mapfiles/kml/shapes/target.png";
        
         var infowindow = new google.maps.InfoWindow();
         var markers = locations.map(function(location, i) {
@@ -106,9 +106,24 @@ if(count($products)>0){
             title: 'Price : <?php echo $p_price[$for_marker]; $for_marker=$for_marker+1; ?>'
           });
         });
+        //////////
+        // google.maps.event.addListener(map, 'click', function(event) {
+        //   placeMarker(map, event.latLng);
+        // });
 
+        // function placeMarker(map, location) {
+        //   var marker = new google.maps.Marker({
+        //     position: location,
+        //     map: map
+        //   });
+        //   var infowindow = new google.maps.InfoWindow({
+        //     content: 'Latitude: ' + location.lat() +
+        //     '<br>Longitude: ' + location.lng()
+        //   });
+        //   infowindow.open(map,marker);
+        // } 
      
-		
+		///////
 		map.addListener('click', function(e) {
 			search_on_map(e.latLng);
 		});

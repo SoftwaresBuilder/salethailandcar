@@ -15,6 +15,8 @@ else if(!isset($_SESSION['sysData']['id'])) {
 	$_SESSION['sysData'] = table_fields($tblnews);
 }
 ?>
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+
 <form action="process.php?p=addeditnews" enctype="multipart/form-data" method="post">
 <div class="row">
     <div class="col-md-12">
@@ -34,7 +36,7 @@ else if(!isset($_SESSION['sysData']['id'])) {
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Blog Title thai<span class="err">*</span></label>
-                            <input type="text" required class="form-control" id="title_th" name="title_th" placeholder="Blog titile in Thai" value="<?= $_SESSION['sysData']['title_th'];?>">
+                            <input type="text" required class="form-control" id="title_th" name="title_th" placeholder="Blog title in Thai" value="<?= $_SESSION['sysData']['title_th'];?>">
                         </div>
                     </div>
                     
@@ -44,12 +46,18 @@ else if(!isset($_SESSION['sysData']['id'])) {
                         <div class="form-group">
                             <label>Description English</label>
                             <textarea onfocusout="translate_into_thai(this.value,'description_th')" class="form-control" id="description_en" name="description_en" placeholder="Description in English"><?= $_SESSION['sysData']['description_en'];?></textarea>
+                            <script>
+                        CKEDITOR.replace( 'description_en' );
+                            </script>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Description Thai</label>
                             <textarea class="form-control" id="description_th" name="description_th" placeholder="Description in Thai"><?= $_SESSION['sysData']['description_th'];?></textarea>
+                             <script>
+                        CKEDITOR.replace( 'description_th' );
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -94,6 +102,17 @@ else if(!isset($_SESSION['sysData']['id'])) {
                             <select required class="form-control" id="status" name="status">
                             	<option <?php if($_SESSION['sysData']['status']=='1'){?> selected="selected" <?php }?> value="1">Active</option>
                                 <option <?php if($_SESSION['sysData']['status']=='0'){?> selected="selected" <?php }?> value="0">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Home Blog</label>
+                            <select required class="form-control" id="featured" name="featured">
+                                <option <?php if($_SESSION['sysData']['featured']=='1'){?> selected="selected" <?php }?> value="1">Featured </option>
+                                <option <?php if($_SESSION['sysData']['featured']=='0'){?> selected="selected" <?php }?> value="0">Not Featured</option>
                             </select>
                         </div>
                     </div>

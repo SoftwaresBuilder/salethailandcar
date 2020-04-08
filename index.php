@@ -3,7 +3,7 @@ include("header.php");
 
 $featured_products = get_records($tblproducts,"featured='1' and status='1' and trash='0'","","4");
 $featured_car_products = get_records($tblproducts,"featured='1' and status='1' and trash='0'","","3");
-$home_news = get_records($tblnews,"status='1' and trash='0'","","3");
+$home_news = get_records($tblnews,"featured='1' and status='1' and trash='0'","","3");
 ?>
 <div class="bgcolor">
   <div class="container">

@@ -875,6 +875,7 @@ if($p == "addeditsetting")
 
 if($p == "addeditnews")
 {
+	// pr($_POST);exit();
 	foreach ($_POST as $k => $v )
 	{
 		if(is_array($v)){
@@ -920,6 +921,8 @@ if($p == "addeditnews")
 		$data['meta_description_en'] = $meta_description_en;
 		$data['meta_description_th'] = $meta_description_th;
 		$data['status'] = $status;
+		$data['featured'] = $featured;
+
 		$condition = array();
 		$condition['id'] = $id;
 		$result = update_record($tblnews,$data,$condition);
@@ -940,6 +943,8 @@ if($p == "addeditnews")
 		$data['meta_description_en'] = $meta_description_en;
 		$data['meta_description_th'] = $meta_description_th;
 		$data['status'] = $status;
+		$data['featured'] = $featured;
+
 		$id = insert_record($tblnews,$data);
 		if($id>0)
 		{

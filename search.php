@@ -41,7 +41,7 @@ if($banner_name){
             <div class="col-12 col-md-9">
                 <div class="col-12 heading mb50">
                     <?php echo $category[0]['title_'.$lang];?>
-                    <div style="float: right;"><span style="color: green;font-size: 24px"><a href="<?php echo makepage_url("search_by_map","?id=".enc_password($id));?>">View in map&nbsp;</a> 
+                    <div style="float: right;"><span style="color: green;font-size: 24px"><a href="<?php echo makepage_url("search_by_map","?id=".enc_password($id));?>">View by map&nbsp;</a> 
                     </span></div>
                 </div>
 
