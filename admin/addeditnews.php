@@ -30,7 +30,13 @@ else if(!isset($_SESSION['sysData']['id'])) {
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Blog Title English<span class="err">*</span></label>
-                            <input onfocusout="translate_into_thai(this.value,'title_th')" type="text" required class="form-control" id="title_en" name="title_en" placeholder="Blog title in English" value="<?= $_SESSION['sysData']['title_en'];?>">
+                            <input onfocusout="translate_into_thai(this.value,'title_th'),my_slug($('#title_en').val())" type="text" required class="form-control" id="title_en" name="title_en" placeholder="Blog title in English" value="<?= $_SESSION['sysData']['title_en'];?>">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Slug English</label>
+                            <input type="text" required class="form-control" id="slug_en" name="slug_en" value="<?= $_SESSION['sysData']['slug_en'];?>">
                         </div>
                     </div>
                     <div class="col-md-6">

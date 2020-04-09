@@ -3,14 +3,15 @@
 // $product=get_records($tblproducts,"trash!=1");
 $id = 0;
 $for_marker=0;
-if(isset($_GET['id'])){
-  $enc_id = $_GET['id'];
-  $id = dec_password($_GET['id']);
+if(isset($_GET['slug'])){
+  $slug = $_GET['slug'];
 }
-$category = get_records($tblcategories,"id='".$id."' and status='1' and trash='0'");
+$category = get_records($tblcategories,"slug_en='".$slug."' and status='1' and trash='0'");
+// pr($category);
 if(!(count($category)>0)){
   redirect("index");exit;
 }
+$id=$category[0]['id'];
 $products = get_records($tblproducts,"category_id='".$id."' and status>0 and  trash='0' and latitude!='' and longitude!=''");
 
 $lat_lng = '';
@@ -20,7 +21,7 @@ $p_id = array();
 $p_price = array();
 if(count($products)>0){
   foreach ($products as $v) {
-    $lat_lng .= '{lat: '.$v['latitude'].', lng: '.$v['longitude'].'},';
+    $lat_lng .= '{lat: '.$v['latitude'].', lng: '.$v['longitude'].', slug: "'.$v['slug_en'].'", price: '.$v['price'].', title: "'.$v['title_'.$lang].'"},';
     $lat = $v['latitude'];
     $lng = $v['longitude'];
     $p_id[] = $v['id'];
@@ -53,14 +54,14 @@ if(count($products)>0){
     </style>
 
     
-	<div class="container-fluid">
+  <div class="container-fluid">
     <div class="row">
-    	  <div class="col-12 col-lg-8">
-    		  <div id="map"></div>
+        <div class="col-12 col-lg-8">
+          <div id="map"></div>
         </div>
         <div class="col-12 col-lg-4" style="overflow-y: auto;height: 600px;margin-bottom: 30px;">
-        	<h3><?= translate("Listing");?> <?php echo $category[0]['title_'.$lang]; ?></h3>
-          <a href="<?php echo makepage_url("search","?id=".$enc_id);?>"> List View</a>
+          <h3><?= translate("Listing");?> <?php echo $category[0]['title_'.$lang]; ?></h3>
+          <a href="<?php echo makepage_url("search","?slug=".$slug);?>"> List View</a>
           <div class="row">
               <input type="hidden" name="lat" id="lat" value="<?php echo $lat ?>">
               <input type="hidden" name="lng" id="lng" value="<?php echo $lng ?>">
@@ -76,7 +77,7 @@ if(count($products)>0){
 
           </div>
           </div>
-        	<div id="listing_area"></div>
+          <div id="listing_area"></div>
         </div>
     </div>
   </div>
@@ -95,16 +96,25 @@ if(count($products)>0){
         // Note: The code uses the JavaScript Array.prototype.map() method to
         // create an array of markers based on a given "locations" array.
         // The map() method here has nothing to do with the Google Maps API.
-        var pinImage = "http://maps.google.com/mapfiles/kml/shapes/target.png";
-       
-        var infowindow = new google.maps.InfoWindow();
-        var markers = locations.map(function(location, i) {
+        var pinImage = "images/marker2.png";
 
-          return new google.maps.Marker({
+        var markers = locations.map(function(location, i) {
+          
+          var marker = new google.maps.Marker({
             position: location,
             icon: pinImage,
-            title: 'Price : <?php echo $p_price[$for_marker]; $for_marker=$for_marker+1; ?>'
+            title: 'Pricee : '+location.title
           });
+
+          var contentString = '<div id="heading">'+location.title+'</div><div>Price: '+location.price+'</div><div><a href="product_detail.php?slug='+location.slug+'">View Detail</a></div>';
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+
+          return marker;
         });
         //////////
         // google.maps.event.addListener(map, 'click', function(event) {
@@ -123,17 +133,17 @@ if(count($products)>0){
         //   infowindow.open(map,marker);
         // } 
      
-		///////
-		map.addListener('click', function(e) {
-			search_on_map(e.latLng);
-		});
-		
-		// Add a marker clusterer to manage the markers.
+    ///////
+    map.addListener('click', function(e) {
+      search_on_map(e.latLng);
+    });
+    
+    // Add a marker clusterer to manage the markers.
         var markerCluster = new MarkerClusterer(map, markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
       }
 
-	  function search_on_map(latlng=""){
+    function search_on_map(latlng=""){
       if(latlng){
         var latlng = latlng.toString();
         var latlng=latlng.replace('(','');
@@ -143,7 +153,7 @@ if(count($products)>0){
       }
       var location=$('#location').val();
       var sort_by = $('#price_sort').val();
-      var cid='<?php echo dec_password($_GET['id']); ?>';
+      var cid='<?php echo $id; ?>';
       // alert(cid);
       if (cid>0) 
       {
@@ -157,7 +167,7 @@ if(count($products)>0){
                     }
                 });
       }
-	  }
+    }
       var locations = [
         <?php echo $lat_lng;?>]
  

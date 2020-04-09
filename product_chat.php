@@ -1,6 +1,6 @@
 <?php
 $chat = array();
-$product_id=dec_password($_GET['id']);
+$product_id=dec_password($id);
 $chat_id=$product_id.$user_id;
 $enc_chat_id=enc_password($chat_id);
 
@@ -13,7 +13,7 @@ if(isset($chat_id)){
 }
 
 ?>
-<div id="ChatMsg" class="ChatBar ui-block" style="width: 30%;display: none;">
+<div id="ChatMsg" class="ChatBar ui-block" style="width: auto;display: none;">
   <h3 class="light-text-0 ui-block-title" style="position: fixed;background-color: white;z-index: 999;width: inherit">
     <span class="user-image round-img header-img">
       <img src="images/profile-placeholder.jpg" alt="David">
@@ -41,8 +41,8 @@ if(isset($chat_id)){
             <div class="chat_send">
               <form onsubmit="return chat_send();" method="post" style="">
                 <div class="row">
-                    <div class="col-9 col-md-10 pr0"><input type="text" class="form-control brl" id="msg" name="msg" placeholder="<?php echo translate("Write your message");?>" /></div>
-                    <div class="col-3 col-md-2 pl0">
+                    <div class="col-9 col-md-10 col-xs-10 pr0"><input type="text" class="form-control brl" id="msg" name="msg" placeholder="<?php echo translate("Write your message");?>" /></div>
+                    <div class="col-3 col-md-2 col-xs-2 pl0">
                         <input type="hidden" id="chat_id" name="chat_id" value="<?php echo $enc_chat_id;?>">
                         <input type="hidden" id="p_id" name="p_id" value="<?php echo $product_id;?>">
                         <input type="submit" class="btn btn-primary brr" name="submit" value="<?php echo translate("Send");?>">

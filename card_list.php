@@ -4,11 +4,11 @@ $imgs = get_product_imgs($product['id'],'1');
 <div class="row mybox5">
 	<div class="col-12 col-md-3">
 		<div class="imgdiv">
-			<a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>"><img src="<?php echo $imgs[0]['img'];?>" alt="<?php echo $imgs[0]['alt'];?>"></a>
+			<a href="<?php echo makepage_url("product_detail","?slug=".$product['slug_en']);?>"><img src="<?php echo $imgs[0]['img'];?>" alt="<?php echo $imgs[0]['alt'];?>"></a>
 		</div>
 	</div>
 	<div class="col-12 col-md-3">
-		<a href="<?php echo makepage_url("product_detail","?id=".enc_password($product['id']));?>"><?php echo showstring($product['title_'.$lang],"20");?></a><br>
+		<a href="<?php echo makepage_url("product_detail","?slug=".$product['slug_en']);?>"><?php echo showstring($product['title_'.$lang],"20");?></a><br>
 		<strong><?php echo translate("Views");?> : </strong><?php echo $product['views'];?><br>
 		<strong> <?php echo translate("Posted On");?> : </strong><?php echo dateFormat($product['created_date']);?><br>
 		<strong><?php echo translate("Location");?> : </strong><?php echo $product['location'];?>

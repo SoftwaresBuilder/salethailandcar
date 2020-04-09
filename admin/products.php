@@ -103,7 +103,7 @@ $total_results = (count($total_results)>0)?$total_results[0]['Num']:0;
                                         <a href="index.php?p=addeditproduct&id=<?= enc_password($v['id']); ?>" title="Update Record"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
                                         <a href="javascript:;" onclick="delete_record('process.php?p=delproduct&id=<?= enc_password($v['id']);?>');" data-toggle="modal" data-target="#delete" title="Delete Record"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;
                                         <a href="index.php?p=product_images&id=<?= enc_password($v['id']); ?>"><i class="fa fa-image"></i></a>&nbsp;&nbsp;
-                                        <a href="index.php?p=product_view&id=<?= enc_password($v['id']); ?>"><i class="fa fa-eye"></i></a>
+                                        <a href="product_download.php?id=<?= enc_password($v['id']); ?>" target="_blank"><i class="fa fa-download"></i></a>
                                     </td>
                                 </tr>
                         <?php

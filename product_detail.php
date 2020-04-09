@@ -1,16 +1,17 @@
 
 <?php
 include("header.php");
-$id = 0;
-if(isset($_GET['id'])){
-  $id = dec_password($_GET['id']);
+$slug = 0;
+if(isset($_GET['slug'])){
+  $slug = ($_GET['slug']);
 }
 
-$product = get_records($tblproducts,"id='".$id."' and status>0 and trash='0'");
+$product = get_records($tblproducts,"slug_en='".$slug."' and status>0 and trash='0'");
 if(!(count($product)>0)){
   redirect("search");exit;
 }
-
+$id=$product[0]['id'];
+$id=enc_password($id);
 $views = $product[0]['views'];
 $data = array();
 $data['views'] = $views + 1;
@@ -270,7 +271,7 @@ function show_hide_num(val){
             ?>
             <li data-thumb="<?php echo $v['img'];?>"> 
 
-              <img src="<?php echo $v['img'];?>" />
+              <img src="<?php echo $v['img'];?>" class="responsive"/>
             </li>
             <?php
             }
@@ -424,8 +425,11 @@ function show_hide_num(val){
       <div class="col-12 border_bottom">
         <h5><?php echo show_price($product[0]['price']);?></h5>
       </div>
+      <div class="col-12">
+        <?php include("social_share.php");?>
+      </div>
       <?php if($user[0]['id']!=$user_id) { ?>
-      <div class="col-12 pb10">
+      <div class="col-12 pb10 border_top">
         <div class="row">
           <div class="col-6"><a <?php if(!isset($_SESSION['user_record'])){ ?> data-toggle="modal" data-target="#login_popup" <?php } ?> id="show_hide_num" class="nav-link btn btn-primary" href="javascript:void(0);"
            onclick="<?php if(isset($_SESSION['user_record'])){?> show_hide_num('<?php echo $user[0]['phone'];?>') <?php } ?>">

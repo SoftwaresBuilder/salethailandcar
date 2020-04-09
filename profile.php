@@ -31,7 +31,7 @@ $count_favourites = sql($query_favourites);
 
 <div class="container">
    <div class="row">
-        <div class="col-md-3 for_text box">
+        <div class="col-md-4 for_text box">
         <?php
         $user_img = get_user_img($user_details[0]['img']);
         ?>
@@ -39,13 +39,10 @@ $count_favourites = sql($query_favourites);
         <span class=""> <?php echo $user_details[0]['name']; ?></span>
 
         </div>
-        <div class="col-md-3 for_text box"><?php echo translate("Total Ads");?>
-            <?php echo $count_ads[0]['COUNT(id)'] ?>
-        </div>
-        <div class="col-md-3 for_text box"><?php echo translate("Favourite ads");?>
+        <div class="col-md-4 for_text box"><?php echo translate("Favourite ads");?>
             <?php echo $count_favourites[0]['COUNT(id)'] ?>
         </div>
-        <div class="col-md-3 for_text box"><?php echo translate("Pending approvals");?>
+        <div class="col-md-4 for_text box"><?php echo translate("Pending approvals");?>
             <?php echo $count_pending_ads[0]['COUNT(id)'] ?>
         </div>
         <?php
@@ -53,7 +50,7 @@ $count_favourites = sql($query_favourites);
             foreach ($user_packages as $key => $v) { 
                  $categories = get_records($tblcategories,"id='".$v['category_id']."' and trash!='1'"); ?>
           
-        <div class="col-md-3 for_text box"><span style="font-weight: bold"><?php echo 'For ' .$categories[0]['title_'.$lang]; ?></span><br>
+        <div class="col-md-4 for_text box"><span style="font-weight: bold"><?php echo 'For ' .$categories[0]['title_'.$lang]; ?></span><br>
              <?php echo 'Post Ads ' .$v['post_ads']; ?></br>
             <?php echo 'Bump up ' .$v['bump_up']; ?></br>
             <?php echo 'Social Media Ads ' .$v['social_media_ads']; ?></br>

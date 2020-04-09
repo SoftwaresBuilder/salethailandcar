@@ -273,7 +273,7 @@ if (distance < 0) {
   $top_offers = get_records($tblcms,"type = 'top_offers'");
 
    ?>
-  <div class="offer_div" <?php if(isset($_SESSION['close_offer'])) { ?> style="display: none;"  <?php } ?> >
+  <div class="offer_div d-none d-md-block" <?php if(isset($_SESSION['close_offer'])) { ?> style="display: none;"  <?php } ?> >
     <a class="offer_close" href="process.php?p=close_offer">X</a>
     <div class="top_offers animation_div">
       <span class="count_down" id="count_down"></span>
@@ -368,7 +368,7 @@ if (distance < 0) {
             foreach ($parent_categories as $v) {
               echo $sep;
             ?>
-              <a href="<?php echo makepage_url("search","?id=".enc_password($v['id']));?>"><?php echo $v['title_'.$lang];?></a>
+              <a href="<?php echo makepage_url("search","?slug=".($v['slug_en']));?>"><?php echo $v['title_'.$lang];?></a>
             <?php
               $sep = "&nbsp;|&nbsp;";
             }

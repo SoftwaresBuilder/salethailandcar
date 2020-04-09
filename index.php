@@ -23,7 +23,7 @@ $home_news = get_records($tblnews,"featured='1' and status='1' and trash='0'",""
             if(count($subcategories)>0){
               foreach($subcategories as $v2){
               ?>
-                <a href="<?php echo makepage_url("search","?id=".enc_password($v2['id']));?>"><?php echo $v2['title_'.$lang];?></a><br>
+                <a href="<?php echo makepage_url("search","?slug=".($v2['slug_en']));?>"><?php echo $v2['title_'.$lang];?></a><br>
               <?php
               }
             }

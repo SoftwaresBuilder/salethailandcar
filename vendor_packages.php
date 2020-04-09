@@ -10,7 +10,7 @@ $packages = get_records($tblvendor_packages,"status='1' and trash='0'");
                     $category_name = get_records($tblcategories,"id='".$v['category']."' and trash!='1'");
                     if($v['title_en']!=$for_new_user){
                 ?>
-                <div class="col-4" style="margin-bottom: 10px;">
+                <div class="col-md-4" style="margin-bottom: 10px;">
                     <div class="row packages">
                         <div class="col-12 center"><?php echo $v['title_'.$lang];?></div>
                         <div class="col-12 center"><?php echo $category_name[0]['title_'.$lang];?></div>

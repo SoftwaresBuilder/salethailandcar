@@ -1,10 +1,10 @@
 <?php
 include("header.php");
-$id = 0;
-if(isset($_GET['id'])){
-  $id = dec_password($_GET['id']);
+$slug = 0;
+if(isset($_GET['slug'])){
+  $slug = ($_GET['slug']);
 }
-$news = get_records($tblnews,"id='".$id."' and status='1' and trash='0'");
+$news = get_records($tblnews,"slug_en='".$slug."' and status='1' and trash='0'");
 if(!(count($news)>0)){
   redirect("search");exit;
 }
@@ -25,9 +25,11 @@ $imgs = get_upload_img($news[0]['img']);
           <span class="small_text"><?php echo $news[0]['created_date'];?></span>
         </div>
         <div class="col-12 mt10"><?php echo $news[0]['description_'.$lang];?></div>
+        <div  class="col-12 mt10"><?php include("social_share.php");?></div>
       </div>
     </div>
 </div>
+
 </div>
 <?php
 include("footer.php");

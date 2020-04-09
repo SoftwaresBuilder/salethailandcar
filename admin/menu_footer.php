@@ -8,3 +8,10 @@
         </p>
     </div>
 </footer>
+<script type="text/javascript">
+function my_slug(slug_value){ 
+    slug_en = slug_value.toString();
+    slug_en = slug_en.replace(/\s+/g,'-');
+   $('#slug_en').attr('value',slug_en);
+}
+</script>

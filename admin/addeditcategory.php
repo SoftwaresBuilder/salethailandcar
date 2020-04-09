@@ -47,25 +47,33 @@ $parent_categories = get_records($tblcategories,"pid='0' and trash!='1'");
                      <div class="col-md-6">
                         <div class="form-group">
                             <label>Title English <span class="err">*</span></label>
-                            <input onfocusout="translate_into_thai(this.value,'title_th')" type="text" required class="form-control" id="title_en" name="title_en" placeholder="title" value="<?= $_SESSION['sysData']['title_en'];?>">
+                            <input onfocusout="translate_into_thai(this.value,'title_th'),my_slug($('#title_en').val())" type="text" required class="form-control" id="title_en" name="title_en" placeholder="title" value="<?= $_SESSION['sysData']['title_en'];?>">
                         </div>
                     </div>
+
                 </div>
                 <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Slug English</label>
+                            <input type="text" required class="form-control" id="slug_en" name="slug_en" value="<?= $_SESSION['sysData']['slug_en'];?>">
+                        </div>
+                    </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Title Thai <span class="err">*</span></label>
                             <input type="text" required class="form-control" id="title_th" name="title_th" placeholder="title" value="<?= $_SESSION['sysData']['title_th'];?>">
                         </div>
                     </div>
+                </div>
+                    <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Description</label>
                             <input type="text" class="form-control" id="description" name="description" placeholder="description" value="<?= $_SESSION['sysData']['description'];?>">
                         </div>
-                    </div>
-                    </div>
-                    <div class="row">
+                    </div>  
+                    
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Status</label>

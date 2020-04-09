@@ -64,6 +64,7 @@ if($p == "delproduct_image")
 
 if($p == "addeditproduct")
 {
+	// pr($_POST);exit();
 	foreach ($_POST as $k => $v )
 	{
 		$$k = addslashes($v);
@@ -81,6 +82,12 @@ if($p == "addeditproduct")
 		$_SESSION['sysErr']['price'] = "Please enter price";
 		$flg = true;
 	}
+	$slug = get_records($tblproducts,"slug_en='".$slug_en."' and trash!=1 and id='".$id."'" );
+	if(count($slug)>0)
+	{
+		$_SESSION['sysErr']['slug_en'] = "Slug already exist";
+		$flg = true;
+	}
 	if($flg){
 		header("location:index.php?p=addeditproduct&id=".$enc_id);
 		exit;
@@ -92,6 +99,7 @@ if($p == "addeditproduct")
 		$data['subcategory_id'] = $subcategory_id;
 		$data['user_id'] = $user_id;
 		$data['title_en'] = $title_en;
+		$data['slug_en'] = $slug_en;
 		$data['title_th'] = $title_th;
 		$data['price'] = $price;
 		$data['description_en'] = $description_en;
@@ -122,6 +130,7 @@ if($p == "addeditproduct")
 		$data['subcategory_id'] = $subcategory_id;
 		$data['title_en'] = $title_en;
 		$data['title_th'] = $title_th;
+		$data['slug_en'] = $slug_en;
 		$data['price'] = $price;
 		$data['description_en'] = $description_en;
 		$data['description_th'] = $description_th;
@@ -336,12 +345,20 @@ if($p == "addeditcategory")
 		header("location:index.php?p=addeditcategory&id=".$enc_id);
 		exit;
 	}
+	$title_slug = get_records($tblcategories,"slug_en='".$slug_en."' and id!='".$id."'");
+	if(count($title_slug)>0)
+	{
+		$_SESSION['sysErr']['slug_en'] = "Slug already in exist";
+		$flg = true;
+	}
+	
 	if( $id > 0 )
 	{
 		$data = array();
 		$data['pid'] = $pid;
 		$data['title_en'] = $title_en;
 		$data['title_th'] = $title_th;
+		$data['slug_en'] = $slug_en;
 		$data['description'] = $description;
 		$data['status'] = $status;
 		$condition = array();
@@ -358,6 +375,7 @@ if($p == "addeditcategory")
 		$data['pid'] = $pid;
 		$data['title_en'] = $title_en;
 		$data['title_th'] = $title_th;
+		$data['slug_en'] = $slug_en;
 		$data['description'] = $description;
 		$data['status'] = $status;
 		$id = insert_record($tblcategories,$data);
@@ -875,7 +893,6 @@ if($p == "addeditsetting")
 
 if($p == "addeditnews")
 {
-	// pr($_POST);exit();
 	foreach ($_POST as $k => $v )
 	{
 		if(is_array($v)){
@@ -886,6 +903,7 @@ if($p == "addeditnews")
 		}
 		$_SESSION['sysData'][$k] = $v;
 	}
+
 	$enc_id = $id;
 	if($id){
 		$id = dec_password($id);
@@ -897,7 +915,16 @@ if($p == "addeditnews")
 		$_SESSION['sysErr']['title_en'] = "Please enter name";
 		$flg = true;
 	}
-	
+	$title_slug = get_records($tblnews,"slug_en='".$slug_en."' and id!='".$id."'");
+	if(count($title_slug)>0)
+	{
+		$_SESSION['sysErr']['slug_en'] = "Slug already exist";
+		$flg = true;
+	}
+	if($flg)
+	{
+		header("location:index.php?p=addeditnews&id=".$enc_id);exit;
+	} 
 	/*if(!$slug)
 	{
 		$_SESSION['sysErr']['slug'] = "Please enter slug";
@@ -916,13 +943,13 @@ if($p == "addeditnews")
 		$data['title_th'] = $title_th;
 		$data['description_en'] = $description_en;
 		$data['description_th'] = $description_th;
+		$data['slug_en'] = $slug_en;
 		$data['tags_en'] = $tags_en;
 		$data['tags_th'] = $tags_th;
 		$data['meta_description_en'] = $meta_description_en;
 		$data['meta_description_th'] = $meta_description_th;
 		$data['status'] = $status;
 		$data['featured'] = $featured;
-
 		$condition = array();
 		$condition['id'] = $id;
 		$result = update_record($tblnews,$data,$condition);
@@ -938,6 +965,7 @@ if($p == "addeditnews")
 		$data['title_th'] = $title_th;
 		$data['description_en'] = $description_en;
 		$data['description_th'] = $description_th;
+		$data['slug_en'] = $slug_en;
 		$data['tags_en'] = $tags_en;
 		$data['tags_th'] = $tags_th;
 		$data['meta_description_en'] = $meta_description_en;

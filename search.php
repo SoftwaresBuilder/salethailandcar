@@ -1,16 +1,17 @@
 <?php
 include("header.php");
 
-$id = 0;
-if(isset($_REQUEST['id'])){
-    $id = dec_password($_REQUEST['id']);
+$slug = 0;
+if(isset($_REQUEST['slug'])){
+    $slug = ($_REQUEST['slug']);
 }
 
 $flag_for_location = false;
-$category = get_records($tblcategories,"id='".$id."' and status='1' and trash='0'");
+$category = get_records($tblcategories,"slug_en='".$slug."' and status='1' and trash='0'");
 if(!(count($category)>0)){
   redirect("index");exit;
 }
+$id=$category[0]['id'];
 
 $where = "category_id='".$id."' and status>=1 and trash='0'";
 if(isset($_POST['title'])){
@@ -41,7 +42,7 @@ if($banner_name){
             <div class="col-12 col-md-9">
                 <div class="col-12 heading mb50">
                     <?php echo $category[0]['title_'.$lang];?>
-                    <div style="float: right;"><span style="color: green;font-size: 24px"><a href="<?php echo makepage_url("search_by_map","?id=".enc_password($id));?>">View by map&nbsp;</a> 
+                    <div style="float: right;"><span style="color: green;font-size: 24px"><a href="<?php echo makepage_url("search_by_map","?slug=".($slug));?>">View by map&nbsp;</a> 
                     </span></div>
                 </div>
 
